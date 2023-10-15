@@ -11,7 +11,15 @@ import SwiftUI
 struct TumblerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                RecentTabView()
+                    .tabItem { Label("In Progress", systemImage: "figure.walk") }
+                TripTabView()
+                    .tabItem { Label("Trips", systemImage: "beach.umbrella")}
+                SettingTabView()
+                    .tabItem { Label("Settings", systemImage: "gear")}
+            }
+            
         }
     }
 }

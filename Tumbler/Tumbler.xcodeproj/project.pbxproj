@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476E12ADC90A10055EC89 /* TumblerApp.swift */; };
-		FFC476E42ADC90A10055EC89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476E32ADC90A10055EC89 /* ContentView.swift */; };
 		FFC476E62ADC90A20055EC89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFC476E52ADC90A20055EC89 /* Assets.xcassets */; };
 		FFC476EA2ADC90A20055EC89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFC476E92ADC90A20055EC89 /* Preview Assets.xcassets */; };
 		FFC476F42ADC90A20055EC89 /* TumblerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476F32ADC90A20055EC89 /* TumblerTests.swift */; };
 		FFC476FE2ADC90A20055EC89 /* TumblerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476FD2ADC90A20055EC89 /* TumblerUITests.swift */; };
 		FFC477002ADC90A20055EC89 /* TumblerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476FF2ADC90A20055EC89 /* TumblerUITestsLaunchTests.swift */; };
+		FFC4770D2ADC914C0055EC89 /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4770C2ADC914C0055EC89 /* Itinerary.swift */; };
+		FFC4770F2ADC91910055EC89 /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4770E2ADC91910055EC89 /* ActivityCardView.swift */; };
+		FFC477112ADC91A30055EC89 /* DayCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477102ADC91A30055EC89 /* DayCardView.swift */; };
+		FFC477132ADC91B50055EC89 /* RecentTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477122ADC91B50055EC89 /* RecentTabView.swift */; };
+		FFC477152ADC91C40055EC89 /* SettingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477142ADC91C40055EC89 /* SettingTabView.swift */; };
+		FFC477172ADC91D20055EC89 /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477162ADC91D20055EC89 /* TripCardView.swift */; };
+		FFC477192ADC91E00055EC89 /* TripTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477182ADC91E00055EC89 /* TripTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +42,6 @@
 /* Begin PBXFileReference section */
 		FFC476DE2ADC90A10055EC89 /* Tumbler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tumbler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC476E12ADC90A10055EC89 /* TumblerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumblerApp.swift; sourceTree = "<group>"; };
-		FFC476E32ADC90A10055EC89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FFC476E52ADC90A20055EC89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFC476E72ADC90A20055EC89 /* Tumbler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tumbler.entitlements; sourceTree = "<group>"; };
 		FFC476E92ADC90A20055EC89 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -45,6 +50,13 @@
 		FFC476F92ADC90A20055EC89 /* TumblerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TumblerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC476FD2ADC90A20055EC89 /* TumblerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumblerUITests.swift; sourceTree = "<group>"; };
 		FFC476FF2ADC90A20055EC89 /* TumblerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumblerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		FFC4770C2ADC914C0055EC89 /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
+		FFC4770E2ADC91910055EC89 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
+		FFC477102ADC91A30055EC89 /* DayCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCardView.swift; sourceTree = "<group>"; };
+		FFC477122ADC91B50055EC89 /* RecentTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTabView.swift; sourceTree = "<group>"; };
+		FFC477142ADC91C40055EC89 /* SettingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTabView.swift; sourceTree = "<group>"; };
+		FFC477162ADC91D20055EC89 /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
+		FFC477182ADC91E00055EC89 /* TripTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,8 +107,14 @@
 		FFC476E02ADC90A10055EC89 /* Tumbler */ = {
 			isa = PBXGroup;
 			children = (
+				FFC4770C2ADC914C0055EC89 /* Itinerary.swift */,
+				FFC477102ADC91A30055EC89 /* DayCardView.swift */,
+				FFC477162ADC91D20055EC89 /* TripCardView.swift */,
+				FFC4770E2ADC91910055EC89 /* ActivityCardView.swift */,
+				FFC477122ADC91B50055EC89 /* RecentTabView.swift */,
+				FFC477182ADC91E00055EC89 /* TripTabView.swift */,
+				FFC477142ADC91C40055EC89 /* SettingTabView.swift */,
 				FFC476E12ADC90A10055EC89 /* TumblerApp.swift */,
-				FFC476E32ADC90A10055EC89 /* ContentView.swift */,
 				FFC476E52ADC90A20055EC89 /* Assets.xcassets */,
 				FFC476E72ADC90A20055EC89 /* Tumbler.entitlements */,
 				FFC476E82ADC90A20055EC89 /* Preview Content */,
@@ -259,8 +277,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFC476E42ADC90A10055EC89 /* ContentView.swift in Sources */,
+				FFC477112ADC91A30055EC89 /* DayCardView.swift in Sources */,
+				FFC477172ADC91D20055EC89 /* TripCardView.swift in Sources */,
+				FFC4770D2ADC914C0055EC89 /* Itinerary.swift in Sources */,
+				FFC477132ADC91B50055EC89 /* RecentTabView.swift in Sources */,
 				FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */,
+				FFC477152ADC91C40055EC89 /* SettingTabView.swift in Sources */,
+				FFC477192ADC91E00055EC89 /* TripTabView.swift in Sources */,
+				FFC4770F2ADC91910055EC89 /* ActivityCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
