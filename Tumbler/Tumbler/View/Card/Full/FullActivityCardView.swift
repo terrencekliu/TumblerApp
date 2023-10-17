@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-let testActivity = Itinerary.Activity(id: "test-id", name: "Coffee House", type: Itinerary.ActivityType.food, address: "12345 SE 12th St Bellevue, WA 98006", quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"], alert: "Car break-in common")
+let testActivity = Activity(id: "test-id", name: "Coffee House", type: Activity.ActivityType.food, address: "12345 SE 12th St Bellevue, WA 98006", quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"], alert: "Car break-in common")
 
-struct ActivityCardView: View {
+struct FullActivityCardView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -78,6 +78,6 @@ struct ActivityCardView: View {
 }
 
 #Preview {
-    ActivityCardView()
+    FullActivityCardView()
         .background(.gray)
 }

@@ -13,13 +13,17 @@
 		FFC476F42ADC90A20055EC89 /* TumblerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476F32ADC90A20055EC89 /* TumblerTests.swift */; };
 		FFC476FE2ADC90A20055EC89 /* TumblerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476FD2ADC90A20055EC89 /* TumblerUITests.swift */; };
 		FFC477002ADC90A20055EC89 /* TumblerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476FF2ADC90A20055EC89 /* TumblerUITestsLaunchTests.swift */; };
-		FFC4770D2ADC914C0055EC89 /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4770C2ADC914C0055EC89 /* Itinerary.swift */; };
-		FFC4770F2ADC91910055EC89 /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4770E2ADC91910055EC89 /* ActivityCardView.swift */; };
-		FFC477112ADC91A30055EC89 /* DayCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477102ADC91A30055EC89 /* DayCardView.swift */; };
+		FFC4770F2ADC91910055EC89 /* FullActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4770E2ADC91910055EC89 /* FullActivityCardView.swift */; };
+		FFC477112ADC91A30055EC89 /* FullDayCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477102ADC91A30055EC89 /* FullDayCardView.swift */; };
 		FFC477132ADC91B50055EC89 /* RecentTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477122ADC91B50055EC89 /* RecentTabView.swift */; };
 		FFC477152ADC91C40055EC89 /* SettingTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477142ADC91C40055EC89 /* SettingTabView.swift */; };
-		FFC477172ADC91D20055EC89 /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477162ADC91D20055EC89 /* TripCardView.swift */; };
+		FFC477172ADC91D20055EC89 /* FullTripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477162ADC91D20055EC89 /* FullTripCardView.swift */; };
 		FFC477192ADC91E00055EC89 /* TripTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477182ADC91E00055EC89 /* TripTabView.swift */; };
+		FFC4771D2ADE54EA0055EC89 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4771C2ADE54EA0055EC89 /* Activity.swift */; };
+		FFC4771F2ADE54FB0055EC89 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4771E2ADE54FB0055EC89 /* Day.swift */; };
+		FFC477212ADE55050055EC89 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477202ADE55050055EC89 /* Event.swift */; };
+		FFC477232ADE551D0055EC89 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477222ADE551D0055EC89 /* Trip.swift */; };
+		FFC477262ADE562D0055EC89 /* Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477252ADE562D0055EC89 /* Transportation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,13 +54,17 @@
 		FFC476F92ADC90A20055EC89 /* TumblerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TumblerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC476FD2ADC90A20055EC89 /* TumblerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumblerUITests.swift; sourceTree = "<group>"; };
 		FFC476FF2ADC90A20055EC89 /* TumblerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumblerUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		FFC4770C2ADC914C0055EC89 /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
-		FFC4770E2ADC91910055EC89 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
-		FFC477102ADC91A30055EC89 /* DayCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCardView.swift; sourceTree = "<group>"; };
+		FFC4770E2ADC91910055EC89 /* FullActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullActivityCardView.swift; sourceTree = "<group>"; };
+		FFC477102ADC91A30055EC89 /* FullDayCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullDayCardView.swift; sourceTree = "<group>"; };
 		FFC477122ADC91B50055EC89 /* RecentTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTabView.swift; sourceTree = "<group>"; };
 		FFC477142ADC91C40055EC89 /* SettingTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTabView.swift; sourceTree = "<group>"; };
-		FFC477162ADC91D20055EC89 /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
+		FFC477162ADC91D20055EC89 /* FullTripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullTripCardView.swift; sourceTree = "<group>"; };
 		FFC477182ADC91E00055EC89 /* TripTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTabView.swift; sourceTree = "<group>"; };
+		FFC4771C2ADE54EA0055EC89 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		FFC4771E2ADE54FB0055EC89 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		FFC477202ADE55050055EC89 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		FFC477222ADE551D0055EC89 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		FFC477252ADE562D0055EC89 /* Transportation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transportation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,13 +115,9 @@
 		FFC476E02ADC90A10055EC89 /* Tumbler */ = {
 			isa = PBXGroup;
 			children = (
-				FFC4770C2ADC914C0055EC89 /* Itinerary.swift */,
-				FFC477102ADC91A30055EC89 /* DayCardView.swift */,
-				FFC477162ADC91D20055EC89 /* TripCardView.swift */,
-				FFC4770E2ADC91910055EC89 /* ActivityCardView.swift */,
-				FFC477122ADC91B50055EC89 /* RecentTabView.swift */,
-				FFC477182ADC91E00055EC89 /* TripTabView.swift */,
-				FFC477142ADC91C40055EC89 /* SettingTabView.swift */,
+				FFC477242ADE555A0055EC89 /* Model */,
+				FFC4772C2ADE596E0055EC89 /* ViewModel */,
+				FFC477272ADE58500055EC89 /* View */,
 				FFC476E12ADC90A10055EC89 /* TumblerApp.swift */,
 				FFC476E52ADC90A20055EC89 /* Assets.xcassets */,
 				FFC476E72ADC90A20055EC89 /* Tumbler.entitlements */,
@@ -145,6 +149,70 @@
 				FFC476FF2ADC90A20055EC89 /* TumblerUITestsLaunchTests.swift */,
 			);
 			path = TumblerUITests;
+			sourceTree = "<group>";
+		};
+		FFC477242ADE555A0055EC89 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FFC477222ADE551D0055EC89 /* Trip.swift */,
+				FFC4771E2ADE54FB0055EC89 /* Day.swift */,
+				FFC477202ADE55050055EC89 /* Event.swift */,
+				FFC4771C2ADE54EA0055EC89 /* Activity.swift */,
+				FFC477252ADE562D0055EC89 /* Transportation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FFC477272ADE58500055EC89 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FFC477292ADE58860055EC89 /* Card */,
+				FFC477282ADE58670055EC89 /* Tab */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FFC477282ADE58670055EC89 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				FFC477122ADC91B50055EC89 /* RecentTabView.swift */,
+				FFC477182ADC91E00055EC89 /* TripTabView.swift */,
+				FFC477142ADC91C40055EC89 /* SettingTabView.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		FFC477292ADE58860055EC89 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				FFC4772B2ADE58B10055EC89 /* Full */,
+				FFC4772A2ADE58A50055EC89 /* Simple */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		FFC4772A2ADE58A50055EC89 /* Simple */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Simple;
+			sourceTree = "<group>";
+		};
+		FFC4772B2ADE58B10055EC89 /* Full */ = {
+			isa = PBXGroup;
+			children = (
+				FFC477102ADC91A30055EC89 /* FullDayCardView.swift */,
+				FFC477162ADC91D20055EC89 /* FullTripCardView.swift */,
+				FFC4770E2ADC91910055EC89 /* FullActivityCardView.swift */,
+			);
+			path = Full;
+			sourceTree = "<group>";
+		};
+		FFC4772C2ADE596E0055EC89 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,14 +345,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FFC477112ADC91A30055EC89 /* DayCardView.swift in Sources */,
-				FFC477172ADC91D20055EC89 /* TripCardView.swift in Sources */,
-				FFC4770D2ADC914C0055EC89 /* Itinerary.swift in Sources */,
+				FFC477112ADC91A30055EC89 /* FullDayCardView.swift in Sources */,
+				FFC477172ADC91D20055EC89 /* FullTripCardView.swift in Sources */,
+				FFC477232ADE551D0055EC89 /* Trip.swift in Sources */,
+				FFC4771D2ADE54EA0055EC89 /* Activity.swift in Sources */,
+				FFC477262ADE562D0055EC89 /* Transportation.swift in Sources */,
 				FFC477132ADC91B50055EC89 /* RecentTabView.swift in Sources */,
 				FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */,
+				FFC4771F2ADE54FB0055EC89 /* Day.swift in Sources */,
+				FFC477212ADE55050055EC89 /* Event.swift in Sources */,
 				FFC477152ADC91C40055EC89 /* SettingTabView.swift in Sources */,
 				FFC477192ADC91E00055EC89 /* TripTabView.swift in Sources */,
-				FFC4770F2ADC91910055EC89 /* ActivityCardView.swift in Sources */,
+				FFC4770F2ADC91910055EC89 /* FullActivityCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
