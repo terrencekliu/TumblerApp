@@ -11,68 +11,69 @@ let testActivity = Itinerary.Activity(id: "test-id", name: "Coffee House", type:
 
 struct ActivityCardView: View {
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 15)
-                .foregroundColor(.white)
-                .aspectRatio(3/2, contentMode: .fit)
-                .overlay {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            VStack(alignment: .leading) {
-                                HStack(alignment: .center) {
-                                    Image(systemName: "fork.knife.circle.fill")
-                                        .foregroundColor(.orange)
-                                        .font(.title)
-                                    Text(testActivity.name)
-                                        .font(.headline)
-                                }
-                                HStack {
-                                    // TODO: Calculate Distance
-                                    Text("(\("--- ft"))")                            .foregroundColor(.gray)
-                                    Text(testActivity.address)
-                                        .foregroundColor(.blue)
-                                }
-                                .font(.footnote)
+        VStack(alignment: .leading) {
+            HStack {
+                VStack(alignment: .leading) {
+                    HStack(alignment: .center) {
+                        Image(systemName: "fork.knife.circle.fill")
+                            .foregroundColor(.orange)
+                            .font(.title)
+                        Text(testActivity.name)
+                            .font(.headline)
+                    }
+                    HStack {
+                        // TODO: Calculate Distance
+                        Text("(\("--- ft"))")                            .foregroundColor(.gray)
+                        Text(testActivity.address)
+                            .foregroundColor(.blue)
+                            .lineLimit(1)
+                    }
+                    .font(.footnote)
+                }
+                Spacer()
+                // TODO: Make Tickets Button Actionable
+                Button(action: {}) {
+                    VStack {
+                        Image(systemName: "ticket")
+                            .font(.title2)
+                        Text("Tickets")
+                            .font(.footnote)
+                            
+                    }
+                }
+                .buttonStyle(.bordered)
+            }
+            HStack(alignment: .top) {
+                VStack(alignment: .leading) {
+                    Grid(alignment: .leading, horizontalSpacing: 40, verticalSpacing: 5) {
+                        // TODO: Uniquely Key Values
+                        ForEach(testActivity.quickInfo, id: \.key) { description, value in
+                            GridRow {
+                                Text(description)
+                                Text(value)
                             }
-                            Spacer()
-                            // TODO: Make Tickets Button Actionable
-                            Button(action: {}) {
-                                VStack {
-                                    Image(systemName: "ticket")
-                                    Text("Tickets")
-                                }
-                                .padding(5.0)
-                            }
-                            .buttonStyle(.bordered)
-                        }
-                        HStack(alignment: .top) {
-                            Grid {
-                                // TODO: Uniquely Key Values
-                                ForEach(testActivity.quickInfo, id: \.key) { description, value in
-                                    GridRow {
-                                        Text(description)
-                                        Text(value)
-                                    }
-                                    .gridColumnAlignment(.leading)
-                                }
-                                .font(.footnote)
-                                .fontWeight(.medium)
-                            }
-                            Spacer()
-                            // TODO: Replace Default Image
-                            Image("cafe")
-                        }
-                        if testActivity.alert != nil {
-                            Text(testActivity.alert!)
-                                .font(.footnote)
-                                .foregroundColor(Color.red)
-                                .italic()
+                            .font(.footnote)
+                            .fontWeight(.medium)
                         }
                     }
-                    .padding()
+                    Spacer()
+                    Text(testActivity.alert ?? "")
+                        .font(.footnote)
+                        .foregroundColor(.red)
+                        .italic()
                 }
-                .padding()
+                Spacer()
+                // TODO: Replace Default Image
+                Image("cafe")
+            }
+            
         }
+        .padding()
+        .background {
+            RoundedRectangle(cornerRadius: 10.0)
+                .fill(.white)
+        }
+        .scaledToFit()
     }
 }
 
