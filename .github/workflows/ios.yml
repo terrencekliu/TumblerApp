@@ -14,9 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - uses: swift-actions/setup-swift@v1
-      - name: Get swift version
-        run: swift --version
+        with:
+          swift-version: '5.9.0'
       - name: Set Default Scheme
         run: |
           scheme_list=$(xcodebuild -list -json | tr -d "\n")
