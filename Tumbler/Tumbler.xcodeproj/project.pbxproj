@@ -10,6 +10,7 @@
 		FF1274C82AF74F8F00099E02 /* FullEventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274C72AF74F8F00099E02 /* FullEventCardView.swift */; };
 		FF1274CA2AF74F9D00099E02 /* FullEventCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */; };
 		FF1274CC2AF7625B00099E02 /* SimpleActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274CB2AF7625B00099E02 /* SimpleActivityCardView.swift */; };
+		FF1274CF2AF76D1900099E02 /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274CE2AF76D1900099E02 /* ActivityCardView.swift */; };
 		FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476E12ADC90A10055EC89 /* TumblerApp.swift */; };
 		FFC476E62ADC90A20055EC89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFC476E52ADC90A20055EC89 /* Assets.xcassets */; };
 		FFC476EA2ADC90A20055EC89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFC476E92ADC90A20055EC89 /* Preview Assets.xcassets */; };
@@ -31,14 +32,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FFC476F02ADC90A20055EC89 /* PBXContainerItemProxy */ = {
+		FF65C9472AF82E0A0000DF0A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FFC476D62ADC90A10055EC89 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = FFC476DD2ADC90A10055EC89;
 			remoteInfo = Tumbler;
 		};
-		FFC476FA2ADC90A20055EC89 /* PBXContainerItemProxy */ = {
+		FF65C9492AF82E230000DF0A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FFC476D62ADC90A10055EC89 /* Project object */;
 			proxyType = 1;
@@ -51,6 +52,7 @@
 		FF1274C72AF74F8F00099E02 /* FullEventCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEventCardView.swift; sourceTree = "<group>"; };
 		FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEventCardViewModel.swift; sourceTree = "<group>"; };
 		FF1274CB2AF7625B00099E02 /* SimpleActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleActivityCardView.swift; sourceTree = "<group>"; };
+		FF1274CE2AF76D1900099E02 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
 		FFC476DE2ADC90A10055EC89 /* Tumbler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tumbler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC476E12ADC90A10055EC89 /* TumblerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumblerApp.swift; sourceTree = "<group>"; };
 		FFC476E52ADC90A20055EC89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -116,6 +118,14 @@
 				FF1274C72AF74F8F00099E02 /* FullEventCardView.swift */,
 			);
 			path = FullEvent;
+			sourceTree = "<group>";
+		};
+		FF1274CD2AF76CFD00099E02 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				FF1274CE2AF76D1900099E02 /* ActivityCardView.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		FFC476D52ADC90A10055EC89 = {
@@ -210,6 +220,7 @@
 		FFC477292ADE58860055EC89 /* Card */ = {
 			isa = PBXGroup;
 			children = (
+				FF1274CD2AF76CFD00099E02 /* Detail */,
 				FFC4772B2ADE58B10055EC89 /* Full */,
 				FFC4772A2ADE58A50055EC89 /* Simple */,
 			);
@@ -242,6 +253,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFC477032ADC90A20055EC89 /* Build configuration list for PBXNativeTarget "Tumbler" */;
 			buildPhases = (
+				FF65C9432AF819100000DF0A /* Run SwiftLint Script */,
 				FFC476DA2ADC90A10055EC89 /* Sources */,
 				FFC476DB2ADC90A10055EC89 /* Frameworks */,
 				FFC476DC2ADC90A10055EC89 /* Resources */,
@@ -266,7 +278,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				FFC476F12ADC90A20055EC89 /* PBXTargetDependency */,
+				FF65C9482AF82E0A0000DF0A /* PBXTargetDependency */,
 			);
 			name = TumblerTests;
 			productName = TumblerTests;
@@ -284,7 +296,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				FFC476FB2ADC90A20055EC89 /* PBXTargetDependency */,
+				FF65C94A2AF82E230000DF0A /* PBXTargetDependency */,
 			);
 			name = TumblerUITests;
 			productName = TumblerUITests;
@@ -360,6 +372,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		FF65C9432AF819100000DF0A /* Run SwiftLint Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FFC476DA2ADC90A10055EC89 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -374,6 +407,7 @@
 				FFC477232ADE551D0055EC89 /* Trip.swift in Sources */,
 				FFC4771D2ADE54EA0055EC89 /* Activity.swift in Sources */,
 				FFC477262ADE562D0055EC89 /* Transportation.swift in Sources */,
+				FF1274CF2AF76D1900099E02 /* ActivityCardView.swift in Sources */,
 				FFC477132ADC91B50055EC89 /* RecentTabView.swift in Sources */,
 				FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */,
 				FFC4771F2ADE54FB0055EC89 /* Day.swift in Sources */,
@@ -404,15 +438,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FFC476F12ADC90A20055EC89 /* PBXTargetDependency */ = {
+		FF65C9482AF82E0A0000DF0A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FFC476DD2ADC90A10055EC89 /* Tumbler */;
-			targetProxy = FFC476F02ADC90A20055EC89 /* PBXContainerItemProxy */;
+			targetProxy = FF65C9472AF82E0A0000DF0A /* PBXContainerItemProxy */;
 		};
-		FFC476FB2ADC90A20055EC89 /* PBXTargetDependency */ = {
+		FF65C94A2AF82E230000DF0A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FFC476DD2ADC90A10055EC89 /* Tumbler */;
-			targetProxy = FFC476FA2ADC90A20055EC89 /* PBXContainerItemProxy */;
+			targetProxy = FF65C9492AF82E230000DF0A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -454,7 +488,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -469,7 +503,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -515,7 +551,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -524,7 +560,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -607,7 +645,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -629,7 +666,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -659,6 +695,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = terrenceliu.TumblerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -680,6 +717,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = terrenceliu.TumblerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;

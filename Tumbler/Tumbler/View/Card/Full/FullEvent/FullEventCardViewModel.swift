@@ -9,19 +9,13 @@ import Foundation
 
 class FullEventCardViewModel: ObservableObject {
     @Published var model: Event
-    
+
     init(event: Event) {
         self.model = event
     }
-    
+
     var activity: Activity { model.activity }
-    var otherActivities: Array<Activity> { model.otherActivities }
+    var otherActivities: [Activity] { model.otherActivities }
     var startTime: Date { model.startTime }
     var endTime: Date { model.endTime }
-    
-    
-    
-    func createFullActivityCardViewModel(activity: Activity) -> FullActivityViewModel {
-        return FullActivityViewModel(activity: activity)
-    }
 }

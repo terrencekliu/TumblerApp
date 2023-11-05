@@ -9,16 +9,16 @@ import Foundation
 
 struct Day: Identifiable, Comparable {
     let id: String
-    
+
     var name: String
-    
+
     var startTime: Date
     var endTime: Date
-    
+
     var thumbnail: Bool?
-    
+
     var startEvent: Event
-    var events: Array<Event>
+    var events: [Event]
     var endEvent: Event
     
     static func < (lhs: Day, rhs: Day) -> Bool {

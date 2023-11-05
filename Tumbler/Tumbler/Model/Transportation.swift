@@ -13,10 +13,10 @@ struct Transportation: Identifiable {
         case walk
         case car
     }
-    
+
     let id: String
     var type: TransportationType
-    
+
     var timeToLeave: Date
     var minDuration: Int
     var milesAway: Double

@@ -9,10 +9,10 @@ import Foundation
 
 struct Event: Identifiable {
     let id: String
-    
+
     var activity: Activity
-    var otherActivities: Array<Activity>
-    
+    var otherActivities: [Activity]
+
     var startTime: Date
     var endTime: Date
 }
