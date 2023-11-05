@@ -13,6 +13,6 @@ struct Event: Identifiable {
     var activity: Activity
     var otherActivities: Array<Activity>
     
-    var startTime: Date?
-    var endTime: Date?
+    var startTime: Date
+    var endTime: Date
 }
