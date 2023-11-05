@@ -19,7 +19,6 @@ struct TumblerApp: App {
                 SettingTabView()
                     .tabItem { Label("Settings", systemImage: "gear")}
             }
-            
         }
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 
 struct Trip: Identifiable {
     let id: String
-    
+
     var name: String
-    var days: Array<Day>
+    var days: [Day]
 }
