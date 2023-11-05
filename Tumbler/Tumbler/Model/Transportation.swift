@@ -14,7 +14,8 @@ struct Transportation: Identifiable {
         case car
     }
     
-    let id: TransportationType
+    let id: String
+    var type: TransportationType
     
     var timeToLeave: Date
     var minDuration: Int

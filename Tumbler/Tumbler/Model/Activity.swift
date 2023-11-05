@@ -8,6 +8,8 @@
 import Foundation
 
 struct Activity: Identifiable {
+    typealias Trans = Transportation.TransportationType
+    
     enum ActivityType {
         case beach
         case attraction
@@ -21,7 +23,7 @@ struct Activity: Identifiable {
     var name: String
     var type: ActivityType
     var address: String
-    var defaultTransportation: Transportation.TransportationType = Transportation.TransportationType.car
+    var defaultTransportation: Trans = Trans.car
     
     var thumbnail: Bool?
     var ticketReserve: Bool?

@@ -7,10 +7,11 @@
 
 import SwiftUI
 
-let testActivity = Activity(id: "test-id", name: "Coffee House", type: Activity.ActivityType.food, address: "12345 SE 12th St Bellevue, WA 98006", quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"], alert: "Car break-in common")
-
 struct FullActivityCardView: View {
+    @ObservedObject var viewModel: FullActivityViewModel
+    
     var body: some View {
+        // TODO: Turn nested stacks into grid
         VStack(alignment: .leading) {
             HStack {
                 VStack(alignment: .leading) {
@@ -18,13 +19,14 @@ struct FullActivityCardView: View {
                         Image(systemName: "fork.knife.circle.fill")
                             .foregroundColor(.orange)
                             .font(.title)
-                        Text(testActivity.name)
+                        Text(viewModel.name)
                             .font(.headline)
                     }
                     HStack {
                         // TODO: Calculate Distance
-                        Text("(\("--- ft"))")                            .foregroundColor(.gray)
-                        Text(testActivity.address)
+                        Text("(\("--- ft"))")                            
+                            .foregroundColor(.gray)
+                        Text(viewModel.address)
                             .foregroundColor(.blue)
                             .lineLimit(1)
                     }
@@ -38,7 +40,6 @@ struct FullActivityCardView: View {
                             .font(.title2)
                         Text("Tickets")
                             .font(.footnote)
-                            
                     }
                 }
                 .buttonStyle(.bordered)
@@ -47,7 +48,7 @@ struct FullActivityCardView: View {
                 VStack(alignment: .leading) {
                     Grid(alignment: .leading, horizontalSpacing: 40, verticalSpacing: 5) {
                         // TODO: Uniquely Key Values
-                        ForEach(testActivity.quickInfo, id: \.key) { description, value in
+                        ForEach(viewModel.quickInfo, id: \.key) { description, value in
                             GridRow {
                                 Text(description)
                                 Text(value)
@@ -57,7 +58,7 @@ struct FullActivityCardView: View {
                         }
                     }
                     Spacer()
-                    Text(testActivity.alert ?? "")
+                    Text(viewModel.alert ?? "")
                         .font(.footnote)
                         .foregroundColor(.red)
                         .italic()
@@ -66,7 +67,6 @@ struct FullActivityCardView: View {
                 // TODO: Replace Default Image
                 Image("cafe")
             }
-            
         }
         .padding()
         .background {
@@ -77,7 +77,13 @@ struct FullActivityCardView: View {
     }
 }
 
-#Preview {
-    FullActivityCardView()
+struct FullActivityCardView_Previews: PreviewProvider {
+    static let testActivity = Activity(id: "test-id", name: "Coffee House", type: Activity.ActivityType.food, address: "12345 SE 12th St Bellevue, WA 98006", quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"], alert: "Car break-in common")
+    
+    static var previews: some View {
+        FullActivityCardView(
+            viewModel: FullActivityViewModel(activity: testActivity)
+        )
         .background(.gray)
+    }
 }
