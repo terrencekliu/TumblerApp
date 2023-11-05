@@ -11,7 +11,7 @@ struct FullEventCardView: View {
     @ObservedObject var viewModel: FullEventCardViewModel
     
     var body: some View {
-        FullActivityCardView(viewModel: viewModel.createFullActivityCardViewModel(activity: viewModel.activity))
+        FullActivityCardView(viewModel: FullActivityViewModel(activity: viewModel.activity))
     }
 }
 

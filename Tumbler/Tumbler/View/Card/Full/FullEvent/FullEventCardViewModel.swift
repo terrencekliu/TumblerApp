@@ -18,10 +18,4 @@ class FullEventCardViewModel: ObservableObject {
     var otherActivities: Array<Activity> { model.otherActivities }
     var startTime: Date { model.startTime }
     var endTime: Date { model.endTime }
-    
-    
-    
-    func createFullActivityCardViewModel(activity: Activity) -> FullActivityViewModel {
-        return FullActivityViewModel(activity: activity)
-    }
 }
