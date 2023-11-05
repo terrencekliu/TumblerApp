@@ -7,6 +7,7 @@
 
 import Foundation
 
+// TODO: Add Images for tumbnail???
 struct Activity: Identifiable {
     typealias Trans = Transportation.TransportationType
     

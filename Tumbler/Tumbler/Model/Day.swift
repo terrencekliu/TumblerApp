@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Day: Identifiable {
+struct Day: Identifiable, Comparable {
     let id: String
     
     var name: String
@@ -20,4 +20,12 @@ struct Day: Identifiable {
     var startEvent: Event
     var events: Array<Event>
     var endEvent: Event
+    
+    static func < (lhs: Day, rhs: Day) -> Bool {
+        lhs.startTime < rhs.startTime
+    }
+    
+    static func == (lhs: Day, rhs: Day) -> Bool {
+        lhs.startTime == rhs.startTime
+    }
 }
