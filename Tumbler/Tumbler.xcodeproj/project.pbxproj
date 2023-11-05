@@ -24,6 +24,7 @@
 		FFC477212ADE55050055EC89 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477202ADE55050055EC89 /* Event.swift */; };
 		FFC477232ADE551D0055EC89 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477222ADE551D0055EC89 /* Trip.swift */; };
 		FFC477262ADE562D0055EC89 /* Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477252ADE562D0055EC89 /* Transportation.swift */; };
+		FFC4772E2ADE5FC70055EC89 /* FullActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4772D2ADE5FC70055EC89 /* FullActivityViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		FFC477202ADE55050055EC89 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		FFC477222ADE551D0055EC89 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		FFC477252ADE562D0055EC89 /* Transportation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transportation.swift; sourceTree = "<group>"; };
+		FFC4772D2ADE5FC70055EC89 /* FullActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullActivityViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FF1274C32AF6BA9500099E02 /* FullActivity */ = {
+			isa = PBXGroup;
+			children = (
+				FFC4772D2ADE5FC70055EC89 /* FullActivityViewModel.swift */,
+				FFC4770E2ADC91910055EC89 /* FullActivityCardView.swift */,
+			);
+			path = FullActivity;
+			sourceTree = "<group>";
+		};
 		FFC476D52ADC90A10055EC89 = {
 			isa = PBXGroup;
 			children = (
@@ -116,7 +127,6 @@
 			isa = PBXGroup;
 			children = (
 				FFC477242ADE555A0055EC89 /* Model */,
-				FFC4772C2ADE596E0055EC89 /* ViewModel */,
 				FFC477272ADE58500055EC89 /* View */,
 				FFC476E12ADC90A10055EC89 /* TumblerApp.swift */,
 				FFC476E52ADC90A20055EC89 /* Assets.xcassets */,
@@ -201,18 +211,11 @@
 		FFC4772B2ADE58B10055EC89 /* Full */ = {
 			isa = PBXGroup;
 			children = (
+				FF1274C32AF6BA9500099E02 /* FullActivity */,
 				FFC477102ADC91A30055EC89 /* FullDayCardView.swift */,
 				FFC477162ADC91D20055EC89 /* FullTripCardView.swift */,
-				FFC4770E2ADC91910055EC89 /* FullActivityCardView.swift */,
 			);
 			path = Full;
-			sourceTree = "<group>";
-		};
-		FFC4772C2ADE596E0055EC89 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFC477112ADC91A30055EC89 /* FullDayCardView.swift in Sources */,
+				FFC4772E2ADE5FC70055EC89 /* FullActivityViewModel.swift in Sources */,
 				FFC477172ADC91D20055EC89 /* FullTripCardView.swift in Sources */,
 				FFC477232ADE551D0055EC89 /* Trip.swift in Sources */,
 				FFC4771D2ADE54EA0055EC89 /* Activity.swift in Sources */,
