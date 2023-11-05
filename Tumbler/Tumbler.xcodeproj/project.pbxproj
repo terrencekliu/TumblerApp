@@ -32,14 +32,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		FFC476F02ADC90A20055EC89 /* PBXContainerItemProxy */ = {
+		FF65C9472AF82E0A0000DF0A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FFC476D62ADC90A10055EC89 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = FFC476DD2ADC90A10055EC89;
 			remoteInfo = Tumbler;
 		};
-		FFC476FA2ADC90A20055EC89 /* PBXContainerItemProxy */ = {
+		FF65C9492AF82E230000DF0A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FFC476D62ADC90A10055EC89 /* Project object */;
 			proxyType = 1;
@@ -278,7 +278,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				FFC476F12ADC90A20055EC89 /* PBXTargetDependency */,
+				FF65C9482AF82E0A0000DF0A /* PBXTargetDependency */,
 			);
 			name = TumblerTests;
 			productName = TumblerTests;
@@ -296,7 +296,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				FFC476FB2ADC90A20055EC89 /* PBXTargetDependency */,
+				FF65C94A2AF82E230000DF0A /* PBXTargetDependency */,
 			);
 			name = TumblerUITests;
 			productName = TumblerUITests;
@@ -438,15 +438,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FFC476F12ADC90A20055EC89 /* PBXTargetDependency */ = {
+		FF65C9482AF82E0A0000DF0A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FFC476DD2ADC90A10055EC89 /* Tumbler */;
-			targetProxy = FFC476F02ADC90A20055EC89 /* PBXContainerItemProxy */;
+			targetProxy = FF65C9472AF82E0A0000DF0A /* PBXContainerItemProxy */;
 		};
-		FFC476FB2ADC90A20055EC89 /* PBXTargetDependency */ = {
+		FF65C94A2AF82E230000DF0A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = FFC476DD2ADC90A10055EC89 /* Tumbler */;
-			targetProxy = FFC476FA2ADC90A20055EC89 /* PBXContainerItemProxy */;
+			targetProxy = FF65C9492AF82E230000DF0A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -503,7 +503,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -558,7 +560,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -641,7 +645,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -663,7 +666,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -693,6 +695,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = terrenceliu.TumblerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -714,6 +717,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = terrenceliu.TumblerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SWIFT_EMIT_LOC_STRINGS = NO;
