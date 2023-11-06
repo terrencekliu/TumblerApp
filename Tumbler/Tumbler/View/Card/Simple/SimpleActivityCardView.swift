@@ -10,7 +10,14 @@ import SwiftUI
 // Testing Code -> move to testcases
 private let testEvent = Event(id: "test-id", activity: testActivity, otherActivities: [testActivity], startTime: Date.now, endTime: Date.now)
 
-private let testActivity = Activity(id: "test-id", name: "Coffee House", type: Activity.ActivityType.food, address: "12345 SE 12th St Bellevue, WA 98006", quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"], alert: "Car break-in common")
+private let testActivity = Activity(
+    id: "test-id",
+    name: "Coffee House",
+    type: Activity.ActivityType.food,
+    address: "12345 SE 12th St Bellevue, WA 98006",
+    quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"],
+    alert: "Car break-in common"
+)
 
 private let dateNow = Date()
 private let sameMonth = Date(timeIntervalSinceNow: 604800)
@@ -19,14 +26,49 @@ private let nextYear = Date(timeIntervalSinceNow: 31622400)
 
 private let testDay = Day(id: "test-id", name: "South Downtown", startTime: Date.now, endTime: Date.now, thumbnail: false, startEvent: testEvent, events: [testEvent, testEvent], endEvent: testEvent)
 
-private let testDaySameMonth = Day(id: "test-id", name: "South Downtown", startTime: sameMonth, endTime: sameMonth, thumbnail: false, startEvent: testEvent, events: [testEvent, testEvent], endEvent: testEvent)
+private let testDaySameMonth = Day(
+    id: "test-id",
+    name: "South Downtown",
+    startTime: sameMonth,
+    endTime: sameMonth,
+    thumbnail: false,
+    startEvent: testEvent,
+    events: [testEvent, testEvent],
+    endEvent: testEvent
+)
 
-private let testDayNextMonth = Day(id: "test-id", name: "South Downtown", startTime: nextMonth, endTime: nextMonth, thumbnail: false, startEvent: testEvent, events: [testEvent, testEvent], endEvent: testEvent)
+private let testDayNextMonth = Day(
+    id: "test-id",
+    name: "South Downtown",
+    startTime: nextMonth,
+    endTime: nextMonth,
+    thumbnail: false,
+    startEvent: testEvent,
+    events: [testEvent, testEvent],
+    endEvent: testEvent
+)
 
-private let testDayNextYear = Day(id: "test-id", name: "South Downtown", startTime: nextYear, endTime: nextYear, thumbnail: false, startEvent: testEvent, events: [testEvent, testEvent], endEvent: testEvent)
+private let testDayNextYear = Day(
+    id: "test-id",
+    name: "South Downtown",
+    startTime: nextYear,
+    endTime: nextYear,
+    thumbnail: false,
+    startEvent: testEvent,
+    events: [testEvent, testEvent],
+    endEvent: testEvent
+)
 
-private let testDay2 = Day(id: "test-id", name: "South Downtown", startTime: Date.distantFuture, endTime: Date.distantFuture, thumbnail: false, startEvent: testEvent, events: [testEvent, testEvent], endEvent: testEvent)
-
+private let testDay2 = Day(
+    id: "test-id",
+    name: "South Downtown",
+    startTime: Date.distantFuture,
+    endTime: Date.distantFuture,
+    thumbnail: false,
+    startEvent: testEvent,
+    events: [testEvent, testEvent],
+    endEvent: testEvent
+)
 
 private let days: [Day] = [testDay, testDayNextMonth]
 private let testTrip = Trip(id: "test-id", name: "Barcelona", days: days)
