@@ -73,7 +73,8 @@ private let testDay2 = Day(
 private let days: [Day] = [testDay, testDayNextMonth]
 private let testTrip = Trip(id: "test-id", name: "Barcelona", days: days)
 
-// ViewModel Stuff??
+// ViewModel Stuff
+// TODO: Move to ModelView
 let durationText: String = testTrip.formatTripDuration()
 
 struct SimpleTripCardView: View {

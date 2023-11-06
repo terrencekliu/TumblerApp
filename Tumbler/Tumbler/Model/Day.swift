@@ -20,11 +20,11 @@ struct Day: Identifiable, Comparable {
     var startEvent: Event
     var events: [Event]
     var endEvent: Event
-    
+
     static func < (lhs: Day, rhs: Day) -> Bool {
         lhs.startTime < rhs.startTime
     }
-    
+
     static func == (lhs: Day, rhs: Day) -> Bool {
         lhs.startTime == rhs.startTime
     }
