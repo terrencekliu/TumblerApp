@@ -7,9 +7,40 @@
 
 import SwiftUI
 
+func containsTrips(trips: [Trip]) -> Bool {
+    return (trips.count == 0)
+}
+
 struct RecentTabView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            if containsTrips(trips: []) {
+                Spacer()
+                Text("No in progress trips :(")
+                    .font(.title)
+                    .padding(.bottom, 50.0)
+                Spacer()
+                Image("busyBee")
+                    .resizable()
+                    .scaledToFill()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 100, height: 100)
+                    .clipped()
+                    .padding()
+                Spacer()
+                Button(action: {}) {
+                    Text("Create a new trip")
+                        .fontWeight(.medium)
+                        .foregroundStyle(.white)
+                        .frame(width: 150, height: 40)
+                }
+                .padding()
+                .buttonStyle(.borderedProminent)
+                .tint(.blue)
+                Spacer()
+                    .navigationBarTitle(Text("In Progress"))
+            }
+        }
     }
 }
 
