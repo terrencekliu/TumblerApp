@@ -14,10 +14,13 @@ struct TumblerApp: App {
             TabView {
                 RecentTabView()
                     .tabItem { Label("In Progress", systemImage: "figure.walk") }
+                    .accessibilityIdentifier("tab-recent")
                 TripTabView()
                     .tabItem { Label("Trips", systemImage: "beach.umbrella")}
+                    .accessibilityIdentifier("tab-trip")
                 SettingTabView()
                     .tabItem { Label("Settings", systemImage: "gear")}
+                    .accessibilityIdentifier("tab-setting")
             }
         }
     }

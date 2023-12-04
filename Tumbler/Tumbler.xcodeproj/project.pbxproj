@@ -12,6 +12,7 @@
 		FF1274CA2AF74F9D00099E02 /* FullEventCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */; };
 		FF1274CC2AF7625B00099E02 /* SimpleActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274CB2AF7625B00099E02 /* SimpleActivityCardView.swift */; };
 		FF1274CF2AF76D1900099E02 /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274CE2AF76D1900099E02 /* ActivityCardView.swift */; };
+		FF5938292B166B33002B66C4 /* FullActivityCardViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5938282B166B33002B66C4 /* FullActivityCardViewTests.swift */; };
 		FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476E12ADC90A10055EC89 /* TumblerApp.swift */; };
 		FFC476E62ADC90A20055EC89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFC476E52ADC90A20055EC89 /* Assets.xcassets */; };
 		FFC476EA2ADC90A20055EC89 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFC476E92ADC90A20055EC89 /* Preview Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEventCardViewModel.swift; sourceTree = "<group>"; };
 		FF1274CB2AF7625B00099E02 /* SimpleActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleActivityCardView.swift; sourceTree = "<group>"; };
 		FF1274CE2AF76D1900099E02 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
+		FF5938282B166B33002B66C4 /* FullActivityCardViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullActivityCardViewTests.swift; sourceTree = "<group>"; };
 		FFC476DE2ADC90A10055EC89 /* Tumbler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tumbler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC476E12ADC90A10055EC89 /* TumblerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumblerApp.swift; sourceTree = "<group>"; };
 		FFC476E52ADC90A20055EC89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -130,6 +132,147 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		FF59382A2B166D2A002B66C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FF59382B2B166D30002B66C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FF59382C2B166D3F002B66C4 /* Card */,
+				FF59382E2B166D65002B66C4 /* Tab */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FF59382C2B166D3F002B66C4 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				FF59382F2B166D7A002B66C4 /* Detail */,
+				FF5938302B166D7F002B66C4 /* Full */,
+				FF5938342B166DCD002B66C4 /* Simple */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		FF59382E2B166D65002B66C4 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		FF59382F2B166D7A002B66C4 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		FF5938302B166D7F002B66C4 /* Full */ = {
+			isa = PBXGroup;
+			children = (
+				FF5938332B166DB4002B66C4 /* FullEvent */,
+				FF5938312B166D83002B66C4 /* FullActivity */,
+			);
+			path = Full;
+			sourceTree = "<group>";
+		};
+		FF5938312B166D83002B66C4 /* FullActivity */ = {
+			isa = PBXGroup;
+			children = (
+				FF5938282B166B33002B66C4 /* FullActivityCardViewTests.swift */,
+			);
+			path = FullActivity;
+			sourceTree = "<group>";
+		};
+		FF5938332B166DB4002B66C4 /* FullEvent */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FullEvent;
+			sourceTree = "<group>";
+		};
+		FF5938342B166DCD002B66C4 /* Simple */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Simple;
+			sourceTree = "<group>";
+		};
+		FF5938352B166E59002B66C4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FF5938362B166E5F002B66C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FF5938382B166E73002B66C4 /* Card */,
+				FF5938372B166E6F002B66C4 /* Tab */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FF5938372B166E6F002B66C4 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		FF5938382B166E73002B66C4 /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				FF59383B2B166E83002B66C4 /* Detail */,
+				FF59383A2B166E7E002B66C4 /* Full */,
+				FF5938392B166E7B002B66C4 /* Simple */,
+			);
+			path = Card;
+			sourceTree = "<group>";
+		};
+		FF5938392B166E7B002B66C4 /* Simple */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Simple;
+			sourceTree = "<group>";
+		};
+		FF59383A2B166E7E002B66C4 /* Full */ = {
+			isa = PBXGroup;
+			children = (
+				FF59383D2B166E92002B66C4 /* FullEvent */,
+				FF59383C2B166E8D002B66C4 /* FullActivity */,
+			);
+			path = Full;
+			sourceTree = "<group>";
+		};
+		FF59383B2B166E83002B66C4 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		FF59383C2B166E8D002B66C4 /* FullActivity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FullActivity;
+			sourceTree = "<group>";
+		};
+		FF59383D2B166E92002B66C4 /* FullEvent */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FullEvent;
+			sourceTree = "<group>";
+		};
 		FFC476D52ADC90A10055EC89 = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +317,8 @@
 		FFC476F22ADC90A20055EC89 /* TumblerTests */ = {
 			isa = PBXGroup;
 			children = (
+				FF59382A2B166D2A002B66C4 /* Model */,
+				FF59382B2B166D30002B66C4 /* View */,
 				FFC476F32ADC90A20055EC89 /* TumblerTests.swift */,
 			);
 			path = TumblerTests;
@@ -182,6 +327,8 @@
 		FFC476FC2ADC90A20055EC89 /* TumblerUITests */ = {
 			isa = PBXGroup;
 			children = (
+				FF5938352B166E59002B66C4 /* Model */,
+				FF5938362B166E5F002B66C4 /* View */,
 				FFC476FD2ADC90A20055EC89 /* TumblerUITests.swift */,
 				FFC476FF2ADC90A20055EC89 /* TumblerUITestsLaunchTests.swift */,
 			);
@@ -426,6 +573,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF5938292B166B33002B66C4 /* FullActivityCardViewTests.swift in Sources */,
 				FFC476F42ADC90A20055EC89 /* TumblerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -87,15 +87,18 @@ struct SimpleTripCardView: View {
                 .frame(width: 350, height: 199)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .brightness(-0.2)
+                .accessibilityIdentifier("image-preview")
             VStack(alignment: .leading) {
                 Text(testActivity.name)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
+                    .accessibilityIdentifier("text-name")
                 Text("\(durationText)")
                     .font(.headline)
                     .fontWeight(.semibold)
                     .foregroundColor(Color.white)
+                    .accessibilityIdentifier("text-dateRange")
             } .padding()
         }
     }

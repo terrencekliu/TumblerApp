@@ -19,16 +19,20 @@ struct FullActivityCardView: View {
                         Image(systemName: "fork.knife.circle.fill")
                             .foregroundColor(.orange)
                             .font(.title)
+                            .accessibilityIdentifier("chip-type")
                         Text(viewModel.name)
                             .font(.headline)
+                            .accessibilityIdentifier("text-name")
                     }
                     HStack {
                         // TODO: Calculate Distance
                         Text("(\("--- ft"))")
                             .foregroundColor(.gray)
+                            .accessibilityIdentifier("text-distance")
                         Text(viewModel.address)
                             .foregroundColor(.blue)
                             .lineLimit(1)
+                            .accessibilityIdentifier("text-address")
                     }
                     .font(.footnote)
                 }
@@ -43,6 +47,7 @@ struct FullActivityCardView: View {
                     }
                 }
                 .buttonStyle(.bordered)
+                .accessibilityIdentifier("button-ticket")
             }
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
@@ -57,15 +62,19 @@ struct FullActivityCardView: View {
                             .fontWeight(.medium)
                         }
                     }
+                    .accessibilityIdentifier("table-quickInfo")
+
                     Spacer()
                     Text(viewModel.alert ?? "")
                         .font(.footnote)
                         .foregroundColor(.red)
                         .italic()
+                        .accessibilityIdentifier("text-alert")
                 }
                 Spacer()
                 // TODO: Replace Default Image
                 Image("cafe")
+                    .accessibilityIdentifier("image-preview")
             }
         }
         .padding()

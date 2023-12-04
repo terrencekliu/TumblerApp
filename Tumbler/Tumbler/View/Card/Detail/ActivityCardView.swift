@@ -48,120 +48,133 @@ struct SheetActivityCardView: View {
     @State var selected = 1
 
     var body: some View {
-        VStack(alignment: .leading) {
-            ZStack(alignment: .topTrailing) {
-                Image("rectangleCafe")
-                    .resizable()
-                    .scaledToFill()
-                    .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                    .frame(width: 393, height: 143)
-                    .clipped()
-                Button(action: {
-                    self.showSheet.toggle()
-                }, label: {
-                    Circle()
-                        .fill(.black)
-                        .opacity(0.5)
-                        .frame(width: 30, height: 30)
-                        .overlay(
-                            Image(systemName: "xmark")
-                                .font(.system(size: 15, weight: .bold, design: .rounded))
-                                .foregroundColor(.white)
-                        )
-                })
-                .buttonStyle(PlainButtonStyle())
-                .accessibilityLabel(Text("Close"))
-                .padding()
-            }
+        ScrollView {
             VStack(alignment: .leading) {
-                Text("\(testActivity.name)")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.top, 4)
-                    .padding(.bottom, 2)
-                // TODO: Make this a link to safari
-                Text("\(testActivity.address)")
-                    .font(.body)
-                    .foregroundStyle(.blue)
-                    .fontWeight(.regular)
-                
-                HStack {
-                    Button(action: {}) {
-                        VStack {
-                            Image(systemName: "car.fill")
-                                .font(.title2)
-                                .foregroundStyle(.white)
-                            Text("8 min")
-                                .font(.footnote)
-                                .fontWeight(.medium)
-                                .foregroundStyle(.white)
-                        }
-                        .frame(width: 45, height: 40)
-                    }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.blue)
-                    Button(action: {}) {
-                        VStack {
-                            Image(systemName: "ticket")
-                                .font(.title2)
-                            Text("Tickets")
-                                .font(.footnote)
-                                .fontWeight(.medium)
-                        }  .frame(width: 45, height: 40)
-                    }
-                    .buttonStyle(.bordered)
+                ZStack(alignment: .topTrailing) {
+                    Image("rectangleCafe")
+                        .resizable()
+                        .scaledToFill()
+                        .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                        .frame(width: 393, height: 143)
+                        .clipped()
+                        .accessibilityIdentifier("image-preview")
+                    Button(action: {
+                        self.showSheet.toggle()
+                    }, label: {
+                        Circle()
+                            .fill(.black)
+                            .opacity(0.5)
+                            .frame(width: 30, height: 30)
+                            .overlay(
+                                Image(systemName: "xmark")
+                                    .font(.system(size: 15, weight: .bold, design: .rounded))
+                                    .foregroundColor(.white)
+                            )
+                    })
+                    .buttonStyle(PlainButtonStyle())
+                    .accessibilityLabel(Text("Close"))
+                    .accessibilityIdentifier("button-close")
+                    .padding()
                 }
-                .padding(.bottom, 4.0)
-                Divider()
-                    .frame(height: 0.5)
-                    .overlay(.gray)
                 VStack(alignment: .leading) {
-                    Grid(alignment: .leading, horizontalSpacing: 40, verticalSpacing: 5) {
-                        // TODO: Uniquely Key Values
-                        ForEach(testActivity.quickInfo, id: \.key) { description, value in
-                            GridRow {
-                                Text(description)
-                                Text(value)
-                            }
-                            .font(.callout)
-                            .fontWeight(.medium)
-                        }
-                    }
-                    Text(testActivity.alert ?? "")
-                        .font(.footnote)
+                    Text("\(testActivity.name)")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.top, 4)
+                        .padding(.bottom, 2)
+                        .accessibilityIdentifier("text-name")
+                    // TODO: Make this a link to safari
+                    Text("\(testActivity.address)")
+                        .font(.body)
+                        .foregroundStyle(.blue)
                         .fontWeight(.regular)
-                        .foregroundColor(.red)
-                        .italic()
-                        .padding(.top, 4.0)
-                }
-                .padding(.vertical, 3.0)
-                Divider()
-                    .frame(height: 0.5)
-                    .overlay(.gray)
-            }
-            .padding(.horizontal, 20)
-            VStack {
-                Picker(selection: $selected, label: Text("Picker"), content: {
-                    Text("Notes").tag(1)
-                    Text("Files").tag(2)
-                })
-                .pickerStyle(SegmentedPickerStyle())
-                .frame(width: 361, height: 32)
+                        .accessibilityIdentifier("text-address")
+                    
+                    HStack {
+                        Button(action: {}) {
+                            VStack {
+                                Image(systemName: "car.fill")
+                                    .font(.title2)
+                                    .foregroundStyle(.white)
+                                Text("8 min")
+                                    .font(.footnote)
+                                    .fontWeight(.medium)
+                                    .foregroundStyle(.white)
+                            }
+                            .frame(width: 45, height: 40)
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.blue)
+                        .accessibilityIdentifier("button-navigate")
+                        Button(action: {}) {
+                            VStack {
+                                Image(systemName: "ticket")
+                                    .font(.title2)
+                                Text("Tickets")
+                                    .font(.footnote)
+                                    .fontWeight(.medium)
+                            }  .frame(width: 45, height: 40)
+                        }
+                        .buttonStyle(.bordered)
+                        .accessibilityIdentifier("button-ticket")
+                    }
+                    .padding(.bottom, 4.0)
+                    Divider()
+                        .frame(height: 0.5)
+                        .overlay(.gray)
+                    VStack(alignment: .leading) {
+                        Grid(alignment: .leading, horizontalSpacing: 40, verticalSpacing: 5) {
+                            // TODO: Uniquely Key Values
+                            // TODO: Create view for this Grid
+                            ForEach(testActivity.quickInfo, id: \.key) { description, value in
+                                GridRow {
+                                    Text(description)
+                                    Text(value)
+                                }
+                                .font(.callout)
+                                .fontWeight(.medium)
+                            }
+                        }
+                        .accessibilityIdentifier("table-quickInfo")
 
-                if selected == 1 {
-                    ScrollView {
+                        Text(testActivity.alert ?? "")
+                            .font(.footnote)
+                            .fontWeight(.regular)
+                            .foregroundColor(.red)
+                            .italic()
+                            .padding(.top, 4.0)
+                            .accessibilityIdentifier("text-navigate")
+                    }
+                    .padding(.vertical, 3.0)
+                    Divider()
+                        .frame(height: 0.5)
+                        .overlay(.gray)
+                }
+                .padding(.horizontal, 20)
+                VStack {
+                    Picker(selection: $selected, label: Text("Picker"), content: {
+                        Text("Notes").tag(1)
+                        Text("Files").tag(2)
+                    })
+                    .pickerStyle(SegmentedPickerStyle())
+                    .frame(width: 361, height: 32)
+                    .accessibilityIdentifier("picker-details")
+                    
+                    if selected == 1 {
                         Text(testActivity.notes ?? "No notes.")
                             .padding(.top, 3.0)
                             .fontWeight(.regular)
                             .font(.body)
+                            .accessibilityIdentifier("text-notes")
+                    } else {
+                        Text(testActivity.name)
+                            .accessibilityIdentifier("files")
                     }
-                } else {
-                    Text(testActivity.name)
                 }
+                .padding(.horizontal, 20.0)
+                .padding(.top, 5)
+                Spacer()
             }
-            .padding(.horizontal, 20.0)
-            .padding(.top, 5)
-            Spacer()
         }
     }
 }
