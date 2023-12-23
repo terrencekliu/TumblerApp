@@ -57,7 +57,7 @@ struct SheetActivityCardView: View {
                         .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
                         .frame(width: 393, height: 143)
                         .clipped()
-                        .accessibilityIdentifier("image-preview")
+                        .accessibilityIdentifier("preview-image")
                     Button(action: {
                         self.showSheet.toggle()
                     }, label: {
@@ -73,7 +73,7 @@ struct SheetActivityCardView: View {
                     })
                     .buttonStyle(PlainButtonStyle())
                     .accessibilityLabel(Text("Close"))
-                    .accessibilityIdentifier("button-close")
+                    .accessibilityIdentifier("close-button")
                     .padding()
                 }
                 VStack(alignment: .leading) {
@@ -82,13 +82,13 @@ struct SheetActivityCardView: View {
                         .fontWeight(.bold)
                         .padding(.top, 4)
                         .padding(.bottom, 2)
-                        .accessibilityIdentifier("text-name")
+                        .accessibilityIdentifier("name-text")
                     // TODO: Make this a link to safari
                     Text("\(testActivity.address)")
                         .font(.body)
                         .foregroundStyle(.blue)
                         .fontWeight(.regular)
-                        .accessibilityIdentifier("text-address")
+                        .accessibilityIdentifier("address-text")
                     
                     HStack {
                         Button(action: {}) {
@@ -105,7 +105,7 @@ struct SheetActivityCardView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(.blue)
-                        .accessibilityIdentifier("button-navigate")
+                        .accessibilityIdentifier("navigate-button")
                         Button(action: {}) {
                             VStack {
                                 Image(systemName: "ticket")
@@ -116,7 +116,7 @@ struct SheetActivityCardView: View {
                             }  .frame(width: 45, height: 40)
                         }
                         .buttonStyle(.bordered)
-                        .accessibilityIdentifier("button-ticket")
+                        .accessibilityIdentifier("ticket-button")
                     }
                     .padding(.bottom, 4.0)
                     Divider()
@@ -135,7 +135,7 @@ struct SheetActivityCardView: View {
                                 .fontWeight(.medium)
                             }
                         }
-                        .accessibilityIdentifier("table-quickInfo")
+                        .accessibilityIdentifier("quickInfo-table")
 
                         Text(testActivity.alert ?? "")
                             .font(.footnote)
@@ -143,7 +143,7 @@ struct SheetActivityCardView: View {
                             .foregroundColor(.red)
                             .italic()
                             .padding(.top, 4.0)
-                            .accessibilityIdentifier("text-navigate")
+                            .accessibilityIdentifier("navigate-text")
                     }
                     .padding(.vertical, 3.0)
                     Divider()
@@ -158,14 +158,14 @@ struct SheetActivityCardView: View {
                     })
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 361, height: 32)
-                    .accessibilityIdentifier("picker-details")
+                    .accessibilityIdentifier("details-picker")
                     
                     if selected == 1 {
                         Text(testActivity.notes ?? "No notes.")
                             .padding(.top, 3.0)
                             .fontWeight(.regular)
                             .font(.body)
-                            .accessibilityIdentifier("text-notes")
+                            .accessibilityIdentifier("notes-text")
                     } else {
                         Text(testActivity.name)
                             .accessibilityIdentifier("files")

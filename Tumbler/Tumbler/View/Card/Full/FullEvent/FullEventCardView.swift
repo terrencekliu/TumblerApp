@@ -12,6 +12,7 @@ struct FullEventCardView: View {
 
     var body: some View {
         FullActivityCardView(viewModel: FullActivityViewModel(activity: viewModel.activity))
+            .accessibilityLabel("activity-card")
     }
 }
 

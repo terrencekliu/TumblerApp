@@ -19,7 +19,7 @@ struct RecentTabView: View {
                 Text("No in progress trips :(")
                     .font(.title)
                     .padding(.bottom, 50.0)
-                    .accessibilityIdentifier("text-noTrip-message")
+                    .accessibilityIdentifier("no-trip-text")
                 Spacer()
                 Image("busyBee")
                     .resizable()
@@ -28,7 +28,7 @@ struct RecentTabView: View {
                     .frame(width: 100, height: 100)
                     .clipped()
                     .padding()
-                    .accessibilityIdentifier("image-noTrip-preview")
+                    .accessibilityIdentifier("no-trip-image")
                 Spacer()
                 Button(action: {}) {
                     Text("Create a new trip")
@@ -39,7 +39,7 @@ struct RecentTabView: View {
                 .padding()
                 .buttonStyle(.borderedProminent)
                 .tint(.blue)
-                .accessibilityIdentifier("button-newTrip")
+                .accessibilityIdentifier("new-trip-button")
                 Spacer()
                     .navigationBarTitle(Text("In Progress"))
             }

@@ -19,20 +19,20 @@ struct FullActivityCardView: View {
                         Image(systemName: "fork.knife.circle.fill")
                             .foregroundColor(.orange)
                             .font(.title)
-                            .accessibilityIdentifier("chip-type")
+                            .accessibilityIdentifier("type-image")
                         Text(viewModel.name)
                             .font(.headline)
-                            .accessibilityIdentifier("text-name")
+                            .accessibilityIdentifier("name-text")
                     }
                     HStack {
                         // TODO: Calculate Distance
                         Text("(\("--- ft"))")
                             .foregroundColor(.gray)
-                            .accessibilityIdentifier("text-distance")
+                            .accessibilityIdentifier("distance-text")
                         Text(viewModel.address)
                             .foregroundColor(.blue)
                             .lineLimit(1)
-                            .accessibilityIdentifier("text-address")
+                            .accessibilityIdentifier("address-text")
                     }
                     .font(.footnote)
                 }
@@ -47,7 +47,7 @@ struct FullActivityCardView: View {
                     }
                 }
                 .buttonStyle(.bordered)
-                .accessibilityIdentifier("button-ticket")
+                .accessibilityIdentifier("ticket-button")
             }
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {
@@ -62,19 +62,19 @@ struct FullActivityCardView: View {
                             .fontWeight(.medium)
                         }
                     }
-                    .accessibilityIdentifier("table-quickInfo")
+                    .accessibilityIdentifier("quickInfo-table")
 
                     Spacer()
                     Text(viewModel.alert ?? "")
                         .font(.footnote)
                         .foregroundColor(.red)
                         .italic()
-                        .accessibilityIdentifier("text-alert")
+                        .accessibilityIdentifier("alert-test")
                 }
                 Spacer()
                 // TODO: Replace Default Image
                 Image("cafe")
-                    .accessibilityIdentifier("image-preview")
+                    .accessibilityIdentifier("preview-image")
             }
         }
         .padding()

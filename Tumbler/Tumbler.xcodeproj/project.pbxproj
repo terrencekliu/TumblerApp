@@ -12,6 +12,7 @@
 		FF1274CA2AF74F9D00099E02 /* FullEventCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */; };
 		FF1274CC2AF7625B00099E02 /* SimpleActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274CB2AF7625B00099E02 /* SimpleActivityCardView.swift */; };
 		FF1274CF2AF76D1900099E02 /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274CE2AF76D1900099E02 /* ActivityCardView.swift */; };
+		FF2BF1DF2B1D95E30019CBFC /* FullActivityCardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2BF1DE2B1D95E30019CBFC /* FullActivityCardUITests.swift */; };
 		FF5938292B166B33002B66C4 /* FullActivityCardViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5938282B166B33002B66C4 /* FullActivityCardViewTests.swift */; };
 		FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476E12ADC90A10055EC89 /* TumblerApp.swift */; };
 		FFC476E62ADC90A20055EC89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFC476E52ADC90A20055EC89 /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEventCardViewModel.swift; sourceTree = "<group>"; };
 		FF1274CB2AF7625B00099E02 /* SimpleActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleActivityCardView.swift; sourceTree = "<group>"; };
 		FF1274CE2AF76D1900099E02 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
+		FF2BF1DE2B1D95E30019CBFC /* FullActivityCardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullActivityCardUITests.swift; sourceTree = "<group>"; };
 		FF5938282B166B33002B66C4 /* FullActivityCardViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullActivityCardViewTests.swift; sourceTree = "<group>"; };
 		FFC476DE2ADC90A10055EC89 /* Tumbler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tumbler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC476E12ADC90A10055EC89 /* TumblerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumblerApp.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 		FF59383C2B166E8D002B66C4 /* FullActivity */ = {
 			isa = PBXGroup;
 			children = (
+				FF2BF1DE2B1D95E30019CBFC /* FullActivityCardUITests.swift */,
 			);
 			path = FullActivity;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFC477002ADC90A20055EC89 /* TumblerUITestsLaunchTests.swift in Sources */,
+				FF2BF1DF2B1D95E30019CBFC /* FullActivityCardUITests.swift in Sources */,
 				FFC476FE2ADC90A20055EC89 /* TumblerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
