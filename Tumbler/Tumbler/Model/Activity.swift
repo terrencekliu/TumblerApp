@@ -11,12 +11,15 @@ import Foundation
 struct Activity: Identifiable {
     typealias Trans = Transportation.TransportationType
 
-    enum ActivityType {
+    enum ActivityType: String, CaseIterable, Identifiable {
         case beach
         case attraction
         case food
         case house
         case camp
+        case other
+
+        var id: Self { self }
     }
 
     let id: String

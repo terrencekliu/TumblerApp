@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8454F2B58E20400CE5728 /* NewActivityView.swift */; };
+		50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */; };
 		F17FA3862AFC69BF00D66D26 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17FA3852AFC69BF00D66D26 /* LoginView.swift */; };
 		FF1274C82AF74F8F00099E02 /* FullEventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274C72AF74F8F00099E02 /* FullEventCardView.swift */; };
 		FF1274CA2AF74F9D00099E02 /* FullEventCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */; };
@@ -52,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		50A8454F2B58E20400CE5728 /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
+		50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewModel.swift; sourceTree = "<group>"; };
 		F17FA3852AFC69BF00D66D26 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FF1274C72AF74F8F00099E02 /* FullEventCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEventCardView.swift; sourceTree = "<group>"; };
 		FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEventCardViewModel.swift; sourceTree = "<group>"; };
@@ -108,6 +112,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50A8454E2B58E1D800CE5728 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				50A8454F2B58E20400CE5728 /* NewActivityView.swift */,
+				50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
 		FF1274C32AF6BA9500099E02 /* FullActivity */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +386,7 @@
 		FFC477292ADE58860055EC89 /* Card */ = {
 			isa = PBXGroup;
 			children = (
+				50A8454E2B58E1D800CE5728 /* Form */,
 				FF1274CD2AF76CFD00099E02 /* Detail */,
 				FFC4772B2ADE58B10055EC89 /* Full */,
 				FFC4772A2ADE58A50055EC89 /* Simple */,
@@ -555,6 +569,7 @@
 				FFC477112ADC91A30055EC89 /* FullDayCardView.swift in Sources */,
 				FFC4772E2ADE5FC70055EC89 /* FullActivityViewModel.swift in Sources */,
 				FF1274CC2AF7625B00099E02 /* SimpleActivityCardView.swift in Sources */,
+				50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */,
 				FFC477172ADC91D20055EC89 /* FullTripCardView.swift in Sources */,
 				FF1274CA2AF74F9D00099E02 /* FullEventCardViewModel.swift in Sources */,
 				FFC477232ADE551D0055EC89 /* Trip.swift in Sources */,
@@ -563,6 +578,7 @@
 				FF1274CF2AF76D1900099E02 /* ActivityCardView.swift in Sources */,
 				FFC477132ADC91B50055EC89 /* RecentTabView.swift in Sources */,
 				FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */,
+				50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */,
 				F17FA3862AFC69BF00D66D26 /* LoginView.swift in Sources */,
 				FFC4771F2ADE54FB0055EC89 /* Day.swift in Sources */,
 				FFC477212ADE55050055EC89 /* Event.swift in Sources */,
