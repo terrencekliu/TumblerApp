@@ -18,7 +18,7 @@ struct TumblerApp: App {
                     .onAppear {
                         UITextField.appearance().clearButtonMode = .whileEditing
                     }
-                TripTabView()
+                TripTabView(tripList: [])
                     .tabItem { Label("Trips", systemImage: "beach.umbrella")}
                     .accessibilityIdentifier("tab-trip")
                     .onAppear {

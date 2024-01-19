@@ -7,12 +7,24 @@
 
 import SwiftUI
 
+var testTrips: [Trip] = [testTrip0, testTrip1, testTrip2]
+
 struct TripTabView: View {
+
+    var tripList: [Trip]
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            Spacer()
+            ForEach(testTrips) {trip in
+                SimpleTripCardView(trip: trip)
+            }
+            Spacer()
+                .navigationBarTitle(Text("Trips"))
+        }
     }
 }
 
 #Preview {
-    TripTabView()
+    TripTabView(tripList: testTrips)
 }

@@ -8,6 +8,7 @@
 import SwiftUI
 
 // Testing Code -> move to testcases
+
 private let testEvent = Event(id: "test-id", activity: testActivity, otherActivities: [testActivity], startTime: Date.now, endTime: Date.now)
 
 private let testActivity = Activity(
@@ -72,12 +73,18 @@ private let testDay2 = Day(
 
 private let days: [Day] = [testDay, testDayNextMonth]
 private let testTrip = Trip(id: "test-id", name: "Barcelona", days: days)
+let testTrip0 = Trip(id: "test-id0", name: "Barcelona", days: days)
+let testTrip1 = Trip(id: "test-id1", name: "Seattle", days: days)
+let testTrip2 = Trip(id: "test-id2", name: "Canada", days: days)
 
 // ViewModel Stuff
 // TODO: Move to ModelView
 private let durationText: String = testTrip.formatTripDuration()
 
-struct SimpleActivityCardView: View {
+struct SimpleTripCardView: View {
+
+    var trip: Trip
+
     var body: some View {
         ZStack(alignment: .topLeading) {
 
@@ -89,12 +96,12 @@ struct SimpleActivityCardView: View {
                 .brightness(-0.2)
                 .accessibilityIdentifier("preview-image")
             VStack(alignment: .leading) {
-                Text(testActivity.name)
+                Text(trip.name)
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .accessibilityIdentifier("name-text")
-                Text("\(durationText)")
+                Text("\(trip.formatTripDuration())")
                     .font(.headline)
                     .fontWeight(.semibold)
                     .foregroundColor(Color.white)
@@ -105,5 +112,5 @@ struct SimpleActivityCardView: View {
 }
 
 #Preview {
-    SimpleActivityCardView()
+    SimpleTripCardView(trip: testTrip0)
 }

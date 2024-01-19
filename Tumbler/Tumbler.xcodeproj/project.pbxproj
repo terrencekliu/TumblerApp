@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8454F2B58E20400CE5728 /* NewActivityView.swift */; };
 		50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */; };
+		50C58C692B5A4F10000DF547 /* SimpleTripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C58C682B5A4F10000DF547 /* SimpleTripCardView.swift */; };
 		F17FA3862AFC69BF00D66D26 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17FA3852AFC69BF00D66D26 /* LoginView.swift */; };
 		FF1274C82AF74F8F00099E02 /* FullEventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274C72AF74F8F00099E02 /* FullEventCardView.swift */; };
 		FF1274CA2AF74F9D00099E02 /* FullEventCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */; };
@@ -56,6 +57,7 @@
 /* Begin PBXFileReference section */
 		50A8454F2B58E20400CE5728 /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
 		50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewModel.swift; sourceTree = "<group>"; };
+		50C58C682B5A4F10000DF547 /* SimpleTripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTripCardView.swift; sourceTree = "<group>"; };
 		F17FA3852AFC69BF00D66D26 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FF1274C72AF74F8F00099E02 /* FullEventCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEventCardView.swift; sourceTree = "<group>"; };
 		FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEventCardViewModel.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				FF1274CB2AF7625B00099E02 /* SimpleActivityCardView.swift */,
+				50C58C682B5A4F10000DF547 /* SimpleTripCardView.swift */,
 			);
 			path = Simple;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				FFC4771D2ADE54EA0055EC89 /* Activity.swift in Sources */,
 				FFC477262ADE562D0055EC89 /* Transportation.swift in Sources */,
 				FF1274CF2AF76D1900099E02 /* ActivityCardView.swift in Sources */,
+				50C58C692B5A4F10000DF547 /* SimpleTripCardView.swift in Sources */,
 				FFC477132ADC91B50055EC89 /* RecentTabView.swift in Sources */,
 				FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */,
 				50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */,
