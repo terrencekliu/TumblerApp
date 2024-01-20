@@ -33,7 +33,7 @@ struct Activity: Identifiable {
     var ticketReserve: Bool?
     var files: Bool?
 
-    var quickInfo: KeyValuePairs<String, String>
+    var quickInfo: [(String, String)]
 
     var alert: String?
     var notes: String?

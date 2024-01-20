@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-let quickInfo: KeyValuePairs<String, String> = ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"]
+private let quickInfo: [(String, String)] = [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")]
 private let testActivity = Activity(
     id: "test-id",
     name: "Coffee Shop",
@@ -89,7 +89,7 @@ struct SheetActivityCardView: View {
                         .foregroundStyle(.blue)
                         .fontWeight(.regular)
                         .accessibilityIdentifier("address-text")
-                    
+
                     HStack {
                         Button(action: {}) {
                             VStack {
@@ -126,10 +126,10 @@ struct SheetActivityCardView: View {
                         Grid(alignment: .leading, horizontalSpacing: 40, verticalSpacing: 5) {
                             // TODO: Uniquely Key Values
                             // TODO: Create view for this Grid
-                            ForEach(testActivity.quickInfo, id: \.key) { description, value in
+                            ForEach(testActivity.quickInfo, id: \.0) { info in
                                 GridRow {
-                                    Text(description)
-                                    Text(value)
+                                    Text(info.0)
+                                    Text(info.1)
                                 }
                                 .font(.callout)
                                 .fontWeight(.medium)
@@ -159,7 +159,7 @@ struct SheetActivityCardView: View {
                     .pickerStyle(SegmentedPickerStyle())
                     .frame(width: 361, height: 32)
                     .accessibilityIdentifier("details-picker")
-                    
+
                     if selected == 1 {
                         Text(testActivity.notes ?? "No notes.")
                             .padding(.top, 3.0)

@@ -37,176 +37,171 @@ struct SheetView: View {
     @State private var importantAlertText: String = ""
     @State private var notesText: String = ""
 
-    @State private var quickInf = [("Starting", "10:18 am"), ("Latte", "$5"),
-                                   ("Ice Cream", "$6")]
     @State private var newInfoText = ""
 
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                HStack {
-                    Button(action: {
-                        self.showSheet.toggle()
-                    }, label: {
-                        Text("Cancel")
-                            .foregroundStyle(Color.blue)
-                    })
-                    .buttonStyle(PlainButtonStyle())
-                    .accessibilityLabel(Text("Close"))
-                    .accessibilityIdentifier("close-button")
+        ScrollView {
+            HStack {
+                Button(action: {
+                    self.showSheet.toggle()
+                }, label: {
+                    Text("Cancel")
+                        .foregroundStyle(Color.blue)
+                })
+                .buttonStyle(PlainButtonStyle())
+                .accessibilityLabel(Text("Close"))
+                .accessibilityIdentifier("close-button")
 
+                Spacer()
+
+                Button(action: {
+                    self.showSheet.toggle()
+                }, label: {
+                    Text("Add")
+                        .foregroundStyle(Color.blue)
+                })
+                .buttonStyle(PlainButtonStyle())
+                .accessibilityLabel(Text("Close"))
+                .accessibilityIdentifier("close-button")
+            }
+            Spacer(minLength: 20)
+            VStack {
+                Text("Create New Activity")
+                    .font(.title2)
+                    .fontWeight(.medium)
+
+                Spacer(minLength: 20)
+
+                HStack(spacing: 60) {
+                    Text("Name")
+                        .font(.body)
+                        .fontWeight(.regular)
+                    TextField("Activity", text: $name)
+                        .textContentType(.givenName)
+                        .onAppear {
+                            UITextField.appearance().clearButtonMode = .whileEditing
+                        }
+                }
+                Divider()
+                    .padding(.leading, 0)
+                    .overlay(.gray)
+                HStack(spacing: 50) {
+                    Text("Type")
+                        .font(.body)
+                        .fontWeight(.regular)
                     Spacer()
-
-                    Button(action: {
-                        self.showSheet.toggle()
-                    }, label: {
-                        Text("Add")
-                            .foregroundStyle(Color.blue)
-                    })
-                    .buttonStyle(PlainButtonStyle())
-                    .accessibilityLabel(Text("Close"))
-                    .accessibilityIdentifier("close-button")
+                    Picker("Choose", selection: $activityType) {
+                        ForEach(Activity.ActivityType.allCases) { activityType in
+                            Text(activityType.rawValue.capitalized)
+                        }
+                    }
                 }
-                VStack {
-                    Text("Create New Activity")
-                        .font(.title2)
-                        .fontWeight(.medium)
-                    
-                    HStack(spacing: 60) {
-                        Text("Name")
-                            .font(.body)
-                            .fontWeight(.regular)
-                        TextField("Activity", text: $name)
-                            .textContentType(.givenName)
-                            .onAppear {
-                                UITextField.appearance().clearButtonMode = .whileEditing
-                            }
-                    }
-                    Divider()
-                        .padding(.leading, 0)
-                        .overlay(.gray)
-                    HStack(spacing: 50) {
-                        Text("Type")
-                            .font(.body)
-                            .fontWeight(.regular)
-                        Spacer()
-                        Picker("Choose", selection: $activityType) {
-                            ForEach(Activity.ActivityType.allCases) { activityType in
-                                Text(activityType.rawValue.capitalized)
-                            }
-                        }
-                    }
-                    Divider()
-                        .overlay(.gray)
-                    Text("Time")
-                        .fontWeight(.semibold)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    HStack {
-                        Toggle("Time Sensitive", isOn: $timeSensitive)
-                    }
-                    Divider()
-                        .overlay(.gray)
-                    if timeSensitive {
-                        DatePicker("Start", selection: $startDate, displayedComponents: [.date, .hourAndMinute])
-                        Divider()
-                            .overlay(.gray)
-                        DatePicker("End", selection: $endDate, displayedComponents: .hourAndMinute)
-                        Divider()
-                            .overlay(.gray)
-                    }
-                    Text("Files")
-                        .fontWeight(.semibold)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    HStack {
-                        Text("Thumbnail")
-                        Spacer()
-                        Button("Upload File") {
-
-                        }
-                        .foregroundColor(.gray)
-                    }
-                    Divider()
-                        .overlay(.gray)
-                    HStack {
-                        Text("Tickets/Reservations")
-                        Spacer()
-                        Button("Upload File") {
-
-                        }
-                        .foregroundColor(.gray)
-                    }
-                    Divider()
-                        .overlay(.gray)
-                    HStack {
-                        Text("General Files")
-                        Spacer()
-                        Button("Upload File") {
-
-                        }
-                        .foregroundColor(.gray)
-                    }
-                    Divider()
-                        .overlay(.gray)
-                    Text("Quick Information")
-                        .fontWeight(.semibold)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("Important Alert")
-                        .font(.body)
-                        .fontWeight(.regular)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    TextField("", text: $importantAlertText)
-                        .textContentType(.givenName)
-                        .onAppear {
-                            UITextField.appearance().clearButtonMode = .whileEditing
-                        }
-                    Divider()
-                        .overlay(.gray)
-                    Text("Notes")
-                        .font(.body)
-                        .fontWeight(.regular)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    TextField("", text: $notesText)
-                        .textContentType(.givenName)
-                        .onAppear {
-                            UITextField.appearance().clearButtonMode = .whileEditing
-                        }
-                    Divider()
-                        .overlay(.gray)
-                    QuickInfoView()
+                Divider()
+                    .overlay(.gray)
+            }
+            Spacer(minLength: 50)
+            VStack {
+                Text("Time")
+                    .fontWeight(.semibold)
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                HStack {
+                    Toggle("Time Sensitive", isOn: $timeSensitive)
                 }
-                /*
-                VStack {
-                    List {
-                        ForEach(quickInf, id: \.0) { info in
-                            HStack {
-                                Text(info.0)
-                                Text(info.1)
-                            }
-                        } .onDelete { indexSet in
-                            quickInf.remove(atOffsets: indexSet)
-                        } .onMove {
-                            quickInf.move(fromOffsets: $0, toOffset: $1)
-                        }
-                        
-                    }
-                    .scrollContentBackground(.hidden)
-                    .environment(\.editMode, .constant(.active))
-                    .scrollContentBackground(.hidden)
+                Divider()
+                    .overlay(.gray)
+                if timeSensitive {
+                    DatePicker("Start", selection: $startDate, displayedComponents: [.date, .hourAndMinute])
+                    Divider()
+                        .overlay(.gray)
+                    DatePicker("End", selection: $endDate, displayedComponents: .hourAndMinute)
+                    Divider()
+                        .overlay(.gray)
                 }
-                .frame(height: geometry.size.height)
-                 */
+            }
+            Spacer(minLength: 50)
+            VStack {
+                Text("Files")
+                    .fontWeight(.semibold)
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer(minLength: 10)
+                HStack {
+                    Text("Thumbnail")
+                    Spacer()
+                    Button("Upload File") {
+
+                    }
+                    .foregroundColor(.gray)
+                }
+                Divider()
+                    .overlay(.gray)
+                Spacer(minLength: 10)
+                HStack {
+                    Text("Tickets/Reservations")
+                    Spacer()
+                    Button("Upload File") {
+
+                    }
+                    .foregroundColor(.gray)
+                }
+                Divider()
+                    .overlay(.gray)
+                Spacer(minLength: 10)
+                HStack {
+                    Text("General Files")
+                    Spacer()
+                    Button("Upload File") {
+
+                    }
+                    .foregroundColor(.gray)
+                }
+                Divider()
+                    .overlay(.gray)
+            }
+            Spacer(minLength: 50)
+            VStack {
+                Text("Important Alert")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                TextField("Alert", text: $importantAlertText)
+                    .textContentType(.givenName)
+                    .onAppear {
+                        UITextField.appearance().clearButtonMode = .whileEditing
+                    }
+                Divider()
+                    .overlay(.gray)
+                Spacer(minLength: 50)
+                Text("Notes")
+                    .font(.headline)
+                    .fontWeight(.semibold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                TextField("Note", text: $notesText)
+                    .textContentType(.givenName)
+                    .onAppear {
+                        UITextField.appearance().clearButtonMode = .whileEditing
+                    }
+                Divider()
+                    .overlay(.gray)
+            }
+            Spacer(minLength: 50)
+            VStack {
+                Text("Quick Information")
+                    .fontWeight(.semibold)
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Spacer(minLength: 20)
+                QuickInfoView()
             }
         }
-        .padding([.leading, .trailing], 10)
+        .padding([.leading, .trailing, .top, .bottom], 20)
     }
 }
 
 struct QuickInfoView: View {
-    @State private var quickInf = [("Starting", "10:18 am"), ("Latte", "$5"),
-                                   ("Ice Cream", "$6")]
+    @State private var quickInfo =  [("Starting", "10:18 am"), ("Latte", "$5"),
+            ("Ice Cream", "$6")]
     @State private var newInfoText = ""
 
     var body: some View {
@@ -217,7 +212,7 @@ struct QuickInfoView: View {
                     .font(.system(size: 22))
                     .foregroundColor(Color.green)
                     .symbolRenderingMode(.monochrome)
-                    .padding(.leading, 38)
+                    .padding(.leading, 34)
             })
             .buttonStyle(PlainButtonStyle())
             .accessibilityLabel(Text("Close"))
@@ -232,15 +227,15 @@ struct QuickInfoView: View {
             .overlay(.gray)
         NavigationView {
             List {
-                ForEach(quickInf, id: \.0) { info in
+                ForEach(quickInfo, id: \.0) { info in
                     HStack {
                         Text(info.0)
                         Text(info.1)
                     }
                 } .onDelete { indexSet in
-                    quickInf.remove(atOffsets: indexSet)
+                    quickInfo.remove(atOffsets: indexSet)
                 } .onMove {
-                    quickInf.move(fromOffsets: $0, toOffset: $1)
+                    quickInfo.move(fromOffsets: $0, toOffset: $1)
                 }
 
             }
@@ -250,20 +245,30 @@ struct QuickInfoView: View {
     }
 }
 
+private var testActivity0 = Activity(
+    id: "test-id",
+    name: "Coffee House",
+    type: Activity.ActivityType.food,
+    address: "12345 SE 12th St Bellevue, WA 98006",
+    quickInfo: [("Starting", "10:18 am"), ("Latte", "$5"),
+                ("Ice Cream", "$6")],
+    alert: "Car break-in common"
+)
+
 struct NewActivityView_Previews: PreviewProvider {
-    static let testActivity = Activity(
+    static var testActivity = Activity(
         id: "test-id",
         name: "Coffee House",
         type: Activity.ActivityType.food,
         address: "12345 SE 12th St Bellevue, WA 98006",
-        // TODO: Change quick info to array of tuples
-        quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"],
+        quickInfo: [("Starting", "10:18 am"), ("Latte", "$5"),
+                    ("Ice Cream", "$6")],
         alert: "Car break-in common"
     )
 
     static var previews: some View {
         NewActivityView(
-            viewModel: NewActivityViewModel(activity: testActivity)
+            viewModel: NewActivityViewModel(activity: testActivity0)
         )
     }
 }

@@ -11,7 +11,7 @@ struct LoginView: View {
     var body: some View {
         VStack {
             Spacer()
-            //TODO: Font size seems a bit off
+            // TODO: Font size seems a bit off
             Text("Tumbler -> . Trip Planner")
                 .font(.largeTitle)
                 .fontWeight(.bold)

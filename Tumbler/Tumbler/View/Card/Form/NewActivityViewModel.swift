@@ -23,7 +23,7 @@ class NewActivityViewModel: ObservableObject {
     var ticketReserve: Bool? { model.ticketReserve }
     var files: Bool? { model.files }
 
-    var quickInfo: KeyValuePairs<String, String> { model.quickInfo }
+    var quickInfo: [(String, String)] { model.quickInfo }
 
     var alert: String? { model.alert }
     var notes: String? { model.notes }

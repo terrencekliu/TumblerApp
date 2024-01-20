@@ -16,7 +16,7 @@ private let testActivity = Activity(
     name: "Coffee House",
     type: Activity.ActivityType.food,
     address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"],
+    quickInfo: [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")],
     alert: "Car break-in common"
 )
 
