@@ -53,7 +53,7 @@ struct FullActivityCardView: View {
                 VStack(alignment: .leading) {
                     Grid(alignment: .leading, horizontalSpacing: 40, verticalSpacing: 5) {
                         // TODO: Uniquely Key Values
-                        ForEach(viewModel.quickInfo, id: \.key) { description, value in
+                        ForEach(viewModel.quickInfo, id: \.0) { description, value in
                             GridRow {
                                 Text(description)
                                 Text(value)

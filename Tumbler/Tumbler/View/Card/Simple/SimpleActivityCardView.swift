@@ -78,27 +78,24 @@ private let testTrip = Trip(id: "test-id", name: "Barcelona", days: days)
 private let durationText: String = testTrip.formatTripDuration()
 
 struct SimpleActivityCardView: View {
+    @State private var activityName:String = testActivity.name
+    
     var body: some View {
         ZStack(alignment: .topLeading) {
 
             Image("rectangleCafe")
                 .resizable()
                 .scaledToFill()
-                .frame(width: 350, height: 199)
+                .frame(width: 200, height: 150)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .brightness(-0.2)
                 .accessibilityIdentifier("preview-image")
             VStack(alignment: .leading) {
-                Text(testActivity.name)
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.white)
-                    .accessibilityIdentifier("name-text")
-                Text("\(durationText)")
-                    .font(.headline)
+                Text(activityName)
+                    .font(.title3)
                     .fontWeight(.semibold)
                     .foregroundColor(Color.white)
-                    .accessibilityIdentifier("date-range-text")
+                    .accessibilityIdentifier("name-text")
             } .padding()
         }
     }
