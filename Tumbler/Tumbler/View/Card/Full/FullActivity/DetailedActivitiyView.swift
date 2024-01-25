@@ -81,9 +81,54 @@ private let pizza = Activity(
     alert: "Car break-in common"
 )
 
+enum ActivitySymbolName: String {
+    case attraction = "fork.knife.circle.fill"
+    case food = "fork.knife.circle.fil"
+    case beach = "fork.knife.circle.fi"
+    case house = "fork.knife.circle.f"
+    case camp = "fork.knife.circle."
+    case other = "fork.knife.circle"
+}
+
+enum ActivityTypePlural: String {
+    case attractions
+    case foods
+    case beaches
+    case houses
+    case camps
+    case others
+}
+
+struct ActivityGroup: View {
+    @State var activities: [Activity]
+    let symbol: ActivitySymbolName
+    let activityText: ActivityTypePlural
+
+    var body: some View {
+        if !activities.isEmpty {
+            VStack {
+                HStack {
+                    Image(systemName: "\(symbol.rawValue)")
+                        .symbolRenderingMode(.multicolor)
+                        .font(.system(size: 45))
+                    Text("\(activityText.rawValue.capitalized)")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    Spacer()
+                }
+                .padding(.leading, 6)
+                Divider()
+                ForEach(activities, id: \.id) { attraction in
+                    ActivityRow(activity: attraction)
+                }
+            }
+        }
+    }
+}
+
 struct DetailedActivitiyView: View {
 
-    @State private var attractions: [Activity] = [cityBench, rantWalk, solarPanel, eBike]
+    @State var attractions: [Activity] = [cityBench, rantWalk, solarPanel, eBike]
     @State private var foods: [Activity] = [kumNGO, goldenArch, lidl, pizza]
     @State private var beaches: [Activity] = []
     @State private var houses: [Activity] = []
@@ -93,119 +138,32 @@ struct DetailedActivitiyView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                if (!attractions.isEmpty) {
-                    VStack {
-                        HStack {
-                            Image(systemName: "fork.knife.circle.fill")
-                                .symbolRenderingMode(.multicolor)
-                                .font(.system(size: 45))
-                            Text("Attractions")
-                                .font(.title)
-                                .fontWeight(.bold)
-                            Spacer()
-                        }
-                        .padding(.leading, 6)
-                        Divider()
-                        ForEach(attractions, id: \.id) { attraction in
-                            ActivityRow(activity: attraction)
-                        }
-                    }
+                VStack(spacing: 30) {
+                    ActivityGroup(activities: attractions,
+                                  symbol: ActivitySymbolName.attraction,
+                                  activityText: ActivityTypePlural.attractions)
+                    
+                    ActivityGroup(activities: foods,
+                                  symbol: ActivitySymbolName.attraction,
+                                  activityText: ActivityTypePlural.foods)
+                    
+                    ActivityGroup(activities: beaches,
+                                  symbol: ActivitySymbolName.attraction,
+                                  activityText: ActivityTypePlural.beaches)
+                    
+                    ActivityGroup(activities: houses,
+                                  symbol: ActivitySymbolName.attraction,
+                                  activityText: ActivityTypePlural.houses)
+                    
+                    ActivityGroup(activities: camps,
+                                  symbol: ActivitySymbolName.attraction,
+                                  activityText: ActivityTypePlural.camps)
+                    
+                    ActivityGroup(activities: others,
+                                  symbol: ActivitySymbolName.attraction,
+                                  activityText: ActivityTypePlural.others)
                 }
-
-                if (!foods.isEmpty) {
-                    VStack {
-                        HStack {
-                            Image(systemName: "fork.knife.circle.fill")
-                                .symbolRenderingMode(.multicolor)
-                                .font(.system(size: 45))
-                            Text("Food")
-                                .font(.title)
-                                .fontWeight(.bold)
-                            Spacer()
-                        }
-                        .padding(.leading, 6)
-                        Divider()
-                        ForEach(foods, id: \.id) { food in
-                            ActivityRow(activity: food)
-                        }
-                    }
-                }
-
-                if (!beaches.isEmpty) {
-                    VStack {
-                        HStack {
-                            Image(systemName: "fork.knife.circle.fill")
-                                .symbolRenderingMode(.multicolor)
-                                .font(.system(size: 45))
-                            Text("Beach")
-                                .font(.title)
-                                .fontWeight(.bold)
-                            Spacer()
-                        }
-                        .padding(.leading, 6)
-                        Divider()
-                        ForEach(beaches, id: \.id) { beach in
-                            ActivityRow(activity: beach)
-                        }
-                    }
-                }
-
-                if (!houses.isEmpty) {
-                    VStack {
-                        HStack {
-                            Image(systemName: "fork.knife.circle.fill")
-                                .symbolRenderingMode(.multicolor)
-                                .font(.system(size: 45))
-                            Text("House")
-                                .font(.title)
-                                .fontWeight(.bold)
-                            Spacer()
-                        }
-                        .padding(.leading, 6)
-                        Divider()
-                        ForEach(houses, id: \.id) { house in
-                            ActivityRow(activity: house)
-                        }
-                    }
-                }
-
-                if (!camps.isEmpty) {
-                    VStack {
-                        HStack {
-                            Image(systemName: "fork.knife.circle.fill")
-                                .symbolRenderingMode(.multicolor)
-                                .font(.system(size: 45))
-                            Text("Camp")
-                                .font(.title)
-                                .fontWeight(.bold)
-                            Spacer()
-                        }
-                        .padding(.leading, 6)
-                        Divider()
-                        ForEach(camps, id: \.id) { camp in
-                            ActivityRow(activity: camp)
-                        }
-                    }
-                }
-
-                if (!others.isEmpty) {
-                    VStack {
-                        HStack {
-                            Image(systemName: "fork.knife.circle.fill")
-                                .symbolRenderingMode(.multicolor)
-                                .font(.system(size: 45))
-                            Text("Other")
-                                .font(.title)
-                                .fontWeight(.bold)
-                            Spacer()
-                        }
-                        .padding(.leading, 6)
-                        Divider()
-                        ForEach(others, id: \.id) { other in
-                            ActivityRow(activity: other)
-                        }
-                    }
-                }
+                .padding(.top, 30)
             }
             .navigationTitle("Activities")
             .toolbar {

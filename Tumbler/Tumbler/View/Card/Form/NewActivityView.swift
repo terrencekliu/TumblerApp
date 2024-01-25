@@ -227,6 +227,7 @@ struct QuickInfoView: View {
             .overlay(.gray)
         NavigationView {
             List {
+                // TODO: Need quickInfo to be an EnviormentObject (editable)
                 ForEach(quickInfo, id: \.0) { info in
                     HStack {
                         Text(info.0)
