@@ -25,7 +25,16 @@ private let sameMonth = Date(timeIntervalSinceNow: 604800)
 private let nextMonth = Date(timeIntervalSinceNow: 2629056)
 private let nextYear = Date(timeIntervalSinceNow: 31622400)
 
-private let testDay = Day(id: "test-id", name: "South Downtown", startTime: Date.now, endTime: Date.now, thumbnail: false, startEvent: testEvent, events: [testEvent, testEvent], endEvent: testEvent)
+private let testDay = Day(
+    id: "test-id",
+    name: "South Downtown",
+    startTime: Date.now,
+    endTime: Date.now,
+    thumbnail: false,
+    startEvent: testEvent,
+    events: [testEvent, testEvent],
+    endEvent: testEvent
+)
 
 private let testDaySameMonth = Day(
     id: "test-id",

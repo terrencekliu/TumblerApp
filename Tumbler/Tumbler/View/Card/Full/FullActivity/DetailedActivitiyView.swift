@@ -81,6 +81,7 @@ private let pizza = Activity(
     alert: "Car break-in common"
 )
 
+// TODO: May need to put type view for different symbols settings
 enum ActivitySymbolName: String {
     case attraction = "fork.knife.circle.fill"
     case food = "fork.knife.circle.fil"

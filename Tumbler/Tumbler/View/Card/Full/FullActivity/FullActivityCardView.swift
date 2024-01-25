@@ -83,6 +83,7 @@ struct FullActivityCardView: View {
                 .fill(.white)
         }
         .scaledToFit()
+        .padding([.leading, .trailing], 10)
     }
 }
 

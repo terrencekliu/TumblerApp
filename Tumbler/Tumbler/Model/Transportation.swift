@@ -8,8 +8,8 @@
 import Foundation
 
 struct Transportation: Identifiable {
-    enum TransportationType {
-        case bus
+    enum TransportationType: String {
+        case transit
         case walk
         case car
     }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8454F2B58E20400CE5728 /* NewActivityView.swift */; };
 		50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */; };
+		50C2FF5A2B62047E0098DCFC /* SimpleTransportCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */; };
 		50C58C692B5A4F10000DF547 /* SimpleTripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C58C682B5A4F10000DF547 /* SimpleTripCardView.swift */; };
 		50F615902B60BB7E005F0EAB /* DetailedActivitiyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6158F2B60BB7E005F0EAB /* DetailedActivitiyView.swift */; };
 		F17FA3862AFC69BF00D66D26 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17FA3852AFC69BF00D66D26 /* LoginView.swift */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		50A8454F2B58E20400CE5728 /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
 		50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewModel.swift; sourceTree = "<group>"; };
+		50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTransportCardView.swift; sourceTree = "<group>"; };
 		50C58C682B5A4F10000DF547 /* SimpleTripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTripCardView.swift; sourceTree = "<group>"; };
 		50F6158F2B60BB7E005F0EAB /* DetailedActivitiyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedActivitiyView.swift; sourceTree = "<group>"; };
 		F17FA3852AFC69BF00D66D26 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 			children = (
 				FF1274CB2AF7625B00099E02 /* SimpleActivityCardView.swift */,
 				50C58C682B5A4F10000DF547 /* SimpleTripCardView.swift */,
+				50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */,
 			);
 			path = Simple;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				FFC477112ADC91A30055EC89 /* FullDayCardView.swift in Sources */,
 				FFC4772E2ADE5FC70055EC89 /* FullActivityViewModel.swift in Sources */,
 				FF1274CC2AF7625B00099E02 /* SimpleActivityCardView.swift in Sources */,
+				50C2FF5A2B62047E0098DCFC /* SimpleTransportCardView.swift in Sources */,
 				50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */,
 				50F615902B60BB7E005F0EAB /* DetailedActivitiyView.swift in Sources */,
 				FFC477172ADC91D20055EC89 /* FullTripCardView.swift in Sources */,
