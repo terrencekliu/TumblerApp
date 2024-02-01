@@ -6,12 +6,22 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Event: Identifiable {
-    let id: String
+@Model
+class Event: Identifiable {
+    @Attribute(.unique) let id: UUID
+    var day: Day?
 
-    var activity: Activity
-    var otherActivities: [Activity]
+    init(id: UUID = UUID(), activities: [Activity] = [], startTime: Date, endTime: Date) {
+        self.id = id
+        self.activities = activities
+        self.startTime = startTime
+        self.endTime = endTime
+    }
+
+    @Relationship(deleteRule: .nullify, inverse: \Activity.event)
+    var activities: [Activity] = []
 
     var startTime: Date
     var endTime: Date

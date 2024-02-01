@@ -7,50 +7,49 @@
 
 import SwiftUI
 
-var testTrips: [Trip] = [testTrip0, testTrip1, testTrip2]
-
 struct TripTabView: View {
-
-    var tripList: [Trip]
+    @ObservedObject private var viewModel = ViewModel()
 
     @State private var presentAlert = false
     @State private var tripName: String = ""
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
-                VStack {
-                    ForEach(testTrips) {trip in
+                ForEach(viewModel.trips) { trip in
+                    NavigationLink {
+                        TripView(trip: trip)
+                    } label: {
                         SimpleTripCardView(trip: trip)
                     }
-                    Spacer()
-                        .toolbar {
-                                Button(action: {
-                                    presentAlert = true
-                                }, label: {
-                                    Image(systemName: "plus")
-                                        .font(.system(size: 18))
-                                        .foregroundColor(Color.black)
-                                        .symbolRenderingMode(.monochrome)
-                                        .padding(.leading, 34)
-                                })
-                                .alert("Trip Name", isPresented: $presentAlert, actions: {
-                                    TextField("New Trip", text: $tripName)
-
-                                    Button("Create", action: {})
-                                    Button("Cancel", role: .cancel, action: {})
-                                }, message: {
-                                    Text("Please name your new trip.")
-                                })
-                        }
-                    }
                 }
-            .navigationTitle("Trips")
             }
+            .toolbar {
+                Button(action: {
+                    presentAlert = true
+                }, label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 18))
+                        .foregroundColor(Color.black)
+                        .symbolRenderingMode(.monochrome)
+                        .padding(.leading, 34)
+                })
+                .alert("Trip Name", isPresented: $presentAlert, actions: {
+                    TextField("New Trip", text: $tripName)
 
+                    Button("Create", action: {
+                        viewModel.newTrip(name: tripName)
+                    })
+                    Button("Cancel", role: .cancel, action: {})
+                }, message: {
+                    Text("Please name your new trip.")
+                })
+            }
+            .navigationTitle("Trips")
         }
     }
+}
 
 #Preview {
-    TripTabView(tripList: testTrips)
+    TripTabView()
 }

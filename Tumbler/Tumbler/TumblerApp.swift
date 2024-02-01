@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct TumblerApp: App {
@@ -18,7 +19,7 @@ struct TumblerApp: App {
                     .onAppear {
                         UITextField.appearance().clearButtonMode = .whileEditing
                     }
-                TripTabView(tripList: [])
+                TripTabView()
                     .tabItem { Label("Trips", systemImage: "beach.umbrella")}
                     .accessibilityIdentifier("tab-trip")
                     .onAppear {

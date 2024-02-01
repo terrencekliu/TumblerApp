@@ -6,23 +6,37 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Trip: Identifiable {
-    let id: String
-
+@Model
+class Trip: Identifiable, ObservableObject {
+    @Attribute(.unique) let id: UUID
     var name: String
 
     // May have to be an array, dunno how to look up specific indexes
     // Assume always sorted?
-    var days: [Day]
+    @Relationship(deleteRule: .nullify, inverse: \Day.trip)
+    var days: [Day] = []
+    @Relationship(deleteRule: .nullify, inverse: \Activity.trip)
+    var activities: [Activity] = []
+
+    init(id: UUID = UUID(), name: String, days: [Day] = [], activities: [Activity] = []) {
+        self.id = id
+        self.name = name
+        self.days = days
+        self.activities = activities
+    }
 
     // Viewmodel Stuff
     // TODO: Move to ViewModel
     func formatTripDuration() -> String {
+        if days.count < 2 {
+            return ""
+        }
+
         let formatter = DateFormatter()
-        let firstLastDay: (Day, Day) = returnFirstLastDay()
-        let firstDay: Day = firstLastDay.0
-        let lastDay: Day = firstLastDay.1
+        let firstDay: Day = days.first!
+        let lastDay: Day = days.last!
         let calendar = Calendar.current
 
         let firstDayMonth = calendar.component(.month, from: firstDay.startTime)
@@ -47,9 +61,5 @@ struct Trip: Identifiable {
         }
 
         return "\(firstDayString), \(firstYearString) - \(lastDayString), \(lastYearString)"
-    }
-
-    private func returnFirstLastDay() -> (Day, Day) {
-        return (days[0], days[days.count - 1])
     }
 }

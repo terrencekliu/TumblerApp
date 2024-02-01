@@ -8,14 +8,13 @@
 import Foundation
 
 class FullEventCardViewModel: ObservableObject {
-    @Published var model: Event
+    var model: Event
 
     init(event: Event) {
         self.model = event
     }
 
-    var activity: Activity { model.activity }
-    var otherActivities: [Activity] { model.otherActivities }
+    var otherActivities: [Activity] { model.activities }
     var startTime: Date { model.startTime }
-    var endTime: Date { model.endTime }
+    var endTime: Date { model.endTime ?? model.startTime }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 struct Transportation: Identifiable {
-    enum TransportationType: String {
+    enum TransportationType: String, Codable {
         case transit
         case walk
         case car

@@ -14,34 +14,37 @@ func containsTrips(trips: [Trip]) -> Bool {
 struct RecentTabView: View {
     var body: some View {
         NavigationStack {
-            if containsTrips(trips: []) {
-                Spacer()
-                Text("No in progress trips :(")
-                    .font(.title)
-                    .padding(.bottom, 50.0)
-                    .accessibilityIdentifier("no-trip-text")
-                Spacer()
-                Image("busyBee")
-                    .resizable()
-                    .scaledToFill()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100, height: 100)
-                    .clipped()
+            if true { // TODO: hasCurrentTrip
+                VStack {
+                    Text("No in progress trips :(")
+                        .font(.title)
+                        .padding(.bottom, 60.0)
+                        .accessibilityIdentifier("no-trip-text")
+                    Image("busyBee")
+                        .resizable()
+                        .scaledToFill()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 100, height: 100)
+                        .clipped()
+                        .padding()
+                        .accessibilityIdentifier("no-trip-image")
+                    Button(action: {}) {
+                        Text("Create a new trip")
+                            .fontWeight(.medium)
+                            .foregroundStyle(.white)
+                            .frame(width: 150, height: 40)
+                    }
                     .padding()
-                    .accessibilityIdentifier("no-trip-image")
-                Spacer()
-                Button(action: {}) {
-                    Text("Create a new trip")
-                        .fontWeight(.medium)
-                        .foregroundStyle(.white)
-                        .frame(width: 150, height: 40)
+                    .buttonStyle(.borderedProminent)
+                    .tint(.blue)
+                    .accessibilityIdentifier("new-trip-button")
                 }
-                .padding()
-                .buttonStyle(.borderedProminent)
-                .tint(.blue)
-                .accessibilityIdentifier("new-trip-button")
-                Spacer()
-                    .navigationTitle(Text("In Progress"))
+                .navigationTitle("In Progress")
+            } else {
+                ScrollView {
+                    Text("Hello World!")
+                }
+                .navigationTitle("In Progress")
             }
         }
     }

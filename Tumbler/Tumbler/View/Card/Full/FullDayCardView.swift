@@ -7,34 +7,6 @@
 
 import SwiftUI
 
-private let testActivity = Activity(
-    id: "test-id",
-    name: "Coffee House",
-    type: Activity.ActivityType.food,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")],
-    alert: "Car break-in common"
-)
-
-private let testEvent = Event(
-    id: "test-id",
-    activity: testActivity,
-    otherActivities: [testActivity],
-    startTime: Date.now,
-    endTime: Date.now
-)
-
-private let testDay = Day(
-    id: "test-id",
-    name: "South Downtown",
-    startTime: Date.now,
-    endTime: Date.now,
-    thumbnail: false,
-    startEvent: testEvent,
-    events: [testEvent, testEvent],
-    endEvent: testEvent
-)
-
 enum TransportationSymbol: String {
     case transit = "tram.circle.fill"
     case car = "car.circle.fill"

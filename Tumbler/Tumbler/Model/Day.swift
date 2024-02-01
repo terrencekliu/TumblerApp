@@ -6,9 +6,21 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Day: Identifiable, Comparable {
-    let id: String
+@Model
+class Day: Identifiable, Comparable {
+    @Attribute(.unique) let id: UUID
+    var trip: Trip?
+
+    init(id: UUID = UUID(), name: String, startTime: Date, endTime: Date, thumbnail: Bool? = nil, events: [Event] = []) {
+        self.id = id
+        self.name = name
+        self.startTime = startTime
+        self.endTime = endTime
+        self.thumbnail = thumbnail
+        self.events = events
+    }
 
     var name: String
 
@@ -17,9 +29,8 @@ struct Day: Identifiable, Comparable {
 
     var thumbnail: Bool?
 
-    var startEvent: Event
-    var events: [Event]
-    var endEvent: Event
+    @Relationship(deleteRule: .nullify, inverse: \Event.day)
+    var events: [Event] = []
 
     static func < (lhs: Day, rhs: Day) -> Bool {
         lhs.startTime < rhs.startTime

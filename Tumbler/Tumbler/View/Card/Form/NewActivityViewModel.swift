@@ -6,25 +6,33 @@
 //
 
 import Foundation
+import SwiftData
 
+@Observable
 class NewActivityViewModel: ObservableObject {
-    @Published var model: Activity
+    @ObservationIgnored private let dataSource: TripDataSource
 
-    init(activity: Activity) {
-        self.model = activity
+    init(dataSource: TripDataSource = TripDataSource.shared) {
+        self.dataSource = dataSource
     }
 
-    var name: String { model.name }
-    var type: Activity.ActivityType { model.type }
-    var address: String { model.address }
-    var defaultTransportation: Activity.Trans { model.defaultTransportation }
+    func addActivity(trip: Trip, form: NewActivityForm) {
+        let newActivity = Activity(
+            name: form.name,
+            type: form.type,
+            address: form.address,
+            defaultTransportation: form.defaultTransportation,
+            thumbnail: form.thumbnail,
+            ticketReserve: form.ticketReserve,
+            files: form.files,
+            quickInfo: form.quickInfo,
+            alert: form.alert,
+            trip: trip
+        )
+        updateSource(activity: newActivity)
+    }
 
-    var thumbnail: Bool? { model.thumbnail }
-    var ticketReserve: Bool? { model.ticketReserve }
-    var files: Bool? { model.files }
-
-    var quickInfo: [(String, String)] { model.quickInfo }
-
-    var alert: String? { model.alert }
-    var notes: String? { model.notes }
+    private func updateSource(activity: Activity) {
+        dataSource.newActivity(activity: activity)
+    }
 }
