@@ -33,80 +33,76 @@ private let testDay1 = Day(id: "test-id1", name: "South Downtown", startTime: Da
 struct TripView: View {
     @State var activities: [Activity] = [testActivity, testActivity1]
     @State var days: [Day] = [testDay, testDay1]
+    
+    @State private var isNewActivitySheet: Bool = false
+    @State private var selectedActivitySheet: Activity?
+
+    private func header(_ title: String) -> some View {
+        HStack {
+            Text(title)
+                .font(.title)
+                .fontWeight(.bold)
+                .textCase(nil)
+                .foregroundColor(.black)
+            Spacer()
+            Button {
+                isNewActivitySheet.toggle()
+            } label: {
+                Image(systemName: "plus")
+                    .font(.system(size: 18))
+                    .foregroundColor(.blue)
+                    .symbolRenderingMode(.monochrome)
+                    .padding(.leading, 34)
+            }
+            NavigationLink {
+
+            } label: {
+                Text("See All")
+                    .textCase(nil)
+            }
+        }
+    }
 
     var body: some View {
         NavigationStack {
-            Spacer()
-            ZStack {
-                Color.gray.opacity(0.1)
-
-                VStack {
-                    HStack(spacing: 15) {
-                        Text("Activities")
-                            .font(.title)
-                            .fontWeight(.bold)
-                        Spacer()
-                        NavigationLink {
-                        } label: {
-                            Image(systemName: "plus")
-                                .font(.system(size: 18))
-                                .foregroundColor(Color.blue)
-                                .symbolRenderingMode(.monochrome)
-                                .padding(.leading, 34)
-                        }
-                        NavigationLink {
-
-                        } label: {
-                            Text("See All")
-                        }
-                    }
-
+            List {
+                Section(header: header("Activities")) {
                     ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 20) {
+                        LazyHStack {
                             ForEach(activities) { activity in
-                                NavigationLink {
-
+                                Button {
+                                    selectedActivitySheet = activity
                                 } label: {
                                     SimpleActivityCardView()
                                 }
                             }
                         }
                     }
-
-                    HStack(spacing: 15) {
-                        Text("Days")
-                            .font(.title)
-                            .fontWeight(.bold)
-                        Spacer()
-                        NavigationLink {
-                        } label: {
-                            Image(systemName: "plus")
-                                .font(.system(size: 18))
-                                .foregroundColor(Color.blue)
-                                .symbolRenderingMode(.monochrome)
-                                .padding(.leading, 34)
-                        }
-                        NavigationLink {
-
-                        } label: {
-                            Text("See All")
-                        }
-                    }
-                    List {
-                        ForEach(Array(zip(days.indices, days)), id: \.0) { index, day in
-                            NavigationLink {
-                                
-                            } label: {
-                                Text("Day \(index + 1): \(day.name)")
-                            }
-                        }
-                    }
-                    .listStyle(.plain)
-                    Spacer()
                 }
-                .padding()
+
+                Section(header: header("Days")) {
+                    ForEach(days) { day in
+                        NavigationLink {
+
+                        } label: {
+                            Text(day.name)
+                        }
+                    }
+                }
             }
-            .navigationTitle("Barcelona")
+        }
+        // Not visible with preview
+        .navigationBarTitle("Barcalona")
+        .sheet(isPresented: $isNewActivitySheet) {
+            NewActivityView(showSheet: $isNewActivitySheet)
+                .presentationDetents([.medium, .large])
+        }
+        .sheet(item: $selectedActivitySheet) { item in
+            ActivityCardView()
+                .presentationDetents([.medium, .large])
+        }
+        .onTapGesture {
+            selectedActivitySheet = nil
         }
     }
 }

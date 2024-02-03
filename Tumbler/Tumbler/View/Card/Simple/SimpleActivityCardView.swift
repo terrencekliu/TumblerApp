@@ -78,7 +78,7 @@ private let testTrip = Trip(id: "test-id", name: "Barcelona", days: days)
 private let durationText: String = testTrip.formatTripDuration()
 
 struct SimpleActivityCardView: View {
-    @State private var activityName:String = testActivity.name
+    @State private var activityName: String = testActivity.name
     
     var body: some View {
         ZStack(alignment: .topLeading) {
