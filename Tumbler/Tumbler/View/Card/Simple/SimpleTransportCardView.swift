@@ -40,7 +40,7 @@ struct SimpleTransportCardView: View {
                 VStack {
                     Text("300 ft away")
                     HStack {
-                        Text("For 1 hr 11 min \u{2022} 1111.2 mi")
+                        Text("For 100 hr 11 min \u{2022} 1111.2 mi")
                     }
                 }
                 .foregroundColor(.black)

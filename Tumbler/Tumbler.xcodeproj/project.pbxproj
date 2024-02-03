@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		503E76DC2B68B1D900E88986 /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76DB2B68B1D900E88986 /* TripView.swift */; };
 		50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8454F2B58E20400CE5728 /* NewActivityView.swift */; };
 		50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */; };
 		50C2FF5A2B62047E0098DCFC /* SimpleTransportCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		503E76DB2B68B1D900E88986 /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
 		50A8454F2B58E20400CE5728 /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
 		50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewModel.swift; sourceTree = "<group>"; };
 		50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTransportCardView.swift; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 				FF1274CD2AF76CFD00099E02 /* Detail */,
 				FFC4772B2ADE58B10055EC89 /* Full */,
 				FFC4772A2ADE58A50055EC89 /* Simple */,
+				503E76DB2B68B1D900E88986 /* TripView.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 				FF1274C82AF74F8F00099E02 /* FullEventCardView.swift in Sources */,
 				FFC477112ADC91A30055EC89 /* FullDayCardView.swift in Sources */,
 				FFC4772E2ADE5FC70055EC89 /* FullActivityViewModel.swift in Sources */,
+				503E76DC2B68B1D900E88986 /* TripView.swift in Sources */,
 				FF1274CC2AF7625B00099E02 /* SimpleActivityCardView.swift in Sources */,
 				50C2FF5A2B62047E0098DCFC /* SimpleTransportCardView.swift in Sources */,
 				50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */,

@@ -15,4 +15,11 @@ struct Event: Identifiable {
 
     var startTime: Date
     var endTime: Date
+
+    // TODO: Move to Extensions
+    func getStartTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm"
+        return formatter.string(from: self.startTime)
+    }
 }

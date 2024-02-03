@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Day: Identifiable, Comparable {
+struct Day: Identifiable, Comparable, Hashable {
     let id: String
 
     var name: String
@@ -20,6 +20,10 @@ struct Day: Identifiable, Comparable {
     var startEvent: Event
     var events: [Event]
     var endEvent: Event
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 
     static func < (lhs: Day, rhs: Day) -> Bool {
         lhs.startTime < rhs.startTime

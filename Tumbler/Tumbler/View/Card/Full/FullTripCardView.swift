@@ -7,16 +7,24 @@
 
 import SwiftUI
 
-private var testList = [1,2,3,4,5,6,7,8,9,10,11,1,1,1,1,1,1,1,1,1,1]
-
 struct FullTripCardView: View {
-    var body: some View {
-        List {
-            ForEach(testList, id: \.self) { number in
-                Text("\(number)")
-            }
-        }
-    }
+    @State private var selected: String = ""
+       
+       private let selectionOptions = [ //This is the List of values we'll use
+           "my first option",
+           "my second option",
+           "my third option"
+       ]
+       
+       var body: some View {
+           Picker("Picker Name", //This is the picker's title
+                  selection: $selected, //This is the binding variable
+                  content: {
+               ForEach(selectionOptions, id: \.self) {
+                   Text($0)
+               }
+           })
+       }
 }
 
 #Preview {
