@@ -17,37 +17,37 @@ struct TripTabView: View {
     @State private var tripName: String = ""
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack {
-                    ForEach(testTrips) {trip in
-                        SimpleTripCardView(trip: trip)
-                    }
-                    Spacer()
-                        .toolbar {
-                                Button(action: {
-                                    presentAlert = true
-                                }, label: {
-                                    Image(systemName: "plus")
-                                        .font(.system(size: 18))
-                                        .foregroundColor(Color.black)
-                                        .symbolRenderingMode(.monochrome)
-                                        .padding(.leading, 34)
-                                })
-                                .alert("Trip Name", isPresented: $presentAlert, actions: {
-                                    TextField("New Trip", text: $tripName)
-
-                                    Button("Create", action: {})
-                                    Button("Cancel", role: .cancel, action: {})
-                                }, message: {
-                                    Text("Please name your new trip.")
-                                })
+            NavigationStack {
+                ScrollView {
+                    ForEach(tripList) { trip in
+                        NavigationLink {
+                            TripView()
+                        } label: {
+                            SimpleTripCardView(trip: trip)
                         }
                     }
                 }
-            .navigationTitle("Trips")
-            }
+                .toolbar {
+                    Button(action: {
+                        presentAlert = true
+                    }, label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 18))
+                            .foregroundColor(Color.black)
+                            .symbolRenderingMode(.monochrome)
+                            .padding(.leading, 34)
+                    })
+                    .alert("Trip Name", isPresented: $presentAlert, actions: {
+                        TextField("New Trip", text: $tripName)
 
+                        Button("Create", action: {})
+                        Button("Cancel", role: .cancel, action: {})
+                    }, message: {
+                        Text("Please name your new trip.")
+                    })
+                }
+                .navigationTitle("Trips")
+            }
         }
     }
 
