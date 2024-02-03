@@ -15,14 +15,15 @@ struct FullActivityCardView: View {
         VStack(alignment: .leading) {
             HStack {
                 VStack(alignment: .leading) {
-                    HStack(alignment: .center) {
+                    Label {
+                        Text(viewModel.name)
+                            .font(.headline)
+                            .accessibilityIdentifier("name-text")
+                    } icon: {
                         Image(systemName: "fork.knife.circle.fill")
                             .foregroundColor(.orange)
                             .font(.title)
                             .accessibilityIdentifier("type-image")
-                        Text(viewModel.name)
-                            .font(.headline)
-                            .accessibilityIdentifier("name-text")
                     }
                     HStack {
                         // TODO: Calculate Distance
