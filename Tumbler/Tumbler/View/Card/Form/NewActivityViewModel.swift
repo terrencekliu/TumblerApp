@@ -27,12 +27,15 @@ class NewActivityViewModel: ObservableObject {
             files: form.files,
             quickInfo: form.quickInfo,
             alert: form.alert,
+            notes: form.notes,
             trip: trip
         )
+        trip.activities.append(newActivity)
         updateSource(activity: newActivity)
     }
 
     private func updateSource(activity: Activity) {
         dataSource.newActivity(activity: activity)
+        // update implicit from newActivity
     }
 }

@@ -82,3 +82,8 @@ struct TripView: View {
         }
     }
 }
+
+#Preview {
+    var tripViewModel = TripViewModel()
+    return TripView(trip: tripViewModel.trips.first!)
+}

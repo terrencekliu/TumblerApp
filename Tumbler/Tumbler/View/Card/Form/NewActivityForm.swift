@@ -17,9 +17,9 @@ struct NewActivityForm {
     var startDate = Date()
     var endDate = Date()
 
-    var thumbnail: Bool = false
-    var ticketReserve: Bool = false
-    var files: Bool = false
+    var thumbnail: Data?
+    var ticketReserve: Data?
+    var files: Data?
 
     var quickInfo: [String: String] = [:]
 

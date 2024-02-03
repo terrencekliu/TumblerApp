@@ -13,7 +13,22 @@ class Day: Identifiable, Comparable {
     @Attribute(.unique) let id: UUID
     var trip: Trip?
 
-    init(id: UUID = UUID(), name: String, startTime: Date, endTime: Date, thumbnail: Bool? = nil, events: [Event] = []) {
+    var name: String
+
+    var startTime: Date
+    var endTime: Date
+
+    @Attribute(.externalStorage) var thumbnail: Data?
+
+    @Relationship(deleteRule: .nullify, inverse: \Event.day)
+    var events: [Event] = []
+    
+    init(id: UUID = UUID(),
+         name: String,
+         startTime: Date,
+         endTime: Date,
+         thumbnail: Data? = nil,
+         events: [Event] = []) {
         self.id = id
         self.name = name
         self.startTime = startTime
@@ -21,16 +36,6 @@ class Day: Identifiable, Comparable {
         self.thumbnail = thumbnail
         self.events = events
     }
-
-    var name: String
-
-    var startTime: Date
-    var endTime: Date
-
-    var thumbnail: Bool?
-
-    @Relationship(deleteRule: .nullify, inverse: \Event.day)
-    var events: [Event] = []
 
     static func < (lhs: Day, rhs: Day) -> Bool {
         lhs.startTime < rhs.startTime

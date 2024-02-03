@@ -65,6 +65,14 @@ final class TripDataSource: ObservableObject {
         }
     }
 
+    func update() {
+        do {
+            try modelContext.save()
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+
     func fetchTrips() -> [Trip] {
         do {
             return try modelContext.fetch(FetchDescriptor<Trip>())

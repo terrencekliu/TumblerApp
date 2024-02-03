@@ -21,5 +21,5 @@ class FullActivityViewModel: ObservableObject {
 
     var alert: String? { model.alert }
     var quickInfo: [String: String] { model.quickInfo }
-    var thumbnail: Bool? { model.thumbnail }
+    var thumbnail: Data? { model.thumbnail }
 }

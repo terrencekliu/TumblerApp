@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-// ViewModel Stuff
-// TODO: Move to ModelView
-private let durationText: String = testTrip.formatTripDuration()
-
 struct SimpleTripCardView: View {
     var trip: Trip
 

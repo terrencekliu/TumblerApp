@@ -115,7 +115,7 @@ let testDaySameMonth = Day(
     name: "South Downtown",
     startTime: sameMonth,
     endTime: sameMonth,
-    thumbnail: false,
+    thumbnail: nil,
     events: [testEvent, testEvent]
 )
 
@@ -123,7 +123,7 @@ let testDayNextMonth = Day(
     name: "South Downtown",
     startTime: nextMonth,
     endTime: nextMonth,
-    thumbnail: false,
+    thumbnail: nil,
     events: [testEvent, testEvent]
 )
 
@@ -131,7 +131,7 @@ let testDayNextYear = Day(
     name: "South Downtown",
     startTime: nextYear,
     endTime: nextYear,
-    thumbnail: false,
+    thumbnail: nil,
     events: [testEvent, testEvent]
 )
 
@@ -139,7 +139,7 @@ let testDay2 = Day(
     name: "South Downtown",
     startTime: Date.distantFuture,
     endTime: Date.distantFuture,
-    thumbnail: false,
+    thumbnail: nil,
     events: [testEvent, testEvent]
 )
 
@@ -149,7 +149,7 @@ let testDay = Day(
     name: "South Downtown",
     startTime: Date.now,
     endTime: Date.now,
-    thumbnail: false,
+    thumbnail: nil,
     events: [testEvent, testEvent]
 )
 

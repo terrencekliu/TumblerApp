@@ -27,8 +27,7 @@ struct NewActivityView: View {
                         .textContentType(.givenName)
                 }
                 Section(header: Text("Notes")) {
-                    TextField("Note", text: $form.notes)
-                        .textContentType(.givenName)
+                    TextEditor(text: $form.notes)
                 }
                 quickInfo
             }
@@ -158,4 +157,9 @@ struct NewActivityView: View {
 //            }
         }
     }
+}
+
+#Preview {
+    let viewModel = TripViewModel()
+    return NewActivityView(trip: viewModel.trips.first!, showSheet: .constant(true))
 }

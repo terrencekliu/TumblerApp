@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ActivityCardView: View {
     @Binding var activity: Activity
-    
+
     @State var selected = 1
 
     var body: some View {
@@ -125,15 +125,15 @@ struct ActivityCardView: View {
                     .frame(width: 361, height: 32)
                     .accessibilityIdentifier("details-picker")
 
-                    if selected == 1 {
-                        Text(activity.notes ?? "No notes.")
-                            .padding(.top, 3.0)
-                            .fontWeight(.regular)
-                            .font(.body)
-                            .accessibilityIdentifier("notes-text")
-                    } else {
-                        Text(activity.name)
-                            .accessibilityIdentifier("files")
+                    switch selected {
+                        case 1: Text(activity.notes ?? "No notes.")
+                                .padding(.top, 3.0)
+                                .fontWeight(.regular)
+                                .font(.body)
+                                .accessibilityIdentifier("notes-text")
+                        default:
+                            Text(activity.name)
+                                .accessibilityIdentifier("files")
                     }
                 }
                 .padding(.horizontal, 20.0)
@@ -144,8 +144,6 @@ struct ActivityCardView: View {
     }
 }
 
-struct ActivityCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        ActivityCardView(activity: .constant(testActivity))
-    }
+#Preview {
+    ActivityCardView(activity: .constant(testActivity))
 }
