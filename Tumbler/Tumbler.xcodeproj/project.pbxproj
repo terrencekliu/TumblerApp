@@ -123,8 +123,8 @@
 		50A8454E2B58E1D800CE5728 /* Form */ = {
 			isa = PBXGroup;
 			children = (
-				50A8454F2B58E20400CE5728 /* NewActivityView.swift */,
 				50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */,
+				50A8454F2B58E20400CE5728 /* NewActivityView.swift */,
 			);
 			path = Form;
 			sourceTree = "<group>";
