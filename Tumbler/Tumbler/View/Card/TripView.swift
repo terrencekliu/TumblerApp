@@ -73,7 +73,7 @@ struct TripView: View {
                                 Button {
                                     selectedActivitySheet = activity
                                 } label: {
-                                    SimpleActivityCardView()
+                                    SimpleActivityCardView(activityName: activity.name)
                                 }
                             }
                         }

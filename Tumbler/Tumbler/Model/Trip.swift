@@ -16,6 +16,11 @@ struct Trip: Identifiable {
     // Assume always sorted?
     var days: [Day]
 
+    func findDayNumber(of: Day) -> Int {
+        var index = days.firstIndex { $0.id == of.id } ?? 0
+        return index + 1
+    }
+
     // Viewmodel Stuff
     // TODO: Move to ViewModel
     func formatTripDuration() -> String {

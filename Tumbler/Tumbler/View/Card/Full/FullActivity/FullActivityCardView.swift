@@ -10,6 +10,8 @@ import SwiftUI
 struct FullActivityCardView: View {
     @ObservedObject var viewModel: FullActivityViewModel
 
+    @State var cardTint: Color = Color.white
+
     var body: some View {
         // TODO: Turn nested stacks into grid
         VStack(alignment: .leading) {
@@ -81,7 +83,7 @@ struct FullActivityCardView: View {
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 10.0)
-                .fill(.white)
+                .fill(cardTint)
         }
         .scaledToFit()
         .padding([.leading, .trailing], 10)
@@ -100,7 +102,7 @@ struct FullActivityCardView_Previews: PreviewProvider {
 
     static var previews: some View {
         FullActivityCardView(
-            viewModel: FullActivityViewModel(activity: testActivity)
+            viewModel: FullActivityViewModel(activity: testActivity), cardTint: Color.white
         )
         .background(.gray)
     }

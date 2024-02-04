@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+private let testTrip = Trip(id: "newTrip", name: "TestTrip", days: [testDay, testDay1])
+
 private let testActivity = Activity(
     id: "test-id",
     name: "Coffee House",
@@ -29,16 +31,16 @@ private let testEvent = Event(
     id: "test-id2",
     activity: testActivity,
     otherActivities: [testActivity, testActivity2],
-    startTime: Date.distantPast,
-    endTime: Date.distantPast.advanced(by: 1000)
+    startTime: Date.now,
+    endTime: Date.now.advanced(by: 10)
 )
 
 private let testEvent2 = Event(
     id: "test-id3",
     activity: testActivity,
     otherActivities: [testActivity2, testActivity],
-    startTime: Date.now,
-    endTime: Date.now
+    startTime: Date.now.advanced(by: 1000),
+    endTime: Date.now.advanced(by: 5000)
 )
 
 private let testDay = Day(
@@ -70,8 +72,8 @@ enum TransportationSymbol: String {
 }
 
 struct FullDayCardView: View {
-    @State var days: [Day] = [testDay, testDay1]
-    @State var events: [Event] = testDay.events
+    @State var trip: Trip = testTrip
+
     @State private var scrollPosition: CGPoint = .zero
     @State private var currentDay: Day?
 
@@ -80,20 +82,30 @@ struct FullDayCardView: View {
             Color.gray.opacity(0.2).ignoresSafeArea()
             ScrollView {
                 HStack {
-                    Text("\(currentDay?.name ?? testDay.name)")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .padding()
-                    Picker("Hello", selection: $currentDay) {
-                        ForEach(days) { day in
-                            Text(day.name).tag(day as Day?)
+                    Menu {
+                        Picker("Day Picker", selection: $currentDay) {
+                            ForEach(testTrip.days) { day in
+                                Text("Day \(trip.findDayNumber(of: day)): \(day.name)").tag(day as Day?)
+                            }
                         }
+                    } label: {
+                        HStack(spacing: 5) {
+                            Text("Day \(trip.findDayNumber(of: currentDay ?? testDay)):")
+                                .font(.title)
+                            Text(currentDay?.name ?? testDay.name)
+                                .font(.title)
+                            Image(systemName: "chevron.down")
+                        }
+                        .foregroundStyle(.black)
+                        .fontWeight(.bold)
                     }
                     Spacer()
                 }
+                .padding()
                 LazyVStack(pinnedViews: [.sectionHeaders]) {
-                    ForEach(currentDay?.events ?? events) { event in
+                    ForEach(currentDay?.events ?? testDay1.events) { event in
                         Section {
+                            Divider()
                             SingleEventCardView(event: event)
                         } header: {
                             HStack {
@@ -136,24 +148,21 @@ struct SingleEventCardView: View {
 
     var body: some View {
         VStack {
-            ForEach(testEvent.otherActivities) { activity in
+            ForEach(event.otherActivities) { activity in
                 FullActivityCardView(
-                    viewModel: FullActivityViewModel(activity: activity)
+                    viewModel: FullActivityViewModel(activity: activity),
+                    cardTint: Date() >= event.startTime && Date() < event.endTime 
+                        ? Color.green.opacity(0.1)
+                        : Color.white
                 )
-                TransportTabView()
+                TransportTabView(defaultTransport: activity.defaultTransportation)
             }
         }
     }
 }
 
 struct TransportTabView: View {
-
-    @State var defaultTransport: Transportation.TransportationType = Transportation.TransportationType.transit
-
-    init() {
-        UIPageControl.appearance().currentPageIndicatorTintColor = .black
-        UIPageControl.appearance().pageIndicatorTintColor = .systemGray2
-    }
+    @State var defaultTransport: Transportation.TransportationType
 
     var body: some View {
         TabView(selection: $defaultTransport) {
@@ -175,6 +184,10 @@ struct TransportTabView: View {
         }
         .tabViewStyle(PageTabViewStyle())
         .frame(width: 400, height: 120)
+        .onAppear {
+            UIPageControl.appearance().currentPageIndicatorTintColor = .black
+            UIPageControl.appearance().pageIndicatorTintColor = .systemGray2
+        }
     }
 }
 
