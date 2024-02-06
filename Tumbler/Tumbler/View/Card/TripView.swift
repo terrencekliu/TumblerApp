@@ -36,6 +36,9 @@ struct TripView: View {
     
     @State private var isNewActivitySheet: Bool = false
     @State private var selectedActivitySheet: Activity?
+    @State private var showActivitySheet: Bool = false
+
+    @State private var deleteConfirmSheet: Bool = false
 
     private func header(_ title: String) -> some View {
         HStack {
@@ -71,6 +74,7 @@ struct TripView: View {
                         LazyHStack {
                             ForEach(activities) { activity in
                                 Button {
+                                    showActivitySheet.toggle()
                                     selectedActivitySheet = activity
                                 } label: {
                                     SimpleActivityCardView(activityName: activity.name)
@@ -79,13 +83,33 @@ struct TripView: View {
                         }
                     }
                 }
-
+                
                 Section(header: header("Days")) {
                     ForEach(days) { day in
                         NavigationLink {
-
                         } label: {
                             Text(day.name)
+                        }
+                        .swipeActions(edge: .trailing) {
+                            Button(role: .destructive) {
+                                deleteConfirmSheet.toggle()
+                            } label: {
+                                Label("Delete", systemImage: "trash")
+                            }
+                        }
+                        .swipeActions(edge: .trailing) {
+                            NavigationLink {
+                                // TODO: Add the edit viewmodel func here
+                            } label: {
+                                Text("Edit")
+                            }
+                        }
+                    }
+                    .confirmationDialog("Delete Day?",
+                                        isPresented: $deleteConfirmSheet,
+                                        titleVisibility: .visible) {
+                        Button("Delete", role: .destructive) {
+                            // TODO: Add the viewmodel delete func here
                         }
                     }
                 }
@@ -98,7 +122,7 @@ struct TripView: View {
                 .presentationDetents([.medium, .large])
         }
         .sheet(item: $selectedActivitySheet) { item in
-            ActivityCardView()
+            ActivityCardView(showSheet: $showActivitySheet, activity: item)
                 .presentationDetents([.medium, .large])
         }
         .onTapGesture {

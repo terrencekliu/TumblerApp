@@ -30,22 +30,9 @@ private let testActivity = Activity(
 
 struct ActivityCardView: View {
 
-    @State private var showSheet: Bool = false
-
-    var body: some View {
-        Button("Click Me") {
-            showSheet.toggle()
-        }
-        .sheet(isPresented: $showSheet) {
-            SheetActivityCardView(showSheet: $showSheet)
-                .presentationDetents([.medium, .large])
-        }
-    }
-}
-
-struct SheetActivityCardView: View {
     @Binding var showSheet: Bool
     @State var selected = 1
+    @State var activity: Activity
 
     var body: some View {
         ScrollView {
@@ -59,7 +46,7 @@ struct SheetActivityCardView: View {
                         .clipped()
                         .accessibilityIdentifier("preview-image")
                     Button(action: {
-                        self.showSheet.toggle()
+                        showSheet.toggle()
                     }, label: {
                         Circle()
                             .fill(.black)
@@ -77,7 +64,7 @@ struct SheetActivityCardView: View {
                     .padding()
                 }
                 VStack(alignment: .leading) {
-                    Text("\(testActivity.name)")
+                    Text("\(activity.name)")
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.top, 4)
@@ -126,7 +113,7 @@ struct SheetActivityCardView: View {
                         Grid(alignment: .leading, horizontalSpacing: 40, verticalSpacing: 5) {
                             // TODO: Uniquely Key Values
                             // TODO: Create view for this Grid
-                            ForEach(testActivity.quickInfo, id: \.0) { info in
+                            ForEach(activity.quickInfo, id: \.0) { info in
                                 GridRow {
                                     Text(info.0)
                                     Text(info.1)
@@ -137,7 +124,7 @@ struct SheetActivityCardView: View {
                         }
                         .accessibilityIdentifier("quickInfo-table")
 
-                        Text(testActivity.alert ?? "")
+                        Text(activity.alert ?? "")
                             .font(.footnote)
                             .fontWeight(.regular)
                             .foregroundColor(.red)
@@ -161,13 +148,13 @@ struct SheetActivityCardView: View {
                     .accessibilityIdentifier("details-picker")
 
                     if selected == 1 {
-                        Text(testActivity.notes ?? "No notes.")
+                        Text(activity.notes ?? "No notes.")
                             .padding(.top, 3.0)
                             .fontWeight(.regular)
                             .font(.body)
                             .accessibilityIdentifier("notes-text")
                     } else {
-                        Text(testActivity.name)
+                        Text(activity.name)
                             .accessibilityIdentifier("files")
                     }
                 }
@@ -180,5 +167,5 @@ struct SheetActivityCardView: View {
 }
 
 #Preview {
-    ActivityCardView()
+    ActivityCardView(showSheet: .constant(true), activity: testActivity)
 }
