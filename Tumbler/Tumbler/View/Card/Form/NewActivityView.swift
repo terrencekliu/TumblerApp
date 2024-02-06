@@ -118,19 +118,19 @@ struct NewActivityView: View {
                 Text("Thumbnail")
                 Spacer()
                 Button("Upload File") {}
-                    .foregroundColor(.gray)
+                    .foregroundColor(.blue)
             }
             HStack {
                 Text("Tickets/Reservations")
                 Spacer()
                 Button("Upload File") {}
-                    .foregroundColor(.gray)
+                    .foregroundColor(.blue)
             }
             HStack {
                 Text("General Files")
                 Spacer()
                 Button("Upload File") {}
-                    .foregroundColor(.gray)
+                    .foregroundColor(.blue)
             }
         }
     }

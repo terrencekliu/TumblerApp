@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		503E76DC2B68B1D900E88986 /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76DB2B68B1D900E88986 /* TripView.swift */; };
+		503E76DE2B71F91A00E88986 /* NewDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76DD2B71F91A00E88986 /* NewDayView.swift */; };
 		50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8454F2B58E20400CE5728 /* NewActivityView.swift */; };
 		50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */; };
 		50C2FF5A2B62047E0098DCFC /* SimpleTransportCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		503E76DB2B68B1D900E88986 /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
+		503E76DD2B71F91A00E88986 /* NewDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayView.swift; sourceTree = "<group>"; };
 		50A8454F2B58E20400CE5728 /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
 		50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewModel.swift; sourceTree = "<group>"; };
 		50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTransportCardView.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */,
 				50A8454F2B58E20400CE5728 /* NewActivityView.swift */,
+				503E76DD2B71F91A00E88986 /* NewDayView.swift */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -578,6 +581,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF1274C82AF74F8F00099E02 /* FullEventCardView.swift in Sources */,
+				503E76DE2B71F91A00E88986 /* NewDayView.swift in Sources */,
 				FFC477112ADC91A30055EC89 /* FullDayCardView.swift in Sources */,
 				FFC4772E2ADE5FC70055EC89 /* FullActivityViewModel.swift in Sources */,
 				503E76DC2B68B1D900E88986 /* TripView.swift in Sources */,

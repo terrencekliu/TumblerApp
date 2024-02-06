@@ -41,7 +41,7 @@ struct RecentTabView: View {
                 .tint(.blue)
                 .accessibilityIdentifier("new-trip-button")
                 Spacer()
-                    .navigationTitle(Text("In Progress"))
+                    .navigationTitle("In Progress")
             }
         }
     }

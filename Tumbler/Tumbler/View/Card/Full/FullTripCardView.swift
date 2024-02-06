@@ -8,23 +8,25 @@
 import SwiftUI
 
 struct FullTripCardView: View {
-    @State private var selected: String = ""
-       
-       private let selectionOptions = [ //This is the List of values we'll use
-           "my first option",
-           "my second option",
-           "my third option"
-       ]
-       
-       var body: some View {
-           Picker("Picker Name", //This is the picker's title
-                  selection: $selected, //This is the binding variable
-                  content: {
-               ForEach(selectionOptions, id: \.self) {
-                   Text($0)
-               }
-           })
-       }
+    @State var quickInfo = [("Hello", "Hello")]
+    
+    var body: some View {
+        List {
+            // TODO: Need quickInfo to be an EnviormentObject (editable)
+            ForEach(quickInfo, id: \.0) { info in
+                HStack {
+                    Text(info.0)
+                    Text(info.1)
+                }
+            } .onDelete { indexSet in
+                quickInfo.remove(atOffsets: indexSet)
+            } .onMove {
+                quickInfo.move(fromOffsets: $0, toOffset: $1)
+            }
+        }
+        .scrollContentBackground(.visible)
+        .environment(\.editMode, .constant(.active))
+    }
 }
 
 #Preview {

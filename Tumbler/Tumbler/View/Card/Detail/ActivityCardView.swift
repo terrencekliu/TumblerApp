@@ -64,14 +64,14 @@ struct ActivityCardView: View {
                     .padding()
                 }
                 VStack(alignment: .leading) {
-                    Text("\(activity.name)")
+                    Text(activity.name)
                         .font(.title)
                         .fontWeight(.bold)
                         .padding(.top, 4)
                         .padding(.bottom, 2)
                         .accessibilityIdentifier("name-text")
                     // TODO: Make this a link to safari
-                    Text("\(testActivity.address)")
+                    Text(activity.address)
                         .font(.body)
                         .foregroundStyle(.blue)
                         .fontWeight(.regular)
