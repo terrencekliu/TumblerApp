@@ -23,8 +23,8 @@
 		FF5938292B166B33002B66C4 /* FullActivityCardViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5938282B166B33002B66C4 /* FullActivityCardViewTests.swift */; };
 		FF6531AC2B6593A200D69746 /* TripDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6531AB2B6593A200D69746 /* TripDataSource.swift */; };
 		FF6531AE2B659C2800D69746 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6531AD2B659C2800D69746 /* ViewModel.swift */; };
-		FF9AB7792B68C10200CA601C /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9AB7782B68C10200CA601C /* TripView.swift */; };
-		FF9AB77B2B68C1E200CA601C /* TripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9AB77A2B68C1E200CA601C /* TripViewModel.swift */; };
+		FF9AB7792B68C10200CA601C /* TTripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9AB7782B68C10200CA601C /* TTripView.swift */; };
+		FF9AB77B2B68C1E200CA601C /* TTripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9AB77A2B68C1E200CA601C /* TTripViewModel.swift */; };
 		FF9AB77D2B69695000CA601C /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9AB77C2B69695000CA601C /* File.swift */; };
 		FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476E12ADC90A10055EC89 /* TumblerApp.swift */; };
 		FFC476E62ADC90A20055EC89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFC476E52ADC90A20055EC89 /* Assets.xcassets */; };
@@ -80,8 +80,8 @@
 		FF5938282B166B33002B66C4 /* FullActivityCardViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullActivityCardViewTests.swift; sourceTree = "<group>"; };
 		FF6531AB2B6593A200D69746 /* TripDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDataSource.swift; sourceTree = "<group>"; };
 		FF6531AD2B659C2800D69746 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		FF9AB7782B68C10200CA601C /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
-		FF9AB77A2B68C1E200CA601C /* TripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModel.swift; sourceTree = "<group>"; };
+		FF9AB7782B68C10200CA601C /* TTripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTripView.swift; sourceTree = "<group>"; };
+		FF9AB77A2B68C1E200CA601C /* TTripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TTripViewModel.swift; sourceTree = "<group>"; };
 		FF9AB77C2B69695000CA601C /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		FFC476DE2ADC90A10055EC89 /* Tumbler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tumbler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFC476E12ADC90A10055EC89 /* TumblerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TumblerApp.swift; sourceTree = "<group>"; };
@@ -416,8 +416,8 @@
 				FF1274CD2AF76CFD00099E02 /* Detail */,
 				FFC4772B2ADE58B10055EC89 /* Full */,
 				FFC4772A2ADE58A50055EC89 /* Simple */,
-				FF9AB77A2B68C1E200CA601C /* TripViewModel.swift */,
-				FF9AB7782B68C10200CA601C /* TripView.swift */,
+				FF9AB77A2B68C1E200CA601C /* TTripViewModel.swift */,
+				FF9AB7782B68C10200CA601C /* TTripView.swift */,
 			);
 			path = Card;
 			sourceTree = "<group>";
@@ -612,7 +612,7 @@
 				FF6531AE2B659C2800D69746 /* ViewModel.swift in Sources */,
 				FF1274CF2AF76D1900099E02 /* ActivityCardView.swift in Sources */,
 				50C58C692B5A4F10000DF547 /* SimpleTripCardView.swift in Sources */,
-				FF9AB77B2B68C1E200CA601C /* TripViewModel.swift in Sources */,
+				FF9AB77B2B68C1E200CA601C /* TTripViewModel.swift in Sources */,
 				FFC477132ADC91B50055EC89 /* RecentTabView.swift in Sources */,
 				FF1D0B2D2B6710E400FDF4CF /* NewActivityForm.swift in Sources */,
 				FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */,
@@ -624,7 +624,7 @@
 				FFC477152ADC91C40055EC89 /* SettingTabView.swift in Sources */,
 				FFC477192ADC91E00055EC89 /* TripTabView.swift in Sources */,
 				FFC4770F2ADC91910055EC89 /* FullActivityCardView.swift in Sources */,
-				FF9AB7792B68C10200CA601C /* TripView.swift in Sources */,
+				FF9AB7792B68C10200CA601C /* TTripView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

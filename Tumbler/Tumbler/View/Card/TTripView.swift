@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct TripView: View {
-    @ObservedObject var tripViewModel = TripViewModel()
+struct TTripView: View {
+    @ObservedObject var tripViewModel = TTripViewModel()
     @ObservedObject var trip: Trip
 
     @State private var isNewActivitySheet: Bool = false
@@ -81,5 +81,5 @@ struct TripView: View {
 
 #Preview {
     var mockViewModel = ViewModel(TripDataSource.test)
-    return TripView(tripViewModel: TripViewModel(dataSource: TripDataSource.test), trip: mockViewModel.trips.first!)
+    return TTripView(tripViewModel: TTripViewModel(dataSource: TripDataSource.test), trip: mockViewModel.trips.first!)
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 @Observable
-class TripViewModel: ObservableObject {
+class TTripViewModel: ObservableObject {
     @ObservationIgnored
     private let dataSource: TripDataSource
 
