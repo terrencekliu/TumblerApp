@@ -1,0 +1,85 @@
+//
+//  TripView.swift
+//  Tumbler
+//
+//  Created by Vincent Liu on 1/29/24.
+//
+
+import SwiftUI
+
+struct TTripView: View {
+    @ObservedObject var tripViewModel = TTripViewModel()
+    @ObservedObject var trip: Trip
+
+    @State private var isNewActivitySheet: Bool = false
+    @State private var selectedActivitySheet: Activity?
+
+    private func header(_ title: String, _ seeAll: some View) -> some View {
+        HStack {
+            Text(title)
+                .font(.title)
+                .fontWeight(.bold)
+                .textCase(nil)
+                .foregroundColor(.primary)
+            Spacer()
+            Button {
+                isNewActivitySheet.toggle()
+            } label: {
+                Image(systemName: "plus")
+                    .font(.system(size: 18))
+                    .foregroundColor(.blue)
+                    .symbolRenderingMode(.monochrome)
+                    .padding(.leading, 34)
+            }
+            NavigationLink {
+                seeAll
+            } label: {
+                Text("See All")
+                    .textCase(nil)
+            }
+        }
+    }
+
+    var body: some View {
+        NavigationStack {
+            List {
+                Section(header: header("Activities", EmptyView())) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        LazyHStack {
+                            ForEach(tripViewModel.getActivities(tripId: trip.id)) { activity in
+                                Button {
+                                    selectedActivitySheet = activity
+                                } label: {
+                                    SimpleActivityCardView(activityName: activity.name.capitalized)
+                                }
+                            }
+                        }
+                    }
+                }
+                Section(header: header("Days", EmptyView())) {
+                    ForEach(trip.days) { day in
+                        NavigationLink {
+                            FullDayCardView(day: day)
+                        } label: {
+                            Text(day.name)
+                        }
+                    }
+                }
+            }
+        }
+        .navigationBarTitle(trip.name)
+        .sheet(isPresented: $isNewActivitySheet) {
+            NewActivityView(trip: trip, showSheet: $isNewActivitySheet)
+                .presentationDetents([.medium, .large])
+        }
+        .sheet(item: $selectedActivitySheet) { item in
+            ActivityCardView(activity: .constant(item))
+                .presentationDetents([.medium, .large])
+        }
+    }
+}
+
+#Preview {
+    var mockViewModel = ViewModel(TripDataSource.test)
+    return TTripView(tripViewModel: TTripViewModel(dataSource: TripDataSource.test), trip: mockViewModel.trips.first!)
+}

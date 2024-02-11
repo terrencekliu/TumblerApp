@@ -41,5 +41,6 @@ struct SimpleActivityCardView: View {
 }
 
 #Preview {
-    SimpleActivityCardView(activityName: testActivity.name)
+    let mockViewModel = ViewModel(TripDataSource.test)
+    return SimpleActivityCardView(activityName: mockViewModel.trips.first!.name)
 }

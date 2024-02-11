@@ -7,80 +7,6 @@
 
 import SwiftUI
 
-// Test activities for attractions
-private let cityBench = Activity(
-    id: "city-id",
-    name: "City Bench",
-    type: Activity.ActivityType.attraction,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")],
-    alert: "Car break-in common"
-)
-
-private let rantWalk = Activity(
-    id: "rant-id",
-    name: "Walk of Rant",
-    type: Activity.ActivityType.attraction,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")],
-    alert: "Car break-in common"
-)
-
-private let solarPanel = Activity(
-    id: "solar-id",
-    name: "Solar Panel Exhibit",
-    type: Activity.ActivityType.attraction,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")],
-    alert: "Car break-in common"
-)
-
-private let eBike = Activity(
-    id: "bike-id",
-    name: "Electric Bike Experience",
-    type: Activity.ActivityType.attraction,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")],
-    alert: "Car break-in common"
-)
-
-// Test activities for food
-private let kumNGO = Activity(
-    id: "go-id",
-    name: "Kum-N-Go",
-    type: Activity.ActivityType.food,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")],
-    alert: "Car break-in common"
-)
-
-private let goldenArch = Activity(
-    id: "arch-id",
-    name: "McDonald's",
-    type: Activity.ActivityType.food,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")],
-    alert: "Car break-in common"
-)
-
-private let lidl = Activity(
-    id: "lidl-id",
-    name: "Lidl",
-    type: Activity.ActivityType.food,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")],
-    alert: "Car break-in common"
-)
-
-private let pizza = Activity(
-    id: "pizza-id",
-    name: "Pizza Looking Thingys",
-    type: Activity.ActivityType.food,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")],
-    alert: "Car break-in common"
-)
-
 enum ActivitySymbolName: String {
     case attractions = "fork.knife.circle.fill"
     case foods = "fork.knife.circle.fil"
@@ -92,8 +18,8 @@ enum ActivitySymbolName: String {
 
 struct DetailedActivitiyView: View {
 
-    @State var attractions: [Activity] = [cityBench, rantWalk, solarPanel, eBike]
-    @State private var foods: [Activity] = [kumNGO, goldenArch, lidl, pizza]
+    @State var attractions: [Activity] = []
+    @State private var foods: [Activity] = []
     @State private var beaches: [Activity] = []
     @State private var houses: [Activity] = []
     @State private var camps: [Activity] = []

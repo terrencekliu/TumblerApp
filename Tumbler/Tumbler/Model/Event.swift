@@ -6,16 +6,26 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Event: Identifiable {
-    let id: String
-
-    var activity: Activity
-    var otherActivities: [Activity]
-
+@Model
+class Event: Identifiable, ObservableObject {
+    @Attribute(.unique) let id: UUID
+    var day: Day?
+    
+    @Relationship(deleteRule: .nullify, inverse: \Activity.event)
+    var activities: [Activity] = []
+    
     var startTime: Date
     var endTime: Date
-
+    
+    init(id: UUID = UUID(), activities: [Activity] = [], startTime: Date, endTime: Date) {
+        self.id = id
+        self.activities = activities
+        self.startTime = startTime
+        self.endTime = endTime
+    }
+    
     // TODO: Move to Extensions
     func getStartTime() -> String {
         let formatter = DateFormatter()

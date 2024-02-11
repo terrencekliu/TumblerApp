@@ -6,20 +6,38 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Day: Identifiable, Comparable, Hashable {
-    let id: String
+@Model
+class Day: Identifiable, Comparable, Hashable, ObservableObject {
+    @Attribute(.unique) let id: UUID
+    var trip: Trip?
+    @Attribute(.unique) let id: UUID
+    var trip: Trip?
 
     var name: String
 
     var startTime: Date
     var endTime: Date
 
-    var thumbnail: Bool?
+    @Attribute(.externalStorage) var thumbnail: Data?
 
-    var startEvent: Event
-    var events: [Event]
-    var endEvent: Event
+    @Relationship(deleteRule: .nullify, inverse: \Event.day)
+    var events: [Event] = []
+    
+    init(id: UUID = UUID(),
+         name: String,
+         startTime: Date,
+         endTime: Date,
+         thumbnail: Data? = nil,
+         events: [Event] = []) {
+        self.id = id
+        self.name = name
+        self.startTime = startTime
+        self.endTime = endTime
+        self.thumbnail = thumbnail
+        self.events = events
+    }
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)

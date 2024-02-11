@@ -18,6 +18,10 @@ private let testActivity = Activity(
 )
 
 struct NewActivityView: View {
+    @ObservedObject var viewModel = NewActivityViewModel()
+    @ObservedObject var trip: Trip
+    @State var form = NewActivityForm()
+
     @Binding var showSheet: Bool
     @State var selected = 1
 
@@ -40,11 +44,11 @@ struct NewActivityView: View {
                 time
                 files
                 Section(header: Text("Important Alerts")) {
-                    TextField("Alert", text: $importantAlertText)
+                    TextField("Alert", text: $form.alert)
                         .textContentType(.givenName)
                 }
                 Section(header: Text("Notes")) {
-                    TextEditor(text: $notesText)
+                    TextEditor(text: $form.notes)
                 }
                 quickInfo
             }
@@ -60,6 +64,7 @@ struct NewActivityView: View {
                     .accessibilityLabel("Close")
                     .accessibilityIdentifier("close-button"),
                 trailing: Button(action: {
+                    viewModel.addActivity(trip: trip, form: form)
                     self.showSheet.toggle()
                     }, label: {
                         Text("Add").foregroundStyle(Color.blue)
@@ -80,10 +85,10 @@ struct NewActivityView: View {
                 Text("Name")
                     .font(.body)
                     .fontWeight(.regular)
-                TextField("Activity", text: $name)
+                TextField("Activity", text: $form.name)
                     .textContentType(.givenName)
             }
-            Picker("Type", selection: $activityType) {
+            Picker("Type", selection: $form.type) {
                 ForEach(Activity.ActivityType.allCases) { activityType in
                     Text(activityType.rawValue.capitalized)
                 }
@@ -92,7 +97,7 @@ struct NewActivityView: View {
                 Text("Address")
                     .font(.body)
                     .fontWeight(.regular)
-                TextField("123 St, Town, USA 12345", text: $address)
+                TextField("123 St, Town, USA 12345", text: $form.address)
                     .textContentType(.givenName)
             }
         }
@@ -100,12 +105,13 @@ struct NewActivityView: View {
 
     var time: some View {
         SwiftUI.Section(header: Text("Time")) {
-            Toggle("Time Sensitive", isOn: $timeSensitive)
-            if timeSensitive {
-                DatePicker("Start", selection: $startDate, displayedComponents: [.date, .hourAndMinute])
+            Toggle("Time Sensitive", isOn: $form.timeSensitive)
+            if form.timeSensitive {
+                DatePicker("Start", selection: $form.startDate, displayedComponents: [.date, .hourAndMinute])
                 DatePicker(
                     "End",
-                    selection: $endDate,
+                    selection: $form.endDate,
+                    in: form.startDate ... form.startDate.endOfDay(),
                     displayedComponents: [.hourAndMinute]
                 )
             }
@@ -118,23 +124,24 @@ struct NewActivityView: View {
                 Text("Thumbnail")
                 Spacer()
                 Button("Upload File") {}
-                    .foregroundColor(.blue)
+                    .foregroundColor(.gray)
             }
             HStack {
                 Text("Tickets/Reservations")
                 Spacer()
                 Button("Upload File") {}
-                    .foregroundColor(.blue)
+                    .foregroundColor(.gray)
             }
             HStack {
                 Text("General Files")
                 Spacer()
                 Button("Upload File") {}
-                    .foregroundColor(.blue)
+                    .foregroundColor(.gray)
             }
         }
     }
     
+    @State var newInfoText: String = ""
     var quickInfo: some View {
         // QuickInfo type [String: String], wait for backend-connect to be merged
         SwiftUI.Section(header: Text("Quick Info")) {
@@ -175,5 +182,6 @@ struct NewActivityView: View {
 }
 
 #Preview {
-    NewActivityView(showSheet: .constant(true))
+    var mockViewModel = ViewModel(TripDataSource.test)
+    return NewActivityView(trip: mockViewModel.trips.first!, showSheet: .constant(true))
 }

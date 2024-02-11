@@ -6,29 +6,9 @@
 //
 
 import SwiftUI
-private let quickInfo: [(String, String)] = [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")]
-private let testActivity = Activity(
-    id: "test-id",
-    name: "Coffee Shop",
-    type: Activity.ActivityType.food,
-    address: "12345 SE 12th St Bellevue, WA",
-    quickInfo: quickInfo, alert: "Car break-in common",
-    notes: """
-    Nestled on the quaint corner of Elmwood Avenue, in the heart of a bustling town, lies Whispering Beans Café, a sanctuary for coffee connoisseurs and casual sippers alike. \
-    As you step through the rustic, weathered wooden door, a warm, inviting aroma envelops you, a fragrant promise of the exquisite coffee journey that awaits.
-
-    The interior of Whispering Beans is a masterful blend of contemporary chic and vintage charm. \
-    Exposed brick walls adorned with local art provide a canvas for the dance of warm, muted lighting, casting a soft, welcoming glow on the patrons. \
-    Weathered leather armchairs and plush couches beckon you to settle in, while polished oak tables offer a space to gather, work, or simply lose yourself in the pages of a good book. \
-    Overhead, a symphony of mellow jazz notes mingles with the quiet hum of conversations, creating a backdrop that is both soothing and invigorating.
-
-    Behind the sleek, mahogany-topped counter, a team of passionate baristas stand ready, each a maestro in the art of brewing. \
-    With gleaming espresso machines and an array of freshly sourced beans, they craft each cup with precision and care, transforming the humble coffee bean into liquid poetry. \
-    Their expertise is matched only by their genuine enthusiasm to share their knowledge and help patrons discover their perfect brew."
-    """
-)
 
 struct ActivityCardView: View {
+    @Binding var activity: Activity
 
     @Binding var showSheet: Bool
     @State var selected = 1
@@ -46,7 +26,7 @@ struct ActivityCardView: View {
                         .clipped()
                         .accessibilityIdentifier("preview-image")
                     Button(action: {
-                        showSheet.toggle()
+
                     }, label: {
                         Circle()
                             .fill(.black)
@@ -113,10 +93,10 @@ struct ActivityCardView: View {
                         Grid(alignment: .leading, horizontalSpacing: 40, verticalSpacing: 5) {
                             // TODO: Uniquely Key Values
                             // TODO: Create view for this Grid
-                            ForEach(activity.quickInfo, id: \.0) { info in
+                            ForEach(Array(activity.quickInfo.keys), id: \.self) { key in
                                 GridRow {
-                                    Text(info.0)
-                                    Text(info.1)
+                                    Text(key)
+                                    Text(activity.quickInfo[key]!)
                                 }
                                 .font(.callout)
                                 .fontWeight(.medium)
@@ -147,15 +127,15 @@ struct ActivityCardView: View {
                     .frame(width: 361, height: 32)
                     .accessibilityIdentifier("details-picker")
 
-                    if selected == 1 {
-                        Text(activity.notes ?? "No notes.")
-                            .padding(.top, 3.0)
-                            .fontWeight(.regular)
-                            .font(.body)
-                            .accessibilityIdentifier("notes-text")
-                    } else {
-                        Text(activity.name)
-                            .accessibilityIdentifier("files")
+                    switch selected {
+                        case 1: Text(activity.notes ?? "No notes.")
+                                .padding(.top, 3.0)
+                                .fontWeight(.regular)
+                                .font(.body)
+                                .accessibilityIdentifier("notes-text")
+                        default:
+                            Text(activity.name)
+                                .accessibilityIdentifier("files")
                     }
                 }
                 .padding(.horizontal, 20.0)
@@ -167,5 +147,6 @@ struct ActivityCardView: View {
 }
 
 #Preview {
-    ActivityCardView(showSheet: .constant(true), activity: testActivity)
+    var mockViewModel = ViewModel(TripDataSource.test)
+    return ActivityCardView(activity: .constant(mockViewModel.trips.first!.activities.first!))
 }
