@@ -51,8 +51,8 @@ class Activity: Identifiable, ObservableObject {
          files: Data? = nil,
          quickInfo: [String: String],
          alert: String = "",
-         notes: String = "",
-         trip: Trip) {
+         notes: String = ""
+    ) {
         self.id = id
         self.name = name
         self.type = type
@@ -64,6 +64,5 @@ class Activity: Identifiable, ObservableObject {
         self.quickInfo = quickInfo
         self.alert = alert
         self.notes = notes
-        self.trip = trip
     }
 }

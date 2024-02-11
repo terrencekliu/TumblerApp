@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TripTabView: View {
-    @ObservedObject private var viewModel = ViewModel()
+    @ObservedObject var viewModel = ViewModel()
 
     @State private var presentAlert = false
     @State private var tripName: String = ""
@@ -51,5 +51,6 @@ struct TripTabView: View {
 }
 
 #Preview {
-    TripTabView()
+    let mockViewModel = ViewModel(TripDataSource.test)
+    return TripTabView(viewModel: mockViewModel)
 }

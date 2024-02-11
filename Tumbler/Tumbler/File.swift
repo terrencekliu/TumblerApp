@@ -6,14 +6,27 @@
 //
 
 import Foundation
-var testTrips: [Trip] = [testTrip0, testTrip1, testTrip2]
+private let tripId1 = UUID()
+private let eventId1 = UUID()
+private let eventId2 = UUID()
+private let activityId1 = UUID()
+private let activityId2 = UUID()
+private let activityId3 = UUID()
+private let activityId4 = UUID()
 
-let quickInfo: [(String, String)] = [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")]
-let testActivity = Activity(
+let testTrip1 = Trip(name: "Test Trip", days: [testDay1], activities: [testActivity1, testActivity2, testActivity3, testActivity4])
+
+let testDay1 = Day(name: "Test Day", startTime: Date(), endTime: Date(), events: [testEvent1, testEvent2])
+
+let testEvent1 = Event(activities: [testActivity1, testActivity2], startTime: Date.now, endTime: Date.now)
+let testEvent2 = Event(activities: [testActivity3, testActivity4], startTime: Date.now, endTime: Date.now)
+
+let testActivity1 = Activity(
+    id: activityId1,
     name: "Coffee Shop",
     type: Activity.ActivityType.food,
     address: "12345 SE 12th St Bellevue, WA",
-    quickInfo: [:],
+    quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"],
     alert: "Car break-in common",
     notes: """
     Nestled on the quaint corner of Elmwood Avenue, in the heart of a bustling town, lies Whispering Beans Café, a sanctuary for coffee connoisseurs and casual sippers alike. \
@@ -27,133 +40,33 @@ let testActivity = Activity(
     Behind the sleek, mahogany-topped counter, a team of passionate baristas stand ready, each a maestro in the art of brewing. \
     With gleaming espresso machines and an array of freshly sourced beans, they craft each cup with precision and care, transforming the humble coffee bean into liquid poetry. \
     Their expertise is matched only by their genuine enthusiasm to share their knowledge and help patrons discover their perfect brew."
-    """,
-    trip: testTrip
+    """
 )
 
-let testEvent = Event(activities: [testActivity], startTime: Date.now, endTime: Date.now)
 
-let cityBench = Activity(
+let testActivity2 = Activity(
+    id: activityId2,
     name: "City Bench",
     type: Activity.ActivityType.attraction,
     address: "12345 SE 12th St Bellevue, WA 98006",
     quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"],
-    alert: "Car break-in common",
-    trip: testTrip
+    alert: "Car break-in common"
 )
 
-let rantWalk = Activity(
+let testActivity3 = Activity(
+    id: activityId3,
     name: "Walk of Rant",
     type: Activity.ActivityType.attraction,
     address: "12345 SE 12th St Bellevue, WA 98006",
     quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"],
-    alert: "Car break-in common",
-    trip: testTrip
+    alert: "Car break-in common"
 )
 
-let solarPanel = Activity(
+let testActivity4 = Activity(
+    id: activityId4,
     name: "Solar Panel Exhibit",
     type: Activity.ActivityType.attraction,
     address: "12345 SE 12th St Bellevue, WA 98006",
     quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"],
-    alert: "Car break-in common",
-    trip: testTrip
+    alert: "Car break-in common"
 )
-
-let eBike = Activity(
-    name: "Electric Bike Experience",
-    type: Activity.ActivityType.attraction,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"],
-    alert: "Car break-in common",
-    trip: testTrip
-)
-
-// Test activities for food
-let kumNGO = Activity(
-    name: "Kum-N-Go",
-    type: Activity.ActivityType.food,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"],
-    alert: "Car break-in common",
-    trip: testTrip
-)
-
-let goldenArch = Activity(
-    name: "McDonald's",
-    type: Activity.ActivityType.food,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"],
-    alert: "Car break-in common",
-    trip: testTrip
-)
-
-let lidl = Activity(
-    name: "Lidl",
-    type: Activity.ActivityType.food,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"],
-    alert: "Car break-in common",
-    trip: testTrip
-)
-
-let pizza = Activity(
-    name: "Pizza Looking Thingys",
-    type: Activity.ActivityType.food,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: ["Starting": "10:18 am", "Latte": "$5", "Ice Cream": "$6"],
-    alert: "Car break-in common",
-    trip: testTrip
-)
-
-let dateNow = Date()
-let sameMonth = Date(timeIntervalSinceNow: 604800)
-let nextMonth = Date(timeIntervalSinceNow: 2629056)
-let nextYear = Date(timeIntervalSinceNow: 31622400)
-
-let testDaySameMonth = Day(
-    name: "South Downtown",
-    startTime: sameMonth,
-    endTime: sameMonth,
-    thumbnail: nil,
-    events: [testEvent, testEvent]
-)
-
-let testDayNextMonth = Day(
-    name: "South Downtown",
-    startTime: nextMonth,
-    endTime: nextMonth,
-    thumbnail: nil,
-    events: [testEvent, testEvent]
-)
-
-let testDayNextYear = Day(
-    name: "South Downtown",
-    startTime: nextYear,
-    endTime: nextYear,
-    thumbnail: nil,
-    events: [testEvent, testEvent]
-)
-
-let testDay2 = Day(
-    name: "South Downtown",
-    startTime: Date.distantFuture,
-    endTime: Date.distantFuture,
-    thumbnail: nil,
-    events: [testEvent, testEvent]
-)
-
-let days: [Day] = [testDay, testDayNextMonth]
-
-let testDay = Day(
-    name: "South Downtown",
-    startTime: Date.now,
-    endTime: Date.now,
-    thumbnail: nil,
-    events: [testEvent, testEvent]
-)
-
-let testTrip = Trip(name: "Barcelona", days: days)
-let testTrip0 = Trip(name: "Barcelona", days: days)
-let testTrip1 = Trip(name: "Seattle", days: days)
-let testTrip2 = Trip(name: "Canada", days: days)

@@ -145,5 +145,6 @@ struct ActivityCardView: View {
 }
 
 #Preview {
-    ActivityCardView(activity: .constant(testActivity))
+    var mockViewModel = ViewModel(TripDataSource.test)
+    return ActivityCardView(activity: .constant(mockViewModel.trips.first!.activities.first!))
 }

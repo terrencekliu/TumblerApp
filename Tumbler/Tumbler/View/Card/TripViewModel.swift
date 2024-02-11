@@ -20,6 +20,6 @@ class TripViewModel: ObservableObject {
     }
 
     func getActivities(tripId: UUID) -> [Activity] {
-        dataSource.fetchTripActivities(tripId: tripId)
+        dataSource.fetchTripActivities(tripId)
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FullActivityCardView: View {
-    @ObservedObject var viewModel: FullActivityViewModel
+    @ObservedObject var activity: Activity
 
     var body: some View {
         // TODO: Turn nested stacks into grid
@@ -20,7 +20,7 @@ struct FullActivityCardView: View {
                             .foregroundColor(.orange)
                             .font(.title)
                             .accessibilityIdentifier("type-image")
-                        Text(viewModel.name)
+                        Text(activity.name)
                             .font(.headline)
                             .accessibilityIdentifier("name-text")
                     }
@@ -29,7 +29,7 @@ struct FullActivityCardView: View {
                         Text("(\("--- ft"))")
                             .foregroundColor(.gray)
                             .accessibilityIdentifier("distance-text")
-                        Text(viewModel.address)
+                        Text(activity.address)
                             .foregroundColor(.blue)
                             .lineLimit(1)
                             .accessibilityIdentifier("address-text")
@@ -53,10 +53,10 @@ struct FullActivityCardView: View {
                 VStack(alignment: .leading) {
                     Grid(alignment: .leading, horizontalSpacing: 40, verticalSpacing: 5) {
                         // TODO: Uniquely Key Values
-                        ForEach(Array(viewModel.quickInfo.keys), id: \.self) { key in
+                        ForEach(Array(activity.quickInfo.keys), id: \.self) { key in
                             GridRow {
                                 Text(key)
-                                Text(viewModel.quickInfo[key]!)
+                                Text(activity.quickInfo[key]!)
                             }
                             .font(.footnote)
                             .fontWeight(.medium)
@@ -66,7 +66,7 @@ struct FullActivityCardView: View {
                     .accessibilityIdentifier("quickInfo-table")
 
                     Spacer()
-                    Text(viewModel.alert ?? "")
+                    Text(activity.alert ?? "")
                         .font(.footnote)
                         .foregroundColor(.red)
                         .italic()
@@ -88,11 +88,7 @@ struct FullActivityCardView: View {
     }
 }
 
-struct FullActivityCardView_Previews: PreviewProvider {
-    static var previews: some View {
-        FullActivityCardView(
-            viewModel: FullActivityViewModel(activity: testActivity)
-        )
-        .background(.gray)
-    }
+#Preview {
+    var mockViewModel = ViewModel(TripDataSource.test)
+    return FullActivityCardView(activity: mockViewModel.trips.first!.activities.first!)
 }

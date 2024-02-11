@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Event: Identifiable {
+class Event: Identifiable, ObservableObject {
     @Attribute(.unique) let id: UUID
     var day: Day?
 

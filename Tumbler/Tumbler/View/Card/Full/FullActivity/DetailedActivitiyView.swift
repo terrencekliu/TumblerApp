@@ -55,8 +55,8 @@ struct ActivityGroup: View {
 
 struct DetailedActivitiyView: View {
 
-    @State var attractions: [Activity] = [cityBench, rantWalk, solarPanel, eBike]
-    @State private var foods: [Activity] = [kumNGO, goldenArch, lidl, pizza]
+    @State var attractions: [Activity] = []
+    @State private var foods: [Activity] = []
     @State private var beaches: [Activity] = []
     @State private var houses: [Activity] = []
     @State private var camps: [Activity] = []

@@ -36,5 +36,6 @@ struct SimpleTripCardView: View {
 }
 
 #Preview {
-    SimpleTripCardView(trip: testTrip0)
+    let mockViewModel = ViewModel(TripDataSource.test)
+    return SimpleTripCardView(trip: mockViewModel.trips.first!)
 }

@@ -15,13 +15,13 @@ class ViewModel: ObservableObject {
 
     var trips: [Trip]
 
-    init(dataSource: TripDataSource = TripDataSource.shared) {
+    init(_ dataSource: TripDataSource = TripDataSource.shared) {
         self.dataSource = dataSource
         trips = dataSource.fetchTrips()
     }
 
     func newTrip(name: String) {
-        dataSource.newTrip(trip: Trip(name: name))
+        dataSource.newTrip(Trip(name: name))
         trips = dataSource.fetchTrips()
     }
 }

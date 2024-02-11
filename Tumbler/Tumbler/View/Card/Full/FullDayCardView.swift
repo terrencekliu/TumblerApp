@@ -14,49 +14,58 @@ enum TransportationSymbol: String {
 }
 
 struct FullDayCardView: View {
+    @ObservedObject var day: Day
+
     var body: some View {
-        ZStack {
-            Color.gray.opacity(0.2).ignoresSafeArea()
-            ScrollView {
-                VStack {
-                    SingleActivityCardView()
-                    SingleActivityCardView()
+        ScrollView {
+            LazyVStack(spacing: 1, pinnedViews: [.sectionHeaders]) {
+                ForEach(day.events) { event in
+                    Section {
+                        SingleEventCardView(event: event)
+                    } header: {
+                        HStack {
+                            Text(event.startTime.format())
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .foregroundColor(.black)
+                            Spacer()
+                        }
+                        .padding()
+                        .background(
+                            Color.secondary
+                                .colorInvert()
+                                .opacity(0.75)
+                                .blur(radius: /*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
+                        )
+                    }
                 }
             }
         }
+        .background(Color(uiColor: UIColor.secondarySystemBackground))
+        .navigationTitle(day.name)
     }
 }
 
-struct SingleActivityCardView: View {
+struct SingleEventCardView: View {
+    @ObservedObject var event: Event
+
     var body: some View {
-        VStack {
-            HStack {
-                Text("10:00 am")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                Rectangle()
-                    .fill(Color.gray)
-                    .frame(height: 1)
-                    .padding(.top, -6)
-                Spacer()
+        ForEach(event.activities) { activity in
+            VStack {
+                FullActivityCardView(
+                    activity: activity
+//                    cardTint: Date() >= event.startTime && Date() < event.endTime
+//                        ? Color.green.opacity(0.1)
+//                        : Color.white
+                )
+                TransportTabView(defaultTransport: activity.defaultTransportation)
             }
-            .padding(.leading)
-            FullActivityCardView(
-                viewModel: FullActivityViewModel(activity: testActivity)
-            )
-            TransportTabView()
         }
     }
 }
 
 struct TransportTabView: View {
-
-    @State var defaultTransport: Transportation.TransportationType = Transportation.TransportationType.transit
-
-    init() {
-        UIPageControl.appearance().currentPageIndicatorTintColor = .black
-        UIPageControl.appearance().pageIndicatorTintColor = .systemGray2
-    }
+    @State var defaultTransport: Transportation.TransportationType
 
     var body: some View {
         TabView(selection: $defaultTransport) {
@@ -76,11 +85,12 @@ struct TransportTabView: View {
             )
                 .tag(Transportation.TransportationType.walk)
         }
-        .tabViewStyle(PageTabViewStyle())
-        .frame(width: 400, height: 120)
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .frame(height: 75)
     }
 }
 
 #Preview {
-    FullDayCardView()
+    var mockViewModel = ViewModel(TripDataSource.test)
+    return FullDayCardView(day: mockViewModel.trips.first!.days.first!)
 }

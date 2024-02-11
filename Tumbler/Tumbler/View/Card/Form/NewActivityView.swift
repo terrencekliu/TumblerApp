@@ -160,6 +160,6 @@ struct NewActivityView: View {
 }
 
 #Preview {
-    let viewModel = TripViewModel()
-    return NewActivityView(trip: viewModel.trips.first!, showSheet: .constant(true))
+    var mockViewModel = ViewModel(TripDataSource.test)
+    return NewActivityView(trip: mockViewModel.trips.first!, showSheet: .constant(true))
 }

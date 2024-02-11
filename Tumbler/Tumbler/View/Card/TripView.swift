@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct TripView: View {
-    @ObservedObject private var tripViewModel = TripViewModel()
+    @ObservedObject var tripViewModel = TripViewModel()
     @ObservedObject var trip: Trip
 
     @State private var isNewActivitySheet: Bool = false
     @State private var selectedActivitySheet: Activity?
 
-    private func header(_ title: String) -> some View {
+    private func header(_ title: String, _ seeAll: some View) -> some View {
         HStack {
             Text(title)
                 .font(.title)
                 .fontWeight(.bold)
                 .textCase(nil)
-                .foregroundColor(.black)
+                .foregroundColor(.primary)
             Spacer()
             Button {
                 isNewActivitySheet.toggle()
@@ -32,18 +32,18 @@ struct TripView: View {
                     .padding(.leading, 34)
             }
             NavigationLink {
-                
+                seeAll
             } label: {
                 Text("See All")
                     .textCase(nil)
             }
         }
     }
-    
+
     var body: some View {
         NavigationStack {
             List {
-                Section(header: header("Activities")) {
+                Section(header: header("Activities", EmptyView())) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack {
                             ForEach(tripViewModel.getActivities(tripId: trip.id)) { activity in
@@ -56,11 +56,10 @@ struct TripView: View {
                         }
                     }
                 }
-                
-                Section(header: header("Days")) {
+                Section(header: header("Days", EmptyView())) {
                     ForEach(trip.days) { day in
                         NavigationLink {
-
+                            FullDayCardView(day: day)
                         } label: {
                             Text(day.name)
                         }
@@ -77,13 +76,10 @@ struct TripView: View {
             ActivityCardView(activity: .constant(item))
                 .presentationDetents([.medium, .large])
         }
-        .onTapGesture {
-            selectedActivitySheet = nil
-        }
     }
 }
 
 #Preview {
-    var tripViewModel = TripViewModel()
-    return TripView(trip: tripViewModel.trips.first!)
+    var mockViewModel = ViewModel(TripDataSource.test)
+    return TripView(tripViewModel: TripViewModel(dataSource: TripDataSource.test), trip: mockViewModel.trips.first!)
 }

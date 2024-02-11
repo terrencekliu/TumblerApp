@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-class Day: Identifiable, Comparable {
+class Day: Identifiable, Comparable, ObservableObject {
     @Attribute(.unique) let id: UUID
     var trip: Trip?
 
