@@ -172,6 +172,6 @@ struct NewActivityView: View {
 }
 
 #Preview {
-    var mockViewModel = ViewModel(TripDataSource.test)
+    let mockViewModel = ViewModel(TripDataSource.test)
     return NewActivityView(trip: mockViewModel.trips.first!, showSheet: .constant(true))
 }

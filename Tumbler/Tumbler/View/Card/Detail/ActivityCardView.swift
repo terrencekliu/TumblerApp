@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ActivityCardView: View {
     @ObservedObject var activity: Activity
-
-    @Binding var showSheet: Bool
+    
+    @Environment (\.dismiss) var dismiss
     @State var selected = 1
 
     var body: some View {
@@ -25,7 +25,7 @@ struct ActivityCardView: View {
                         .clipped()
                         .accessibilityIdentifier("preview-image")
                     Button(action: {
-
+                        dismiss()
                     }, label: {
                         Circle()
                             .fill(.black)
@@ -146,6 +146,8 @@ struct ActivityCardView: View {
 }
 
 #Preview {
-    var mockViewModel = ViewModel(TripDataSource.test)
-    return ActivityCardView(activity: mockViewModel.trips.first!.activities.first!, showSheet: .constant(true))
+    let mockViewModel = ViewModel(TripDataSource.test)
+    return ActivityCardView(
+        activity: mockViewModel.trips.first!.activities.first!
+    )
 }

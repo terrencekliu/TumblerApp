@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FullTripCardView: View {
     @State var quickInfo = [("Hello", "Hello")]
-    
+
     var body: some View {
         List {
             // TODO: Need quickInfo to be an EnviormentObject (editable)

@@ -91,6 +91,6 @@ struct TransportTabView: View {
 }
 
 #Preview {
-    var mockViewModel = ViewModel(TripDataSource.test)
+    let mockViewModel = ViewModel(TripDataSource.test)
     return FullDayCardView(day: mockViewModel.trips.first!.days.first!)
 }

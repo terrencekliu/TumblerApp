@@ -95,6 +95,6 @@ struct FullActivityCardView: View {
 }
 
 #Preview {
-    var mockViewModel = ViewModel(TripDataSource.test)
+    let mockViewModel = ViewModel(TripDataSource.test)
     return FullActivityCardView(activity: mockViewModel.trips.first!.activities.first!)
 }

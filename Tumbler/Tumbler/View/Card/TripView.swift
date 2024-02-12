@@ -12,9 +12,7 @@ struct TripView: View {
     @ObservedObject var trip: Trip
 
     @State private var isNewActivitySheet: Bool = false
-    @State private var isActivitySheet: Bool = false
     @State private var selectedActivitySheet: Activity?
-    
 
     private func header(_ title: String, _ seeAll: some View) -> some View {
         HStack {
@@ -51,7 +49,6 @@ struct TripView: View {
                             ForEach(tripViewModel.getActivities(tripId: trip.id)) { activity in
                                 Button {
                                     selectedActivitySheet = activity
-                                    isActivitySheet = true
                                 } label: {
                                     SimpleActivityCardView(activityName: activity.name.capitalized)
                                 }
@@ -75,14 +72,18 @@ struct TripView: View {
             NewActivityView(trip: trip, showSheet: $isNewActivitySheet)
                 .presentationDetents([.medium, .large])
         }
-        .sheet(isPresented: $isActivitySheet) {
-            ActivityCardView(activity: selectedActivitySheet!, showSheet: $isActivitySheet)
+        .sheet(item: $selectedActivitySheet) { activity in
+            ActivityCardView(activity: activity)
                 .presentationDetents([.medium, .large])
         }
     }
 }
 
 #Preview {
-    var mockViewModel = ViewModel(TripDataSource.test)
-    return TripView(tripViewModel: TripViewModel(dataSource: TripDataSource.test), trip: mockViewModel.trips.first!)
+    let mockViewModel = ViewModel(TripDataSource.test)
+    let mockTripViewModel = TripViewModel(dataSource: TripDataSource.test)
+    return TripView(
+        tripViewModel: mockTripViewModel,
+        trip: mockViewModel.trips.first!
+    )
 }
