@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ActivityCardView: View {
-    @Binding var activity: Activity
+    @ObservedObject var activity: Activity
 
     @Binding var showSheet: Bool
     @State var selected = 1
-    @State var activity: Activity
 
     var body: some View {
         ScrollView {
@@ -148,5 +147,5 @@ struct ActivityCardView: View {
 
 #Preview {
     var mockViewModel = ViewModel(TripDataSource.test)
-    return ActivityCardView(activity: .constant(mockViewModel.trips.first!.activities.first!))
+    return ActivityCardView(activity: mockViewModel.trips.first!.activities.first!, showSheet: .constant(true))
 }

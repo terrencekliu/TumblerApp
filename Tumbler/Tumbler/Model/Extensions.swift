@@ -61,3 +61,11 @@ extension Trip {
         return "\(firstDayString), \(firstYearString) - \(lastDayString), \(lastYearString)"
     }
 }
+
+extension Event {
+    func getStartTime() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm"
+        return formatter.string(from: self.startTime)
+    }
+}

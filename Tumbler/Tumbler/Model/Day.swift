@@ -12,8 +12,6 @@ import SwiftData
 class Day: Identifiable, Comparable, Hashable, ObservableObject {
     @Attribute(.unique) let id: UUID
     var trip: Trip?
-    @Attribute(.unique) let id: UUID
-    var trip: Trip?
 
     var name: String
 

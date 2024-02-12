@@ -8,15 +8,6 @@
 import SwiftUI
 import UIKit
 
-private let testActivity = Activity(
-    id: "test-id",
-    name: "Coffee House",
-    type: Activity.ActivityType.food,
-    address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: [("Starting", "10:18 am"), ("Latte", "$5"), ("Ice Cream", "$6")],
-    alert: "Car break-in common"
-)
-
 struct NewActivityView: View {
     @ObservedObject var viewModel = NewActivityViewModel()
     @ObservedObject var trip: Trip
@@ -140,8 +131,7 @@ struct NewActivityView: View {
             }
         }
     }
-    
-    @State var newInfoText: String = ""
+
     var quickInfo: some View {
         // QuickInfo type [String: String], wait for backend-connect to be merged
         SwiftUI.Section(header: Text("Quick Info")) {

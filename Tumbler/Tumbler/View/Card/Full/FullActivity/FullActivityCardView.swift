@@ -18,7 +18,7 @@ struct FullActivityCardView: View {
             HStack {
                 VStack(alignment: .leading) {
                     Label {
-                        Text(viewModel.name)
+                        Text(activity.name)
                             .font(.headline)
                             .accessibilityIdentifier("name-text")
                     } icon: {

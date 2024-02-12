@@ -25,11 +25,4 @@ class Event: Identifiable, ObservableObject {
         self.startTime = startTime
         self.endTime = endTime
     }
-    
-    // TODO: Move to Extensions
-    func getStartTime() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm"
-        return formatter.string(from: self.startTime)
-    }
 }

@@ -23,15 +23,6 @@ final class TripDataSource: ObservableObject {
     @MainActor
     private init(mock: Bool) {
         // swiftlint:disable force_try
-
-        // Remove
-//        let tempContainer = try! ModelContainer()
-//        let tempContext = tempContainer.mainContext
-//        try? tempContext.delete(model: Activity.self)
-//        try? tempContext.delete(model: Event.self)
-//        try? tempContext.delete(model: Day.self)
-//        try? tempContext.delete(model: Trip.self)
-
         self.modelConfig = mock ? 
             ModelConfiguration(isStoredInMemoryOnly: true) :
             ModelConfiguration(isStoredInMemoryOnly: false)
@@ -40,15 +31,6 @@ final class TripDataSource: ObservableObject {
             configurations: modelConfig
         )
         self.modelContext = modelContainer.mainContext
-
-        // Remove
-//            try! modelContext.delete(model: Trip.self)
-//            try! modelContext.delete(model: Day.self)
-//            try! modelContext.delete(model: Event.self)
-//            try! modelContext.delete(model: Activity.self)
-//            modelContext.insert(testTrip1)
-//            try! modelContext.save()
-
         // swiftlint:enable force_try
         
         if mock { newTrip(testTrip1) }
