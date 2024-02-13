@@ -8,6 +8,8 @@
 import Foundation
 import SwiftData
 
+typealias Trans = Transportation.TransportationType
+
 @Model
 class Activity: Identifiable, ObservableObject {
     @Attribute(.unique) let id: UUID
@@ -17,18 +19,16 @@ class Activity: Identifiable, ObservableObject {
     var name: String
     var type: ActivityType
     var address: String
-    var defaultTransportation: Trans
+    var defaultTransportation: Transportation.TransportationType
 
     @Attribute(.externalStorage) var thumbnail: Data?
     @Attribute(.externalStorage) var ticketReserve: Data?
     @Attribute(.externalStorage) var files: Data?
 
-    var quickInfo: [String: String]
+    var quickInfo: [Tuple] = []
 
     var alert: String
     var notes: String
-    
-    typealias Trans = Transportation.TransportationType
 
     enum ActivityType: String, CaseIterable, Identifiable, Codable {
         case beach
@@ -49,7 +49,7 @@ class Activity: Identifiable, ObservableObject {
          thumbnail: Data? = nil,
          ticketReserve: Data? = nil,
          files: Data? = nil,
-         quickInfo: [String: String],
+         quickInfo: [Tuple],
          alert: String = "",
          notes: String = ""
     ) {

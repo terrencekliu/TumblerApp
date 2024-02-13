@@ -16,14 +16,14 @@ final class TripDataSource: ObservableObject {
 
     @MainActor
     static let shared = TripDataSource(mock: false)
-    
+
     @MainActor
     static let test = TripDataSource(mock: true)
 
     @MainActor
     private init(mock: Bool) {
         // swiftlint:disable force_try
-        self.modelConfig = mock ? 
+        self.modelConfig = mock ?
             ModelConfiguration(isStoredInMemoryOnly: true) :
             ModelConfiguration(isStoredInMemoryOnly: false)
         self.modelContainer = try! ModelContainer(
@@ -38,6 +38,7 @@ final class TripDataSource: ObservableObject {
 //        try! self.modelContext.delete(model: Event.self)
 //        try! self.modelContext.delete(model: Activity.self)
 //        newTrip(testTrip1)
+
         // swiftlint:enable force_try
 
         if mock { newTrip(testTrip1) }

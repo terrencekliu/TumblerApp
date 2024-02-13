@@ -11,7 +11,7 @@ struct NewActivityForm {
     var name: String = ""
     var type: Activity.ActivityType = Activity.ActivityType.other
     var address: String = ""
-    var defaultTransportation: Activity.Trans = Activity.Trans.car
+    var defaultTransportation: Trans = Trans.car
 
     var timeSensitive: Bool = false
     var startDate = Date()
@@ -21,7 +21,7 @@ struct NewActivityForm {
     var ticketReserve: Data?
     var files: Data?
 
-    var quickInfo: [String: String] = [:]
+    var quickInfo: [Tuple] = [Tuple()]
 
     var alert: String = ""
     var notes: String = ""

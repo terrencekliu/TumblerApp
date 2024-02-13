@@ -46,21 +46,21 @@ struct NewActivityView: View {
             .listRowSeparator(.visible)
             .navigationTitle("Create New Activity")
             .navigationBarItems(
-                leading: Button(action: {
-                    self.showSheet.toggle()
-                    }, label: {
-                        Text("Cancel").foregroundStyle(Color.blue)
-                    })
-                    .buttonStyle(PlainButtonStyle())
+                leading: 
+                    Button(
+                        "Cancel",
+                        action: { self.showSheet.toggle() }
+                    )
                     .accessibilityLabel("Close")
                     .accessibilityIdentifier("close-button"),
-                trailing: Button(action: {
-                    viewModel.addActivity(trip: trip, form: form)
-                    self.showSheet.toggle()
-                    }, label: {
-                        Text("Add").foregroundStyle(Color.blue)
-                    })
-                    .buttonStyle(PlainButtonStyle())
+                trailing: 
+                    Button(
+                        "Add",
+                        action: {
+                            viewModel.addActivity(trip: trip, form: form)
+                            self.showSheet.toggle()
+                        }
+                    )
                     .accessibilityLabel("Add")
                     .accessibilityIdentifier("close-button")
             )
@@ -115,58 +115,38 @@ struct NewActivityView: View {
                 Text("Thumbnail")
                 Spacer()
                 Button("Upload File") {}
-                    .foregroundColor(.gray)
             }
             HStack {
                 Text("Tickets/Reservations")
                 Spacer()
                 Button("Upload File") {}
-                    .foregroundColor(.gray)
             }
             HStack {
                 Text("General Files")
                 Spacer()
                 Button("Upload File") {}
-                    .foregroundColor(.gray)
             }
         }
     }
 
     var quickInfo: some View {
-        // QuickInfo type [String: String], wait for backend-connect to be merged
         SwiftUI.Section(header: Text("Quick Info")) {
-//            HStack {
-//                Button(action: {
-//                }, label: {
-//                    Image(systemName: "plus.circle.fill")
-//                        .font(.system(size: 22))
-//                        .foregroundColor(Color.green)
-//                        .symbolRenderingMode(.monochrome)
-//                        .padding(.leading, 34)
-//                })
-//                .buttonStyle(PlainButtonStyle())
-//                .accessibilityLabel(Text("Close"))
-//                .accessibilityIdentifier("close-button")
-//                TextField("Add new item", text: $newInfoText)
-//                    .textContentType(.givenName)
-//            }
-//            NavigationView {
-//                List {
-                    // TODO: Need quickInfo to be an EnviormentObject (editable)
-//                    ForEach(quickInfo, id: \.0) { info in
-//                        HStack {
-//                            Text(info.0)
-//                            Text(info.1)
-//                        }
-//                    } .onDelete { indexSet in
-//                        quickInfo.remove(atOffsets: indexSet)
-//                    } .onMove {
-//                        quickInfo.move(fromOffsets: $0, toOffset: $1)
-//                    }
-//                }
-//                .scrollContentBackground(.visible)
-//                .environment(\.editMode, .constant(.active))
-//            }
+            ForEach(form.quickInfo.indices, id: \.self) { index in
+                HStack {
+                    TextField("Label", text: $form.quickInfo[index].first)
+                    TextField("Description", text: $form.quickInfo[index].second)
+                }
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
+            } .onDelete { indexSet in
+                form.quickInfo.remove(atOffsets: indexSet)
+            } .onMove { from, to in
+                form.quickInfo.move(fromOffsets: from, toOffset: to)
+            }
+            Button("New item", systemImage: "plus.circle.fill", action: {
+                form.quickInfo.append(Tuple())
+            })
+            .foregroundColor(/*@START_MENU_TOKEN@*/.green/*@END_MENU_TOKEN@*/)
         }
     }
 }

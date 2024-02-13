@@ -56,10 +56,10 @@ struct FullActivityCardView: View {
                 VStack(alignment: .leading) {
                     Grid(alignment: .leading, horizontalSpacing: 40, verticalSpacing: 5) {
                         // TODO: Uniquely Key Values
-                        ForEach(Array(activity.quickInfo.keys), id: \.self) { key in
+                        ForEach(Array(activity.quickInfo), id: \.self) { tuple in
                             GridRow {
-                                Text(key)
-                                Text(activity.quickInfo[key]!)
+                                Text(tuple.first)
+                                Text(tuple.second)
                             }
                             .font(.footnote)
                             .fontWeight(.medium)

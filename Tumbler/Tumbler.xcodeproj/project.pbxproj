@@ -45,6 +45,7 @@
 		FFC477232ADE551D0055EC89 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477222ADE551D0055EC89 /* Trip.swift */; };
 		FFC477262ADE562D0055EC89 /* Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477252ADE562D0055EC89 /* Transportation.swift */; };
 		FFC4772E2ADE5FC70055EC89 /* DetailedActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4772D2ADE5FC70055EC89 /* DetailedActivityViewModel.swift */; };
+		FFEE1A9C2B7BEB8A003CC260 /* Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEE1A9B2B7BEB8A003CC260 /* Tuple.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		FFC477222ADE551D0055EC89 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		FFC477252ADE562D0055EC89 /* Transportation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transportation.swift; sourceTree = "<group>"; };
 		FFC4772D2ADE5FC70055EC89 /* DetailedActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedActivityViewModel.swift; sourceTree = "<group>"; };
+		FFEE1A9B2B7BEB8A003CC260 /* Tuple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuple.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +388,7 @@
 				FFC477202ADE55050055EC89 /* Event.swift */,
 				FFC4771C2ADE54EA0055EC89 /* Activity.swift */,
 				FFC477252ADE562D0055EC89 /* Transportation.swift */,
+				FFEE1A9B2B7BEB8A003CC260 /* Tuple.swift */,
 				FF1D0B2E2B67473B00FDF4CF /* Extensions.swift */,
 			);
 			path = Model;
@@ -614,6 +617,7 @@
 				FFC477232ADE551D0055EC89 /* Trip.swift in Sources */,
 				FFC4771D2ADE54EA0055EC89 /* Activity.swift in Sources */,
 				FFC477262ADE562D0055EC89 /* Transportation.swift in Sources */,
+				FFEE1A9C2B7BEB8A003CC260 /* Tuple.swift in Sources */,
 				FF6531AE2B659C2800D69746 /* ViewModel.swift in Sources */,
 				FF1274CF2AF76D1900099E02 /* ActivityCardView.swift in Sources */,
 				50C58C692B5A4F10000DF547 /* SimpleTripCardView.swift in Sources */,

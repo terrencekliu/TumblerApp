@@ -90,12 +90,10 @@ struct ActivityCardView: View {
                         .overlay(.gray)
                     VStack(alignment: .leading) {
                         Grid(alignment: .leading, horizontalSpacing: 40, verticalSpacing: 5) {
-                            // TODO: Uniquely Key Values
-                            // TODO: Create view for this Grid
-                            ForEach(Array(activity.quickInfo.keys), id: \.self) { key in
+                            ForEach(Array(activity.quickInfo), id: \.self) { tuple in
                                 GridRow {
-                                    Text(key)
-                                    Text(activity.quickInfo[key]!)
+                                    Text(tuple.first)
+                                    Text(tuple.second)
                                 }
                                 .font(.callout)
                                 .fontWeight(.medium)
