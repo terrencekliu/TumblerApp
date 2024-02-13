@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+enum SectionType: String {
+    case activities
+    case days
+}
+
 struct TripView: View {
     @ObservedObject var tripViewModel = TripViewModel()
     @ObservedObject var trip: Trip
@@ -14,16 +19,21 @@ struct TripView: View {
     @State private var isNewActivitySheet: Bool = false
     @State private var selectedActivitySheet: Activity?
 
-    private func header(_ title: String, _ seeAll: some View) -> some View {
+    private func header(_ section: SectionType) -> some View {
         HStack {
-            Text(title)
+            Text(section.rawValue.capitalized)
                 .font(.title)
                 .fontWeight(.bold)
                 .textCase(nil)
                 .foregroundColor(.primary)
             Spacer()
             Button {
-                isNewActivitySheet.toggle()
+                switch section {
+                case SectionType.activities:
+                    isNewActivitySheet.toggle()
+                case SectionType.days:
+                    isNewActivitySheet.toggle()
+                }
             } label: {
                 Image(systemName: "plus")
                     .font(.system(size: 18))
@@ -32,7 +42,13 @@ struct TripView: View {
                     .padding(.leading, 34)
             }
             NavigationLink {
-                seeAll
+                switch section {
+                case SectionType.activities:
+                    DetailedActivityView()
+                        .environmentObject(DetailedActivityViewModel(trip.activities))
+                case SectionType.days:
+                    EmptyView()
+                }
             } label: {
                 Text("See All")
                     .textCase(nil)
@@ -43,7 +59,7 @@ struct TripView: View {
     var body: some View {
         NavigationStack {
             List {
-                Section(header: header("Activities", EmptyView())) {
+                Section(header: header(SectionType.activities)) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         LazyHStack {
                             ForEach(tripViewModel.getActivities(tripId: trip.id)) { activity in
@@ -56,7 +72,7 @@ struct TripView: View {
                         }
                     }
                 }
-                Section(header: header("Days", EmptyView())) {
+                Section(header: header(SectionType.days)) {
                     ForEach(trip.days) { day in
                         NavigationLink {
                             FullDayCardView(day: day)

@@ -26,9 +26,6 @@ struct FullActivityCardView: View {
                             .foregroundColor(.orange)
                             .font(.title)
                             .accessibilityIdentifier("type-image")
-                        Text(activity.name)
-                            .font(.headline)
-                            .accessibilityIdentifier("name-text")
                     }
                     HStack {
                         // TODO: Calculate Distance

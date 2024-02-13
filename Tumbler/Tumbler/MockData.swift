@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  MockData.swift
 //  Tumbler
 //
 //  Created by Terrence Liu on 1/30/24.
@@ -7,6 +7,7 @@
 
 import Foundation
 private let tripId1 = UUID()
+private let dayId1 = UUID()
 private let eventId1 = UUID()
 private let eventId2 = UUID()
 private let activityId1 = UUID()
@@ -14,12 +15,12 @@ private let activityId2 = UUID()
 private let activityId3 = UUID()
 private let activityId4 = UUID()
 
-let testTrip1 = Trip(name: "Test Trip", days: [testDay1], activities: [testActivity1, testActivity2, testActivity3, testActivity4])
+let testTrip1 = Trip(id: tripId1, name: "Test Trip", days: [testDay1], activities: [testActivity1, testActivity2, testActivity3, testActivity4])
 
-let testDay1 = Day(name: "Test Day", startTime: Date(), endTime: Date(), events: [testEvent1, testEvent2])
+let testDay1 = Day(id: dayId1, name: "Test Day", startTime: Date.distantPast, endTime: Date.distantFuture, events: [testEvent1, testEvent2])
 
-let testEvent1 = Event(activities: [testActivity1, testActivity2], startTime: Date.now, endTime: Date.now)
-let testEvent2 = Event(activities: [testActivity3, testActivity4], startTime: Date.now, endTime: Date.now)
+let testEvent1 = Event(id: eventId1, activities: [testActivity1, testActivity2], startTime: Date.now, endTime: Date.distantFuture)
+let testEvent2 = Event(id: eventId2, activities: [testActivity3, testActivity4], startTime: Date.now, endTime: Date.distantFuture)
 
 let testActivity1 = Activity(
     id: activityId1,
@@ -42,7 +43,6 @@ let testActivity1 = Activity(
     Their expertise is matched only by their genuine enthusiasm to share their knowledge and help patrons discover their perfect brew."
     """
 )
-
 
 let testActivity2 = Activity(
     id: activityId2,

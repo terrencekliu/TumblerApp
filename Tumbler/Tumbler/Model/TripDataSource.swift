@@ -31,8 +31,15 @@ final class TripDataSource: ObservableObject {
             configurations: modelConfig
         )
         self.modelContext = modelContainer.mainContext
+
+        // REMOVE
+//        try! self.modelContext.delete(model: Trip.self)
+//        try! self.modelContext.delete(model: Day.self)
+//        try! self.modelContext.delete(model: Event.self)
+//        try! self.modelContext.delete(model: Activity.self)
+//        newTrip(testTrip1)
         // swiftlint:enable force_try
-        
+
         if mock { newTrip(testTrip1) }
     }
 

@@ -18,7 +18,7 @@ extension Date {
 
         return nextDateAfterMidnight.addingTimeInterval(-1)
     }
-    
+
     func format() -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "hh:mm"
