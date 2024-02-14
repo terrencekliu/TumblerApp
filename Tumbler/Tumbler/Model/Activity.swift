@@ -25,7 +25,7 @@ class Activity: Identifiable, ObservableObject {
     @Attribute(.externalStorage) var ticketReserve: Data?
     @Attribute(.externalStorage) var files: Data?
 
-    var quickInfo: [Tuple] = []
+    var quickInfo: [TupleModel] = []
 
     var alert: String
     var notes: String
@@ -49,7 +49,7 @@ class Activity: Identifiable, ObservableObject {
          thumbnail: Data? = nil,
          ticketReserve: Data? = nil,
          files: Data? = nil,
-         quickInfo: [Tuple],
+         quickInfo: [TupleModel],
          alert: String = "",
          notes: String = ""
     ) {

@@ -16,18 +16,6 @@ struct NewActivityView: View {
     @Binding var showSheet: Bool
     @State var selected = 1
 
-    @State private var name: String = ""
-    @State private var activityType: Activity.ActivityType = Activity.ActivityType.other
-    @State private var timeSensitive: Bool = false
-    @State private var address: String = ""
-    @State private var startDate: Date = Date()
-    @State private var endDate: Date = Date()
-
-    @State private var importantAlertText: String = ""
-    @State private var notesText: String = ""
-
-    @State private var newInfoText = ""
-
     var body: some View {
         NavigationStack {
             List {
@@ -144,7 +132,7 @@ struct NewActivityView: View {
                 form.quickInfo.move(fromOffsets: from, toOffset: to)
             }
             Button("New item", systemImage: "plus.circle.fill", action: {
-                form.quickInfo.append(Tuple())
+                form.quickInfo.append(TupleModel())
             })
             .foregroundColor(/*@START_MENU_TOKEN@*/.green/*@END_MENU_TOKEN@*/)
         }

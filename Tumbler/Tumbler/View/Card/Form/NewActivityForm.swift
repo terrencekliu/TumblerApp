@@ -21,7 +21,7 @@ struct NewActivityForm {
     var ticketReserve: Data?
     var files: Data?
 
-    var quickInfo: [Tuple] = [Tuple()]
+    var quickInfo: [TupleModel] = [TupleModel()]
 
     var alert: String = ""
     var notes: String = ""

@@ -27,7 +27,7 @@ let testActivity1 = Activity(
     name: "Coffee Shop",
     type: Activity.ActivityType.food,
     address: "12345 SE 12th St Bellevue, WA",
-    quickInfo: [Tuple("Starting", "10:18 am"), Tuple("Latte", "$5"), Tuple("Ice Cream", "$6")],
+    quickInfo: [TupleModel("Starting", "10:18 am"), TupleModel("Latte", "$5"), TupleModel("Ice Cream", "$6")],
     alert: "Car break-in common",
     notes: """
     Nestled on the quaint corner of Elmwood Avenue, in the heart of a bustling town, lies Whispering Beans Café, a sanctuary for coffee connoisseurs and casual sippers alike. \
@@ -49,7 +49,7 @@ let testActivity2 = Activity(
     name: "City Bench",
     type: Activity.ActivityType.attraction,
     address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: [Tuple("Starting", "10:18 am"), Tuple("Latte", "$5"), Tuple("Ice Cream", "$6")],
+    quickInfo: [TupleModel("Starting", "10:18 am"), TupleModel("Latte", "$5"), TupleModel("Ice Cream", "$6")],
     alert: "Car break-in common"
 )
 
@@ -58,7 +58,7 @@ let testActivity3 = Activity(
     name: "Walk of Rant",
     type: Activity.ActivityType.attraction,
     address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: [Tuple("Starting", "10:18 am"), Tuple("Latte", "$5"), Tuple("Ice Cream", "$6")],
+    quickInfo: [TupleModel("Starting", "10:18 am"), TupleModel("Latte", "$5"), TupleModel("Ice Cream", "$6")],
     alert: "Car break-in common"
 )
 
@@ -67,6 +67,18 @@ let testActivity4 = Activity(
     name: "Solar Panel Exhibit",
     type: Activity.ActivityType.attraction,
     address: "12345 SE 12th St Bellevue, WA 98006",
-    quickInfo: [Tuple("Starting", "10:18 am"), Tuple("Latte", "$5"), Tuple("Ice Cream", "$6")],
+    quickInfo: [TupleModel("Starting", "10:18 am"), TupleModel("Latte", "$5"), TupleModel("Ice Cream", "$6")],
     alert: "Car break-in common"
+)
+
+let testTuple1 = Tuple(
+    true,
+    Date(),
+    testActivity1
+)
+
+let testTuple2 = Tuple(
+    false,
+    Date(),
+    testActivity2
 )

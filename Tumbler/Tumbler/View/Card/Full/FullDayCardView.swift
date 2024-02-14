@@ -86,7 +86,7 @@ struct TransportTabView: View {
                 .tag(Transportation.TransportationType.walk)
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
-        .frame(height: 75)
+        .frame(minHeight: 75, maxHeight: 75)
     }
 }
 

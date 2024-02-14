@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		503E76DC2B68B1D900E88986 /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76DB2B68B1D900E88986 /* TripView.swift */; };
 		503E76DE2B71F91A00E88986 /* NewDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76DD2B71F91A00E88986 /* NewDayView.swift */; };
+		503E76E22B7C380100E88986 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76E12B7C380100E88986 /* AddActivityView.swift */; };
+		503E76E42B7C3B6000E88986 /* AddActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76E32B7C3B6000E88986 /* AddActivityViewModel.swift */; };
 		50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8454F2B58E20400CE5728 /* NewActivityView.swift */; };
 		50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */; };
 		50C2FF5A2B62047E0098DCFC /* SimpleTransportCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */; };
@@ -45,7 +47,7 @@
 		FFC477232ADE551D0055EC89 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477222ADE551D0055EC89 /* Trip.swift */; };
 		FFC477262ADE562D0055EC89 /* Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477252ADE562D0055EC89 /* Transportation.swift */; };
 		FFC4772E2ADE5FC70055EC89 /* DetailedActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4772D2ADE5FC70055EC89 /* DetailedActivityViewModel.swift */; };
-		FFEE1A9C2B7BEB8A003CC260 /* Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEE1A9B2B7BEB8A003CC260 /* Tuple.swift */; };
+		FFEE1A9C2B7BEB8A003CC260 /* TupleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEE1A9B2B7BEB8A003CC260 /* TupleModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,8 @@
 /* Begin PBXFileReference section */
 		503E76DB2B68B1D900E88986 /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
 		503E76DD2B71F91A00E88986 /* NewDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayView.swift; sourceTree = "<group>"; };
+		503E76E12B7C380100E88986 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
+		503E76E32B7C3B6000E88986 /* AddActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewModel.swift; sourceTree = "<group>"; };
 		50A8454F2B58E20400CE5728 /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
 		50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewModel.swift; sourceTree = "<group>"; };
 		50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTransportCardView.swift; sourceTree = "<group>"; };
@@ -108,7 +112,7 @@
 		FFC477222ADE551D0055EC89 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		FFC477252ADE562D0055EC89 /* Transportation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transportation.swift; sourceTree = "<group>"; };
 		FFC4772D2ADE5FC70055EC89 /* DetailedActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedActivityViewModel.swift; sourceTree = "<group>"; };
-		FFEE1A9B2B7BEB8A003CC260 /* Tuple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tuple.swift; sourceTree = "<group>"; };
+		FFEE1A9B2B7BEB8A003CC260 /* TupleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TupleModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +174,8 @@
 			isa = PBXGroup;
 			children = (
 				FF1274CE2AF76D1900099E02 /* ActivityCardView.swift */,
+				503E76E12B7C380100E88986 /* AddActivityView.swift */,
+				503E76E32B7C3B6000E88986 /* AddActivityViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -388,7 +394,7 @@
 				FFC477202ADE55050055EC89 /* Event.swift */,
 				FFC4771C2ADE54EA0055EC89 /* Activity.swift */,
 				FFC477252ADE562D0055EC89 /* Transportation.swift */,
-				FFEE1A9B2B7BEB8A003CC260 /* Tuple.swift */,
+				FFEE1A9B2B7BEB8A003CC260 /* TupleModel.swift */,
 				FF1D0B2E2B67473B00FDF4CF /* Extensions.swift */,
 			);
 			path = Model;
@@ -617,11 +623,12 @@
 				FFC477232ADE551D0055EC89 /* Trip.swift in Sources */,
 				FFC4771D2ADE54EA0055EC89 /* Activity.swift in Sources */,
 				FFC477262ADE562D0055EC89 /* Transportation.swift in Sources */,
-				FFEE1A9C2B7BEB8A003CC260 /* Tuple.swift in Sources */,
+				FFEE1A9C2B7BEB8A003CC260 /* TupleModel.swift in Sources */,
 				FF6531AE2B659C2800D69746 /* ViewModel.swift in Sources */,
 				FF1274CF2AF76D1900099E02 /* ActivityCardView.swift in Sources */,
 				50C58C692B5A4F10000DF547 /* SimpleTripCardView.swift in Sources */,
 				FF9AB77B2B68C1E200CA601C /* TripViewModel.swift in Sources */,
+				503E76E22B7C380100E88986 /* AddActivityView.swift in Sources */,
 				FFC477132ADC91B50055EC89 /* RecentTabView.swift in Sources */,
 				FF1D0B2D2B6710E400FDF4CF /* NewActivityForm.swift in Sources */,
 				FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */,
@@ -631,6 +638,7 @@
 				FFC477212ADE55050055EC89 /* Event.swift in Sources */,
 				FF9AB77D2B69695000CA601C /* MockData.swift in Sources */,
 				FFC477152ADC91C40055EC89 /* SettingTabView.swift in Sources */,
+				503E76E42B7C3B6000E88986 /* AddActivityViewModel.swift in Sources */,
 				FFC477192ADC91E00055EC89 /* TripTabView.swift in Sources */,
 				FFC4770F2ADC91910055EC89 /* FullActivityCardView.swift in Sources */,
 			);
