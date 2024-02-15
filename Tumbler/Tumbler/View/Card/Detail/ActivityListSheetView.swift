@@ -1,23 +1,14 @@
 //
-//  DetailedActivityView.swift
+//  ActivityListSheetView.swift
 //  Tumbler
 //
-//  Created by Vincent Liu on 1/23/24.
+//  Created by Vincent Liu on 2/14/24.
 //
 
 import SwiftUI
 
-enum ActivitySymbolName: String {
-    case attractions = "camera.circle.fill"
-    case foods = "fork.knife.circle.fill"
-    case beaches = "sun.horizon.circle.fill"
-    case houses = "house.lodge.circle.fill"
-    case camps = "tent.circle.fill"
-    case others = "ellipsis.circle.fill"
-}
-
-struct DetailedActivityView: View {
-    @EnvironmentObject var viewModel: DetailedActivityViewModel
+struct ActivityListSheetView: View {
+    @EnvironmentObject var viewModel: ActivityListSheetViewModel
 
     var body: some View {
         NavigationStack {
@@ -28,20 +19,21 @@ struct DetailedActivityView: View {
                 section(viewModel.activities[.house], ActivitySymbolName.houses)
                 section(viewModel.activities[.camp], ActivitySymbolName.camps)
                 section(viewModel.activities[Activity.ActivityType.other], ActivitySymbolName.others)
-        }
-            .navigationTitle("Activities")
+            }
+            .navigationTitle("Add Activity")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                Button(action: {
-
-                }, label: {
-                    Image(systemName: "plus")
-                        .font(.system(size: 18))
-                        .foregroundColor(Color.black)
-                        .symbolRenderingMode(.monochrome)
-                        .padding(.leading, 34)
-                })
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        // TODO: Add the action to map page
+                    }) {
+                        // TODO: Change the symbol to correct symbol
+                        Label("Next Page", systemImage: "square.and.arrow.up")
+                    }
+                }
             }
         }
+        .searchable(text: $viewModel.searchText)
     }
 
     @ViewBuilder
@@ -64,37 +56,25 @@ struct DetailedActivityView: View {
                 .textCase(nil)
                 .padding(.leading, -20.0)
             ) {
-                ForEach(activities!, id: \.id) { attraction in
+                ForEach(searchResults(activities: activities!), id: \.id) { attraction in
                     ActivityRow(activity: attraction)
                 }
             }
         }
     }
-}
 
-struct ActivityRow: View {
-    @State var activity: Activity
-
-    var body: some View {
-        NavigationLink {
-            
-        } label: {
-            Label(
-                title: { Text(activity.name).foregroundStyle(.black) },
-                icon: { Image("rectangleCafe")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 40, height: 35)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .brightness(-0.2)
-                        .accessibilityIdentifier("preview-image")
-                }
-            )
+    private func searchResults(activities: [Activity]) -> [Activity] {
+        if viewModel.searchText.isEmpty {
+            return activities
+        } else {
+            return activities.filter { $0.name.contains(viewModel.searchText)}
         }
     }
 }
 
 #Preview {
     let mockData = ViewModel(TripDataSource.test)
-    return DetailedActivityView().environmentObject(DetailedActivityViewModel(mockData.trips.first!.activities))
+    return
+        ActivityListSheetView()
+        .environmentObject(ActivityListSheetViewModel(mockData.trips.first!.activities))
 }

@@ -14,7 +14,6 @@ struct NewActivityView: View {
     @State var form = NewActivityForm()
 
     @Binding var showSheet: Bool
-    @State var selected = 1
 
     var body: some View {
         NavigationStack {
@@ -33,15 +32,16 @@ struct NewActivityView: View {
             }
             .listRowSeparator(.visible)
             .navigationTitle("Create New Activity")
-            .navigationBarItems(
-                leading: 
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
                     Button(
                         "Cancel",
                         action: { self.showSheet.toggle() }
                     )
                     .accessibilityLabel("Close")
-                    .accessibilityIdentifier("close-button"),
-                trailing: 
+                    .accessibilityIdentifier("close-button")
+                }
+                ToolbarItem(placement: .topBarTrailing) {
                     Button(
                         "Add",
                         action: {
@@ -51,7 +51,8 @@ struct NewActivityView: View {
                     )
                     .accessibilityLabel("Add")
                     .accessibilityIdentifier("close-button")
-            )
+                }
+            }
             .onAppear {
                 UITextField.appearance().clearButtonMode = .whileEditing
             }
