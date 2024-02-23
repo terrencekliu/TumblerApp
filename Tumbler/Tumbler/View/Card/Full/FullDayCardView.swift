@@ -15,34 +15,38 @@ enum TransportationSymbol: String {
 
 struct FullDayCardView: View {
     @ObservedObject var day: Day
+    @State var hasDayName: Bool = false
 
     var body: some View {
-        ScrollView {
-            LazyVStack(spacing: 1, pinnedViews: [.sectionHeaders]) {
-                ForEach(day.events) { event in
-                    Section {
-                        SingleEventCardView(event: event)
-                    } header: {
-                        HStack {
-                            Text(event.startTime.format())
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .foregroundColor(.black)
-                            Spacer()
+        ZStack(alignment: .top) {
+            ScrollView {
+                LazyVStack(spacing: 1, pinnedViews: [.sectionHeaders]) {
+                    ForEach(day.events) { event in
+                        Section {
+                            SingleEventCardView(event: event)
+                        } header: {
+                            HStack {
+                                if hasDayName {
+                                    Text(event.startTime.format())
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                    Spacer()
+                                    Text(day.name)
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                } else {
+                                    Text(event.startTime.format())
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                    Spacer()
+                                }
+                            }
+                            .padding()
                         }
-                        .padding()
-                        .background(
-                            Color.secondary
-                                .colorInvert()
-                                .opacity(0.75)
-                                .blur(radius: /*@START_MENU_TOKEN@*/3.0/*@END_MENU_TOKEN@*/)
-                        )
                     }
                 }
             }
         }
-        .background(Color(uiColor: UIColor.secondarySystemBackground))
-        .navigationTitle(day.name)
     }
 }
 

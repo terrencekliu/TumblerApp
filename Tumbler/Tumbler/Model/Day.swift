@@ -22,7 +22,7 @@ class Day: Identifiable, Comparable, Hashable, ObservableObject {
 
     @Relationship(deleteRule: .nullify, inverse: \Event.day)
     var events: [Event] = []
-    
+
     init(id: UUID = UUID(),
          name: String,
          startTime: Date,

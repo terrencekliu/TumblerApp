@@ -7,20 +7,37 @@
 
 import Foundation
 private let tripId1 = UUID()
+private let tripId2 = UUID()
 private let dayId1 = UUID()
+private let dayId2 = UUID()
+private let dayId3 = UUID()
 private let eventId1 = UUID()
 private let eventId2 = UUID()
+private let eventId3 = UUID()
+private let eventId4 = UUID()
 private let activityId1 = UUID()
 private let activityId2 = UUID()
 private let activityId3 = UUID()
 private let activityId4 = UUID()
 
-let testTrip1 = Trip(id: tripId1, name: "Test Trip", days: [testDay1], activities: [testActivity1, testActivity2, testActivity3, testActivity4])
+private let dateFormatter: (String) -> Date = { dateTime in
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
+    return dateFormatter.date(from: dateTime)!
+}
 
-let testDay1 = Day(id: dayId1, name: "Test Day", startTime: Date.distantPast, endTime: Date.distantFuture, events: [testEvent1, testEvent2])
+let testTrip1 = Trip(id: tripId1, name: "Test Trip 1", days: [testDay1], activities: [testActivity1, testActivity2, testActivity3, testActivity4])
+let testTrip2 = Trip(id: tripId2, name: "Test Trip 2", days: [testDay2, testDay3], activities: [])
 
-let testEvent1 = Event(id: eventId1, activities: [testActivity1, testActivity2], startTime: Date.now, endTime: Date.distantFuture)
-let testEvent2 = Event(id: eventId2, activities: [testActivity3, testActivity4], startTime: Date.now, endTime: Date.distantFuture)
+let testDay1 = Day(id: dayId1, name: "Test Day 1", startTime: dateFormatter("2024-01-01 00:00"), endTime: dateFormatter("2030-01-01 00:00"), events: [testEvent1, testEvent2])
+let testDay2 = Day(id: dayId2, name: "Test Day 2", startTime: dateFormatter("2024-01-01 00:00"), endTime: dateFormatter("2030-01-01 00:00"), events: [testEvent3])
+let testDay3 = Day(id: dayId3, name: "Test Day 3", startTime: dateFormatter("2024-01-01 00:00"), endTime: dateFormatter("2030-01-01 00:00"), events: [])
+
+let testEvent3 = Event(id: eventId3, activities: [], startTime: dateFormatter("2024-01-01 01:00"), endTime: dateFormatter("2024-01-01 10:00"))
+let testEvent4 = Event(id: eventId4, activities: [], startTime: dateFormatter("2024-01-01 01:00"), endTime: dateFormatter("2024-01-01 10:00"))
+
+let testEvent1 = Event(id: eventId1, activities: [testActivity1, testActivity2], startTime: dateFormatter("2024-01-01 01:00"), endTime: dateFormatter("2024-01-01 10:00"))
+let testEvent2 = Event(id: eventId2, activities: [testActivity3, testActivity4], startTime: dateFormatter("2024-01-01 15:00"), endTime: dateFormatter("2024-01-01 20:00"))
 
 let testActivity1 = Activity(
     id: activityId1,

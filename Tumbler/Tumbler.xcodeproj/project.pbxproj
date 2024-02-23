@@ -29,6 +29,7 @@
 		FF5938292B166B33002B66C4 /* FullActivityCardViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5938282B166B33002B66C4 /* FullActivityCardViewTests.swift */; };
 		FF6531AC2B6593A200D69746 /* TripDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6531AB2B6593A200D69746 /* TripDataSource.swift */; };
 		FF6531AE2B659C2800D69746 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6531AD2B659C2800D69746 /* ViewModel.swift */; };
+		FF6EA1302B7C4EA400827D12 /* DayPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6EA12F2B7C4EA400827D12 /* DayPickerView.swift */; };
 		FF9AB77B2B68C1E200CA601C /* TripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9AB77A2B68C1E200CA601C /* TripViewModel.swift */; };
 		FF9AB77D2B69695000CA601C /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9AB77C2B69695000CA601C /* MockData.swift */; };
 		FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476E12ADC90A10055EC89 /* TumblerApp.swift */; };
@@ -92,6 +93,7 @@
 		FF5938282B166B33002B66C4 /* FullActivityCardViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullActivityCardViewTests.swift; sourceTree = "<group>"; };
 		FF6531AB2B6593A200D69746 /* TripDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDataSource.swift; sourceTree = "<group>"; };
 		FF6531AD2B659C2800D69746 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		FF6EA12F2B7C4EA400827D12 /* DayPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerView.swift; sourceTree = "<group>"; };
 		FF9AB77A2B68C1E200CA601C /* TripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModel.swift; sourceTree = "<group>"; };
 		FF9AB77C2B69695000CA601C /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		FFC476DE2ADC90A10055EC89 /* Tumbler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tumbler.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -446,6 +448,7 @@
 				FF1274CB2AF7625B00099E02 /* SimpleActivityCardView.swift */,
 				50C58C682B5A4F10000DF547 /* SimpleTripCardView.swift */,
 				50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */,
+				FF6EA12F2B7C4EA400827D12 /* DayPickerView.swift */,
 			);
 			path = Simple;
 			sourceTree = "<group>";
@@ -615,6 +618,7 @@
 			files = (
 				FF1274C82AF74F8F00099E02 /* FullEventCardView.swift in Sources */,
 				FF1D0B2F2B67473B00FDF4CF /* Extensions.swift in Sources */,
+				FF6EA1302B7C4EA400827D12 /* DayPickerView.swift in Sources */,
 				503E76DE2B71F91A00E88986 /* NewDayView.swift in Sources */,
 				FFC477112ADC91A30055EC89 /* FullDayCardView.swift in Sources */,
 				FFC4772E2ADE5FC70055EC89 /* DetailedActivityViewModel.swift in Sources */,

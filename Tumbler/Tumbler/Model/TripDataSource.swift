@@ -38,10 +38,14 @@ final class TripDataSource: ObservableObject {
 //        try! self.modelContext.delete(model: Event.self)
 //        try! self.modelContext.delete(model: Activity.self)
 //        newTrip(testTrip1)
+//        newTrip(testTrip2)
 
         // swiftlint:enable force_try
 
-        if mock { newTrip(testTrip1) }
+        if mock {
+            newTrip(testTrip1)
+            newTrip(testTrip2)
+        }
     }
 
     func newTrip(_ trip: Trip) {
@@ -89,7 +93,12 @@ final class TripDataSource: ObservableObject {
 
     func fetchTripActivities(_ tripId: UUID) -> [Activity] {
         do {
-            return try modelContext.fetch(FetchDescriptor<Activity>())
+            return try modelContext.fetch(FetchDescriptor<Activity>(
+                predicate: #Predicate { activity in
+                    activity.trip?.id == tripId
+                },
+                sortBy: [SortDescriptor(\.id), SortDescriptor(\.name)]
+            ))
         } catch {
             fatalError(error.localizedDescription)
         }

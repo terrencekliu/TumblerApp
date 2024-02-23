@@ -47,7 +47,9 @@ struct TripView: View {
                     DetailedActivityView()
                         .environmentObject(DetailedActivityViewModel(trip.activities))
                 case SectionType.days:
-                    EmptyView()
+                    ForEach(trip.days, id: \.self.id) { day in
+                        FullDayCardView(day: day, hasDayName: true)
+                    }
                 }
             } label: {
                 Text("See All")
