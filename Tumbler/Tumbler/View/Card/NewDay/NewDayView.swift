@@ -8,33 +8,31 @@
 import SwiftUI
 
 struct NewDayView: View {
-    @State private var name: String = ""
-    @State private var startDate: Date = Date()
-    
-    // TODO: make sure that the endDate will be the same day as startDate
-    @State private var endDate: Date = Date()
+    @EnvironmentObject var trip: Trip
+    @StateObject var form: NewDayForm = NewDayForm()
 
     var body: some View {
         NavigationStack {
             ZStack {
                 List {
-                    SwiftUI.Section(header: Text("General")) {
+                    Section(header: Text("General")) {
                         HStack(spacing: 40) {
                             Text("Name")
                                 .font(.body)
                                 .fontWeight(.regular)
-                            TextField("Day", text: $name)
+                            TextField("Day", text: $form.name)
                                 .textContentType(.givenName)
                         }
-                        DatePicker("Start", selection: $startDate, displayedComponents: [.date, .hourAndMinute])
+                        DatePicker("Start", selection: $form.startDate, displayedComponents: [.date, .hourAndMinute])
                         // TODO: Limit user start and end time
                         DatePicker(
                             "End",
-                            selection: $endDate,
+                            selection: $form.endDate,
+                            in: form.startDate ... form.startDate.endOfDay(),
                             displayedComponents: [.hourAndMinute]
                         )
                     }
-                    SwiftUI.Section {
+                    Section {
                         HStack {
                             Text("Thumbnail")
                             Spacer()
@@ -48,7 +46,12 @@ struct NewDayView: View {
                 .onAppear {
                     UITextField.appearance().clearButtonMode = .whileEditing
                 }
-                Button(action: {}) {
+                .scrollDisabled(true)
+                NavigationLink {
+                    AddActivityView()
+                        .environmentObject(form)
+                        .environmentObject(trip)
+                } label: {
                     Text("Continue")
                         .font(.title2)
                         .fontWeight(.regular)

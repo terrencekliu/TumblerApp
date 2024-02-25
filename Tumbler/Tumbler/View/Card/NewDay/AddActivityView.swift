@@ -8,17 +8,28 @@
 import SwiftUI
 
 struct AddActivityView: View {
-    @StateObject var activityList: TupleList = TupleList(tuples: [testTuple1, testTuple2])
+    @EnvironmentObject var trip: Trip
+    @EnvironmentObject var form: NewDayForm
+    @ObservedObject private var viewModel = AddActivityViewModel()
 
-    @ObservedObject var viewModel = AddActivityViewModel()
-    @ObservedObject var trip: Trip
-
+    @State private var showAddSheet = false
     @State private var selectedTime: Date = Date()
     var body: some View {
         NavigationStack {
-            List(activityList.tuples, id: \.self) { activity in
-                ActivityTimeCard()
-                    .environmentObject(activity)
+            if form.list.count <= 0 {
+                Button {
+                    showAddSheet = true
+                } label: {
+                    Image(systemName: "plus")
+                        .padding([.leading, .trailing], 20)
+                        .fontWeight(.bold)
+                }
+                .buttonStyle(.borderedProminent)
+                .buttonBorderShape(.capsule)
+            }
+            List(form.list.indices, id: \.self) { idx in
+                InstanceGroup(addIndex: idx + 1)
+                    .environmentObject(form.list[idx])
             }
             .listSectionSpacing(.compact)
             .listStyle(.insetGrouped)
@@ -26,31 +37,44 @@ struct AddActivityView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") {
-                        // TODO: Pop to root view?
+                    NavigationLink("Done") {
+                        let message = viewModel.submitForm(form: form)
+                        if message == nil {
+                            Text("Success")
+//                            TripView(trip: trip)
+                        } else {
+                            Text("Failure")
+                        }
                     }
                 }
+            }
+            .sheet(isPresented: $showAddSheet) {
+                ActivityListSheetView(showSheet: $showAddSheet, addIndex: .constant(0))
+                    .environmentObject(DetailedActivityViewModel(trip.activities))
+                    .presentationDetents([.medium, .large])
             }
         }
     }
 }
 
-struct ActivityTimeCard: View {
-    @EnvironmentObject var activity: Tuple
+struct InstanceGroup: View {
+    @EnvironmentObject var trip: Trip
+    @EnvironmentObject var instance: ActivityEventGroup
 
+    @State var addIndex: Int
+    @State private var showAddSheet = false
     // TODO: Need to extract the saved time in the tuple
     @State var selectedTime: Date = Date.distantPast
 
     var body: some View {
         Section {
             ActivityCard()
-                .environmentObject(activity)
         } header: {
-            if activity.isEvent {
+            if instance.isEvent {
                 HStack {
                     DatePicker("", selection: $selectedTime, displayedComponents: .hourAndMinute)
                         .onChange(of: selectedTime, initial: true) {
-                            activity.date = selectedTime
+                            instance.startDate = selectedTime
                         }
                         .frame(width: 50)
                         .padding(.trailing, 20)
@@ -63,7 +87,7 @@ struct ActivityTimeCard: View {
             HStack {
                 Spacer()
                 Button {
-                    
+                    showAddSheet = true
                 } label: {
                     Image(systemName: "plus")
                         .padding([.leading, .trailing], 20)
@@ -75,11 +99,16 @@ struct ActivityTimeCard: View {
             }
         }
         .headerProminence(.increased)
+        .sheet(isPresented: $showAddSheet) {
+            ActivityListSheetView(showSheet: $showAddSheet, addIndex: $addIndex)
+                .environmentObject(DetailedActivityViewModel(trip.activities))
+                .presentationDetents([.medium, .large])
+        }
     }
 }
 
 struct ActivityCard: View {
-    @EnvironmentObject var element: Tuple
+    @EnvironmentObject var instance: ActivityEventGroup
 
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -91,7 +120,7 @@ struct ActivityCard: View {
         VStack(alignment: .leading) {
             HStack {
                 Label {
-                    Text(element.activity.name)
+                    Text(instance.activity.name)
                         .font(.headline)
                         .fontWeight(.semibold)
                         .accessibilityIdentifier("name-text")
@@ -102,17 +131,19 @@ struct ActivityCard: View {
                         .accessibilityIdentifier("type-image")
                 }
                 Spacer()
-                Toggle("", isOn: $element.isEvent)
+                Toggle("", isOn: $instance.isEvent)
             }
-            Text(element.activity.address)
+            Text(instance.activity.address)
                 .foregroundColor(.blue)
                 .accessibilityIdentifier("address-text")
-            TransportTabView(defaultTransport: element.activity.defaultTransportation)
+            TransportTabView(defaultTransport: instance.activity.defaultTransportation)
         }
     }
 }
 
 #Preview {
     let mockViewModel = ViewModel(TripDataSource.test)
-    return AddActivityView(trip: mockViewModel.trips.first!)
+    return AddActivityView()
+        .environmentObject(mockViewModel.trips.first!)
+        .environmentObject(NewDayForm())
 }

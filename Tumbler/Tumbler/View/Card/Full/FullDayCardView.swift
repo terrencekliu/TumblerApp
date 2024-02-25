@@ -54,7 +54,7 @@ struct SingleEventCardView: View {
     @ObservedObject var event: Event
 
     var body: some View {
-        ForEach(event.activities) { activity in
+        ForEach(event.getActivities()) { activity in
             VStack {
                 FullActivityCardView(
                     activity: activity

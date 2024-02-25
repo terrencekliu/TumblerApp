@@ -8,7 +8,13 @@
 import SwiftUI
 
 struct ActivityListSheetView: View {
-    @EnvironmentObject var viewModel: ActivityListSheetViewModel
+    @EnvironmentObject var viewModel: DetailedActivityViewModel
+    @EnvironmentObject var form: NewDayForm
+    
+//    @ObservedObject var viewModel = AddActivityViewModel()
+    
+    @Binding var showSheet: Bool
+    @Binding var addIndex: Int
 
     var body: some View {
         NavigationStack {
@@ -56,8 +62,24 @@ struct ActivityListSheetView: View {
                 .textCase(nil)
                 .padding(.leading, -20.0)
             ) {
-                ForEach(searchResults(activities: activities!), id: \.id) { attraction in
-                    ActivityRow(activity: attraction)
+                ForEach(searchResults(activities: activities!), id: \.id) { activity in
+                    Button {
+                        // TODO: Move to ViewModel
+                        form.list.insert(ActivityEventGroup(activity), at: addIndex)
+                        showSheet = false
+                    } label: {
+                        Label(
+                            title: { Text(activity.name).foregroundStyle(.black) },
+                            icon: { Image("rectangleCafe")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 40, height: 35)
+                                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                                    .brightness(-0.2)
+                                    .accessibilityIdentifier("preview-image")
+                            }
+                        )
+                    }
                 }
             }
         }
@@ -67,14 +89,13 @@ struct ActivityListSheetView: View {
         if viewModel.searchText.isEmpty {
             return activities
         } else {
-            return activities.filter { $0.name.contains(viewModel.searchText)}
+            return activities.filter { $0.name.localizedCaseInsensitiveContains(viewModel.searchText)}
         }
     }
 }
 
 #Preview {
     let mockData = ViewModel(TripDataSource.test)
-    return
-        ActivityListSheetView()
-        .environmentObject(ActivityListSheetViewModel(mockData.trips.first!.activities))
+    return ActivityListSheetView(showSheet: .constant(true), addIndex: .constant(0))
+        .environmentObject(DetailedActivityViewModel(mockData.trips.first!.activities))
 }

@@ -12,17 +12,38 @@ import SwiftData
 class Event: Identifiable, ObservableObject {
     @Attribute(.unique) let id: UUID
     var day: Day?
-    
+
     @Relationship(deleteRule: .nullify, inverse: \Activity.event)
-    var activities: [Activity] = []
-    
+    private var activities: [Activity] = []
+
     var startTime: Date
     var endTime: Date
-    
+
     init(id: UUID = UUID(), activities: [Activity] = [], startTime: Date, endTime: Date) {
         self.id = id
-        self.activities = activities
         self.startTime = startTime
         self.endTime = endTime
+
+        // Update UUID for ordering
+        activities.forEach { activity in
+            activity.id = UUID()
+        }
+    }
+
+    // Update UUID to keep order
+    func addActivityOrder(_ activity: Activity) {
+        activity.id = UUID()
+        activities.append(activity)
+    }
+
+    func updateActivityOrder(_ ids: [UUID]) {
+        ids.forEach { currentId in
+            activities.first(where: { $0.id == currentId })?.id = UUID()
+        }
+    }
+
+    func getActivities() -> [Activity] {
+        activities.sort(by: { $0.id < $1.id })
+        return activities
     }
 }

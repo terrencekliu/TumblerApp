@@ -14,7 +14,7 @@ class FullEventCardViewModel: ObservableObject {
         self.model = event
     }
 
-    var otherActivities: [Activity] { model.activities }
+    var otherActivities: [Activity] { model.getActivities() }
     var startTime: Date { model.startTime }
     var endTime: Date { model.endTime ?? model.startTime }
 }

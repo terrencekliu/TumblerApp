@@ -33,12 +33,12 @@ final class TripDataSource: ObservableObject {
         self.modelContext = modelContainer.mainContext
 
         // REMOVE
-//        try! self.modelContext.delete(model: Trip.self)
-//        try! self.modelContext.delete(model: Day.self)
-//        try! self.modelContext.delete(model: Event.self)
-//        try! self.modelContext.delete(model: Activity.self)
-//        newTrip(testTrip1)
-//        newTrip(testTrip2)
+        try! self.modelContext.delete(model: Trip.self)
+        try! self.modelContext.delete(model: Day.self)
+        try! self.modelContext.delete(model: Event.self)
+        try! self.modelContext.delete(model: Activity.self)
+        newTrip(testTrip1)
+        newTrip(testTrip2)
 
         // swiftlint:enable force_try
 

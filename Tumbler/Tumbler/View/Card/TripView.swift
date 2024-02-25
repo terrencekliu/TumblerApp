@@ -19,6 +19,7 @@ struct TripView: View {
     @State private var isNewActivitySheet: Bool = false
     @State private var selectedActivitySheet: Activity?
 
+    // TODO: Simplify code
     private func header(_ section: SectionType) -> some View {
         HStack {
             Text(section.rawValue.capitalized)
@@ -27,20 +28,30 @@ struct TripView: View {
                 .textCase(nil)
                 .foregroundColor(.primary)
             Spacer()
-            Button {
-                switch section {
-                case SectionType.activities:
+            switch section {
+            case SectionType.activities:
+                Button {
                     isNewActivitySheet.toggle()
-                case SectionType.days:
-                    isNewActivitySheet.toggle()
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 18))
+                        .foregroundColor(.blue)
+                        .symbolRenderingMode(.monochrome)
+                        .padding(.leading, 34)
                 }
-            } label: {
-                Image(systemName: "plus")
-                    .font(.system(size: 18))
-                    .foregroundColor(.blue)
-                    .symbolRenderingMode(.monochrome)
-                    .padding(.leading, 34)
+            case SectionType.days:
+                NavigationLink {
+                    NewDayView()
+                        .environmentObject(trip)
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 18))
+                        .foregroundColor(.blue)
+                        .symbolRenderingMode(.monochrome)
+                        .padding(.leading, 34)
+                }
             }
+
             NavigationLink {
                 switch section {
                 case SectionType.activities:

@@ -12,7 +12,7 @@ typealias Trans = Transportation.TransportationType
 
 @Model
 class Activity: Identifiable, ObservableObject {
-    @Attribute(.unique) let id: UUID
+    @Attribute(.unique) var id: UUID
     var event: Event?
     var trip: Trip?
 

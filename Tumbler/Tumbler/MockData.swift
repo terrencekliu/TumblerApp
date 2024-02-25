@@ -88,14 +88,14 @@ let testActivity4 = Activity(
     alert: "Car break-in common"
 )
 
-let testTuple1 = Tuple(
-    true,
-    Date(),
-    testActivity1
-)
-
-let testTuple2 = Tuple(
-    false,
-    Date(),
-    testActivity2
-)
+//let testTuple1 = ActivityEventGroup(
+//    true,
+//    Date(),
+//    testActivity1
+//)
+//
+//let testTuple2 = ActivityEventGroup(
+//    false,
+//    Date(),
+//    testActivity2
+//)

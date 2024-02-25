@@ -12,7 +12,6 @@
 		503E76E22B7C380100E88986 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76E12B7C380100E88986 /* AddActivityView.swift */; };
 		503E76E42B7C3B6000E88986 /* AddActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76E32B7C3B6000E88986 /* AddActivityViewModel.swift */; };
 		504F74C42B7D851100693290 /* ActivityListSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504F74C32B7D851100693290 /* ActivityListSheetView.swift */; };
-		504F74C62B7D8C3500693290 /* ActivityListSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504F74C52B7D8C3500693290 /* ActivityListSheetViewModel.swift */; };
 		50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8454F2B58E20400CE5728 /* NewActivityView.swift */; };
 		50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */; };
 		50C2FF5A2B62047E0098DCFC /* SimpleTransportCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */; };
@@ -30,6 +29,7 @@
 		FF6531AC2B6593A200D69746 /* TripDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6531AB2B6593A200D69746 /* TripDataSource.swift */; };
 		FF6531AE2B659C2800D69746 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6531AD2B659C2800D69746 /* ViewModel.swift */; };
 		FF6EA1302B7C4EA400827D12 /* DayPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6EA12F2B7C4EA400827D12 /* DayPickerView.swift */; };
+		FF7258BA2B8AA2EE00A523AF /* NewDayForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7258B92B8AA2EE00A523AF /* NewDayForm.swift */; };
 		FF9AB77B2B68C1E200CA601C /* TripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9AB77A2B68C1E200CA601C /* TripViewModel.swift */; };
 		FF9AB77D2B69695000CA601C /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9AB77C2B69695000CA601C /* MockData.swift */; };
 		FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC476E12ADC90A10055EC89 /* TumblerApp.swift */; };
@@ -76,7 +76,6 @@
 		503E76E12B7C380100E88986 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
 		503E76E32B7C3B6000E88986 /* AddActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewModel.swift; sourceTree = "<group>"; };
 		504F74C32B7D851100693290 /* ActivityListSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListSheetView.swift; sourceTree = "<group>"; };
-		504F74C52B7D8C3500693290 /* ActivityListSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListSheetViewModel.swift; sourceTree = "<group>"; };
 		50A8454F2B58E20400CE5728 /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
 		50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewModel.swift; sourceTree = "<group>"; };
 		50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTransportCardView.swift; sourceTree = "<group>"; };
@@ -94,6 +93,7 @@
 		FF6531AB2B6593A200D69746 /* TripDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDataSource.swift; sourceTree = "<group>"; };
 		FF6531AD2B659C2800D69746 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		FF6EA12F2B7C4EA400827D12 /* DayPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerView.swift; sourceTree = "<group>"; };
+		FF7258B92B8AA2EE00A523AF /* NewDayForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayForm.swift; sourceTree = "<group>"; };
 		FF9AB77A2B68C1E200CA601C /* TripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModel.swift; sourceTree = "<group>"; };
 		FF9AB77C2B69695000CA601C /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		FFC476DE2ADC90A10055EC89 /* Tumbler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tumbler.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,15 +146,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		50A8454E2B58E1D800CE5728 /* Form */ = {
+		50A8454E2B58E1D800CE5728 /* NewActivity */ = {
 			isa = PBXGroup;
 			children = (
 				FF1D0B2C2B6710E400FDF4CF /* NewActivityForm.swift */,
 				50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */,
 				50A8454F2B58E20400CE5728 /* NewActivityView.swift */,
-				503E76DD2B71F91A00E88986 /* NewDayView.swift */,
 			);
-			path = Form;
+			path = NewActivity;
 			sourceTree = "<group>";
 		};
 		FF1274C32AF6BA9500099E02 /* FullActivity */ = {
@@ -180,10 +179,6 @@
 			isa = PBXGroup;
 			children = (
 				FF1274CE2AF76D1900099E02 /* ActivityCardView.swift */,
-				503E76E12B7C380100E88986 /* AddActivityView.swift */,
-				503E76E32B7C3B6000E88986 /* AddActivityViewModel.swift */,
-				504F74C32B7D851100693290 /* ActivityListSheetView.swift */,
-				504F74C52B7D8C3500693290 /* ActivityListSheetViewModel.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -330,6 +325,18 @@
 			path = FullEvent;
 			sourceTree = "<group>";
 		};
+		FF5E73CD2B8AA09C00CB220B /* NewDay */ = {
+			isa = PBXGroup;
+			children = (
+				FF7258B92B8AA2EE00A523AF /* NewDayForm.swift */,
+				504F74C32B7D851100693290 /* ActivityListSheetView.swift */,
+				503E76E12B7C380100E88986 /* AddActivityView.swift */,
+				503E76E32B7C3B6000E88986 /* AddActivityViewModel.swift */,
+				503E76DD2B71F91A00E88986 /* NewDayView.swift */,
+			);
+			path = NewDay;
+			sourceTree = "<group>";
+		};
 		FFC476D52ADC90A10055EC89 = {
 			isa = PBXGroup;
 			children = (
@@ -432,7 +439,8 @@
 		FFC477292ADE58860055EC89 /* Card */ = {
 			isa = PBXGroup;
 			children = (
-				50A8454E2B58E1D800CE5728 /* Form */,
+				FF5E73CD2B8AA09C00CB220B /* NewDay */,
+				50A8454E2B58E1D800CE5728 /* NewActivity */,
 				FF1274CD2AF76CFD00099E02 /* Detail */,
 				FFC4772B2ADE58B10055EC89 /* Full */,
 				FFC4772A2ADE58A50055EC89 /* Simple */,
@@ -639,11 +647,11 @@
 				50C58C692B5A4F10000DF547 /* SimpleTripCardView.swift in Sources */,
 				FF9AB77B2B68C1E200CA601C /* TripViewModel.swift in Sources */,
 				503E76E22B7C380100E88986 /* AddActivityView.swift in Sources */,
+				FF7258BA2B8AA2EE00A523AF /* NewDayForm.swift in Sources */,
 				FFC477132ADC91B50055EC89 /* RecentTabView.swift in Sources */,
 				FF1D0B2D2B6710E400FDF4CF /* NewActivityForm.swift in Sources */,
 				FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */,
 				50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */,
-				504F74C62B7D8C3500693290 /* ActivityListSheetViewModel.swift in Sources */,
 				F17FA3862AFC69BF00D66D26 /* LoginView.swift in Sources */,
 				FFC4771F2ADE54FB0055EC89 /* Day.swift in Sources */,
 				FFC477212ADE55050055EC89 /* Event.swift in Sources */,
