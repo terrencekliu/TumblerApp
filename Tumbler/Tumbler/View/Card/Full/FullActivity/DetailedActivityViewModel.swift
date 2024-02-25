@@ -11,7 +11,12 @@ class DetailedActivityViewModel: ObservableObject {
     @Published var activities: [Activity.ActivityType: [Activity]]
     @Published var searchText: String = ""
 
-    init(_ activities: [Activity]) {
-        self.activities = Dictionary(grouping: activities, by: { $0.type })
+    init(allActivity: [Activity]) {
+        self.activities = Dictionary(grouping: allActivity, by: { $0.type })
+    }
+
+    init(freeActivity: [Activity]) {
+        let filtered = freeActivity.filter { $0.event == nil }
+        self.activities = Dictionary(grouping: filtered, by: { $0.type })
     }
 }

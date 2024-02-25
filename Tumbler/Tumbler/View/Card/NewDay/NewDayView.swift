@@ -40,32 +40,28 @@ struct NewDayView: View {
                                 .foregroundColor(.blue)
                         }
                     }
+                    NavigationLink {
+                        AddActivityView()
+                            .environmentObject(form)
+                            .environmentObject(trip)
+                    } label: {
+                        Text("Continue")
+                            .foregroundColor(Color.blue)
+                    }
+                    .accessibilityIdentifier("new-day-button")
                 }
                 .navigationTitle("Create Day")
                 .navigationBarTitleDisplayMode(.inline)
                 .onAppear {
                     UITextField.appearance().clearButtonMode = .whileEditing
                 }
-                .scrollDisabled(true)
-                NavigationLink {
-                    AddActivityView()
-                        .environmentObject(form)
-                        .environmentObject(trip)
-                } label: {
-                    Text("Continue")
-                        .font(.title2)
-                        .fontWeight(.regular)
-                        .foregroundStyle(.white)
-                        .frame(width: 109, height: 50)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(.blue)
-                .accessibilityIdentifier("new-day-button")
             }
         }
     }
 }
 
 #Preview {
-    NewDayView()
+    let mockData = TripViewModel(dataSource: TripDataSource.test)
+    return NewDayView()
+        .environmentObject(mockData.trips.first!)
 }

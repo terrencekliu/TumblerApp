@@ -56,7 +56,7 @@ struct TripView: View {
                 switch section {
                 case SectionType.activities:
                     DetailedActivityView()
-                        .environmentObject(DetailedActivityViewModel(trip.activities))
+                        .environmentObject(DetailedActivityViewModel(allActivity: trip.activities))
                 case SectionType.days:
                     ForEach(trip.days, id: \.self.id) { day in
                         FullDayCardView(day: day, hasDayName: true)

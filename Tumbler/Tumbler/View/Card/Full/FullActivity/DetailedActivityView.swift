@@ -96,5 +96,5 @@ struct ActivityRow: View {
 
 #Preview {
     let mockData = ViewModel(TripDataSource.test)
-    return DetailedActivityView().environmentObject(DetailedActivityViewModel(mockData.trips.first!.activities))
+    return DetailedActivityView().environmentObject(DetailedActivityViewModel(allActivity: mockData.trips.first!.activities))
 }

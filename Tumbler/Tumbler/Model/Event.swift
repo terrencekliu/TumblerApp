@@ -46,4 +46,8 @@ class Event: Identifiable, ObservableObject {
         activities.sort(by: { $0.id < $1.id })
         return activities
     }
+
+    func getUnassignedActivities() -> [Activity] {
+        return activities.filter { $0.event == nil }
+    }
 }

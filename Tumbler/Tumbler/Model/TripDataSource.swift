@@ -38,13 +38,13 @@ final class TripDataSource: ObservableObject {
         try! self.modelContext.delete(model: Event.self)
         try! self.modelContext.delete(model: Activity.self)
         newTrip(testTrip1)
-        newTrip(testTrip2)
+//        newTrip(testTrip2)
 
         // swiftlint:enable force_try
 
         if mock {
             newTrip(testTrip1)
-            newTrip(testTrip2)
+//            newTrip(testTrip2)
         }
     }
 
@@ -66,8 +66,8 @@ final class TripDataSource: ObservableObject {
         }
     }
 
-    func newDay(_ day: Day) {
-        modelContext.insert(day)
+    func newTripDay(_ trip: Trip, _ day: Day) {
+        trip.days.append(day)
         do {
             try modelContext.save()
         } catch {

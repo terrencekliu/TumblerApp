@@ -37,20 +37,20 @@ struct AddActivityView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    NavigationLink("Done") {
-                        let message = viewModel.submitForm(form: form)
+                    Button("Done") {
+                        let message = viewModel.submitForm(trip: trip, form: form)
                         if message == nil {
-                            Text("Success")
+                            print("Success")
 //                            TripView(trip: trip)
                         } else {
-                            Text("Failure")
+                            print("Failure")
                         }
                     }
                 }
             }
             .sheet(isPresented: $showAddSheet) {
                 ActivityListSheetView(showSheet: $showAddSheet, addIndex: .constant(0))
-                    .environmentObject(DetailedActivityViewModel(trip.activities))
+                    .environmentObject(DetailedActivityViewModel(freeActivity: trip.activities))
                     .presentationDetents([.medium, .large])
             }
         }
@@ -101,7 +101,7 @@ struct InstanceGroup: View {
         .headerProminence(.increased)
         .sheet(isPresented: $showAddSheet) {
             ActivityListSheetView(showSheet: $showAddSheet, addIndex: $addIndex)
-                .environmentObject(DetailedActivityViewModel(trip.activities))
+                .environmentObject(DetailedActivityViewModel(freeActivity: trip.activities))
                 .presentationDetents([.medium, .large])
         }
     }

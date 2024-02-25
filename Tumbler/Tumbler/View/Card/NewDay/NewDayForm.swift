@@ -31,9 +31,8 @@ class NewDayForm: ObservableObject {
         list.forEach { instance in
             if instance.isEvent {
                 events.append(Event(startTime: instance.startDate, endTime: instance.endDate))
-            } else {
-                events.last!.addActivityOrder(instance.activity)
             }
+            events.last!.addActivityOrder(instance.activity)
         }
 
         return events

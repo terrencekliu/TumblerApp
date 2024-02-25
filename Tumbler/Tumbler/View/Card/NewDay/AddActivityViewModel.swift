@@ -16,7 +16,7 @@ class AddActivityViewModel: ObservableObject {
         self.dataSource = dataSource
     }
 
-    func submitForm(form: NewDayForm) -> String? {
+    func submitForm(trip: Trip, form: NewDayForm) -> String? {
         let day = Day(name: form.name, startTime: form.startDate, endTime: form.endDate)
 
         do {
@@ -27,7 +27,7 @@ class AddActivityViewModel: ObservableObject {
             return "There was an unexpected erorr"
         }
 
-        dataSource.newDay(day)
+        dataSource.newTripDay(trip, day)
         return nil
     }
 }

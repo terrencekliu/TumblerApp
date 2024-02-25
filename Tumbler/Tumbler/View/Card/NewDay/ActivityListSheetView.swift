@@ -10,9 +10,7 @@ import SwiftUI
 struct ActivityListSheetView: View {
     @EnvironmentObject var viewModel: DetailedActivityViewModel
     @EnvironmentObject var form: NewDayForm
-    
-//    @ObservedObject var viewModel = AddActivityViewModel()
-    
+
     @Binding var showSheet: Bool
     @Binding var addIndex: Int
 
@@ -62,7 +60,7 @@ struct ActivityListSheetView: View {
                 .textCase(nil)
                 .padding(.leading, -20.0)
             ) {
-                ForEach(searchResults(activities: activities!), id: \.id) { activity in
+                ForEach(searchResults(hasEvent: true, activities: activities!), id: \.id) { activity in
                     Button {
                         // TODO: Move to ViewModel
                         form.list.insert(ActivityEventGroup(activity), at: addIndex)
@@ -85,11 +83,11 @@ struct ActivityListSheetView: View {
         }
     }
 
-    private func searchResults(activities: [Activity]) -> [Activity] {
+    private func searchResults(hasEvent: Bool = false, activities: [Activity]) -> [Activity] {
         if viewModel.searchText.isEmpty {
             return activities
         } else {
-            return activities.filter { $0.name.localizedCaseInsensitiveContains(viewModel.searchText)}
+            return activities.filter { $0.name.localizedCaseInsensitiveContains(viewModel.searchText) }
         }
     }
 }
@@ -97,5 +95,5 @@ struct ActivityListSheetView: View {
 #Preview {
     let mockData = ViewModel(TripDataSource.test)
     return ActivityListSheetView(showSheet: .constant(true), addIndex: .constant(0))
-        .environmentObject(DetailedActivityViewModel(mockData.trips.first!.activities))
+        .environmentObject(DetailedActivityViewModel(allActivity: mockData.trips.first!.activities))
 }
