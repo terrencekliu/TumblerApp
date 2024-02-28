@@ -10,7 +10,7 @@
 		503E76DC2B68B1D900E88986 /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76DB2B68B1D900E88986 /* TripView.swift */; };
 		503E76DE2B71F91A00E88986 /* NewDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76DD2B71F91A00E88986 /* NewDayView.swift */; };
 		503E76E22B7C380100E88986 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76E12B7C380100E88986 /* AddActivityView.swift */; };
-		503E76E42B7C3B6000E88986 /* AddActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76E32B7C3B6000E88986 /* AddActivityViewModel.swift */; };
+		503E76E42B7C3B6000E88986 /* NewDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76E32B7C3B6000E88986 /* NewDayViewModel.swift */; };
 		504F74C42B7D851100693290 /* ActivityListSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504F74C32B7D851100693290 /* ActivityListSheetView.swift */; };
 		50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8454F2B58E20400CE5728 /* NewActivityView.swift */; };
 		50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */; };
@@ -74,7 +74,7 @@
 		503E76DB2B68B1D900E88986 /* TripView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
 		503E76DD2B71F91A00E88986 /* NewDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayView.swift; sourceTree = "<group>"; };
 		503E76E12B7C380100E88986 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
-		503E76E32B7C3B6000E88986 /* AddActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityViewModel.swift; sourceTree = "<group>"; };
+		503E76E32B7C3B6000E88986 /* NewDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayViewModel.swift; sourceTree = "<group>"; };
 		504F74C32B7D851100693290 /* ActivityListSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListSheetView.swift; sourceTree = "<group>"; };
 		50A8454F2B58E20400CE5728 /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
 		50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewModel.swift; sourceTree = "<group>"; };
@@ -329,9 +329,9 @@
 			isa = PBXGroup;
 			children = (
 				FF7258B92B8AA2EE00A523AF /* NewDayForm.swift */,
+				503E76E32B7C3B6000E88986 /* NewDayViewModel.swift */,
 				504F74C32B7D851100693290 /* ActivityListSheetView.swift */,
 				503E76E12B7C380100E88986 /* AddActivityView.swift */,
-				503E76E32B7C3B6000E88986 /* AddActivityViewModel.swift */,
 				503E76DD2B71F91A00E88986 /* NewDayView.swift */,
 			);
 			path = NewDay;
@@ -657,7 +657,7 @@
 				FFC477212ADE55050055EC89 /* Event.swift in Sources */,
 				FF9AB77D2B69695000CA601C /* MockData.swift in Sources */,
 				FFC477152ADC91C40055EC89 /* SettingTabView.swift in Sources */,
-				503E76E42B7C3B6000E88986 /* AddActivityViewModel.swift in Sources */,
+				503E76E42B7C3B6000E88986 /* NewDayViewModel.swift in Sources */,
 				FFC477192ADC91E00055EC89 /* TripTabView.swift in Sources */,
 				504F74C42B7D851100693290 /* ActivityListSheetView.swift in Sources */,
 				FFC4770F2ADC91910055EC89 /* FullActivityCardView.swift in Sources */,

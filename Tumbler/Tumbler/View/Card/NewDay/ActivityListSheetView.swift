@@ -8,21 +8,20 @@
 import SwiftUI
 
 struct ActivityListSheetView: View {
-    @EnvironmentObject var viewModel: DetailedActivityViewModel
-    @EnvironmentObject var form: NewDayForm
-
+    @Bindable var viewModel: NewDayViewModel
     @Binding var showSheet: Bool
     @Binding var addIndex: Int
 
     var body: some View {
         NavigationStack {
             List {
-                section(viewModel.activities[.attraction], ActivitySymbolName.attractions)
-                section(viewModel.activities[.food], ActivitySymbolName.foods)
-                section(viewModel.activities[.beach], ActivitySymbolName.beaches)
-                section(viewModel.activities[.house], ActivitySymbolName.houses)
-                section(viewModel.activities[.camp], ActivitySymbolName.camps)
-                section(viewModel.activities[Activity.ActivityType.other], ActivitySymbolName.others)
+                let activityGroup = viewModel.freeActivities()
+                section(activityGroup[.attraction], ActivitySymbolName.attractions)
+                section(activityGroup[.food], ActivitySymbolName.foods)
+                section(activityGroup[.beach], ActivitySymbolName.beaches)
+                section(activityGroup[.house], ActivitySymbolName.houses)
+                section(activityGroup[.camp], ActivitySymbolName.camps)
+                section(activityGroup[Activity.ActivityType.other], ActivitySymbolName.others)
             }
             .navigationTitle("Add Activity")
             .navigationBarTitleDisplayMode(.inline)
@@ -62,8 +61,7 @@ struct ActivityListSheetView: View {
             ) {
                 ForEach(searchResults(hasEvent: true, activities: activities!), id: \.id) { activity in
                     Button {
-                        // TODO: Move to ViewModel
-                        form.list.insert(ActivityEventGroup(activity), at: addIndex)
+                        viewModel.addInstance(activity: activity, at: addIndex)
                         showSheet = false
                     } label: {
                         Label(
@@ -92,8 +90,7 @@ struct ActivityListSheetView: View {
     }
 }
 
-#Preview {
-    let mockData = ViewModel(TripDataSource.test)
-    return ActivityListSheetView(showSheet: .constant(true), addIndex: .constant(0))
-        .environmentObject(DetailedActivityViewModel(allActivity: mockData.trips.first!.activities))
-}
+//#Preview {
+//    let mockData = ViewModel(TripDataSource.test)
+//    return ActivityListSheetView(viewModel: NewDayViewModel(trip: mockData.trips.first!), showSheet: true, addIndex: 0)
+//}

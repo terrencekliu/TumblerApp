@@ -17,7 +17,7 @@ enum ActivitySymbolName: String {
 }
 
 struct DetailedActivityView: View {
-    @EnvironmentObject var viewModel: DetailedActivityViewModel
+    @Environment(DetailedActivityViewModel.self) var viewModel
 
     var body: some View {
         NavigationStack {
@@ -96,5 +96,5 @@ struct ActivityRow: View {
 
 #Preview {
     let mockData = ViewModel(TripDataSource.test)
-    return DetailedActivityView().environmentObject(DetailedActivityViewModel(allActivity: mockData.trips.first!.activities))
+    return DetailedActivityView().environment(DetailedActivityViewModel(allActivity: mockData.trips.first!.activities))
 }

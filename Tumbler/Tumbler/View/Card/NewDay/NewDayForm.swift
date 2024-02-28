@@ -12,13 +12,13 @@ enum FormValidationError: Error {
     case unexpectedException
 }
 
-class NewDayForm: ObservableObject {
+@Observable
+class NewDayForm {
     var name: String = ""
 
     var startDate: Date = Date()
     var endDate: Date = Date()
 
-    @Published
     var list: [ActivityEventGroup] = []
 
     func toEvent() throws -> [Event] {

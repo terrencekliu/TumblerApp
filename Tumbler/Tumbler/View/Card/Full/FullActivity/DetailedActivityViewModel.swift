@@ -7,9 +7,10 @@
 
 import Foundation
 
-class DetailedActivityViewModel: ObservableObject {
-    @Published var activities: [Activity.ActivityType: [Activity]]
-    @Published var searchText: String = ""
+@Observable
+class DetailedActivityViewModel {
+    var activities: [Activity.ActivityType: [Activity]]
+    var searchText: String = ""
 
     init(allActivity: [Activity]) {
         self.activities = Dictionary(grouping: allActivity, by: { $0.type })

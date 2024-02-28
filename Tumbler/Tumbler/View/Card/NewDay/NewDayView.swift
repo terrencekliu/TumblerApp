@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct NewDayView: View {
-    @EnvironmentObject var trip: Trip
-    @StateObject var form: NewDayForm = NewDayForm()
+    @Bindable var viewModel: NewDayViewModel
 
     var body: some View {
         NavigationStack {
@@ -20,15 +19,15 @@ struct NewDayView: View {
                             Text("Name")
                                 .font(.body)
                                 .fontWeight(.regular)
-                            TextField("Day", text: $form.name)
+                            TextField("Day", text: $viewModel.form.name)
                                 .textContentType(.givenName)
                         }
-                        DatePicker("Start", selection: $form.startDate, displayedComponents: [.date, .hourAndMinute])
+                        DatePicker("Start", selection: $viewModel.form.startDate, displayedComponents: [.date, .hourAndMinute])
                         // TODO: Limit user start and end time
                         DatePicker(
                             "End",
-                            selection: $form.endDate,
-                            in: form.startDate ... form.startDate.endOfDay(),
+                            selection: $viewModel.form.endDate,
+                            in: viewModel.form.startDate ... viewModel.form.startDate.endOfDay(),
                             displayedComponents: [.hourAndMinute]
                         )
                     }
@@ -41,9 +40,7 @@ struct NewDayView: View {
                         }
                     }
                     NavigationLink {
-                        AddActivityView()
-                            .environmentObject(form)
-                            .environmentObject(trip)
+                        AddActivityView(viewModel: viewModel)
                     } label: {
                         Text("Continue")
                             .foregroundColor(Color.blue)
@@ -62,6 +59,6 @@ struct NewDayView: View {
 
 #Preview {
     let mockData = TripViewModel(dataSource: TripDataSource.test)
-    return NewDayView()
-        .environmentObject(mockData.trips.first!)
+    let testVM = NewDayViewModel(trip: mockData.trips.first!)
+    return NewDayView(viewModel: testVM)
 }

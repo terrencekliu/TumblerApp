@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct AddActivityView: View {
-    @EnvironmentObject var trip: Trip
-    @EnvironmentObject var form: NewDayForm
-    @ObservedObject private var viewModel = AddActivityViewModel()
+    var viewModel: NewDayViewModel
 
     @State private var showAddSheet = false
     @State private var selectedTime: Date = Date()
+
     var body: some View {
         NavigationStack {
-            if form.list.count <= 0 {
+            if viewModel.form.list.count <= 0 {
                 Button {
                     showAddSheet = true
                 } label: {
@@ -27,9 +26,8 @@ struct AddActivityView: View {
                 .buttonStyle(.borderedProminent)
                 .buttonBorderShape(.capsule)
             }
-            List(form.list.indices, id: \.self) { idx in
-                InstanceGroup(addIndex: idx + 1)
-                    .environmentObject(form.list[idx])
+            List(viewModel.form.list.indices, id: \.self) { idx in
+                InstanceGroup(viewModel: viewModel, instance: viewModel.form.list[idx], addIndex: idx + 1)
             }
             .listSectionSpacing(.compact)
             .listStyle(.insetGrouped)
@@ -38,7 +36,7 @@ struct AddActivityView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
-                        let message = viewModel.submitForm(trip: trip, form: form)
+                        let message = viewModel.submitForm()
                         if message == nil {
                             print("Success")
 //                            TripView(trip: trip)
@@ -49,17 +47,19 @@ struct AddActivityView: View {
                 }
             }
             .sheet(isPresented: $showAddSheet) {
-                ActivityListSheetView(showSheet: $showAddSheet, addIndex: .constant(0))
-                    .environmentObject(DetailedActivityViewModel(freeActivity: trip.activities))
-                    .presentationDetents([.medium, .large])
+                ActivityListSheetView(
+                    viewModel: viewModel,
+                    showSheet: $showAddSheet,
+                    addIndex: .constant(0)
+                )
             }
         }
     }
 }
 
 struct InstanceGroup: View {
-    @EnvironmentObject var trip: Trip
-    @EnvironmentObject var instance: ActivityEventGroup
+    var viewModel: NewDayViewModel
+    @ObservedObject var instance: ActivityEventGroup
 
     @State var addIndex: Int
     @State private var showAddSheet = false
@@ -68,7 +68,7 @@ struct InstanceGroup: View {
 
     var body: some View {
         Section {
-            ActivityCard()
+            ActivityCard(instance: instance)
         } header: {
             if instance.isEvent {
                 HStack {
@@ -100,15 +100,18 @@ struct InstanceGroup: View {
         }
         .headerProminence(.increased)
         .sheet(isPresented: $showAddSheet) {
-            ActivityListSheetView(showSheet: $showAddSheet, addIndex: $addIndex)
-                .environmentObject(DetailedActivityViewModel(freeActivity: trip.activities))
-                .presentationDetents([.medium, .large])
+            ActivityListSheetView(
+                viewModel: viewModel,
+                showSheet: $showAddSheet,
+                addIndex: $addIndex
+            )
+            .presentationDetents([.medium, .large])
         }
     }
 }
 
 struct ActivityCard: View {
-    @EnvironmentObject var instance: ActivityEventGroup
+    @StateObject var instance: ActivityEventGroup
 
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -143,7 +146,5 @@ struct ActivityCard: View {
 
 #Preview {
     let mockViewModel = ViewModel(TripDataSource.test)
-    return AddActivityView()
-        .environmentObject(mockViewModel.trips.first!)
-        .environmentObject(NewDayForm())
+    return AddActivityView(viewModel: NewDayViewModel(trip: mockViewModel.trips.first!))
 }

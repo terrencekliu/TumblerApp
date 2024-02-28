@@ -41,8 +41,7 @@ struct TripView: View {
                 }
             case SectionType.days:
                 NavigationLink {
-                    NewDayView()
-                        .environmentObject(trip)
+                    NewDayView(viewModel: NewDayViewModel(trip: trip))
                 } label: {
                     Image(systemName: "plus")
                         .font(.system(size: 18))
@@ -56,7 +55,7 @@ struct TripView: View {
                 switch section {
                 case SectionType.activities:
                     DetailedActivityView()
-                        .environmentObject(DetailedActivityViewModel(allActivity: trip.activities))
+                        .environment(DetailedActivityViewModel(allActivity: trip.activities))
                 case SectionType.days:
                     ForEach(trip.days, id: \.self.id) { day in
                         FullDayCardView(day: day, hasDayName: true)
