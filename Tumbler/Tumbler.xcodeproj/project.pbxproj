@@ -11,6 +11,7 @@
 		503E76DE2B71F91A00E88986 /* NewDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76DD2B71F91A00E88986 /* NewDayView.swift */; };
 		503E76E22B7C380100E88986 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76E12B7C380100E88986 /* AddActivityView.swift */; };
 		503E76E42B7C3B6000E88986 /* NewDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76E32B7C3B6000E88986 /* NewDayViewModel.swift */; };
+		504074172B9147C700DFB02D /* AddActivityMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504074162B9147C700DFB02D /* AddActivityMapView.swift */; };
 		504F74C42B7D851100693290 /* ActivityListSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504F74C32B7D851100693290 /* ActivityListSheetView.swift */; };
 		50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8454F2B58E20400CE5728 /* NewActivityView.swift */; };
 		50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */; };
@@ -75,6 +76,7 @@
 		503E76DD2B71F91A00E88986 /* NewDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayView.swift; sourceTree = "<group>"; };
 		503E76E12B7C380100E88986 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
 		503E76E32B7C3B6000E88986 /* NewDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayViewModel.swift; sourceTree = "<group>"; };
+		504074162B9147C700DFB02D /* AddActivityMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityMapView.swift; sourceTree = "<group>"; };
 		504F74C32B7D851100693290 /* ActivityListSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListSheetView.swift; sourceTree = "<group>"; };
 		50A8454F2B58E20400CE5728 /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
 		50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewModel.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				504F74C32B7D851100693290 /* ActivityListSheetView.swift */,
 				503E76E12B7C380100E88986 /* AddActivityView.swift */,
 				503E76DD2B71F91A00E88986 /* NewDayView.swift */,
+				504074162B9147C700DFB02D /* AddActivityMapView.swift */,
 			);
 			path = NewDay;
 			sourceTree = "<group>";
@@ -652,6 +655,7 @@
 				FF1D0B2D2B6710E400FDF4CF /* NewActivityForm.swift in Sources */,
 				FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */,
 				50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */,
+				504074172B9147C700DFB02D /* AddActivityMapView.swift in Sources */,
 				F17FA3862AFC69BF00D66D26 /* LoginView.swift in Sources */,
 				FFC4771F2ADE54FB0055EC89 /* Day.swift in Sources */,
 				FFC477212ADE55050055EC89 /* Event.swift in Sources */,

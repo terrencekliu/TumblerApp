@@ -27,9 +27,9 @@ struct AddActivityView: View {
                 .buttonBorderShape(.capsule)
             }
             List {
-                ForEach(form.list.indices, id: \.self) { idx in
-                    InstanceGroup(addIndex: idx + 1)
-                        .environmentObject(form.list[idx])
+                ForEach(viewModel.form.list.indices, id: \.self) { idx in
+                    InstanceGroup(viewModel: viewModel, instance: viewModel.form.list[idx], addIndex: idx + 1)
+                        .environmentObject(viewModel.form.list[idx])
                 }
                 .onDelete(perform: removeRow)
             }
@@ -61,7 +61,7 @@ struct AddActivityView: View {
     }
 
     private func removeRow(at offsets: IndexSet) {
-        form.list.remove(atOffsets: offsets)
+        viewModel.form.list.remove(atOffsets: offsets)
     }
 }
 
