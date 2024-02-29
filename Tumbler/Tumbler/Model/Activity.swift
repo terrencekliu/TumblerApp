@@ -21,7 +21,7 @@ class Activity: Identifiable, ObservableObject {
     var address: String
     var defaultTransportation: Transportation.TransportationType
 
-    @Attribute(.externalStorage) var thumbnail: Data?
+    @Attribute(.externalStorage) var thumbnail: Data? // Convert to UIImage to display
     @Attribute(.externalStorage) var ticketReserve: Data?
     @Attribute(.externalStorage) var files: Data?
 
@@ -37,8 +37,25 @@ class Activity: Identifiable, ObservableObject {
         case house
         case camp
         case other
-
+        
         var id: Self { self }
+
+        var symbol: ActivitySymbolName {
+            switch self {
+            case .beach:
+                return ActivitySymbolName.beaches
+            case .attraction:
+                return ActivitySymbolName.attractions
+            case .food:
+                return ActivitySymbolName.foods
+            case .house:
+                return ActivitySymbolName.houses
+            case .camp:
+                return ActivitySymbolName.camps
+            case .other:
+                return ActivitySymbolName.others
+            }
+        }
     }
 
     init(id: UUID = UUID(),

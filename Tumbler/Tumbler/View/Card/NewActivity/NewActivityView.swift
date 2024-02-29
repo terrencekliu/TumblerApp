@@ -7,11 +7,13 @@
 
 import SwiftUI
 import UIKit
+import PhotosUI
 
 struct NewActivityView: View {
     @ObservedObject var viewModel = NewActivityViewModel()
     @ObservedObject var trip: Trip
     @State var form = NewActivityForm()
+    @State private var selectedPhotoItem: PhotosPickerItem?
 
     @Binding var showSheet: Bool
 
@@ -103,7 +105,10 @@ struct NewActivityView: View {
             HStack {
                 Text("Thumbnail")
                 Spacer()
-                Button("Upload File") {}
+                PhotosPicker("Choose Photo", selection: $selectedPhotoItem, matching: .images)
+                    .onChange(of: selectedPhotoItem, initial: false) {
+                        convertItemToImage()
+                    }
             }
             HStack {
                 Text("Tickets/Reservations")
@@ -136,6 +141,14 @@ struct NewActivityView: View {
                 form.quickInfo.append(TupleModel())
             })
             .foregroundColor(/*@START_MENU_TOKEN@*/.green/*@END_MENU_TOKEN@*/)
+        }
+    }
+    
+    private func convertItemToImage() {
+        Task {
+            if let imageData = try? await selectedPhotoItem?.loadTransferable(type: Data.self) {
+                form.thumbnail = imageData
+            }
         }
     }
 }

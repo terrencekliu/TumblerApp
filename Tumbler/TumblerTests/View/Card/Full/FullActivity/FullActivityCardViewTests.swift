@@ -10,7 +10,7 @@ import XCTest
 @testable import Tumbler
 
 final class FullActivityCardViewTests: XCTestCase {
-    var testViewModel: FullActivityViewModel!
+    //var testViewModel: FullActivityViewModel!
 
 //    let testActivity = Activity(
 //        id: "test-id",

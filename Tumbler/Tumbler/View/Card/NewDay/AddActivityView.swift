@@ -26,8 +26,12 @@ struct AddActivityView: View {
                 .buttonStyle(.borderedProminent)
                 .buttonBorderShape(.capsule)
             }
-            List(viewModel.form.list.indices, id: \.self) { idx in
-                InstanceGroup(viewModel: viewModel, instance: viewModel.form.list[idx], addIndex: idx + 1)
+            List {
+                ForEach(form.list.indices, id: \.self) { idx in
+                    InstanceGroup(addIndex: idx + 1)
+                        .environmentObject(form.list[idx])
+                }
+                .onDelete(perform: removeRow)
             }
             .listSectionSpacing(.compact)
             .listStyle(.insetGrouped)
@@ -55,6 +59,10 @@ struct AddActivityView: View {
             }
         }
     }
+
+    private func removeRow(at offsets: IndexSet) {
+        form.list.remove(atOffsets: offsets)
+    }
 }
 
 struct InstanceGroup: View {
@@ -64,7 +72,7 @@ struct InstanceGroup: View {
     @State var addIndex: Int
     @State private var showAddSheet = false
     // TODO: Need to extract the saved time in the tuple
-    @State var selectedTime: Date = Date.distantPast
+    @State var selectedTime: Date = Date()
 
     var body: some View {
         Section {

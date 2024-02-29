@@ -22,7 +22,7 @@ struct FullActivityCardView: View {
                             .font(.headline)
                             .accessibilityIdentifier("name-text")
                     } icon: {
-                        Image(systemName: "fork.knife.circle.fill")
+                        Image(systemName: activity.type.symbol.rawValue)
                             .foregroundColor(.orange)
                             .font(.title)
                             .accessibilityIdentifier("type-image")
