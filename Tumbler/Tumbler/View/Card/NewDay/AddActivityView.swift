@@ -51,7 +51,15 @@ struct AddActivityView: View {
                 }
             }
             .sheet(isPresented: $showAddSheet) {
+                //TODO: Add new view to control the two sheet views showing up
+                /*
                 ActivityListSheetView(
+                    viewModel: viewModel,
+                    showSheet: $showAddSheet,
+                    addIndex: .constant(0)
+                )
+                 */
+                AddActivityMapView(
                     viewModel: viewModel,
                     showSheet: $showAddSheet,
                     addIndex: .constant(0)
@@ -144,7 +152,7 @@ struct ActivityCard: View {
                 Spacer()
                 Toggle("", isOn: $instance.isEvent)
             }
-            Text(instance.activity.address)
+            Text(instance.activity.address.address)
                 .foregroundColor(.blue)
                 .accessibilityIdentifier("address-text")
             TransportTabView(defaultTransport: instance.activity.defaultTransportation)

@@ -7,20 +7,39 @@
 
 import Foundation
 import SwiftData
+import CoreLocation
 
 @Observable
 class NewActivityViewModel: ObservableObject {
     @ObservationIgnored private let dataSource: TripDataSource
+    var form = NewActivityForm()
 
     init(dataSource: TripDataSource = TripDataSource.shared) {
         self.dataSource = dataSource
     }
 
-    func addActivity(trip: Trip, form: NewActivityForm) {
+    // TODO: Add error handling for setCoordinate
+    func addActivity(trip: Trip) {
+        setCoordinate { coordinate, error in
+            if error == nil {
+                self.form.latitude = coordinate.latitude
+                self.form.longitude = coordinate.longitude
+                print("Valid Address")
+            } else {
+                print("Invalid Address")
+            }
+        }
+        // TODO: Add validation
+        let newAddress = Address(
+            label: form.addressLabel,
+            address: form.address,
+            latitude: form.latitude!,
+            longitude: form.longitude!)
+
         let newActivity = Activity(
             name: form.name,
             type: form.type,
-            address: form.address,
+            address: newAddress,
             defaultTransportation: form.defaultTransportation,
             thumbnail: form.thumbnail,
             ticketReserve: form.ticketReserve,
@@ -36,5 +55,19 @@ class NewActivityViewModel: ObservableObject {
     private func updateSource(activity: Activity) {
         dataSource.newActivity(activity)
         // update implicit from newActivity
+    }
+
+    private func setCoordinate(completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
+        let getcoder = CLGeocoder()
+        getcoder.geocodeAddressString(self.form.address) { (placemarks, error) in
+            if error == nil {
+                if let placemark = placemarks?[0] {
+                    let location = placemark.location!
+                    completionHandler(location.coordinate, nil)
+                    return
+                }
+            }
+            completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
+        }
     }
 }

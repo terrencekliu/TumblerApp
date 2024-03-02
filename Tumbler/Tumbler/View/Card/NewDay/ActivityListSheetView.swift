@@ -15,7 +15,7 @@ struct ActivityListSheetView: View {
     var body: some View {
         NavigationStack {
             List {
-                let activityGroup = viewModel.freeActivities()
+                let activityGroup = Dictionary(grouping: viewModel.freeActivities(), by: { $0.type })
                 section(activityGroup[.attraction], ActivitySymbolName.attractions)
                 section(activityGroup[.food], ActivitySymbolName.foods)
                 section(activityGroup[.beach], ActivitySymbolName.beaches)
@@ -36,7 +36,7 @@ struct ActivityListSheetView: View {
                 }
             }
         }
-        .searchable(text: $viewModel.searchText)
+        .searchable(text: $viewModel.searchTextListView)
     }
 
     @ViewBuilder
@@ -82,10 +82,10 @@ struct ActivityListSheetView: View {
     }
 
     private func searchResults(hasEvent: Bool = false, activities: [Activity]) -> [Activity] {
-        if viewModel.searchText.isEmpty {
+        if viewModel.searchTextListView.isEmpty {
             return activities
         } else {
-            return activities.filter { $0.name.localizedCaseInsensitiveContains(viewModel.searchText) }
+            return activities.filter { $0.name.localizedCaseInsensitiveContains(viewModel.searchTextListView) }
         }
     }
 }

@@ -12,7 +12,6 @@ import PhotosUI
 struct NewActivityView: View {
     @ObservedObject var viewModel = NewActivityViewModel()
     @ObservedObject var trip: Trip
-    @State var form = NewActivityForm()
     @State private var selectedPhotoItem: PhotosPickerItem?
 
     @Binding var showSheet: Bool
@@ -24,11 +23,11 @@ struct NewActivityView: View {
                 time
                 files
                 Section(header: Text("Important Alerts")) {
-                    TextField("Alert", text: $form.alert)
+                    TextField("Alert", text: $viewModel.form.alert)
                         .textContentType(.givenName)
                 }
                 Section(header: Text("Notes")) {
-                    TextEditor(text: $form.notes)
+                    TextEditor(text: $viewModel.form.notes)
                 }
                 quickInfo
             }
@@ -47,7 +46,7 @@ struct NewActivityView: View {
                     Button(
                         "Add",
                         action: {
-                            viewModel.addActivity(trip: trip, form: form)
+                            viewModel.addActivity(trip: trip)
                             self.showSheet.toggle()
                         }
                     )
@@ -67,10 +66,10 @@ struct NewActivityView: View {
                 Text("Name")
                     .font(.body)
                     .fontWeight(.regular)
-                TextField("Activity", text: $form.name)
+                TextField("Activity", text: $viewModel.form.name)
                     .textContentType(.givenName)
             }
-            Picker("Type", selection: $form.type) {
+            Picker("Type", selection: $viewModel.form.type) {
                 ForEach(Activity.ActivityType.allCases) { activityType in
                     Text(activityType.rawValue.capitalized)
                 }
@@ -79,7 +78,7 @@ struct NewActivityView: View {
                 Text("Address")
                     .font(.body)
                     .fontWeight(.regular)
-                TextField("123 St, Town, USA 12345", text: $form.address)
+                TextField("123 St, Town, USA 12345", text: $viewModel.form.address)
                     .textContentType(.givenName)
             }
         }
@@ -87,13 +86,13 @@ struct NewActivityView: View {
 
     var time: some View {
         SwiftUI.Section(header: Text("Time")) {
-            Toggle("Time Sensitive", isOn: $form.timeSensitive)
-            if form.timeSensitive {
-                DatePicker("Start", selection: $form.startDate, displayedComponents: [.date, .hourAndMinute])
+            Toggle("Time Sensitive", isOn: $viewModel.form.timeSensitive)
+            if viewModel.form.timeSensitive {
+                DatePicker("Start", selection: $viewModel.form.startDate, displayedComponents: [.date, .hourAndMinute])
                 DatePicker(
                     "End",
-                    selection: $form.endDate,
-                    in: form.startDate ... form.startDate.endOfDay(),
+                    selection: $viewModel.form.endDate,
+                    in: viewModel.form.startDate ... viewModel.form.startDate.endOfDay(),
                     displayedComponents: [.hourAndMinute]
                 )
             }
@@ -125,29 +124,29 @@ struct NewActivityView: View {
 
     var quickInfo: some View {
         SwiftUI.Section(header: Text("Quick Info")) {
-            ForEach(form.quickInfo.indices, id: \.self) { index in
+            ForEach(viewModel.form.quickInfo.indices, id: \.self) { index in
                 HStack {
-                    TextField("Label", text: $form.quickInfo[index].first)
-                    TextField("Description", text: $form.quickInfo[index].second)
+                    TextField("Label", text: $viewModel.form.quickInfo[index].first)
+                    TextField("Description", text: $viewModel.form.quickInfo[index].second)
                 }
                 .autocorrectionDisabled()
                 .textInputAutocapitalization(.never)
             } .onDelete { indexSet in
-                form.quickInfo.remove(atOffsets: indexSet)
+                viewModel.form.quickInfo.remove(atOffsets: indexSet)
             } .onMove { from, to in
-                form.quickInfo.move(fromOffsets: from, toOffset: to)
+                viewModel.form.quickInfo.move(fromOffsets: from, toOffset: to)
             }
             Button("New item", systemImage: "plus.circle.fill", action: {
-                form.quickInfo.append(TupleModel())
+                viewModel.form.quickInfo.append(TupleModel())
             })
             .foregroundColor(/*@START_MENU_TOKEN@*/.green/*@END_MENU_TOKEN@*/)
         }
     }
-    
+
     private func convertItemToImage() {
         Task {
             if let imageData = try? await selectedPhotoItem?.loadTransferable(type: Data.self) {
-                form.thumbnail = imageData
+                viewModel.form.thumbnail = imageData
             }
         }
     }

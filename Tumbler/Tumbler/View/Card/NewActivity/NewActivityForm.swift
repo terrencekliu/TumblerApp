@@ -10,7 +10,12 @@ import Foundation
 struct NewActivityForm {
     var name: String = ""
     var type: Activity.ActivityType = Activity.ActivityType.other
+
+    var addressLabel: String = ""
     var address: String = ""
+    var longitude: Double?
+    var latitude: Double?
+
     var defaultTransportation: Trans = Trans.car
 
     var timeSensitive: Bool = false

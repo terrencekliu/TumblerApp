@@ -19,6 +19,10 @@ private let activityId1 = UUID()
 private let activityId2 = UUID()
 private let activityId3 = UUID()
 private let activityId4 = UUID()
+private let addressId1 = UUID()
+private let addressId2 = UUID()
+private let addressId3 = UUID()
+private let addressId4 = UUID()
 
 private let dateFormatter: (String) -> Date = { dateTime in
     let dateFormatter = DateFormatter()
@@ -45,7 +49,7 @@ let testActivity1 = Activity(
     id: activityId1,
     name: "Coffee Shop",
     type: Activity.ActivityType.food,
-    address: "12345 SE 12th St Bellevue, WA",
+    address: testAddress1,
     quickInfo: [TupleModel("Starting", "10:18 am"), TupleModel("Latte", "$5"), TupleModel("Ice Cream", "$6")],
     alert: "Car break-in common",
     notes: """
@@ -67,7 +71,7 @@ let testActivity2 = Activity(
     id: activityId2,
     name: "City Bench",
     type: Activity.ActivityType.attraction,
-    address: "12345 SE 12th St Bellevue, WA 98006",
+    address: testAddress2,
     quickInfo: [TupleModel("Starting", "10:18 am"), TupleModel("Latte", "$5"), TupleModel("Ice Cream", "$6")],
     alert: "Car break-in common"
 )
@@ -76,7 +80,7 @@ let testActivity3 = Activity(
     id: activityId3,
     name: "Walk of Rant",
     type: Activity.ActivityType.attraction,
-    address: "12345 SE 12th St Bellevue, WA 98006",
+    address: testAddress3,
     quickInfo: [TupleModel("Starting", "10:18 am"), TupleModel("Latte", "$5"), TupleModel("Ice Cream", "$6")],
     alert: "Car break-in common"
 )
@@ -85,9 +89,41 @@ let testActivity4 = Activity(
     id: activityId4,
     name: "Solar Panel Exhibit",
     type: Activity.ActivityType.attraction,
-    address: "12345 SE 12th St Bellevue, WA 98006",
+    address: testAddress4,
     quickInfo: [TupleModel("Starting", "10:18 am"), TupleModel("Latte", "$5"), TupleModel("Ice Cream", "$6")],
     alert: "Car break-in common"
+)
+
+let testAddress1 = Address(
+    id: addressId1,
+    label: "testAddress1",
+    address: "15063 Main St, Bellevue, WA 98007",
+    latitude: 47.610378,
+    longitude: -122.200676
+)
+
+let testAddress2 = Address(
+    id: addressId2,
+    label: "testAddress2",
+    address: "13841 NE 20th St, Bellevue, WA 98005",
+    latitude: 47.248549,
+    longitude: -121.154574
+)
+
+let testAddress3 = Address(
+    id: addressId3,
+    label: "testAddress3",
+    address: "15063 Main St, Bellevue, WA 98007",
+    latitude: 46.610378,
+    longitude: -123.200676
+)
+
+let testAddress4 = Address(
+    id: addressId4,
+    label: "testAddress4",
+    address: "15063 Main St, Bellevue, WA 98007",
+    latitude: 49.610378,
+    longitude: -124.200676
 )
 
 //let testTuple1 = ActivityEventGroup(

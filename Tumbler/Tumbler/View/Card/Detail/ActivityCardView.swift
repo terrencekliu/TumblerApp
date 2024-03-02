@@ -50,7 +50,7 @@ struct ActivityCardView: View {
                         .padding(.bottom, 2)
                         .accessibilityIdentifier("name-text")
                     // TODO: Make this a link to safari
-                    Text(activity.address)
+                    Text(activity.address.address)
                         .font(.body)
                         .foregroundStyle(.blue)
                         .fontWeight(.regular)

@@ -18,7 +18,7 @@ class Activity: Identifiable, ObservableObject {
 
     var name: String
     var type: ActivityType
-    var address: String
+    var address: Address
     var defaultTransportation: Transportation.TransportationType
 
     @Attribute(.externalStorage) var thumbnail: Data? // Convert to UIImage to display
@@ -61,7 +61,7 @@ class Activity: Identifiable, ObservableObject {
     init(id: UUID = UUID(),
          name: String,
          type: ActivityType = ActivityType.other,
-         address: String,
+         address: Address,
          defaultTransportation: Trans = Trans.car,
          thumbnail: Data? = nil,
          ticketReserve: Data? = nil,

@@ -32,7 +32,7 @@ struct FullActivityCardView: View {
                         Text("(\("--- ft"))")
                             .foregroundColor(.gray)
                             .accessibilityIdentifier("distance-text")
-                        Text(activity.address)
+                        Text(activity.address.address)
                             .foregroundColor(.blue)
                             .lineLimit(1)
                             .accessibilityIdentifier("address-text")

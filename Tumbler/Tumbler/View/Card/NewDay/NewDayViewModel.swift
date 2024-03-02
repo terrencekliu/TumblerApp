@@ -15,13 +15,17 @@ class NewDayViewModel {
 
     var form: NewDayForm
     var trip: Trip
-    var searchText: String
+    var searchTextListView: String
+    var searchTextMapView: String
+    var selectedPin: Activity?
 
     init(dataSource: TripDataSource = TripDataSource.shared, trip: Trip) {
         self.dataSource = dataSource
         self.form = NewDayForm()
         self.trip = trip
-        self.searchText = ""
+        self.searchTextListView = ""
+        self.searchTextMapView = ""
+        self.selectedPin = nil
     }
 
     func submitForm() -> String? {
@@ -43,8 +47,18 @@ class NewDayViewModel {
         self.form.list.insert(ActivityEventGroup(activity), at: at)
     }
 
-    func freeActivities() -> [Activity.ActivityType: [Activity]] {
-        let filtered = self.trip.activities.filter { $0.event == nil && !(form.list.map { $0.activity }.contains($0)) }
-        return Dictionary(grouping: filtered, by: { $0.type })
+    func freeActivities() -> [Activity] {
+        return self.trip.activities.filter { $0.event == nil && !(form.list.map { $0.activity }.contains($0)) }
     }
+
+    func usedActivities() -> [Activity] {
+        return self.form.list.map { $0.activity }
+    }
+
+//    func containsActivity(of activity: Activity) -> Bool {
+//        for activtyEventGroup in self.form.list where activtyEventGroup.activity == activity {
+//            return true
+//        }
+//        return false
+//    }
 }

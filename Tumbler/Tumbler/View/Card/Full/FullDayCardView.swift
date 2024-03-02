@@ -94,7 +94,9 @@ struct TransportTabView: View {
     }
 }
 
-#Preview {
-    let mockViewModel = ViewModel(TripDataSource.test)
-    return FullDayCardView(day: mockViewModel.trips.first!.days.first!)
-}
+/*
+ #Preview {
+ let mockViewModel = ViewModel(TripDataSource.test)
+ return FullDayCardView(day: mockViewModel.trips.first!.days.first!)
+ }
+ */
