@@ -29,7 +29,6 @@ struct AddActivityView: View {
             List {
                 ForEach(viewModel.form.list.indices, id: \.self) { idx in
                     InstanceGroup(viewModel: viewModel, instance: viewModel.form.list[idx], addIndex: idx + 1)
-                        .environmentObject(viewModel.form.list[idx])
                 }
                 .onDelete(perform: removeRow)
             }
@@ -51,17 +50,9 @@ struct AddActivityView: View {
                 }
             }
             .sheet(isPresented: $showAddSheet) {
-                //TODO: Add new view to control the two sheet views showing up
-                /*
-                ActivityListSheetView(
+                AddActivitySheetViewNew(
                     viewModel: viewModel,
-                    showSheet: $showAddSheet,
-                    addIndex: .constant(0)
-                )
-                 */
-                AddActivityMapView(
-                    viewModel: viewModel,
-                    showSheet: $showAddSheet,
+                    showAddSheet: $showAddSheet,
                     addIndex: .constant(0)
                 )
             }
@@ -75,7 +66,7 @@ struct AddActivityView: View {
 
 struct InstanceGroup: View {
     var viewModel: NewDayViewModel
-    @ObservedObject var instance: ActivityEventGroup
+    var instance: ActivityEventGroup
 
     @State var addIndex: Int
     @State private var showAddSheet = false
@@ -116,9 +107,9 @@ struct InstanceGroup: View {
         }
         .headerProminence(.increased)
         .sheet(isPresented: $showAddSheet) {
-            ActivityListSheetView(
+            AddActivitySheetViewNew(
                 viewModel: viewModel,
-                showSheet: $showAddSheet,
+                showAddSheet: $showAddSheet,
                 addIndex: $addIndex
             )
             .presentationDetents([.medium, .large])
@@ -127,7 +118,7 @@ struct InstanceGroup: View {
 }
 
 struct ActivityCard: View {
-    @StateObject var instance: ActivityEventGroup
+    @Bindable var instance: ActivityEventGroup
 
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()

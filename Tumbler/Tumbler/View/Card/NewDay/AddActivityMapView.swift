@@ -10,13 +10,15 @@ import MapKit
 
 struct AddActivityMapView: View {
     @Bindable var viewModel: NewDayViewModel
+
+    @State var selectedPin: Activity?
     @Binding var showSheet: Bool
     @Binding var addIndex: Int
 
     var body: some View {
         NavigationStack {
             ZStack {
-                Map(selection: $viewModel.selectedPin) {
+                Map(selection: $selectedPin) {
                     ForEach(searchResults(activities: viewModel.usedActivities())) { activity in
                         Marker(
                             activity.name,
@@ -39,8 +41,8 @@ struct AddActivityMapView: View {
                         .tag(activity)
                     }
                 }
-                if viewModel.selectedPin != nil {
-                    ActivityPopup(viewModel: viewModel)
+                if selectedPin != nil {
+                    ActivityPopup(viewModel: viewModel, selectedPin: selectedPin!, addIndex: $addIndex)
                 }
             }
             .navigationTitle("Add Activity")
@@ -72,6 +74,9 @@ struct AddActivityMapView: View {
 struct ActivityPopup: View {
     @Bindable var viewModel: NewDayViewModel
 
+    @State var selectedPin: Activity
+    @Binding var addIndex: Int
+
     var body: some View {
         VStack {
             ZStack {
@@ -88,25 +93,21 @@ struct ActivityPopup: View {
                         .accessibilityIdentifier("preview-image")
                     VStack(alignment: .leading) {
                         Label {
-                            Text(viewModel.selectedPin?.name ?? "No Activity Selected")
+                            Text(selectedPin.name)
                                 .font(.headline)
                                 .accessibilityIdentifier("name-text")
                         } icon: {
-                            Image(systemName: viewModel.selectedPin?.type.symbol.rawValue ?? Activity.ActivityType.attraction.symbol.rawValue)
-                                .foregroundColor(.orange)
-                                .font(.title)
-                                .accessibilityIdentifier("type-image")
+                            Image(systemName: selectedPin.type.symbol.rawValue)
                         }
-                        Text(viewModel.selectedPin?.address.address ?? "No Address")
+                        Text(selectedPin.address.address)
                             .foregroundColor(.blue)
                             .accessibilityIdentifier("address-text")
                     }
                     Spacer()
-                    if viewModel.selectedPin != nil && viewModel.freeActivities().contains(viewModel.selectedPin!) {
+                    if viewModel.freeActivities().contains(selectedPin) {
                         Button {
                             // TODO: Fix the at index to add
-                            if viewModel.selectedPin != nil { viewModel.addInstance(activity: viewModel.selectedPin!, at: 0)
-                            }
+                            viewModel.addInstance(activity: selectedPin, at: addIndex)
                         } label: {
                             Image(systemName: "plus.circle.fill")
                                 .foregroundStyle(.blue)
@@ -123,7 +124,6 @@ struct ActivityPopup: View {
                                 .font(.system(size: 40))
                         }
                     }
-                    
                 }
                 .padding([.leading, .trailing], 30)
             }
@@ -136,5 +136,6 @@ struct ActivityPopup: View {
 #Preview {
     let mockData = TripViewModel(dataSource: TripDataSource.test)
     let testVM = NewDayViewModel(trip: mockData.trips.first!)
+
     return AddActivityMapView(viewModel: testVM, showSheet: .constant(true), addIndex: .constant(0))
 }

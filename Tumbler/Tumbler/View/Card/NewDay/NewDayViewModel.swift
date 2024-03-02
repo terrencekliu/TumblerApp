@@ -17,7 +17,6 @@ class NewDayViewModel {
     var trip: Trip
     var searchTextListView: String
     var searchTextMapView: String
-    var selectedPin: Activity?
 
     init(dataSource: TripDataSource = TripDataSource.shared, trip: Trip) {
         self.dataSource = dataSource
@@ -25,7 +24,6 @@ class NewDayViewModel {
         self.trip = trip
         self.searchTextListView = ""
         self.searchTextMapView = ""
-        self.selectedPin = nil
     }
 
     func submitForm() -> String? {
@@ -54,11 +52,4 @@ class NewDayViewModel {
     func usedActivities() -> [Activity] {
         return self.form.list.map { $0.activity }
     }
-
-//    func containsActivity(of activity: Activity) -> Bool {
-//        for activtyEventGroup in self.form.list where activtyEventGroup.activity == activity {
-//            return true
-//        }
-//        return false
-//    }
 }

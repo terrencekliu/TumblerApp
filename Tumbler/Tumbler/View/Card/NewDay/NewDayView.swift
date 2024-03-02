@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewDayView: View {
-    @Bindable var viewModel: NewDayViewModel
+    @State var viewModel: NewDayViewModel
 
     var body: some View {
         NavigationStack {

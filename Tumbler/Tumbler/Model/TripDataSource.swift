@@ -23,7 +23,7 @@ final class TripDataSource: ObservableObject {
     @MainActor
     private init(mock: Bool) {
         // swiftlint:disable force_try
-        self.modelConfig = mock ?
+        self.modelConfig = true ?
             ModelConfiguration(isStoredInMemoryOnly: true) :
             ModelConfiguration(isStoredInMemoryOnly: false)
         self.modelContainer = try! ModelContainer(

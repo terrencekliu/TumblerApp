@@ -25,16 +25,6 @@ struct ActivityListSheetView: View {
             }
             .navigationTitle("Add Activity")
             .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {
-                        // TODO: Add the action to map page
-                    }) {
-                        // TODO: Change the symbol to correct symbol
-                        Label("Next Page", systemImage: "square.and.arrow.up")
-                    }
-                }
-            }
         }
         .searchable(text: $viewModel.searchTextListView)
     }
@@ -66,7 +56,8 @@ struct ActivityListSheetView: View {
                     } label: {
                         Label(
                             title: { Text(activity.name).foregroundStyle(.black) },
-                            icon: { Image("rectangleCafe")
+                            icon: { 
+                                Image("rectangleCafe")
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 40, height: 35)

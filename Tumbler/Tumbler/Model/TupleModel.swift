@@ -33,12 +33,13 @@ struct TupleModel: Identifiable, Codable, Hashable {
     }
 }
 
-class ActivityEventGroup: ObservableObject, Identifiable, Hashable {
+@Observable
+class ActivityEventGroup: Identifiable, Hashable {
     let id: UUID
-    @Published var isEvent: Bool
-    @Published var startDate: Date
-    @Published var endDate: Date
-    @Published var activity: Activity
+    var isEvent: Bool
+    var startDate: Date
+    var endDate: Date
+    var activity: Activity
 
     init(_ activity: Activity, startDate: Date = Date(), endDate: Date = Date(), isEvent: Bool = false) {
         self.id = UUID()

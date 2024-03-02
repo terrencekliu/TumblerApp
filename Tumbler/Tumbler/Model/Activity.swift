@@ -37,7 +37,7 @@ class Activity: Identifiable, ObservableObject {
         case house
         case camp
         case other
-        
+
         var id: Self { self }
 
         var symbol: ActivitySymbolName {
