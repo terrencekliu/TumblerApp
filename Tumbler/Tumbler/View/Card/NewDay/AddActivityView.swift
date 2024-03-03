@@ -27,14 +27,19 @@ struct AddActivityView: View {
                 .buttonBorderShape(.capsule)
             }
             List {
-                ForEach(viewModel.form.list.indices, id: \.self) { idx in
-                    InstanceGroup(viewModel: viewModel, instance: viewModel.form.list[idx], addIndex: idx + 1)
-                        .listRowSeparator(.hidden)
+                ForEach(viewModel.form.list.indices, id: \.self) { index in
+                    InstanceGroup(
+                        viewModel: viewModel,
+                        instance: viewModel.form.list[index],
+                        addIndex: index + 1
+                    )
+                    .listRowSeparator(.hidden)
                 }
-                .onDelete(perform: removeRow)
+                .onDelete { indexSet in
+                    viewModel.form.list.remove(atOffsets: indexSet)
+                }
                 .onMove { viewModel.form.list.move(fromOffsets: $0, toOffset: $1) }
             }
-            .id(UUID())
             .listStyle(.insetGrouped)
             .listRowSpacing(25.0)
             .navigationTitle("Add Activities")
@@ -60,10 +65,6 @@ struct AddActivityView: View {
                 )
             }
         }
-    }
-
-    private func removeRow(at offsets: IndexSet) {
-        viewModel.form.list.remove(atOffsets: offsets)
     }
 }
 
