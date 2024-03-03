@@ -14,6 +14,7 @@ struct AddActivityMapView: View {
     @State var selectedPin: Activity?
     @Binding var showSheet: Bool
     @Binding var addIndex: Int
+    @Binding var displayMap: Bool
 
     var body: some View {
         NavigationStack {
@@ -49,12 +50,18 @@ struct AddActivityMapView: View {
             .navigationBarTitleDisplayMode(.inline)
             .searchable(text: $viewModel.searchTextMapView)
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        displayMap.toggle()
+                    } label: {
+                        Label("List View", systemImage: "list.bullet")
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button(action: {
-                        // TODO: Add the action to map page
-                    }) {
-                        // TODO: Change the symbol to correct symbol
-                        Label("Next Page", systemImage: "square.and.arrow.up")
+                    Button {
+                        showSheet.toggle()
+                    } label: {
+                        Label("Close", systemImage: "xmark.circle.fill")
                     }
                 }
             }
@@ -137,5 +144,5 @@ struct ActivityPopup: View {
     let mockData = TripViewModel(dataSource: TripDataSource.test)
     let testVM = NewDayViewModel(trip: mockData.trips.first!)
 
-    return AddActivityMapView(viewModel: testVM, showSheet: .constant(true), addIndex: .constant(0))
+    return AddActivityMapView(viewModel: testVM, showSheet: .constant(true), addIndex: .constant(0), displayMap: .constant(true))
 }

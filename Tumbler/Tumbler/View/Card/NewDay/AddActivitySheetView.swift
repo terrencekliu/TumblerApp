@@ -12,14 +12,13 @@ struct AddActivitySheetView: View {
     @Binding var showSheet: Bool
     @Binding var addIndex: Int
 
-    @State private var displayOption: Int = 1
+    @State private var displayMap: Bool = false
 
     var body: some View {
-        switch displayOption {
-        case 0:
-            ActivityListView(viewModel: viewModel, showSheet: $showSheet, addIndex: $addIndex)
-        default:
-            AddActivityMapView(viewModel: viewModel, showSheet: $showSheet, addIndex: $addIndex)
+        if displayMap {
+            AddActivityMapView(viewModel: viewModel, showSheet: $showSheet, addIndex: $addIndex, displayMap: $displayMap)
+        } else {
+            ActivityListView(viewModel: viewModel, showSheet: $showSheet, addIndex: $addIndex, displayMap: $displayMap)
         }
     }
 }
