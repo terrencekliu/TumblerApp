@@ -17,52 +17,50 @@ struct AddActivityMapView: View {
     @Binding var displayMap: Bool
 
     var body: some View {
-        NavigationStack {
-            ZStack {
-                Map(selection: $selectedPin) {
-                    ForEach(searchResults(activities: viewModel.usedActivities())) { activity in
-                        Marker(
-                            activity.name,
-                            coordinate: CLLocationCoordinate2D(
-                                latitude: activity.address.latitude,
-                                longitude: activity.address.longitude
-                            )
+        ZStack {
+            Map(selection: $selectedPin) {
+                ForEach(searchResults(activities: viewModel.usedActivities())) { activity in
+                    Marker(
+                        activity.name,
+                        coordinate: CLLocationCoordinate2D(
+                            latitude: activity.address.latitude,
+                            longitude: activity.address.longitude
                         )
-                        .tag(activity)
-                        .tint(.gray)
-                    }
-                    ForEach(searchResults(activities: viewModel.freeActivities())) { activity in
-                        Marker(
-                            activity.name,
-                            coordinate: CLLocationCoordinate2D(
-                                latitude: activity.address.latitude,
-                                longitude: activity.address.longitude
-                            )
-                        )
-                        .tag(activity)
-                    }
+                    )
+                    .tag(activity)
+                    .tint(.gray)
                 }
-                if selectedPin != nil {
-                    ActivityPopup(viewModel: viewModel, selectedPin: selectedPin!, addIndex: $addIndex)
+                ForEach(searchResults(activities: viewModel.freeActivities())) { activity in
+                    Marker(
+                        activity.name,
+                        coordinate: CLLocationCoordinate2D(
+                            latitude: activity.address.latitude,
+                            longitude: activity.address.longitude
+                        )
+                    )
+                    .tag(activity)
                 }
             }
-            .navigationTitle("Add Activity")
-            .navigationBarTitleDisplayMode(.inline)
-            .searchable(text: $viewModel.searchTextMapView)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        displayMap.toggle()
-                    } label: {
-                        Label("List View", systemImage: "list.bullet")
-                    }
+            if selectedPin != nil {
+                ActivityPopup(viewModel: viewModel, selectedPin: selectedPin!, addIndex: $addIndex)
+            }
+        }
+        .navigationTitle("Add Activity")
+        .navigationBarTitleDisplayMode(.inline)
+        .searchable(text: $viewModel.searchTextMapView)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    displayMap.toggle()
+                } label: {
+                    Label("List View", systemImage: "list.bullet")
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showSheet.toggle()
-                    } label: {
-                        Label("Close", systemImage: "xmark.circle.fill")
-                    }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showSheet.toggle()
+                } label: {
+                    Label("Close", systemImage: "xmark.circle.fill")
                 }
             }
         }

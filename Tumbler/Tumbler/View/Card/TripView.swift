@@ -39,60 +39,65 @@ struct TripView: View {
                         .symbolRenderingMode(.monochrome)
                         .padding(.leading, 34)
                 }
+                NavigationLink(
+                    value: TripTabNavigation.detailedActivity,
+                    label: { Text("See All").textCase(nil) }
+                )
             case SectionType.days:
-                NavigationLink {
-                    NewDayView(viewModel: NewDayViewModel(trip: trip))
-                } label: {
-                    Image(systemName: "plus")
-                        .font(.system(size: 18))
-                        .foregroundColor(.blue)
-                        .symbolRenderingMode(.monochrome)
-                        .padding(.leading, 34)
-                }
-            }
-
-            NavigationLink {
-                switch section {
-                case SectionType.activities:
-                    DetailedActivityView()
-                        .environment(DetailedActivityViewModel(allActivity: trip.activities))
-                case SectionType.days:
-                    ForEach(trip.days, id: \.self.id) { day in
-                        FullDayCardView(day: day, hasDayName: true)
+                NavigationLink(
+                    value: TripTabNavigation.newDay,
+                    label: {
+                        Image(systemName: "plus")
+                            .font(.system(size: 18))
+                            .foregroundColor(.blue)
+                            .symbolRenderingMode(.monochrome)
+                            .padding(.leading, 34)
                     }
-                }
-            } label: {
-                Text("See All")
-                    .textCase(nil)
+                )
+                NavigationLink(
+                    value: TripTabNavigation.fullDayCard,
+                    label: { Text("See All").textCase(nil) }
+                )
             }
         }
     }
 
     var body: some View {
-        NavigationStack {
-            List {
-                Section(header: header(SectionType.activities)) {
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        LazyHStack {
-                            ForEach(tripViewModel.getActivities(tripId: trip.id)) { activity in
-                                Button {
-                                    selectedActivitySheet = activity
-                                } label: {
-                                    SimpleActivityCardView(activityName: activity.name.capitalized)
-                                }
+        List {
+            Section(header: header(SectionType.activities)) {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHStack {
+                        ForEach(tripViewModel.getActivities(tripId: trip.id)) { activity in
+                            Button {
+                                selectedActivitySheet = activity
+                            } label: {
+                                SimpleActivityCardView(activityName: activity.name.capitalized)
                             }
                         }
                     }
                 }
-                Section(header: header(SectionType.days)) {
-                    ForEach(trip.days) { day in
-                        NavigationLink {
-                            FullDayCardView(day: day)
-                        } label: {
-                            Text(day.name)
-                        }
-                    }
+            }
+            Section(header: header(SectionType.days)) {
+                ForEach(trip.days) { day in
+                    NavigationLink(value: day, label: { Text("day.name") })
                 }
+            }
+        }
+        .navigationDestination(for: Day.self) { value in
+            FullDayCardView(day: value)
+        }
+        .navigationDestination(for: TripTabNavigation.self) { name in
+            switch name {
+            case .newDay:
+                NewDayView(viewModel: NewDayViewModel(trip: trip))
+            case .fullDayCard:
+                ForEach(trip.days, id: \.self.id) { day in
+                    FullDayCardView(day: day, hasDayName: true)
+                }
+            case .detailedActivity:
+                DetailedActivityView()
+                    .environment(DetailedActivityViewModel(allActivity: trip.activities))
+            default: EmptyView()
             }
         }
         .navigationBarTitle(trip.name)

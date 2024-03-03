@@ -8,62 +8,62 @@
 import SwiftUI
 
 struct AddActivityView: View {
+    @Environment(NavigationManager.self) private var navManager
     var viewModel: NewDayViewModel
 
     @State private var showAddSheet = false
     @State private var selectedTime: Date = Date()
 
     var body: some View {
-        NavigationStack {
-            if viewModel.form.list.count <= 0 {
-                Button {
-                    showAddSheet = true
-                } label: {
-                    Image(systemName: "plus")
-                        .padding([.leading, .trailing], 20)
-                        .fontWeight(.bold)
-                }
-                .buttonStyle(.borderedProminent)
-                .buttonBorderShape(.capsule)
+        if viewModel.form.list.count <= 0 {
+            Button {
+                showAddSheet = true
+            } label: {
+                Image(systemName: "plus")
+                    .padding([.leading, .trailing], 20)
+                    .fontWeight(.bold)
             }
-            List {
-                ForEach(viewModel.form.list.indices, id: \.self) { index in
-                    InstanceGroup(
-                        viewModel: viewModel,
-                        instance: viewModel.form.list[index],
-                        addIndex: index + 1
-                    )
-                    .listRowSeparator(.hidden)
-                }
-                .onDelete { indexSet in
-                    viewModel.form.list.remove(atOffsets: indexSet)
-                }
-                .onMove { viewModel.form.list.move(fromOffsets: $0, toOffset: $1) }
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.capsule)
+        }
+        List {
+            ForEach(viewModel.form.list.indices, id: \.self) { index in
+                InstanceGroup(
+                    viewModel: viewModel,
+                    instance: viewModel.form.list[index],
+                    addIndex: index + 1
+                )
+                .listRowSeparator(.hidden)
             }
-            .listStyle(.insetGrouped)
-            .listRowSpacing(25.0)
-            .navigationTitle("Add Activities")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") {
-                        let message = viewModel.submitForm()
-                        if message == nil {
-                            print("Success")
-//                            TripView(trip: trip)
-                        } else {
-                            print("Failure")
-                        }
+            .onDelete { indexSet in
+                viewModel.form.list.remove(atOffsets: indexSet)
+            }
+            .onMove { viewModel.form.list.move(fromOffsets: $0, toOffset: $1) }
+        }
+        .listStyle(.insetGrouped)
+        .listRowSpacing(25.0)
+        .navigationTitle("Add Activities")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button("Done") {
+                    @Bindable var navManager = navManager
+                    let message = viewModel.submitForm()
+                    if message == nil {
+                        print("Success")
+                        navManager.toRoot()
+                    } else {
+                        print("Failure")
                     }
                 }
             }
-            .sheet(isPresented: $showAddSheet) {
-                AddActivitySheetView(
-                    viewModel: viewModel,
-                    showSheet: $showAddSheet,
-                    addIndex: .constant(0)
-                )
-            }
+        }
+        .sheet(isPresented: $showAddSheet) {
+            AddActivitySheetView(
+                viewModel: viewModel,
+                showSheet: $showAddSheet,
+                addIndex: .constant(0)
+            )
         }
     }
 }

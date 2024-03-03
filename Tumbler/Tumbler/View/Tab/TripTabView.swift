@@ -9,19 +9,16 @@ import SwiftUI
 
 struct TripTabView: View {
     @ObservedObject var viewModel = ViewModel()
+    @Bindable var navManager = NavigationManager(TripTabNavigation.root)
 
     @State private var presentAlert = false
     @State private var tripName: String = ""
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navManager.path) {
             ScrollView {
                 ForEach(viewModel.trips) { trip in
-                    NavigationLink {
-                        TripView(trip: trip)
-                    } label: {
-                        SimpleTripCardView(trip: trip)
-                    }
+                    NavigationLink(value: trip, label: { SimpleTripCardView(trip: trip) })
                 }
             }
             .toolbar {
@@ -45,8 +42,12 @@ struct TripTabView: View {
                     Text("Please name your new trip.")
                 })
             }
+            .navigationDestination(for: Trip.self) { value in
+                TripView(trip: value)
+            }
             .navigationTitle("Trips")
         }
+        .environment(navManager)
     }
 }
 

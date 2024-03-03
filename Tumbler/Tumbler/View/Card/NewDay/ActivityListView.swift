@@ -15,35 +15,33 @@ struct ActivityListView: View {
     @Binding var displayMap: Bool
 
     var body: some View {
-        NavigationStack {
-            List {
-                let activityGroup = Dictionary(grouping: viewModel.freeActivities(), by: { $0.type })
-                section(activityGroup[.attraction], ActivitySymbolName.attractions)
-                section(activityGroup[.food], ActivitySymbolName.foods)
-                section(activityGroup[.beach], ActivitySymbolName.beaches)
-                section(activityGroup[.house], ActivitySymbolName.houses)
-                section(activityGroup[.camp], ActivitySymbolName.camps)
-                section(activityGroup[Activity.ActivityType.other], ActivitySymbolName.others)
-            }
-            .listStyle(.automatic)
-            .listRowSeparator(.automatic)
-            .listRowSpacing(0)
-            .navigationTitle("Add Activity")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button {
-                        displayMap.toggle()
-                    } label: {
-                        Label("Map View", systemImage: "map")
-                    }
+        List {
+            let activityGroup = Dictionary(grouping: viewModel.freeActivities(), by: { $0.type })
+            section(activityGroup[.attraction], ActivitySymbolName.attractions)
+            section(activityGroup[.food], ActivitySymbolName.foods)
+            section(activityGroup[.beach], ActivitySymbolName.beaches)
+            section(activityGroup[.house], ActivitySymbolName.houses)
+            section(activityGroup[.camp], ActivitySymbolName.camps)
+            section(activityGroup[Activity.ActivityType.other], ActivitySymbolName.others)
+        }
+        .listStyle(.automatic)
+        .listRowSeparator(.automatic)
+        .listRowSpacing(0)
+        .navigationTitle("Add Activity")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    displayMap.toggle()
+                } label: {
+                    Label("Map View", systemImage: "map")
                 }
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        showSheet.toggle()
-                    } label: {
-                        Label("Close", systemImage: "xmark.circle.fill")
-                    }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    showSheet.toggle()
+                } label: {
+                    Label("Close", systemImage: "xmark.circle.fill")
                 }
             }
         }

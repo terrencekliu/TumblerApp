@@ -20,27 +20,25 @@ struct DetailedActivityView: View {
     @Environment(DetailedActivityViewModel.self) var viewModel
 
     var body: some View {
-        NavigationStack {
-            List {
-                section(viewModel.activities[.attraction], ActivitySymbolName.attractions)
-                section(viewModel.activities[.food], ActivitySymbolName.foods)
-                section(viewModel.activities[.beach], ActivitySymbolName.beaches)
-                section(viewModel.activities[.house], ActivitySymbolName.houses)
-                section(viewModel.activities[.camp], ActivitySymbolName.camps)
-                section(viewModel.activities[Activity.ActivityType.other], ActivitySymbolName.others)
+        List {
+            section(viewModel.activities[.attraction], ActivitySymbolName.attractions)
+            section(viewModel.activities[.food], ActivitySymbolName.foods)
+            section(viewModel.activities[.beach], ActivitySymbolName.beaches)
+            section(viewModel.activities[.house], ActivitySymbolName.houses)
+            section(viewModel.activities[.camp], ActivitySymbolName.camps)
+            section(viewModel.activities[Activity.ActivityType.other], ActivitySymbolName.others)
         }
-            .navigationTitle("Activities")
-            .toolbar {
-                Button(action: {
+        .navigationTitle("Activities")
+        .toolbar {
+            Button(action: {
 
-                }, label: {
-                    Image(systemName: "plus")
-                        .font(.system(size: 18))
-                        .foregroundColor(Color.black)
-                        .symbolRenderingMode(.monochrome)
-                        .padding(.leading, 34)
-                })
-            }
+            }, label: {
+                Image(systemName: "plus")
+                    .font(.system(size: 18))
+                    .foregroundColor(Color.black)
+                    .symbolRenderingMode(.monochrome)
+                    .padding(.leading, 34)
+            })
         }
     }
 
