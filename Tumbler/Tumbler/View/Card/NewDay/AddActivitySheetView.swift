@@ -12,8 +12,15 @@ struct AddActivitySheetView: View {
     @Binding var showSheet: Bool
     @Binding var addIndex: Int
 
+    @State private var displayOption: Int = 1
+
     var body: some View {
-        ActivityListSheetView(viewModel: viewModel, showSheet: $showSheet)
+        switch displayOption {
+        case 0:
+            ActivityListView(viewModel: viewModel, showSheet: $showSheet, addIndex: $addIndex)
+        default:
+            AddActivityMapView(viewModel: viewModel, showSheet: $showSheet, addIndex: $addIndex)
+        }
     }
 }
 

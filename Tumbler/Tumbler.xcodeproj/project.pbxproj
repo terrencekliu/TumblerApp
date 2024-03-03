@@ -13,18 +13,18 @@
 		503E76E42B7C3B6000E88986 /* NewDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76E32B7C3B6000E88986 /* NewDayViewModel.swift */; };
 		504074172B9147C700DFB02D /* AddActivityMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504074162B9147C700DFB02D /* AddActivityMapView.swift */; };
 		504074192B914ECC00DFB02D /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504074182B914ECC00DFB02D /* Address.swift */; };
-		504F74C42B7D851100693290 /* ActivityListSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504F74C32B7D851100693290 /* ActivityListSheetView.swift */; };
+		504F74C42B7D851100693290 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504F74C32B7D851100693290 /* ActivityListView.swift */; };
 		50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8454F2B58E20400CE5728 /* NewActivityView.swift */; };
 		50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */; };
 		50C2FF5A2B62047E0098DCFC /* SimpleTransportCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */; };
 		50C58C692B5A4F10000DF547 /* SimpleTripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C58C682B5A4F10000DF547 /* SimpleTripCardView.swift */; };
 		50F615902B60BB7E005F0EAB /* DetailedActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6158F2B60BB7E005F0EAB /* DetailedActivityView.swift */; };
 		F17FA3862AFC69BF00D66D26 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17FA3852AFC69BF00D66D26 /* LoginView.swift */; };
+		FF0BFD6D2B93F45D0047BD2B /* AddActivitySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0BFD6C2B93F45D0047BD2B /* AddActivitySheetView.swift */; };
 		FF1274C82AF74F8F00099E02 /* FullEventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274C72AF74F8F00099E02 /* FullEventCardView.swift */; };
 		FF1274CA2AF74F9D00099E02 /* FullEventCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */; };
 		FF1274CC2AF7625B00099E02 /* SimpleActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274CB2AF7625B00099E02 /* SimpleActivityCardView.swift */; };
 		FF1274CF2AF76D1900099E02 /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274CE2AF76D1900099E02 /* ActivityCardView.swift */; };
-		FF16AADA2B92F1B400DDBACF /* AddActivitySheetViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF16AAD92B92F1B400DDBACF /* AddActivitySheetViewNew.swift */; };
 		FF1D0B2D2B6710E400FDF4CF /* NewActivityForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1D0B2C2B6710E400FDF4CF /* NewActivityForm.swift */; };
 		FF1D0B2F2B67473B00FDF4CF /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1D0B2E2B67473B00FDF4CF /* Extensions.swift */; };
 		FF2BF1DF2B1D95E30019CBFC /* FullActivityCardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2BF1DE2B1D95E30019CBFC /* FullActivityCardUITests.swift */; };
@@ -80,18 +80,18 @@
 		503E76E32B7C3B6000E88986 /* NewDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayViewModel.swift; sourceTree = "<group>"; };
 		504074162B9147C700DFB02D /* AddActivityMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityMapView.swift; sourceTree = "<group>"; };
 		504074182B914ECC00DFB02D /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
-		504F74C32B7D851100693290 /* ActivityListSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListSheetView.swift; sourceTree = "<group>"; };
+		504F74C32B7D851100693290 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
 		50A8454F2B58E20400CE5728 /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
 		50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewModel.swift; sourceTree = "<group>"; };
 		50C2FF592B62047E0098DCFC /* SimpleTransportCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTransportCardView.swift; sourceTree = "<group>"; };
 		50C58C682B5A4F10000DF547 /* SimpleTripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTripCardView.swift; sourceTree = "<group>"; };
 		50F6158F2B60BB7E005F0EAB /* DetailedActivityView.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = DetailedActivityView.swift; sourceTree = "<group>"; };
 		F17FA3852AFC69BF00D66D26 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		FF0BFD6C2B93F45D0047BD2B /* AddActivitySheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActivitySheetView.swift; sourceTree = "<group>"; };
 		FF1274C72AF74F8F00099E02 /* FullEventCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEventCardView.swift; sourceTree = "<group>"; };
 		FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEventCardViewModel.swift; sourceTree = "<group>"; };
 		FF1274CB2AF7625B00099E02 /* SimpleActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleActivityCardView.swift; sourceTree = "<group>"; };
 		FF1274CE2AF76D1900099E02 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
-		FF16AAD92B92F1B400DDBACF /* AddActivitySheetViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivitySheetViewNew.swift; sourceTree = "<group>"; };
 		FF1D0B2C2B6710E400FDF4CF /* NewActivityForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityForm.swift; sourceTree = "<group>"; };
 		FF1D0B2E2B67473B00FDF4CF /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FF2BF1DE2B1D95E30019CBFC /* FullActivityCardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullActivityCardUITests.swift; sourceTree = "<group>"; };
@@ -336,9 +336,9 @@
 			children = (
 				FF7258B92B8AA2EE00A523AF /* NewDayForm.swift */,
 				503E76E32B7C3B6000E88986 /* NewDayViewModel.swift */,
-				504F74C32B7D851100693290 /* ActivityListSheetView.swift */,
+				504F74C32B7D851100693290 /* ActivityListView.swift */,
 				504074162B9147C700DFB02D /* AddActivityMapView.swift */,
-				FF16AAD92B92F1B400DDBACF /* AddActivitySheetViewNew.swift */,
+				FF0BFD6C2B93F45D0047BD2B /* AddActivitySheetView.swift */,
 				503E76E12B7C380100E88986 /* AddActivityView.swift */,
 				503E76DD2B71F91A00E88986 /* NewDayView.swift */,
 			);
@@ -640,7 +640,6 @@
 				FFC477112ADC91A30055EC89 /* FullDayCardView.swift in Sources */,
 				FFC4772E2ADE5FC70055EC89 /* DetailedActivityViewModel.swift in Sources */,
 				503E76DC2B68B1D900E88986 /* TripView.swift in Sources */,
-				FF16AADA2B92F1B400DDBACF /* AddActivitySheetViewNew.swift in Sources */,
 				FF1274CC2AF7625B00099E02 /* SimpleActivityCardView.swift in Sources */,
 				50C2FF5A2B62047E0098DCFC /* SimpleTransportCardView.swift in Sources */,
 				50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */,
@@ -664,6 +663,7 @@
 				FFC476E22ADC90A10055EC89 /* TumblerApp.swift in Sources */,
 				50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */,
 				504074172B9147C700DFB02D /* AddActivityMapView.swift in Sources */,
+				FF0BFD6D2B93F45D0047BD2B /* AddActivitySheetView.swift in Sources */,
 				F17FA3862AFC69BF00D66D26 /* LoginView.swift in Sources */,
 				FFC4771F2ADE54FB0055EC89 /* Day.swift in Sources */,
 				FFC477212ADE55050055EC89 /* Event.swift in Sources */,
@@ -671,7 +671,7 @@
 				FFC477152ADC91C40055EC89 /* SettingTabView.swift in Sources */,
 				503E76E42B7C3B6000E88986 /* NewDayViewModel.swift in Sources */,
 				FFC477192ADC91E00055EC89 /* TripTabView.swift in Sources */,
-				504F74C42B7D851100693290 /* ActivityListSheetView.swift in Sources */,
+				504F74C42B7D851100693290 /* ActivityListView.swift in Sources */,
 				FFC4770F2ADC91910055EC89 /* FullActivityCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -838,7 +838,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Tumbler/Preview Content\"";
-				DEVELOPMENT_TEAM = VWKMZ2392L;
+				DEVELOPMENT_TEAM = DXF972H7WL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -875,7 +875,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Tumbler/Preview Content\"";
-				DEVELOPMENT_TEAM = VWKMZ2392L;
+				DEVELOPMENT_TEAM = DXF972H7WL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

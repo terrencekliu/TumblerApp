@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ActivityListSheetView: View {
+struct ActivityListView: View {
     @Bindable var viewModel: NewDayViewModel
     @Binding var showSheet: Bool
     @Binding var addIndex: Int

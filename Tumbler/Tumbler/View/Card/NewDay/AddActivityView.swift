@@ -50,9 +50,9 @@ struct AddActivityView: View {
                 }
             }
             .sheet(isPresented: $showAddSheet) {
-                AddActivitySheetViewNew(
+                AddActivitySheetView(
                     viewModel: viewModel,
-                    showAddSheet: $showAddSheet,
+                    showSheet: $showAddSheet,
                     addIndex: .constant(0)
                 )
             }
@@ -107,9 +107,9 @@ struct InstanceGroup: View {
         }
         .headerProminence(.increased)
         .sheet(isPresented: $showAddSheet) {
-            AddActivitySheetViewNew(
+            AddActivitySheetView(
                 viewModel: viewModel,
-                showAddSheet: $showAddSheet,
+                showSheet: $showAddSheet,
                 addIndex: $addIndex
             )
             .presentationDetents([.medium, .large])
