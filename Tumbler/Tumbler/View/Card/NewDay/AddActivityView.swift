@@ -29,11 +29,14 @@ struct AddActivityView: View {
             List {
                 ForEach(viewModel.form.list.indices, id: \.self) { idx in
                     InstanceGroup(viewModel: viewModel, instance: viewModel.form.list[idx], addIndex: idx + 1)
+                        .listRowSeparator(.hidden)
                 }
                 .onDelete(perform: removeRow)
+                .onMove { viewModel.form.list.move(fromOffsets: $0, toOffset: $1) }
             }
-            .listSectionSpacing(.compact)
+            .id(UUID())
             .listStyle(.insetGrouped)
+            .listRowSpacing(25.0)
             .navigationTitle("Add Activities")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -74,9 +77,7 @@ struct InstanceGroup: View {
     @State var selectedTime: Date = Date()
 
     var body: some View {
-        Section {
-            ActivityCard(instance: instance)
-        } header: {
+        VStack {
             if instance.isEvent {
                 HStack {
                     DatePicker("", selection: $selectedTime, displayedComponents: .hourAndMinute)
@@ -85,14 +86,11 @@ struct InstanceGroup: View {
                         }
                         .frame(width: 50)
                         .padding(.trailing, 20)
-                    Rectangle()
-                        .frame(width: .infinity, height: 0.2)
-                        .padding(.top, 1)
+                    VStack { Divider().padding(.leading) }
                 }
             }
-        } footer: {
-            HStack {
-                Spacer()
+            VStack {
+                ActivityCard(instance: instance)
                 Button {
                     showAddSheet = true
                 } label: {
@@ -102,10 +100,8 @@ struct InstanceGroup: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .buttonBorderShape(.capsule)
-                Spacer()
             }
         }
-        .headerProminence(.increased)
         .sheet(isPresented: $showAddSheet) {
             AddActivitySheetView(
                 viewModel: viewModel,
@@ -153,5 +149,8 @@ struct ActivityCard: View {
 
 #Preview {
     let mockViewModel = ViewModel(TripDataSource.test)
-    return AddActivityView(viewModel: NewDayViewModel(trip: mockViewModel.trips.first!))
+    let vm = NewDayViewModel(trip: mockViewModel.trips.first!)
+    vm.addInstance(activity: vm.trip.activities[0], at: 0)
+    vm.addInstance(activity: vm.trip.activities[1], at: 1)
+    return AddActivityView(viewModel: vm)
 }

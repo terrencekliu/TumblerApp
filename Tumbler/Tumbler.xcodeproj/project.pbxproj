@@ -336,8 +336,8 @@
 			children = (
 				FF7258B92B8AA2EE00A523AF /* NewDayForm.swift */,
 				503E76E32B7C3B6000E88986 /* NewDayViewModel.swift */,
-				504F74C32B7D851100693290 /* ActivityListView.swift */,
 				504074162B9147C700DFB02D /* AddActivityMapView.swift */,
+				504F74C32B7D851100693290 /* ActivityListView.swift */,
 				FF0BFD6C2B93F45D0047BD2B /* AddActivitySheetView.swift */,
 				503E76E12B7C380100E88986 /* AddActivityView.swift */,
 				503E76DD2B71F91A00E88986 /* NewDayView.swift */,
@@ -856,7 +856,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = terrenceliu.Tumbler;
+				PRODUCT_BUNDLE_IDENTIFIER = terrencekliu.Tumbler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -893,7 +893,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = terrenceliu.Tumbler;
+				PRODUCT_BUNDLE_IDENTIFIER = terrencekliu.Tumbler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";

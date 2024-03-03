@@ -25,6 +25,9 @@ struct ActivityListView: View {
                 section(activityGroup[.camp], ActivitySymbolName.camps)
                 section(activityGroup[Activity.ActivityType.other], ActivitySymbolName.others)
             }
+            .listStyle(.automatic)
+            .listRowSeparator(.automatic)
+            .listRowSpacing(0)
             .navigationTitle("Add Activity")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
