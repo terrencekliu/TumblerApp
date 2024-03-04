@@ -15,10 +15,12 @@ struct AddActivitySheetView: View {
     @State private var displayMap: Bool = false
 
     var body: some View {
-        if displayMap {
-            AddActivityMapView(viewModel: viewModel, showSheet: $showSheet, addIndex: $addIndex, displayMap: $displayMap)
-        } else {
-            ActivityListView(viewModel: viewModel, showSheet: $showSheet, addIndex: $addIndex, displayMap: $displayMap)
+        NavigationStack {
+            if displayMap {
+                AddActivityMapView(viewModel: viewModel, showSheet: $showSheet, addIndex: $addIndex, displayMap: $displayMap)
+            } else {
+                ActivityListView(viewModel: viewModel, showSheet: $showSheet, addIndex: $addIndex, displayMap: $displayMap)
+            }
         }
     }
 }
