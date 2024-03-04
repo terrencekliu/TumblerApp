@@ -18,7 +18,7 @@ struct TripTabView: View {
         NavigationStack(path: $navManager.path) {
             ScrollView {
                 ForEach(viewModel.trips) { trip in
-                    NavigationLink(value: trip, label: { SimpleTripCardView(trip: trip) })
+                    NavigationLink(value: TripDestination.trip(trip: trip), label: { SimpleTripCardView(trip: trip) })
                 }
             }
             .toolbar {
@@ -42,9 +42,6 @@ struct TripTabView: View {
                     Text("Please name your new trip.")
                 })
             }
-            .navigationDestination(for: Trip.self) { value in
-                TripView(trip: value)
-            }
             .navigationDestination(for: TripDestination.self) { name in
                 switch name {
                 case .newDay(let trip):
@@ -60,6 +57,8 @@ struct TripTabView: View {
                     ForEach(days, id: \.self.id) { day in
                         FullDayCardView(day: day, hasDayName: true)
                     }
+                case .trip(let trip):
+                    TripView(trip: trip)
                 default: Text("There was an unexpected error")
                 }
             }

@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 enum TripDestination: Hashable {
-    case trip
+    case trip(trip: Trip)
     case newDay(trip: Trip)
     case addActivity(form: NewDayViewModel)
     case detailedActivity(activities: [Activity])
