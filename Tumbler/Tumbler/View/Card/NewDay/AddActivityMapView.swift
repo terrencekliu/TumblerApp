@@ -42,7 +42,11 @@ struct AddActivityMapView: View {
                 }
             }
             if selectedPin != nil {
-                ActivityPopup(viewModel: viewModel, selectedPin: selectedPin!, addIndex: $addIndex)
+                ActivityPopup(
+                    viewModel: viewModel,
+                    selectedPin: Binding { selectedPin! } set: { selectedPin = $0 },
+                    addIndex: $addIndex
+                )
             }
         }
         .navigationTitle("Add Activity")
@@ -79,7 +83,7 @@ struct AddActivityMapView: View {
 struct ActivityPopup: View {
     @Bindable var viewModel: NewDayViewModel
 
-    @State var selectedPin: Activity
+    @Binding var selectedPin: Activity
     @Binding var addIndex: Int
 
     var body: some View {
