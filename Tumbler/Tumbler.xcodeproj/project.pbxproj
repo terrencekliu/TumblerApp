@@ -347,9 +347,18 @@
 			path = NewDay;
 			sourceTree = "<group>";
 		};
+		FF9DF8AB2B954C1E00981F65 /* Routing */ = {
+			isa = PBXGroup;
+			children = (
+				FF9DF8A92B951F1E00981F65 /* NavigationManager.swift */,
+			);
+			path = Routing;
+			sourceTree = "<group>";
+		};
 		FFC476D52ADC90A10055EC89 = {
 			isa = PBXGroup;
 			children = (
+				FF9DF8AB2B954C1E00981F65 /* Routing */,
 				FFC476E02ADC90A10055EC89 /* Tumbler */,
 				FFC476F22ADC90A20055EC89 /* TumblerTests */,
 				FFC476FC2ADC90A20055EC89 /* TumblerUITests */,
@@ -429,7 +438,6 @@
 		FFC477272ADE58500055EC89 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FF9DF8A92B951F1E00981F65 /* NavigationManager.swift */,
 				FFC477292ADE58860055EC89 /* Card */,
 				FFC477282ADE58670055EC89 /* Tab */,
 			);

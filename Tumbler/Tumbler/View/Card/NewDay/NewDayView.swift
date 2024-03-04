@@ -38,16 +38,10 @@ struct NewDayView: View {
                 }
             }
             NavigationLink(
-                value: "TripTabNavigation.addActivity",
+                value: TripDestination.addActivity(form: viewModel),
                 label: { Text("Continue").foregroundColor(Color.blue) }
             )
             .accessibilityIdentifier("new-day-button")
-        }
-        .onAppear {
-            UITextField.appearance().clearButtonMode = .whileEditing
-        }
-        .navigationDestination(for: String.self) { _ in
-            AddActivityView(viewModel: viewModel)
         }
         .navigationTitle("Create Day")
         .navigationBarTitleDisplayMode(.inline)

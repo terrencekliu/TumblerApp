@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TripTabView: View {
     @ObservedObject var viewModel = ViewModel()
-    @Bindable var navManager = NavigationManager(TripTabNavigation.root)
+    @Bindable var navManager = NavigationManager()
 
     @State private var presentAlert = false
     @State private var tripName: String = ""
@@ -44,6 +44,24 @@ struct TripTabView: View {
             }
             .navigationDestination(for: Trip.self) { value in
                 TripView(trip: value)
+            }
+            .navigationDestination(for: TripDestination.self) { name in
+                switch name {
+                case .newDay(let trip):
+                    NewDayView(viewModel: NewDayViewModel(trip: trip))
+                case .fullDayCard(let day):
+                    FullDayCardView(day: day)
+                case .detailedActivity(let activities):
+                    DetailedActivityView()
+                        .environment(DetailedActivityViewModel(allActivity: activities))
+                case .addActivity(let form):
+                    AddActivityView(viewModel: form)
+                case .allDays(let days):
+                    ForEach(days, id: \.self.id) { day in
+                        FullDayCardView(day: day, hasDayName: true)
+                    }
+                default: Text("There was an unexpected error")
+                }
             }
             .navigationTitle("Trips")
         }

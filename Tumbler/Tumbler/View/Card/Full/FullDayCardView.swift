@@ -18,31 +18,29 @@ struct FullDayCardView: View {
     @State var hasDayName: Bool = false
 
     var body: some View {
-        ZStack(alignment: .top) {
-            ScrollView {
-                LazyVStack(spacing: 1, pinnedViews: [.sectionHeaders]) {
-                    ForEach(day.events) { event in
-                        Section {
-                            SingleEventCardView(event: event)
-                        } header: {
-                            HStack {
-                                if hasDayName {
-                                    Text(event.startTime.format())
-                                        .font(.title2)
-                                        .fontWeight(.bold)
-                                    Spacer()
-                                    Text(day.name)
-                                        .font(.title2)
-                                        .fontWeight(.bold)
-                                } else {
-                                    Text(event.startTime.format())
-                                        .font(.title2)
-                                        .fontWeight(.bold)
-                                    Spacer()
-                                }
+        ScrollView {
+            LazyVStack(spacing: 1, pinnedViews: [.sectionHeaders]) {
+                ForEach(day.events) { event in
+                    Section {
+                        SingleEventCardView(event: event)
+                    } header: {
+                        HStack {
+                            if hasDayName {
+                                Text(event.startTime.format())
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                Spacer()
+                                Text(day.name)
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                            } else {
+                                Text(event.startTime.format())
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                Spacer()
                             }
-                            .padding()
                         }
+                        .padding()
                     }
                 }
             }

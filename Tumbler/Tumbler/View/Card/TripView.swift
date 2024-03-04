@@ -40,12 +40,12 @@ struct TripView: View {
                         .padding(.leading, 34)
                 }
                 NavigationLink(
-                    value: TripTabNavigation.detailedActivity,
+                    value: TripDestination.detailedActivity(activities: trip.activities),
                     label: { Text("See All").textCase(nil) }
                 )
             case SectionType.days:
                 NavigationLink(
-                    value: TripTabNavigation.newDay,
+                    value: TripDestination.newDay(trip: trip),
                     label: {
                         Image(systemName: "plus")
                             .font(.system(size: 18))
@@ -55,7 +55,7 @@ struct TripView: View {
                     }
                 )
                 NavigationLink(
-                    value: TripTabNavigation.fullDayCard,
+                    value: TripDestination.allDays(days: trip.days),
                     label: { Text("See All").textCase(nil) }
                 )
             }
@@ -79,25 +79,11 @@ struct TripView: View {
             }
             Section(header: header(SectionType.days)) {
                 ForEach(trip.days) { day in
-                    NavigationLink(value: day, label: { Text("day.name") })
+                    NavigationLink(
+                        value: TripDestination.fullDayCard(day: day),
+                        label: { Text(day.name) }
+                    )
                 }
-            }
-        }
-        .navigationDestination(for: Day.self) { value in
-            FullDayCardView(day: value)
-        }
-        .navigationDestination(for: TripTabNavigation.self) { name in
-            switch name {
-            case .newDay:
-                NewDayView(viewModel: NewDayViewModel(trip: trip))
-            case .fullDayCard:
-                ForEach(trip.days, id: \.self.id) { day in
-                    FullDayCardView(day: day, hasDayName: true)
-                }
-            case .detailedActivity:
-                DetailedActivityView()
-                    .environment(DetailedActivityViewModel(allActivity: trip.activities))
-            default: EmptyView()
             }
         }
         .navigationBarTitle(trip.name)

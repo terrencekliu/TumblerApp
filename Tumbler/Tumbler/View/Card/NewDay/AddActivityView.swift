@@ -51,8 +51,9 @@ struct AddActivityView: View {
                     let message = viewModel.submitForm()
                     if message == nil {
                         print("Success")
-                        navManager.toRoot()
+                        navManager.navigateToTrip()
                     } else {
+                        // TODO: Implement error handling
                         print("Failure")
                     }
                 }
