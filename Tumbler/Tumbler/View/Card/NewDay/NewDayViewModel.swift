@@ -44,6 +44,11 @@ class NewDayViewModel {
     func addInstance(activity: Activity, at: Int) {
         self.form.list.insert(ActivityEventGroup(activity), at: at)
     }
+    
+    func removeInstance(activity: Activity) {
+        let removeIndex = self.form.list.firstIndex(where: { $0.activity == activity })!
+        self.form.list.remove(at: removeIndex)
+    }
 
     func freeActivities() -> [Activity] {
         return self.trip.activities.filter { $0.event == nil && !(form.list.map { $0.activity }.contains($0)) }

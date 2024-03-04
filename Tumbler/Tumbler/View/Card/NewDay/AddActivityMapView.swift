@@ -115,7 +115,6 @@ struct ActivityPopup: View {
                     Spacer()
                     if viewModel.freeActivities().contains(selectedPin) {
                         Button {
-                            // TODO: Fix the at index to add
                             viewModel.addInstance(activity: selectedPin, at: addIndex)
                         } label: {
                             Image(systemName: "plus.circle.fill")
@@ -125,7 +124,7 @@ struct ActivityPopup: View {
                         }
                     } else {
                         Button {
-
+                            viewModel.removeInstance(activity: selectedPin)
                         } label: {
                             Image(systemName: "minus.circle.fill")
                                 .foregroundStyle(.gray)
