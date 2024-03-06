@@ -46,7 +46,7 @@ struct AddActivityView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Done") {
+                Button("Save") {
                     @Bindable var navManager = navManager
                     if viewModel.submitForm() {
                         navManager.navigateToTrip()
