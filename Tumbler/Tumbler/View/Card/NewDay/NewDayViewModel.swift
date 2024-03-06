@@ -18,6 +18,8 @@ class NewDayViewModel {
     var searchTextListView: String
     var searchTextMapView: String
 
+    var error: Error?
+
     init(dataSource: TripDataSource = TripDataSource.shared, trip: Trip) {
         self.dataSource = dataSource
         self.form = NewDayForm()
@@ -26,19 +28,19 @@ class NewDayViewModel {
         self.searchTextMapView = ""
     }
 
-    func submitForm() -> String? {
+    func submitForm() -> Bool {
         let day = Day(name: form.name, startTime: form.startDate, endTime: form.endDate)
 
         do {
+            try form.validateOrder()
             try day.events = form.toEvent()
-        } catch FormValidationError.noFirstEvent {
-            return "The first activity must be an event"
         } catch {
-            return "There was an unexpected erorr"
+            self.error = error
+            return false
         }
 
         dataSource.newTripDay(self.trip, day)
-        return nil
+        return true
     }
 
     func addInstance(activity: Activity, at: Int) {

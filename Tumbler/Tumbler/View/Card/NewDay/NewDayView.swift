@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NewDayView: View {
+    @Environment(NavigationManager.self) private var navManager
     @Bindable var viewModel: NewDayViewModel
 
     var body: some View {
@@ -37,14 +38,21 @@ struct NewDayView: View {
                         .foregroundColor(.blue)
                 }
             }
-            NavigationLink(
-                value: TripDestination.addActivity(form: viewModel),
-                label: { Text("Continue").foregroundColor(Color.blue) }
-            )
+            Button {
+                @Bindable var navManager = navManager
+                if viewModel.form.name.isEmpty {
+                    viewModel.error = NewDayForm.Error.noDayName
+                } else {
+                    navManager.navigate(to: TripDestination.addActivity(form: viewModel))
+                }
+            } label: {
+                Text("Continue").foregroundColor(Color.blue)
+            }
             .accessibilityIdentifier("new-day-button")
         }
         .navigationTitle("Create Day")
         .navigationBarTitleDisplayMode(.inline)
+        .errorAlert(error: $viewModel.error)
     }
 }
 

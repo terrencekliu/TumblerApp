@@ -33,6 +33,8 @@
 		FF6531AE2B659C2800D69746 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6531AD2B659C2800D69746 /* ViewModel.swift */; };
 		FF6EA1302B7C4EA400827D12 /* DayPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6EA12F2B7C4EA400827D12 /* DayPickerView.swift */; };
 		FF7258BA2B8AA2EE00A523AF /* NewDayForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7258B92B8AA2EE00A523AF /* NewDayForm.swift */; };
+		FF832D742B97B12F0041A466 /* LocalizedAlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF832D732B97B12F0041A466 /* LocalizedAlertError.swift */; };
+		FF832D762B97B1700041A466 /* ErrorAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF832D752B97B1700041A466 /* ErrorAlertView.swift */; };
 		FF9AB77B2B68C1E200CA601C /* TripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9AB77A2B68C1E200CA601C /* TripViewModel.swift */; };
 		FF9AB77D2B69695000CA601C /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9AB77C2B69695000CA601C /* MockData.swift */; };
 		FF9DF8AA2B951F1E00981F65 /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9DF8A92B951F1E00981F65 /* NavigationManager.swift */; };
@@ -101,6 +103,8 @@
 		FF6531AD2B659C2800D69746 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		FF6EA12F2B7C4EA400827D12 /* DayPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerView.swift; sourceTree = "<group>"; };
 		FF7258B92B8AA2EE00A523AF /* NewDayForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayForm.swift; sourceTree = "<group>"; };
+		FF832D732B97B12F0041A466 /* LocalizedAlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedAlertError.swift; sourceTree = "<group>"; };
+		FF832D752B97B1700041A466 /* ErrorAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertView.swift; sourceTree = "<group>"; };
 		FF9AB77A2B68C1E200CA601C /* TripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModel.swift; sourceTree = "<group>"; };
 		FF9AB77C2B69695000CA601C /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		FF9DF8A92B951F1E00981F65 /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
@@ -347,6 +351,15 @@
 			path = NewDay;
 			sourceTree = "<group>";
 		};
+		FF832D772B97B1D80041A466 /* ErrorHandling */ = {
+			isa = PBXGroup;
+			children = (
+				FF832D752B97B1700041A466 /* ErrorAlertView.swift */,
+				FF832D732B97B12F0041A466 /* LocalizedAlertError.swift */,
+			);
+			path = ErrorHandling;
+			sourceTree = "<group>";
+		};
 		FF9DF8AB2B954C1E00981F65 /* Routing */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,6 +371,7 @@
 		FFC476D52ADC90A10055EC89 = {
 			isa = PBXGroup;
 			children = (
+				FF832D772B97B1D80041A466 /* ErrorHandling */,
 				FF9DF8AB2B954C1E00981F65 /* Routing */,
 				FFC476E02ADC90A10055EC89 /* Tumbler */,
 				FFC476F22ADC90A20055EC89 /* TumblerTests */,
@@ -680,11 +694,13 @@
 				FFC477212ADE55050055EC89 /* Event.swift in Sources */,
 				FF9AB77D2B69695000CA601C /* MockData.swift in Sources */,
 				FF9DF8AA2B951F1E00981F65 /* NavigationManager.swift in Sources */,
+				FF832D742B97B12F0041A466 /* LocalizedAlertError.swift in Sources */,
 				FFC477152ADC91C40055EC89 /* SettingTabView.swift in Sources */,
 				503E76E42B7C3B6000E88986 /* NewDayViewModel.swift in Sources */,
 				FFC477192ADC91E00055EC89 /* TripTabView.swift in Sources */,
 				504F74C42B7D851100693290 /* ActivityListView.swift in Sources */,
 				FFC4770F2ADC91910055EC89 /* FullActivityCardView.swift in Sources */,
+				FF832D762B97B1700041A466 /* ErrorAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

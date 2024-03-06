@@ -70,3 +70,18 @@ extension Event {
         return formatter.string(from: self.startTime)
     }
 }
+
+extension Collection where Element: Comparable {
+  func isSorted(by areInAscendingOrder: (Element, Element) -> Bool) -> Bool {
+    var previous: Element? = nil
+    for item in self {
+      if let prev = previous {
+        if !areInAscendingOrder(prev, item) {
+          return false // not in order
+        }
+      }
+      previous = item
+    }
+    return true // all elements are in order
+  }
+}

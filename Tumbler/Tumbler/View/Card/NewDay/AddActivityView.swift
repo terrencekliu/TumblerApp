@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddActivityView: View {
     @Environment(NavigationManager.self) private var navManager
-    var viewModel: NewDayViewModel
+    @Bindable var viewModel: NewDayViewModel
 
     @State private var showAddSheet = false
     @State private var selectedTime: Date = Date()
@@ -48,13 +48,8 @@ struct AddActivityView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Done") {
                     @Bindable var navManager = navManager
-                    let message = viewModel.submitForm()
-                    if message == nil {
-                        print("Success")
+                    if viewModel.submitForm() {
                         navManager.navigateToTrip()
-                    } else {
-                        // TODO: Implement error handling
-                        print("Failure")
                     }
                 }
             }
@@ -66,6 +61,7 @@ struct AddActivityView: View {
                 addIndex: .constant(0)
             )
         }
+        .errorAlert(error: $viewModel.error)
     }
 }
 

@@ -34,7 +34,7 @@ struct TupleModel: Identifiable, Codable, Hashable {
 }
 
 @Observable
-class ActivityEventGroup: Identifiable, Hashable {
+class ActivityEventGroup: Identifiable, Hashable, Comparable {
     let id: UUID
     var isEvent: Bool
     var startDate: Date
@@ -56,5 +56,9 @@ class ActivityEventGroup: Identifiable, Hashable {
     static func == (lhs: ActivityEventGroup, rhs: ActivityEventGroup) -> Bool {
         return lhs.activity == rhs.activity && lhs.isEvent == rhs.isEvent &&
         lhs.startDate == rhs.startDate && lhs.endDate == rhs.endDate
+    }
+    
+    static func < (lhs: ActivityEventGroup, rhs: ActivityEventGroup) -> Bool {
+        return lhs.startDate < rhs.startDate
     }
 }

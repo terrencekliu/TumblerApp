@@ -7,9 +7,28 @@
 
 import Foundation
 
-enum FormValidationError: Error {
-    case noFirstEvent
-    case unexpectedException
+extension NewDayForm {
+    enum Error: LocalizedError {
+        case noDayName, noFirstEvent, unexpectedException, nonChronologicalEvents
+
+        var errorDescription: String? {
+            switch self {
+            case .noDayName: return "The day name is blank"
+            case .noFirstEvent: return "The first activity must be an event"
+            case .nonChronologicalEvents: return "Event times must be in order"
+            case .unexpectedException: return "There was an unexpected error"
+            }
+        }
+
+        var recoverySuggestion: String? {
+            switch self {
+            case .noDayName: return "Please add a name to the day."
+            case .noFirstEvent: return "Please add a time to the first activity."
+            case .nonChronologicalEvents: return "Please ensure that activitiy times are in order."
+            case .unexpectedException: return "Please contact support."
+            }
+        }
+    }
 }
 
 @Observable
@@ -21,11 +40,17 @@ class NewDayForm {
 
     var list: [ActivityEventGroup] = []
 
+    func validateOrder() throws {
+        if !list.isSorted(by: { $0.startDate < $1.startDate }) {
+            throw Error.nonChronologicalEvents
+        }
+    }
+
     func toEvent() throws -> [Event] {
         var events: [Event] = []
 
         if list.count > 0 && !(list.first!.isEvent) {
-            throw FormValidationError.noFirstEvent
+            throw Error.noFirstEvent
         }
 
         list.forEach { instance in
