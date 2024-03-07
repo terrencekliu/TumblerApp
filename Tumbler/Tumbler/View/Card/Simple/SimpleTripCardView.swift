@@ -25,12 +25,15 @@ struct SimpleTripCardView: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .accessibilityIdentifier("name-text")
+                    .truncationMode(.middle)
                 Text("\(trip.formatTripDuration())")
                     .font(.headline)
                     .fontWeight(.semibold)
                     .foregroundColor(Color.white)
                     .accessibilityIdentifier("date-range-text")
-            } .padding()
+            }
+            .frame(maxWidth: 320, alignment: .leading)
+            .padding()
         }
     }
 }

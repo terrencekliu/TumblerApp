@@ -26,7 +26,9 @@ struct SimpleActivityCardView: View {
                     .fontWeight(.semibold)
                     .foregroundColor(Color.white)
                     .accessibilityIdentifier("name-text")
-            } .padding()
+            }
+            .frame(maxWidth: 170, alignment: .leading)
+            .padding()
         }
     }
 }

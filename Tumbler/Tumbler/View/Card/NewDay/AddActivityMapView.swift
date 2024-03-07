@@ -107,6 +107,9 @@ struct ActivityPopup: View {
                                 .accessibilityIdentifier("name-text")
                         } icon: {
                             Image(systemName: selectedPin.type.symbol.rawValue)
+                                .foregroundColor(.orange)
+                                .font(.title)
+                                .accessibilityIdentifier("type-image")
                         }
                         Text(selectedPin.address.address)
                             .foregroundColor(.blue)
