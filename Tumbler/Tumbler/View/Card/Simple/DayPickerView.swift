@@ -23,7 +23,7 @@ struct DayPickerView: View {
             .toolbar {
                 ToolbarTitleMenu {
                     Picker("Day Picker", selection: $selectedDay) {
-                        ForEach(trip.days, id: \.self.id) { day in
+                        ForEach(trip.getDays(), id: \.self.id) { day in
                             Text(day.name).tag(Optional(day))
                         }
                     }

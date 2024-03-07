@@ -29,6 +29,7 @@ extension Date {
 
 extension Trip {
     func formatTripDuration() -> String {
+        let days = getDays()
         if days.count < 2 {
             return ""
         }

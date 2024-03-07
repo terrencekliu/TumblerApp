@@ -55,7 +55,7 @@ struct TripView: View {
                     }
                 )
                 NavigationLink(
-                    value: TripDestination.allDays(days: trip.days),
+                    value: TripDestination.allDays(days: trip.getDays()),
                     label: { Text("See All").textCase(nil) }
                 )
             }
@@ -78,10 +78,11 @@ struct TripView: View {
                 }
             }
             Section(header: header(SectionType.days)) {
-                ForEach(trip.days) { day in
+                let days = trip.getDays()
+                ForEach(days.indices, id: \.self) { index in
                     NavigationLink(
-                        value: TripDestination.fullDayCard(day: day),
-                        label: { Text(day.name) }
+                        value: TripDestination.fullDayCard(day: days[index]),
+                        label: { Text("Day \(index + 1): \(days[index].name)") }
                     )
                 }
             }

@@ -67,7 +67,7 @@ final class TripDataSource: ObservableObject {
     }
 
     func newTripDay(_ trip: Trip, _ day: Day) {
-        trip.days.append(day)
+        trip.addDay(day)
         do {
             try modelContext.save()
         } catch {
