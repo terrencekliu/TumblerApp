@@ -55,10 +55,10 @@ struct SingleEventCardView: View {
         ForEach(event.getActivities()) { activity in
             VStack {
                 FullActivityCardView(
-                    activity: activity
-//                    cardTint: Date() >= event.startTime && Date() < event.endTime
-//                        ? Color.green.opacity(0.1)
-//                        : Color.white
+                    activity: activity,
+                    cardTint: Date() >= event.startTime && Date() < event.endTime
+                        ? Color.green.opacity(0.1)
+                        : Color.white
                 )
                 TransportTabView(defaultTransport: activity.defaultTransportation)
             }

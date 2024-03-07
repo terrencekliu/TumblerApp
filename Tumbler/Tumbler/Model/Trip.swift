@@ -14,7 +14,7 @@ class Trip: Identifiable, ObservableObject {
     var name: String
 
     @Relationship(deleteRule: .nullify, inverse: \Day.trip)
-    var days: [Day] = []
+    private var days: [Day] = []
 
     @Relationship(deleteRule: .nullify, inverse: \Activity.trip)
     var activities: [Activity] = []
@@ -24,5 +24,13 @@ class Trip: Identifiable, ObservableObject {
         self.name = name
         self.days = days
         self.activities = activities
+    }
+
+    func getDays() -> [Day] {
+        return days.sorted { $0.startTime < $1.startTime }
+    }
+
+    func addDay(_ day: Day) {
+        days.append(day)
     }
 }

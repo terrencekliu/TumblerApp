@@ -43,8 +43,7 @@ class Event: Identifiable, ObservableObject {
     }
 
     func getActivities() -> [Activity] {
-        activities.sort(by: { $0.id < $1.id })
-        return activities
+        return activities.sorted(by: { $0.id < $1.id })
     }
 
     func getUnassignedActivities() -> [Activity] {
