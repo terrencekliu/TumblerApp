@@ -15,7 +15,7 @@ enum TripDestination: Hashable {
     case detailedActivity(activities: [Activity])
     case fullActivityCard
     case fullDayCard(day: Day)
-    case allDays(days: [Day])
+    case allDays(trip: Trip)
 
     static func == (lhs: TripDestination, rhs: TripDestination) -> Bool {
         return lhs.hashValue == rhs.hashValue

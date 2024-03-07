@@ -48,6 +48,39 @@ struct FullDayCardView: View {
     }
 }
 
+struct FullDayPickerView: View {
+    @ObservedObject var trip: Trip
+
+    @State var selectedDay: Day?
+    @State private var selectedDayNumber: Int = 1
+
+    @ViewBuilder
+    var body: some View {
+        VStack {
+            if selectedDay == nil {
+                Text("There are no days.")
+                Text("Create a day!")
+            } else {
+                FullDayCardView(day: selectedDay!)
+            }
+        }
+        .toolbarTitleMenu {
+            let days = trip.getDays()
+            ForEach(days.indices, id: \.self) { index in
+                Button("Day \(index + 1): \(days[index].name)") {
+                    selectedDay = days[index]
+                    selectedDayNumber = index + 1
+                }
+                .buttonStyle(.borderedProminent)
+            }
+        }
+        .toolbarColorScheme(.light, for: .navigationBar)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(selectedDay == nil ? "" : "Day \(selectedDayNumber): \(selectedDay!.name)")
+        .padding()
+    }
+}
+
 struct SingleEventCardView: View {
     @ObservedObject var event: Event
 

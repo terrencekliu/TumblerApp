@@ -55,7 +55,7 @@ struct TripView: View {
                     }
                 )
                 NavigationLink(
-                    value: TripDestination.allDays(days: trip.getDays()),
+                    value: TripDestination.allDays(trip: trip),
                     label: { Text("See All").textCase(nil) }
                 )
             }

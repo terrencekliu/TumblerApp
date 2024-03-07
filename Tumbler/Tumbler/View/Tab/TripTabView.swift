@@ -53,10 +53,8 @@ struct TripTabView: View {
                         .environment(DetailedActivityViewModel(allActivity: activities))
                 case .addActivity(let form):
                     AddActivityView(viewModel: form)
-                case .allDays(let days):
-                    ForEach(days, id: \.self.id) { day in
-                        FullDayCardView(day: day, hasDayName: true)
-                    }
+                case .allDays(let trip):
+                    FullDayPickerView(trip: trip, selectedDay: trip.getDays().first)
                 case .trip(let trip):
                     TripView(trip: trip)
                 default: Text("There was an unexpected error")
