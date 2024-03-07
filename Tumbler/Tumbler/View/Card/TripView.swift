@@ -78,12 +78,21 @@ struct TripView: View {
                 }
             }
             Section(header: header(SectionType.days)) {
-                let days = trip.getDays()
+                var days = trip.getDays()
                 ForEach(days.indices, id: \.self) { index in
                     NavigationLink(
                         value: TripDestination.fullDayCard(day: days[index]),
                         label: { Text("Day \(index + 1): \(days[index].name)") }
                     )
+                    .swipeActions(edge: .trailing) {
+                        Button("Delete", role: .destructive) {
+                            tripViewModel.removeDay(days[index])
+                            days.remove(at: index)
+                        }
+                        Button("Edit", role: .cancel) {
+                            
+                        }
+                    }
                 }
             }
         }

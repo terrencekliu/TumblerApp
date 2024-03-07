@@ -8,20 +8,16 @@
 import SwiftUI
 
 struct FullTripCardView: View {
-    @State var quickInfo = [("Hello", "Hello")]
+    var arr = [1,2,3,4,5,6,7,8,9]
+    @State private var selected: Int?
 
     var body: some View {
         List {
-            // TODO: Need quickInfo to be an EnviormentObject (editable)
-            ForEach(quickInfo, id: \.0) { info in
-                HStack {
-                    Text(info.0)
-                    Text(info.1)
-                }
-            } .onDelete { indexSet in
-                quickInfo.remove(atOffsets: indexSet)
-            } .onMove {
-                quickInfo.move(fromOffsets: $0, toOffset: $1)
+            ForEach(arr, id: \.self) { day in
+                Text("\(day)")
+            }
+            .swipeActions {
+                
             }
         }
         .scrollContentBackground(.visible)

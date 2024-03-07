@@ -23,7 +23,7 @@ final class TripDataSource: ObservableObject {
     @MainActor
     private init(mock: Bool) {
         // swiftlint:disable force_try
-        self.modelConfig = true ?
+        self.modelConfig = mock ?
             ModelConfiguration(isStoredInMemoryOnly: true) :
             ModelConfiguration(isStoredInMemoryOnly: false)
         self.modelContainer = try! ModelContainer(
@@ -33,11 +33,11 @@ final class TripDataSource: ObservableObject {
         self.modelContext = modelContainer.mainContext
 
         // REMOVE
-        try! self.modelContext.delete(model: Trip.self)
-        try! self.modelContext.delete(model: Day.self)
-        try! self.modelContext.delete(model: Event.self)
-        try! self.modelContext.delete(model: Activity.self)
-        newTrip(testTrip1)
+//        try! self.modelContext.delete(model: Trip.self)
+//        try! self.modelContext.delete(model: Day.self)
+//        try! self.modelContext.delete(model: Event.self)
+//        try! self.modelContext.delete(model: Activity.self)
+//        newTrip(testTrip1)
 //        newTrip(testTrip2)
 
         // swiftlint:enable force_try
@@ -106,5 +106,9 @@ final class TripDataSource: ObservableObject {
 
     func removeTrip(_ trip: Trip) {
         modelContext.delete(trip)
+    }
+
+    func removeDay(_ day: Day) {
+        modelContext.delete(day)
     }
 }
