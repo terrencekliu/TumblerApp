@@ -12,9 +12,13 @@ import PhotosUI
 struct NewActivityView: View {
     @ObservedObject var viewModel = NewActivityViewModel()
     @ObservedObject var trip: Trip
+    
+    @Binding var showSheet: Bool
+
+    @State private var error: Error?
     @State private var selectedPhotoItem: PhotosPickerItem?
 
-    @Binding var showSheet: Bool
+
 
     var body: some View {
         NavigationStack {
@@ -46,14 +50,19 @@ struct NewActivityView: View {
                     Button(
                         "Add",
                         action: {
-                            viewModel.addActivity(trip: trip)
-                            self.showSheet.toggle()
+                            do {
+                                try viewModel.addActivity(trip: trip)
+                                self.showSheet.toggle()
+                            } catch {
+                                self.error = error
+                            }
                         }
                     )
                     .accessibilityLabel("Add")
                     .accessibilityIdentifier("close-button")
                 }
             }
+            .errorAlert(error: $error)
             .onAppear {
                 UITextField.appearance().clearButtonMode = .whileEditing
             }

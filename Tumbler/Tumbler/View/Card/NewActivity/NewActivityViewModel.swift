@@ -9,6 +9,24 @@ import Foundation
 import SwiftData
 import CoreLocation
 
+extension NewActivityViewModel {
+    enum Error: LocalizedError {
+        case noSuchAddress
+
+        var errorDescription: String? {
+            switch self {
+            case .noSuchAddress: return "Invalid Address"
+            }
+        }
+
+        var recoverySuggestion: String? {
+            switch self {
+            case .noSuchAddress: return "Please enter a valid address."
+            }
+        }
+    }
+}
+
 @Observable
 class NewActivityViewModel: ObservableObject {
     @ObservationIgnored private let dataSource: TripDataSource
@@ -18,23 +36,24 @@ class NewActivityViewModel: ObservableObject {
         self.dataSource = dataSource
     }
 
-    // TODO: Add error handling for setCoordinate
-    func addActivity(trip: Trip) {
+    func addActivity(trip: Trip) throws {
         setCoordinate { coordinate, error in
             if error == nil {
                 self.form.latitude = coordinate.latitude
                 self.form.longitude = coordinate.longitude
-                print("Valid Address")
-            } else {
-                print("Invalid Address")
             }
         }
-        // TODO: Add validation
+
+        if self.form.latitude == nil || self.form.longitude == nil {
+            throw Error.noSuchAddress
+        }
+
         let newAddress = Address(
             label: form.addressLabel,
             address: form.address,
             latitude: form.latitude!,
-            longitude: form.longitude!)
+            longitude: form.longitude!
+        )
 
         let newActivity = Activity(
             name: form.name,
