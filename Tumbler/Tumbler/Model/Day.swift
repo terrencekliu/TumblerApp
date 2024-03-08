@@ -59,7 +59,7 @@ class Day: Identifiable, Comparable, Hashable, ObservableObject {
         for event in self.getEvents() {
             let activities: [Activity] = event.getActivities()
             activityEventGroups.append(ActivityEventGroup(activities[0], startDate: event.startTime, isEvent: true))
-            for activity in activities.dropFirst(1) {
+            for activity in activities.dropFirst() {
                 activityEventGroups.append(ActivityEventGroup(activity, isEvent: false))
             }
         }
