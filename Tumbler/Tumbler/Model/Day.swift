@@ -56,11 +56,16 @@ class Day: Identifiable, Comparable, Hashable, ObservableObject {
     func toActivityEventGroup() -> [ActivityEventGroup] {
         var activityEventGroups: [ActivityEventGroup] = []
 
-        for event in self.getEvents() {
+        let sortedEvents = self.events.sorted { $0.startTime < $1.startTime }
+        for event in sortedEvents {
             let activities: [Activity] = event.getActivities()
-            activityEventGroups.append(ActivityEventGroup(activities[0], startDate: event.startTime, isEvent: true))
-            for activity in activities.dropFirst(1) {
-                activityEventGroups.append(ActivityEventGroup(activity, isEvent: false))
+
+            for index in activities.indices {
+                if index == 0 {
+                    activityEventGroups.append(ActivityEventGroup(activities[index], startDate: event.startTime, isEvent: true))
+                } else {
+                    activityEventGroups.append(ActivityEventGroup(activities[index], isEvent: false))
+                }
             }
         }
         return activityEventGroups
