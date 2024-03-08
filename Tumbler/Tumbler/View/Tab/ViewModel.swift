@@ -24,4 +24,24 @@ class ViewModel: ObservableObject {
         dataSource.newTrip(Trip(name: name))
         trips = dataSource.fetchTrips()
     }
+
+    func mostCurrentTripOccurance() -> (Int, Trip)? {
+        trips = dataSource.fetchTrips()
+
+        let selectedTrip = trips.filter { trip in
+            let days = trip.getSortedDays()
+            let current = Date.now
+            let first = days.first?.startTime
+            let last = days.last?.startTime
+            return first != nil && last != nil &&
+                first! <= current && current <= last!
+        }.first
+
+        if selectedTrip == nil {
+            return nil
+        }
+
+        let selectedIndex = trips.firstIndex(of: selectedTrip!)
+        return (selectedIndex!, selectedTrip!)
+    }
 }

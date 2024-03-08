@@ -29,7 +29,7 @@ extension Date {
 
 extension Trip {
     func formatTripDuration() -> String {
-        let days = getDays()
+        let days = getSortedDays()
         if days.count < 2 {
             return ""
         }

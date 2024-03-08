@@ -52,7 +52,7 @@ struct FullDayPickerView: View {
     @ObservedObject var trip: Trip
 
     @State var selectedDay: Day?
-    @State private var selectedDayNumber: Int = 1
+    @State var selectedDayNumber: Int = 1
 
     @ViewBuilder
     var body: some View {
@@ -65,7 +65,7 @@ struct FullDayPickerView: View {
             }
         }
         .toolbarTitleMenu {
-            let days = trip.getDays()
+            let days = trip.getSortedDays()
             ForEach(days.indices, id: \.self) { index in
                 Button("Day \(index + 1): \(days[index].name)") {
                     selectedDay = days[index]
