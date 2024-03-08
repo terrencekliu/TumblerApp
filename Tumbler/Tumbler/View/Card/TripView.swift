@@ -78,7 +78,7 @@ struct TripView: View {
                 }
             }
             Section(header: header(SectionType.days)) {
-                var days = trip.getDays()
+                var days = trip.getSortedDays()
                 ForEach(days.indices, id: \.self) { index in
                     NavigationLink(
                         value: TripDestination.fullDayCard(day: days[index]),

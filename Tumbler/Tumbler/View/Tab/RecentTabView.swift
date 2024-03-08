@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-func containsTrips(trips: [Trip]) -> Bool {
-    return (trips.count == 0)
-}
-
 struct RecentTabView: View {
+    @ObservedObject var viewModel = ViewModel()
+    @Binding var tabSelection: Int
+
     var body: some View {
         NavigationStack {
-            if true { // TODO: hasCurrentTrip
+            var currentTrip: (Int, Trip)? = viewModel.mostCurrentTripOccurance()
+            if currentTrip == nil {
                 VStack {
                     Text("No in progress trips :(")
                         .font(.title)
@@ -28,7 +28,9 @@ struct RecentTabView: View {
                         .clipped()
                         .padding()
                         .accessibilityIdentifier("no-trip-image")
-                    Button(action: {}) {
+                    Button {
+                        tabSelection = 2
+                    } label: {
                         Text("Create a new trip")
                             .fontWeight(.medium)
                             .foregroundStyle(.white)
@@ -41,15 +43,16 @@ struct RecentTabView: View {
                 }
                 .navigationTitle("In Progress")
             } else {
-                ScrollView {
-                    Text("Hello World!")
-                }
-                .navigationTitle("In Progress")
+                FullDayPickerView(
+                    trip: currentTrip!.1,
+                    selectedDay: currentTrip!.1.getSortedDays().first,
+                    selectedDayNumber: currentTrip!.0
+                )
             }
         }
     }
 }
 
 #Preview {
-    RecentTabView()
+    RecentTabView(tabSelection: .constant(1))
 }

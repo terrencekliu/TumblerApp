@@ -26,7 +26,7 @@ class Trip: Identifiable, ObservableObject {
         self.activities = activities
     }
 
-    func getDays() -> [Day] {
+    func getSortedDays() -> [Day] {
         return days.sorted { $0.startTime < $1.startTime }
     }
 

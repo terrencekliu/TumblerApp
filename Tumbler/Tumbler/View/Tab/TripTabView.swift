@@ -54,7 +54,7 @@ struct TripTabView: View {
                 case .addActivity(let form):
                     AddActivityView(viewModel: form)
                 case .allDays(let trip):
-                    FullDayPickerView(trip: trip, selectedDay: trip.getDays().first)
+                    FullDayPickerView(trip: trip, selectedDay: trip.getSortedDays().first)
                 case .trip(let trip):
                     TripView(trip: trip)
                 default: Text("There was an unexpected error")
