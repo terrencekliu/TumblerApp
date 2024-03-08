@@ -15,14 +15,16 @@ class NewDayViewModel {
 
     var form: NewDayForm
     var trip: Trip
+    var day: Day?
     var searchTextListView: String
     var searchTextMapView: String
 
     var error: Error?
 
-    init(dataSource: TripDataSource = TripDataSource.shared, trip: Trip) {
+    init(dataSource: TripDataSource = TripDataSource.shared, trip: Trip, day: Day?) {
         self.dataSource = dataSource
-        self.form = NewDayForm()
+        self.day = day
+        self.form = day?.dayToForm() ?? NewDayForm()
         self.trip = trip
         self.searchTextListView = ""
         self.searchTextMapView = ""
@@ -42,9 +44,24 @@ class NewDayViewModel {
         dataSource.newTripDay(self.trip, day)
         return true
     }
+    
+    func updateForm() -> Bool {
+        let day = Day(name: form.name, startTime: form.startDate, endTime: form.endDate)
 
-    func addInstance(activity: Activity, at: Int) {
-        let safeAddIndex = at < self.form.list.count ? at : self.form.list.count
+        do {
+            try form.validateOrder()
+            try day.events = form.toEvent()
+        } catch {
+            self.error = error
+            return false
+        }
+
+        dataSource.update()
+        return true
+    }
+
+    func addInstance(activity: Activity, at index: Int) {
+        let safeAddIndex = index < self.form.list.count ? index : self.form.list.count
         self.form.list.insert(ActivityEventGroup(activity), at: safeAddIndex)
     }
 

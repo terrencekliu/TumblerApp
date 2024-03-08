@@ -58,6 +58,6 @@ struct NewDayView: View {
 
 #Preview {
     let mockData = TripViewModel(dataSource: TripDataSource.test)
-    let testVM = NewDayViewModel(trip: mockData.trips.first!)
+    let testVM = NewDayViewModel(trip: mockData.trips.first!, day: nil)
     return NavigationStack { NewDayView(viewModel: testVM) }
 }

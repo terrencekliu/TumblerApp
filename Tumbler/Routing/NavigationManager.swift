@@ -10,7 +10,7 @@ import SwiftUI
 
 enum TripDestination: Hashable {
     case trip(trip: Trip)
-    case newDay(trip: Trip)
+    case newDay(trip: Trip, day: Day? = nil)
     case addActivity(form: NewDayViewModel)
     case detailedActivity(activities: [Activity])
     case fullActivityCard

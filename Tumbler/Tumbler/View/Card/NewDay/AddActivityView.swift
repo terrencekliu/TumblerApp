@@ -46,10 +46,19 @@ struct AddActivityView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Save") {
-                    @Bindable var navManager = navManager
-                    if viewModel.submitForm() {
-                        navManager.navigateToTrip()
+                if viewModel.day == nil {
+                    Button("Save") {
+                        @Bindable var navManager = navManager
+                        if viewModel.submitForm() {
+                            navManager.navigateToTrip()
+                        }
+                    }
+                } else {
+                    Button("Update") {
+                        @Bindable var navManager = navManager
+                        if viewModel.updateForm() {
+                            navManager.navigateToTrip()
+                        }
                     }
                 }
             }
@@ -147,7 +156,7 @@ struct ActivityCard: View {
 
 #Preview {
     let mockViewModel = ViewModel(TripDataSource.test)
-    let vm = NewDayViewModel(trip: mockViewModel.trips.first!)
+    let vm = NewDayViewModel(trip: mockViewModel.trips.first!, day: nil)
     vm.addInstance(activity: vm.trip.activities[0], at: 0)
     vm.addInstance(activity: vm.trip.activities[1], at: 1)
     return AddActivityView(viewModel: vm)

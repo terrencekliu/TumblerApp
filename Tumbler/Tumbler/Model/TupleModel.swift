@@ -57,7 +57,7 @@ class ActivityEventGroup: Identifiable, Hashable, Comparable {
         return lhs.activity == rhs.activity && lhs.isEvent == rhs.isEvent &&
         lhs.startDate == rhs.startDate && lhs.endDate == rhs.endDate
     }
-    
+
     static func < (lhs: ActivityEventGroup, rhs: ActivityEventGroup) -> Bool {
         return lhs.startDate < rhs.startDate
     }

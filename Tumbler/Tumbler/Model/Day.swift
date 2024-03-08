@@ -48,4 +48,26 @@ class Day: Identifiable, Comparable, Hashable, ObservableObject {
     static func == (lhs: Day, rhs: Day) -> Bool {
         lhs.startTime == rhs.startTime
     }
+
+    func toActivityEventGroup() -> [ActivityEventGroup] {
+        var activityEventGroups: [ActivityEventGroup] = []
+
+        for event in self.events {
+            let activities: [Activity] = event.getActivities()
+            activityEventGroups.append(ActivityEventGroup(activities[0], startDate: event.startTime, isEvent: true))
+            for activity in activities.dropFirst() {
+                activityEventGroups.append(ActivityEventGroup(activity, isEvent: false))
+            }
+        }
+        return activityEventGroups
+    }
+
+    func dayToForm() -> NewDayForm {
+        return NewDayForm(
+            name: self.name,
+            startDate: self.startTime,
+            endDate: self.endTime,
+            list: self.toActivityEventGroup()
+        )
+    }
 }

@@ -146,7 +146,7 @@ struct ActivityPopup: View {
 
 #Preview {
     let mockData = TripViewModel(dataSource: TripDataSource.test)
-    let testVM = NewDayViewModel(trip: mockData.trips.first!)
+    let testVM = NewDayViewModel(trip: mockData.trips.first!, day: nil)
 
     return AddActivityMapView(viewModel: testVM, showSheet: .constant(true), addIndex: .constant(0), displayMap: .constant(true))
 }
