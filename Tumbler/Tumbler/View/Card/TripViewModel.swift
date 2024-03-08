@@ -22,12 +22,8 @@ class TripViewModel: ObservableObject {
     func getActivities(tripId: UUID) -> [Activity] {
         dataSource.fetchTripActivities(tripId)
     }
-    
+
     func removeDay(_ day: Day) {
         dataSource.removeDay(day)
-    }
-    
-    func editDay(_ day: Day) {
-        
     }
 }

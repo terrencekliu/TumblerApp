@@ -76,21 +76,16 @@ struct AddActivityView: View {
 
 struct InstanceGroup: View {
     var viewModel: NewDayViewModel
-    var instance: ActivityEventGroup
+    @Bindable var instance: ActivityEventGroup
 
     @State var addIndex: Int
     @State private var showAddSheet = false
-    // TODO: Need to extract the saved time in the tuple
-    @State var selectedTime: Date = Date()
 
     var body: some View {
         VStack {
             if instance.isEvent {
                 HStack {
-                    DatePicker("", selection: $selectedTime, displayedComponents: .hourAndMinute)
-                        .onChange(of: selectedTime, initial: true) {
-                            instance.startDate = selectedTime
-                        }
+                    DatePicker("", selection: $instance.startDate, displayedComponents: .hourAndMinute)
                         .frame(width: 50)
                         .padding(.trailing, 20)
                     VStack { Divider().padding(.leading) }

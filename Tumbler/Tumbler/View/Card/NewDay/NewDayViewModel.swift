@@ -44,13 +44,16 @@ class NewDayViewModel {
         dataSource.newTripDay(self.trip, day)
         return true
     }
-    
-    func updateForm() -> Bool {
-        let day = Day(name: form.name, startTime: form.startDate, endTime: form.endDate)
 
+    func updateForm() -> Bool {
+        self.day!.name = form.name
+        self.day!.startTime = form.startDate
+        self.day!.endTime = form.endDate
+
+        self.removeEvents()
         do {
             try form.validateOrder()
-            try day.events = form.toEvent()
+            try self.day!.events = form.toEvent()
         } catch {
             self.error = error
             return false
@@ -58,6 +61,12 @@ class NewDayViewModel {
 
         dataSource.update()
         return true
+    }
+
+    func removeEvents() {
+        for event in day!.events {
+            dataSource.removeEvent(event)
+        }
     }
 
     func addInstance(activity: Activity, at index: Int) {

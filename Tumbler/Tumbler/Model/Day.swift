@@ -48,14 +48,18 @@ class Day: Identifiable, Comparable, Hashable, ObservableObject {
     static func == (lhs: Day, rhs: Day) -> Bool {
         lhs.startTime == rhs.startTime
     }
+    
+    func getEvents() -> [Event] {
+        return self.events.sorted { $0.startTime < $1.startTime }
+    }
 
     func toActivityEventGroup() -> [ActivityEventGroup] {
         var activityEventGroups: [ActivityEventGroup] = []
 
-        for event in self.events {
+        for event in self.getEvents() {
             let activities: [Activity] = event.getActivities()
             activityEventGroups.append(ActivityEventGroup(activities[0], startDate: event.startTime, isEvent: true))
-            for activity in activities.dropFirst() {
+            for activity in activities.dropFirst(1) {
                 activityEventGroups.append(ActivityEventGroup(activity, isEvent: false))
             }
         }
