@@ -61,7 +61,6 @@ struct AddActivityView: View {
                 addIndex: .constant(0)
             )
         }
-        .errorAlert(error: $viewModel.error)
     }
 }
 
