@@ -20,7 +20,7 @@ class Day: Identifiable, Comparable, Hashable, ObservableObject {
 
     @Attribute(.externalStorage) var thumbnail: Data?
 
-    @Relationship(deleteRule: .nullify, inverse: \Event.day)
+    @Relationship(deleteRule: .cascade, inverse: \Event.day)
     var events: [Event] = []
 
     init(id: UUID = UUID(),
