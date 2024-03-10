@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FullTripCardView: View {
-    var arr = [1,2,3,4,5,6,7,8,9]
+    var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     @State private var selected: Int?
 
     var body: some View {
@@ -17,7 +17,7 @@ struct FullTripCardView: View {
                 Text("\(day)")
             }
             .swipeActions {
-                
+
             }
         }
         .scrollContentBackground(.visible)

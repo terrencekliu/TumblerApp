@@ -29,7 +29,7 @@ class NewDayViewModel {
         self.searchTextListView = ""
         self.searchTextMapView = ""
     }
-    
+
     private func validateForm() throws -> [Event] {
         try form.validateOrder()
         return try form.toEvent()

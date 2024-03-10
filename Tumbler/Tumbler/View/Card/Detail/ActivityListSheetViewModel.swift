@@ -10,7 +10,7 @@ import Foundation
 class ActivityListSheetViewModel: ObservableObject {
     @Published var activities: [Activity.ActivityType: [Activity]]
     @Published var searchText: String = ""
-    
+
     init(_ activities: [Activity]) {
         self.activities = Dictionary(grouping: activities, by: { $0.type })
     }

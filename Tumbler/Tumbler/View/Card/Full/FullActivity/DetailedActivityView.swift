@@ -75,7 +75,7 @@ struct ActivityRow: View {
 
     var body: some View {
         NavigationLink {
-            
+
         } label: {
             Label(
                 title: { Text(activity.name).foregroundStyle(.black) },

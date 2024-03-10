@@ -48,7 +48,7 @@ class Day: Identifiable, Comparable, Hashable, ObservableObject {
     static func == (lhs: Day, rhs: Day) -> Bool {
         lhs.startTime == rhs.startTime
     }
-    
+
     func getEvents() -> [Event] {
         return self.events.sorted { $0.startTime < $1.startTime }
     }

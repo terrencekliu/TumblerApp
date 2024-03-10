@@ -12,13 +12,11 @@ import PhotosUI
 struct NewActivityView: View {
     @ObservedObject var viewModel = NewActivityViewModel()
     @ObservedObject var trip: Trip
-    
+
     @Binding var showSheet: Bool
 
     @State private var error: Error?
     @State private var selectedPhotoItem: PhotosPickerItem?
-
-
 
     var body: some View {
         NavigationStack {

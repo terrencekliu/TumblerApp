@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ActivityCardView: View {
     @ObservedObject var activity: Activity
-    
+
     @Environment (\.dismiss) var dismiss
     @State var selected = 1
 

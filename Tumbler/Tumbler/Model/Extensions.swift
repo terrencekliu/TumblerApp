@@ -74,7 +74,7 @@ extension Event {
 
 extension Collection where Element: Comparable {
   func isSorted(by areInAscendingOrder: (Element, Element) -> Bool) -> Bool {
-    var previous: Element? = nil
+    var previous: Element?
     for item in self {
       if let prev = previous {
         if !areInAscendingOrder(prev, item) {

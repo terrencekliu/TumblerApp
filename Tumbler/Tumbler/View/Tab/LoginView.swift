@@ -40,7 +40,7 @@ struct LoginView: View {
             .accessibilityIdentifier("sign-in-apple-button")
             Spacer()
         }
-        //TODO: Center the image
+        // TODO: Center the image
         .background(Image("loginPhoto")
             .resizable()
             .scaledToFill()

@@ -75,7 +75,7 @@ struct ActivityListView: View {
                     } label: {
                         Label(
                             title: { Text(activity.name).foregroundStyle(.black) },
-                            icon: { 
+                            icon: {
                                 Image("rectangleCafe")
                                     .resizable()
                                     .scaledToFill()

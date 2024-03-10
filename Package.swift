@@ -15,7 +15,6 @@ let package = Package(
             name: "TumblerTests",
             dependencies: ["Tumbler"],
 	    path: "Tumbler/TumblerTests"
-        ),
+        )
     ]
 )
-
