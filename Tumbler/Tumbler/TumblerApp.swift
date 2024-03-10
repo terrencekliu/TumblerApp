@@ -11,7 +11,7 @@ import SwiftData
 @main
 struct TumblerApp: App {
     @State private var tabSelection = 1
-    
+
     var body: some Scene {
         WindowGroup {
             TabView(selection: $tabSelection) {

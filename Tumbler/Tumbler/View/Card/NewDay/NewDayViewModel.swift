@@ -46,18 +46,23 @@ class NewDayViewModel {
     }
 
     func updateForm() -> Bool {
-        self.day!.name = form.name
-        self.day!.startTime = form.startDate
-        self.day!.endTime = form.endDate
-
-        self.removeEvents()
+        // Validation
+        let newEvents: [Event]
         do {
             try form.validateOrder()
-            try self.day!.events = form.toEvent()
+            try newEvents = form.toEvent()
         } catch {
             self.error = error
             return false
         }
+
+        // Write to models
+        self.removeEvents()
+
+        self.day!.events = newEvents
+        self.day!.name = form.name
+        self.day!.startTime = form.startDate
+        self.day!.endTime = form.endDate
 
         dataSource.update()
         return true
