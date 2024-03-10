@@ -33,12 +33,19 @@ extension NewDayForm {
 
 @Observable
 class NewDayForm {
-    var name: String = ""
+    var name: String
 
-    var startDate: Date = Date()
-    var endDate: Date = Date()
+    var startDate: Date
+    var endDate: Date
 
-    var list: [ActivityEventGroup] = []
+    var list: [ActivityEventGroup]
+
+    init(name: String = "", startDate: Date = Date(), endDate: Date = Date(), list: [ActivityEventGroup] = []) {
+        self.name = name
+        self.startDate = startDate
+        self.endDate = endDate
+        self.list = list
+    }
 
     func validateOrder() throws {
         if !list.isSorted(by: { $0.startDate < $1.startDate }) {

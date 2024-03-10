@@ -89,9 +89,10 @@ struct TripView: View {
                             tripViewModel.removeDay(days[index])
                             days.remove(at: index)
                         }
-                        Button("Edit", role: .cancel) {
-                            
-                        }
+                        NavigationLink(
+                            value: TripDestination.newDay(trip: trip, day: days[index]),
+                            label: { Text("Edit").textCase(nil) }
+                        )
                     }
                 }
             }

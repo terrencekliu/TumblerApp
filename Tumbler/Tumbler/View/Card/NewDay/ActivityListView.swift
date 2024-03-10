@@ -102,5 +102,5 @@ struct ActivityListView: View {
 
 #Preview {
     let mockData = ViewModel(TripDataSource.test)
-    return ActivityListView(viewModel: NewDayViewModel(trip: mockData.trips.first!), showSheet: .constant(true), addIndex: .constant(0), displayMap: .constant(true))
+    return ActivityListView(viewModel: NewDayViewModel(trip: mockData.trips.first!, day: nil), showSheet: .constant(true), addIndex: .constant(0), displayMap: .constant(true))
 }

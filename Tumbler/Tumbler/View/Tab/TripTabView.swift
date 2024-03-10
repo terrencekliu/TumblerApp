@@ -44,8 +44,8 @@ struct TripTabView: View {
             }
             .navigationDestination(for: TripDestination.self) { name in
                 switch name {
-                case .newDay(let trip):
-                    NewDayView(viewModel: NewDayViewModel(trip: trip))
+                case .newDay(let trip, let day):
+                    NewDayView(viewModel: NewDayViewModel(trip: trip, day: day))
                 case .fullDayCard(let day):
                     FullDayCardView(day: day)
                 case .detailedActivity(let activities):

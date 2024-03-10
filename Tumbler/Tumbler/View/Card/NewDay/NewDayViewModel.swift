@@ -15,36 +15,71 @@ class NewDayViewModel {
 
     var form: NewDayForm
     var trip: Trip
+    var day: Day?
     var searchTextListView: String
     var searchTextMapView: String
 
     var error: Error?
 
-    init(dataSource: TripDataSource = TripDataSource.shared, trip: Trip) {
+    init(dataSource: TripDataSource = TripDataSource.shared, trip: Trip, day: Day?) {
         self.dataSource = dataSource
-        self.form = NewDayForm()
+        self.day = day
+        self.form = day?.dayToForm() ?? NewDayForm()
         self.trip = trip
         self.searchTextListView = ""
         self.searchTextMapView = ""
     }
+    
+    private func validateForm() throws -> [Event] {
+        try form.validateOrder()
+        return try form.toEvent()
+    }
 
     func submitForm() -> Bool {
-        let day = Day(name: form.name, startTime: form.startDate, endTime: form.endDate)
-
+        let newEvents: [Event]
         do {
-            try form.validateOrder()
-            try day.events = form.toEvent()
+            newEvents = try validateForm()
         } catch {
             self.error = error
             return false
         }
 
+        // Write to models
+        let day = Day(name: form.name, startTime: form.startDate, endTime: form.endDate)
+        day.events = newEvents
         dataSource.newTripDay(self.trip, day)
         return true
     }
 
-    func addInstance(activity: Activity, at: Int) {
-        let safeAddIndex = at < self.form.list.count ? at : self.form.list.count
+    func updateForm() -> Bool {
+        let newEvents: [Event]
+        do {
+            newEvents = try validateForm()
+        } catch {
+            self.error = error
+            return false
+        }
+
+        // Write to models
+        self.removeEvents()
+
+        self.day!.name = form.name
+        self.day!.startTime = form.startDate
+        self.day!.endTime = form.endDate
+        self.day!.events = newEvents
+
+        dataSource.update()
+        return true
+    }
+
+    func removeEvents() {
+        for event in day!.events {
+            dataSource.removeEvent(event)
+        }
+    }
+
+    func addInstance(activity: Activity, at index: Int) {
+        let safeAddIndex = index < self.form.list.count ? index : self.form.list.count
         self.form.list.insert(ActivityEventGroup(activity), at: safeAddIndex)
     }
 

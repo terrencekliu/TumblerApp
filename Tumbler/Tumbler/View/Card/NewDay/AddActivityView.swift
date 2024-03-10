@@ -46,10 +46,19 @@ struct AddActivityView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button("Save") {
-                    @Bindable var navManager = navManager
-                    if viewModel.submitForm() {
-                        navManager.navigateToTrip()
+                if viewModel.day == nil {
+                    Button("Save") {
+                        @Bindable var navManager = navManager
+                        if viewModel.submitForm() {
+                            navManager.navigateToTrip()
+                        }
+                    }
+                } else {
+                    Button("Update") {
+                        @Bindable var navManager = navManager
+                        if viewModel.updateForm() {
+                            navManager.navigateToTrip()
+                        }
                     }
                 }
             }
@@ -66,21 +75,16 @@ struct AddActivityView: View {
 
 struct InstanceGroup: View {
     var viewModel: NewDayViewModel
-    var instance: ActivityEventGroup
+    @Bindable var instance: ActivityEventGroup
 
     @State var addIndex: Int
     @State private var showAddSheet = false
-    // TODO: Need to extract the saved time in the tuple
-    @State var selectedTime: Date = Date()
 
     var body: some View {
         VStack {
             if instance.isEvent {
                 HStack {
-                    DatePicker("", selection: $selectedTime, displayedComponents: .hourAndMinute)
-                        .onChange(of: selectedTime, initial: true) {
-                            instance.startDate = selectedTime
-                        }
+                    DatePicker("", selection: $instance.startDate, displayedComponents: .hourAndMinute)
                         .frame(width: 50)
                         .padding(.trailing, 20)
                     VStack { Divider().padding(.leading) }
@@ -146,7 +150,7 @@ struct ActivityCard: View {
 
 #Preview {
     let mockViewModel = ViewModel(TripDataSource.test)
-    let vm = NewDayViewModel(trip: mockViewModel.trips.first!)
+    let vm = NewDayViewModel(trip: mockViewModel.trips.first!, day: nil)
     vm.addInstance(activity: vm.trip.activities[0], at: 0)
     vm.addInstance(activity: vm.trip.activities[1], at: 1)
     return AddActivityView(viewModel: vm)
