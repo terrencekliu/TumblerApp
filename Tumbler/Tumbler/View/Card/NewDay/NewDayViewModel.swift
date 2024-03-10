@@ -29,28 +29,32 @@ class NewDayViewModel {
         self.searchTextListView = ""
         self.searchTextMapView = ""
     }
+    
+    private func validateForm() throws -> [Event] {
+        try form.validateOrder()
+        return try form.toEvent()
+    }
 
     func submitForm() -> Bool {
-        let day = Day(name: form.name, startTime: form.startDate, endTime: form.endDate)
-
+        let newEvents: [Event]
         do {
-            try form.validateOrder()
-            try day.events = form.toEvent()
+            newEvents = try validateForm()
         } catch {
             self.error = error
             return false
         }
 
+        // Write to models
+        let day = Day(name: form.name, startTime: form.startDate, endTime: form.endDate)
+        day.events = newEvents
         dataSource.newTripDay(self.trip, day)
         return true
     }
 
     func updateForm() -> Bool {
-        // Validation
         let newEvents: [Event]
         do {
-            try form.validateOrder()
-            try newEvents = form.toEvent()
+            newEvents = try validateForm()
         } catch {
             self.error = error
             return false
@@ -59,10 +63,10 @@ class NewDayViewModel {
         // Write to models
         self.removeEvents()
 
-        self.day!.events = newEvents
         self.day!.name = form.name
         self.day!.startTime = form.startDate
         self.day!.endTime = form.endDate
+        self.day!.events = newEvents
 
         dataSource.update()
         return true
