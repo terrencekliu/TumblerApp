@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SimpleTransportCardView: View {
     let transportSymbol: TransportationSymbol
-    let transportType: Transportation.TransportationType
+    let transportType: Transportation
 
     // State variables that need API from navigation
     @State var transitTime: String = "11:30"
@@ -28,7 +28,7 @@ struct SimpleTransportCardView: View {
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundStyle(.black)
-                if transportType == Transportation.TransportationType.transit {
+                if transportType == .transit {
                     Text("@ \(transitTime)")
                         .font(.subheadline)
                         .fontWeight(.semibold)
@@ -58,6 +58,6 @@ struct SimpleTransportCardView: View {
 #Preview {
     SimpleTransportCardView(
         transportSymbol: TransportationSymbol.transit,
-        transportType: Transportation.TransportationType.transit
+        transportType: .transit
     )
 }

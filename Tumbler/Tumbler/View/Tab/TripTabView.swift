@@ -22,15 +22,15 @@ struct TripTabView: View {
                 }
             }
             .toolbar {
-                Button(action: {
+                Button {
                     presentAlert = true
-                }, label: {
+                } label: {
                     Image(systemName: "plus")
                         .font(.system(size: 18))
                         .foregroundColor(Color.black)
                         .symbolRenderingMode(.monochrome)
                         .padding(.leading, 34)
-                })
+                }
                 .alert("Trip Name", isPresented: $presentAlert, actions: {
                     TextField("New Trip", text: $tripName)
 

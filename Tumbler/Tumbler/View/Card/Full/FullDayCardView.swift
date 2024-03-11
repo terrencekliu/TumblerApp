@@ -100,25 +100,25 @@ struct SingleEventCardView: View {
 }
 
 struct TransportTabView: View {
-    @State var defaultTransport: Transportation.TransportationType
+    @State var defaultTransport: Transportation
 
     var body: some View {
         TabView(selection: $defaultTransport) {
             SimpleTransportCardView(
                 transportSymbol: TransportationSymbol.transit,
-                transportType: Transportation.TransportationType.transit
+                transportType: .transit
             )
-                .tag(Transportation.TransportationType.transit)
+                .tag(Transportation.transit)
             SimpleTransportCardView(
                 transportSymbol: TransportationSymbol.car,
-                transportType: Transportation.TransportationType.car
+                transportType: .car
             )
-                .tag(Transportation.TransportationType.car)
+                .tag(Transportation.car)
             SimpleTransportCardView(
                 transportSymbol: TransportationSymbol.walk,
-                transportType: Transportation.TransportationType.walk
+                transportType: .walk
             )
-                .tag(Transportation.TransportationType.walk)
+                .tag(Transportation.walk)
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
         .frame(minHeight: 75, maxHeight: 75)

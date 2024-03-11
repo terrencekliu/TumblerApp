@@ -7,8 +7,7 @@
 
 import Foundation
 import SwiftData
-
-typealias Trans = Transportation.TransportationType
+import MapKit
 
 @Model
 class Activity: Identifiable, ObservableObject {
@@ -18,8 +17,9 @@ class Activity: Identifiable, ObservableObject {
 
     var name: String
     var type: ActivityType
+
     var address: Address
-    var defaultTransportation: Transportation.TransportationType
+    var defaultTransportation: Transportation
 
     @Attribute(.externalStorage) var thumbnail: Data? // Convert to UIImage to display
     @Attribute(.externalStorage) var ticketReserve: Data?
@@ -58,17 +58,18 @@ class Activity: Identifiable, ObservableObject {
         }
     }
 
-    init(id: UUID = UUID(),
-         name: String,
-         type: ActivityType = ActivityType.other,
-         address: Address,
-         defaultTransportation: Trans = Trans.car,
-         thumbnail: Data? = nil,
-         ticketReserve: Data? = nil,
-         files: Data? = nil,
-         quickInfo: [TupleModel],
-         alert: String = "",
-         notes: String = ""
+    init(
+        id: UUID = UUID(),
+        name: String,
+        type: ActivityType = ActivityType.other,
+        address: Address,
+        defaultTransportation: Transportation = .car,
+        thumbnail: Data? = nil,
+        ticketReserve: Data? = nil,
+        files: Data? = nil,
+        quickInfo: [TupleModel],
+        alert: String = "",
+        notes: String = ""
     ) {
         self.id = id
         self.name = name

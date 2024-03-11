@@ -12,7 +12,7 @@
 		503E76E22B7C380100E88986 /* AddActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76E12B7C380100E88986 /* AddActivityView.swift */; };
 		503E76E42B7C3B6000E88986 /* NewDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503E76E32B7C3B6000E88986 /* NewDayViewModel.swift */; };
 		504074172B9147C700DFB02D /* AddActivityMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504074162B9147C700DFB02D /* AddActivityMapView.swift */; };
-		504074192B914ECC00DFB02D /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504074182B914ECC00DFB02D /* Address.swift */; };
+		504074192B914ECC00DFB02D /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504074182B914ECC00DFB02D /* Map.swift */; };
 		504F74C42B7D851100693290 /* ActivityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504F74C32B7D851100693290 /* ActivityListView.swift */; };
 		50A845502B58E20400CE5728 /* NewActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A8454F2B58E20400CE5728 /* NewActivityView.swift */; };
 		50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */; };
@@ -54,7 +54,6 @@
 		FFC4771F2ADE54FB0055EC89 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4771E2ADE54FB0055EC89 /* Day.swift */; };
 		FFC477212ADE55050055EC89 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477202ADE55050055EC89 /* Event.swift */; };
 		FFC477232ADE551D0055EC89 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477222ADE551D0055EC89 /* Trip.swift */; };
-		FFC477262ADE562D0055EC89 /* Transportation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC477252ADE562D0055EC89 /* Transportation.swift */; };
 		FFC4772E2ADE5FC70055EC89 /* DetailedActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC4772D2ADE5FC70055EC89 /* DetailedActivityViewModel.swift */; };
 		FFEE1A9C2B7BEB8A003CC260 /* TupleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFEE1A9B2B7BEB8A003CC260 /* TupleModel.swift */; };
 /* End PBXBuildFile section */
@@ -82,7 +81,7 @@
 		503E76E12B7C380100E88986 /* AddActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityView.swift; sourceTree = "<group>"; };
 		503E76E32B7C3B6000E88986 /* NewDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayViewModel.swift; sourceTree = "<group>"; };
 		504074162B9147C700DFB02D /* AddActivityMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityMapView.swift; sourceTree = "<group>"; };
-		504074182B914ECC00DFB02D /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		504074182B914ECC00DFB02D /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		504F74C32B7D851100693290 /* ActivityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityListView.swift; sourceTree = "<group>"; };
 		50A8454F2B58E20400CE5728 /* NewActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityView.swift; sourceTree = "<group>"; };
 		50A845512B58F73B00CE5728 /* NewActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityViewModel.swift; sourceTree = "<group>"; };
@@ -128,7 +127,6 @@
 		FFC4771E2ADE54FB0055EC89 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		FFC477202ADE55050055EC89 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		FFC477222ADE551D0055EC89 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
-		FFC477252ADE562D0055EC89 /* Transportation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transportation.swift; sourceTree = "<group>"; };
 		FFC4772D2ADE5FC70055EC89 /* DetailedActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedActivityViewModel.swift; sourceTree = "<group>"; };
 		FFEE1A9B2B7BEB8A003CC260 /* TupleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TupleModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -441,10 +439,9 @@
 				FFC4771E2ADE54FB0055EC89 /* Day.swift */,
 				FFC477202ADE55050055EC89 /* Event.swift */,
 				FFC4771C2ADE54EA0055EC89 /* Activity.swift */,
-				FFC477252ADE562D0055EC89 /* Transportation.swift */,
 				FFEE1A9B2B7BEB8A003CC260 /* TupleModel.swift */,
 				FF1D0B2E2B67473B00FDF4CF /* Extensions.swift */,
-				504074182B914ECC00DFB02D /* Address.swift */,
+				504074182B914ECC00DFB02D /* Map.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -673,9 +670,8 @@
 				FFC477172ADC91D20055EC89 /* FullTripCardView.swift in Sources */,
 				FF1274CA2AF74F9D00099E02 /* FullEventCardViewModel.swift in Sources */,
 				FFC477232ADE551D0055EC89 /* Trip.swift in Sources */,
-				504074192B914ECC00DFB02D /* Address.swift in Sources */,
+				504074192B914ECC00DFB02D /* Map.swift in Sources */,
 				FFC4771D2ADE54EA0055EC89 /* Activity.swift in Sources */,
-				FFC477262ADE562D0055EC89 /* Transportation.swift in Sources */,
 				FFEE1A9C2B7BEB8A003CC260 /* TupleModel.swift in Sources */,
 				FF6531AE2B659C2800D69746 /* ViewModel.swift in Sources */,
 				FF1274CF2AF76D1900099E02 /* ActivityCardView.swift in Sources */,

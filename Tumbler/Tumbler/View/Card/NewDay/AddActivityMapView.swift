@@ -22,10 +22,7 @@ struct AddActivityMapView: View {
                 ForEach(searchResults(activities: viewModel.usedActivities())) { activity in
                     Marker(
                         activity.name,
-                        coordinate: CLLocationCoordinate2D(
-                            latitude: activity.address.latitude,
-                            longitude: activity.address.longitude
-                        )
+                        coordinate: activity.address.toCLLocationCoordinate2D()
                     )
                     .tag(activity)
                     .tint(.gray)
@@ -33,10 +30,7 @@ struct AddActivityMapView: View {
                 ForEach(searchResults(activities: viewModel.freeActivities())) { activity in
                     Marker(
                         activity.name,
-                        coordinate: CLLocationCoordinate2D(
-                            latitude: activity.address.latitude,
-                            longitude: activity.address.longitude
-                        )
+                        coordinate: activity.address.toCLLocationCoordinate2D()
                     )
                     .tag(activity)
                 }

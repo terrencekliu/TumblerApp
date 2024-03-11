@@ -16,7 +16,7 @@ struct NewActivityForm {
     var longitude: Double?
     var latitude: Double?
 
-    var defaultTransportation: Trans = Trans.car
+    var defaultTransportation: Transportation = .car
 
     var timeSensitive: Bool = false
     var startDate = Date()
