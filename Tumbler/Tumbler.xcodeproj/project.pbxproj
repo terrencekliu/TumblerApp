@@ -31,6 +31,7 @@
 		FF6531AE2B659C2800D69746 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6531AD2B659C2800D69746 /* ViewModel.swift */; };
 		FF6EA1302B7C4EA400827D12 /* DayPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6EA12F2B7C4EA400827D12 /* DayPickerView.swift */; };
 		FF7258BA2B8AA2EE00A523AF /* NewDayForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF7258B92B8AA2EE00A523AF /* NewDayForm.swift */; };
+		FF731BF92BA01B2C007CFDED /* FullDayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF731BF82BA01B2C007CFDED /* FullDayViewModel.swift */; };
 		FF832D742B97B12F0041A466 /* LocalizedAlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF832D732B97B12F0041A466 /* LocalizedAlertError.swift */; };
 		FF832D762B97B1700041A466 /* ErrorAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF832D752B97B1700041A466 /* ErrorAlertView.swift */; };
 		FF9AB77B2B68C1E200CA601C /* TripViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9AB77A2B68C1E200CA601C /* TripViewModel.swift */; };
@@ -98,6 +99,7 @@
 		FF6531AD2B659C2800D69746 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		FF6EA12F2B7C4EA400827D12 /* DayPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerView.swift; sourceTree = "<group>"; };
 		FF7258B92B8AA2EE00A523AF /* NewDayForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDayForm.swift; sourceTree = "<group>"; };
+		FF731BF82BA01B2C007CFDED /* FullDayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullDayViewModel.swift; sourceTree = "<group>"; };
 		FF832D732B97B12F0041A466 /* LocalizedAlertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedAlertError.swift; sourceTree = "<group>"; };
 		FF832D752B97B1700041A466 /* ErrorAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorAlertView.swift; sourceTree = "<group>"; };
 		FF9AB77A2B68C1E200CA601C /* TripViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewModel.swift; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				FF1274C32AF6BA9500099E02 /* FullActivity */,
+				FF731BF82BA01B2C007CFDED /* FullDayViewModel.swift */,
 				FFC477102ADC91A30055EC89 /* FullDayCardView.swift */,
 				FFC477162ADC91D20055EC89 /* FullTripCardView.swift */,
 			);
@@ -651,6 +654,7 @@
 				50C2FF5A2B62047E0098DCFC /* SimpleTransportCardView.swift in Sources */,
 				50A845522B58F73B00CE5728 /* NewActivityViewModel.swift in Sources */,
 				50F615902B60BB7E005F0EAB /* DetailedActivityView.swift in Sources */,
+				FF731BF92BA01B2C007CFDED /* FullDayViewModel.swift in Sources */,
 				FF6531AC2B6593A200D69746 /* TripDataSource.swift in Sources */,
 				FFC477172ADC91D20055EC89 /* FullTripCardView.swift in Sources */,
 				FFC477232ADE551D0055EC89 /* Trip.swift in Sources */,

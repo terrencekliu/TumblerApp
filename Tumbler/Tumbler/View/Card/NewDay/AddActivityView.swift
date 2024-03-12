@@ -31,6 +31,7 @@ struct AddActivityView: View {
                 InstanceGroup(
                     viewModel: viewModel,
                     instance: viewModel.form.list[index],
+                    nextInstance: index < viewModel.form.list.count - 1 ? viewModel.form.list[index + 1] : viewModel.form.list[index],
                     addIndex: index + 1
                 )
                 .listRowSeparator(.hidden)
@@ -76,6 +77,7 @@ struct AddActivityView: View {
 struct InstanceGroup: View {
     var viewModel: NewDayViewModel
     @Bindable var instance: ActivityEventGroup
+    @Bindable var nextInstance: ActivityEventGroup
 
     @State var addIndex: Int
     @State private var showAddSheet = false
@@ -91,7 +93,7 @@ struct InstanceGroup: View {
                 }
             }
             VStack {
-                ActivityCard(instance: instance)
+                ActivityCard(instance: instance, nextInstance: nextInstance)
                 Button {
                     showAddSheet = true
                 } label: {
@@ -116,6 +118,7 @@ struct InstanceGroup: View {
 
 struct ActivityCard: View {
     @Bindable var instance: ActivityEventGroup
+    @Bindable var nextInstance: ActivityEventGroup
 
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -143,15 +146,22 @@ struct ActivityCard: View {
             Text(instance.activity.address.address)
                 .foregroundColor(.blue)
                 .accessibilityIdentifier("address-text")
-            TransportTabView(defaultTransport: instance.activity.defaultTransportation)
+            if instance != nextInstance {
+                TransportTabView(
+                    defaultTransport: instance.activity.defaultTransportation,
+                    currentAddress: instance.activity.address,
+                    nextAddress: instance.activity.address,
+                    nextTime: Date()
+                )
+            }
         }
     }
 }
 
-#Preview {
-    let mockViewModel = ViewModel(TripDataSource.test)
-    let vm = NewDayViewModel(trip: mockViewModel.trips.first!, day: nil)
-    vm.addInstance(activity: vm.trip.activities[0], at: 0)
-    vm.addInstance(activity: vm.trip.activities[1], at: 1)
-    return AddActivityView(viewModel: vm)
-}
+//#Preview {
+//    let mockViewModel = ViewModel(TripDataSource.test)
+//    let vm = NewDayViewModel(trip: mockViewModel.trips.first!, day: nil)
+//    vm.addInstance(activity: vm.trip.activities[0], at: 0)
+//    vm.addInstance(activity: vm.trip.activities[1], at: 1)
+//    return AddActivityView(viewModel: vm)
+//}

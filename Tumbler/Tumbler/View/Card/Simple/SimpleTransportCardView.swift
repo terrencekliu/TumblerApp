@@ -6,16 +6,33 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct SimpleTransportCardView: View {
+    var viewModel: FullDayViewModel
     let transportSymbol: TransportationSymbol
     let transportType: Transportation
 
-    // State variables that need API from navigation
-    @State var transitTime: String = "11:30"
-    @State var transportDistance: String = "300 ft"
-    @State private var destinationDistance: String = "1.2 mi"
-    @State private var destinationTime: String = "1 hr 11 min"
+    init(viewModel: FullDayViewModel, transportSymbol: TransportationSymbol, transportType: Transportation) {
+        self.viewModel = viewModel
+        self.transportSymbol = transportSymbol
+        self.transportType = transportType
+    }
+
+    private func calculateTimeDistance() {
+        Task {
+            let route = await viewModel.currentAddress.fetchRoute(
+                transportation: transportType,
+                to: viewModel.nextAddress
+            )
+
+            if viewModel.nextTime != nil {
+                viewModel.transitTime = route?.formattedLeaveTime(goal: viewModel.nextTime!) ?? "none"
+            }
+            viewModel.destinationTime = route?.formattedTravelTime() ?? "none"
+            viewModel.destinationDistance = route?.formattedTotalDistance() ?? "none"
+        }
+    }
 
     var body: some View {
         Button(action: {}) {
@@ -29,7 +46,7 @@ struct SimpleTransportCardView: View {
                     .fontWeight(.semibold)
                     .foregroundStyle(.black)
                 if transportType == .transit {
-                    Text("@ \(transitTime)")
+                    Text("@ \(viewModel.transitTime)")
                         .font(.subheadline)
                         .fontWeight(.semibold)
                         .foregroundStyle(.black)
@@ -38,9 +55,9 @@ struct SimpleTransportCardView: View {
 
                 Spacer()
                 VStack {
-                    Text("300 ft away")
+                    Text("\(viewModel.transportDistance) ft away")
                     HStack {
-                        Text("For 100 hr 11 min \u{2022} 1111.2 mi")
+                        Text("For \(viewModel.destinationTime) \u{2022} \(viewModel.destinationDistance)")
                     }
                 }
                 .foregroundColor(.black)
@@ -52,12 +69,15 @@ struct SimpleTransportCardView: View {
         .buttonBorderShape(.capsule)
         .tint(.blue.opacity(0.1))
         .padding([.leading, .trailing], 20)
+        .onAppear {
+            calculateTimeDistance()
+        }
     }
 }
 
-#Preview {
-    SimpleTransportCardView(
-        transportSymbol: TransportationSymbol.transit,
-        transportType: .transit
-    )
-}
+//#Preview {
+//    SimpleTransportCardView(
+//        transportSymbol: TransportationSymbol.transit,
+//        transportType: .transit
+//    )
+//}
