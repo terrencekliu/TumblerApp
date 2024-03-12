@@ -150,7 +150,7 @@ struct ActivityCard: View {
                 TransportTabView(
                     defaultTransport: instance.activity.defaultTransportation,
                     currentAddress: instance.activity.address,
-                    nextAddress: instance.activity.address,
+                    nextAddress: nextInstance.activity.address,
                     nextTime: Date()
                 )
             }

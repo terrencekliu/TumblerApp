@@ -12,13 +12,8 @@ struct SimpleTransportCardView: View {
     @ObservedObject var viewModel: FullDayViewModel
     let transportSymbol: TransportationSymbol
     let transportType: Transportation
-    @State var hasComputed: Bool = false
 
     private func calculateTimeDistance() async {
-        if hasComputed {
-            return
-        }
-
         let route = await viewModel.currentAddress.fetchRoute(
             transportation: transportType,
             to: viewModel.nextAddress
@@ -29,7 +24,6 @@ struct SimpleTransportCardView: View {
         }
         viewModel.destinationTime = route?.formattedTravelTime() ?? "none"
         viewModel.destinationDistance = route?.formattedTotalDistance() ?? "none"
-        hasComputed = true
     }
 
     var body: some View {
