@@ -15,6 +15,60 @@ enum Transportation: String, Codable {
     case walk
     case car
     case cycle
+
+    func toTransportation(_ mkTransportType: MKDirectionsTransportType) -> Transportation? {
+        switch mkTransportType {
+        case .automobile:
+            return .car
+        case .transit:
+            return .transit
+        case .walking:
+            return .walk
+        case .any:
+            return .cycle
+        default:
+            return nil
+        }
+    }
+
+    func toMKTransportType() -> MKDirectionsTransportType {
+        switch self {
+        case .car:
+            return .automobile
+        case .transit:
+            return .transit
+        case .walk:
+            return .walking
+        case .cycle:
+            return .any
+        }
+    }
+
+    func toReadableAppleMapsLink() -> String {
+        switch self {
+        case .car:
+            return "d"
+        case .transit:
+            return "r"
+        case .walk:
+            return "w"
+        case .cycle:
+            return ""
+        }
+    }
+
+    func toReadableGoogleMapsLink() -> String {
+        switch self {
+        case .car:
+            return "driving"
+        case .transit:
+            return "transit"
+        case .walk:
+            return "walking"
+        case .cycle:
+            return "bicycling"
+        }
+    }
 }
 
 extension MKRoute {
@@ -55,37 +109,9 @@ struct Address: Identifiable, Codable, Equatable {
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: self.toCLLocationCoordinate2D()))
         request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination.toCLLocationCoordinate2D()))
-        request.transportType = convertTransportType(transportation)
+        request.transportType = transportation.toMKTransportType()
 
         let result = try? await MKDirections(request: request).calculate()
         return result?.routes.first
-    }
-
-    private func convertTransportType(_ mkTransportType: MKDirectionsTransportType) -> Transportation? {
-        switch mkTransportType {
-        case .automobile:
-            return .car
-        case .transit:
-            return .transit
-        case .walking:
-            return .walk
-        case .any:
-            return .cycle
-        default:
-            return nil
-        }
-    }
-
-    private func convertTransportType(_ type: Transportation) -> MKDirectionsTransportType {
-        switch type {
-        case .car:
-            return .automobile
-        case .transit:
-            return .transit
-        case .walk:
-            return .walking
-        case .cycle:
-            return .any
-        }
     }
 }

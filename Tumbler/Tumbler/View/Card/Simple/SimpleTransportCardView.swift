@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct SimpleTransportCardView: View {
+    @Environment(\.openURL) private var openURL
     @ObservedObject var viewModel: FullDayViewModel
     let transportSymbol: TransportationSymbol
     let transportType: Transportation
@@ -28,7 +29,10 @@ struct SimpleTransportCardView: View {
 
     var body: some View {
         Button {
-
+            if let url = URL(string: viewModel.mapLink(transportType)) {
+                openURL(url)
+                print(url)
+            }
         } label: {
             HStack {
                 Image(systemName: transportSymbol.rawValue)
