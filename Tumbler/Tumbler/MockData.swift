@@ -97,33 +97,33 @@ let testActivity4 = Activity(
 let testAddress1 = Address(
     id: addressId1,
     label: "testAddress1",
-    address: "15063 Main St, Bellevue, WA 98007",
-    latitude: 47.610378,
-    longitude: -122.200676
+    address: "24 Verde Dr, San Luis Obispo, CA 93405",
+    latitude: 35.29320,
+    longitude: -120.67618
 )
 
 let testAddress2 = Address(
     id: addressId2,
     label: "testAddress2",
-    address: "13841 NE 20th St, Bellevue, WA 98005",
-    latitude: 47.248549,
-    longitude: -121.154574
+    address: "900 Southwood Dr, San Luis Obispo, CA 93401",
+    latitude: 35.26676,
+    longitude: -120.64464
 )
 
 let testAddress3 = Address(
     id: addressId3,
     label: "testAddress3",
-    address: "15063 Main St, Bellevue, WA 98007",
-    latitude: 46.610378,
-    longitude: -123.200676
+    address: "975 Airport Dr, San Luis Obispo, CA 93401",
+    latitude: 35.23943,
+    longitude: -120.64128
 )
 
 let testAddress4 = Address(
     id: addressId4,
     label: "testAddress4",
-    address: "15063 Main St, Bellevue, WA 98007",
-    latitude: 49.610378,
-    longitude: -124.200676
+    address: "456 Stoneridge Dr, San Luis Obispo, CA 93401",
+    latitude: 35.26360,
+    longitude: -120.65829
 )
 
 // let testTuple1 = ActivityEventGroup(
