@@ -21,8 +21,6 @@
 		50F615902B60BB7E005F0EAB /* DetailedActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F6158F2B60BB7E005F0EAB /* DetailedActivityView.swift */; };
 		F17FA3862AFC69BF00D66D26 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17FA3852AFC69BF00D66D26 /* LoginView.swift */; };
 		FF0BFD6D2B93F45D0047BD2B /* AddActivitySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF0BFD6C2B93F45D0047BD2B /* AddActivitySheetView.swift */; };
-		FF1274C82AF74F8F00099E02 /* FullEventCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274C72AF74F8F00099E02 /* FullEventCardView.swift */; };
-		FF1274CA2AF74F9D00099E02 /* FullEventCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */; };
 		FF1274CC2AF7625B00099E02 /* SimpleActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274CB2AF7625B00099E02 /* SimpleActivityCardView.swift */; };
 		FF1274CF2AF76D1900099E02 /* ActivityCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1274CE2AF76D1900099E02 /* ActivityCardView.swift */; };
 		FF1D0B2D2B6710E400FDF4CF /* NewActivityForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF1D0B2C2B6710E400FDF4CF /* NewActivityForm.swift */; };
@@ -90,8 +88,6 @@
 		50F6158F2B60BB7E005F0EAB /* DetailedActivityView.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = DetailedActivityView.swift; sourceTree = "<group>"; };
 		F17FA3852AFC69BF00D66D26 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		FF0BFD6C2B93F45D0047BD2B /* AddActivitySheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddActivitySheetView.swift; sourceTree = "<group>"; };
-		FF1274C72AF74F8F00099E02 /* FullEventCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEventCardView.swift; sourceTree = "<group>"; };
-		FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullEventCardViewModel.swift; sourceTree = "<group>"; };
 		FF1274CB2AF7625B00099E02 /* SimpleActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SimpleActivityCardView.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		FF1274CE2AF76D1900099E02 /* ActivityCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCardView.swift; sourceTree = "<group>"; };
 		FF1D0B2C2B6710E400FDF4CF /* NewActivityForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewActivityForm.swift; sourceTree = "<group>"; };
@@ -174,15 +170,6 @@
 				50F6158F2B60BB7E005F0EAB /* DetailedActivityView.swift */,
 			);
 			path = FullActivity;
-			sourceTree = "<group>";
-		};
-		FF1274C42AF74F5600099E02 /* FullEvent */ = {
-			isa = PBXGroup;
-			children = (
-				FF1274C92AF74F9D00099E02 /* FullEventCardViewModel.swift */,
-				FF1274C72AF74F8F00099E02 /* FullEventCardView.swift */,
-			);
-			path = FullEvent;
 			sourceTree = "<group>";
 		};
 		FF1274CD2AF76CFD00099E02 /* Detail */ = {
@@ -495,7 +482,6 @@
 		FFC4772B2ADE58B10055EC89 /* Full */ = {
 			isa = PBXGroup;
 			children = (
-				FF1274C42AF74F5600099E02 /* FullEvent */,
 				FF1274C32AF6BA9500099E02 /* FullActivity */,
 				FFC477102ADC91A30055EC89 /* FullDayCardView.swift */,
 				FFC477162ADC91D20055EC89 /* FullTripCardView.swift */,
@@ -655,7 +641,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF1274C82AF74F8F00099E02 /* FullEventCardView.swift in Sources */,
 				FF1D0B2F2B67473B00FDF4CF /* Extensions.swift in Sources */,
 				FF6EA1302B7C4EA400827D12 /* DayPickerView.swift in Sources */,
 				503E76DE2B71F91A00E88986 /* NewDayView.swift in Sources */,
@@ -668,7 +653,6 @@
 				50F615902B60BB7E005F0EAB /* DetailedActivityView.swift in Sources */,
 				FF6531AC2B6593A200D69746 /* TripDataSource.swift in Sources */,
 				FFC477172ADC91D20055EC89 /* FullTripCardView.swift in Sources */,
-				FF1274CA2AF74F9D00099E02 /* FullEventCardViewModel.swift in Sources */,
 				FFC477232ADE551D0055EC89 /* Trip.swift in Sources */,
 				504074192B914ECC00DFB02D /* Map.swift in Sources */,
 				FFC4771D2ADE54EA0055EC89 /* Activity.swift in Sources */,
