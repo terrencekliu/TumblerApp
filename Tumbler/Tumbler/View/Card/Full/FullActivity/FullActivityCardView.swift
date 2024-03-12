@@ -32,10 +32,13 @@ struct FullActivityCardView: View {
                         Text("(\("--- ft"))")
                             .foregroundColor(.gray)
                             .accessibilityIdentifier("distance-text")
-                        Text(activity.address.address)
-                            .foregroundColor(.blue)
-                            .lineLimit(1)
-                            .accessibilityIdentifier("address-text")
+                        Link(
+                            activity.address.address,
+                            destination: URL(
+                                string: activity.address.mapLink(activity.defaultTransportation)
+                            )!
+                        )
+                        .lineLimit(1)
                     }
                     .font(.footnote)
                 }

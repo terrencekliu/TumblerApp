@@ -105,6 +105,29 @@ struct Address: Identifiable, Codable, Equatable {
         return CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude)
     }
 
+    func mapLink(_ type: Transportation) -> String {
+        // TODO: Add user saved map preferences
+        return true ? appleMapsLink(type) : googleMapsLink(type)
+    }
+
+    private func appleMapsLink(_ transportation: Transportation) -> String {
+        return """
+        maps://?\
+        saddr=&\
+        daddr=\(latitude),\(longitude)&\
+        dirflg=\(transportation.toReadableAppleMapsLink())
+        """
+    }
+
+    private func googleMapsLink(_ transportation: Transportation) -> String {
+        return """
+        comgooglemaps://?\
+        saddr=&\
+        daddr=\(latitude),\(longitude)&\
+        directionsmode=\(transportation.toReadableGoogleMapsLink())
+        """
+    }
+
     func fetchRoute(transportation: Transportation, to destination: Address) async -> MKRoute? {
         let request = MKDirections.Request()
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: self.toCLLocationCoordinate2D()))
