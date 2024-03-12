@@ -125,7 +125,7 @@ struct ActivityCardView: View {
                     .accessibilityIdentifier("details-picker")
 
                     switch selected {
-                        case 1: Text(activity.notes ?? "No notes.")
+                        case 1: Text(activity.notes)
                                 .padding(.top, 3.0)
                                 .fontWeight(.regular)
                                 .font(.body)

@@ -6,17 +6,17 @@
 //
 
 import Foundation
+import SwiftUI
 
-@Observable
 class FullDayViewModel: ObservableObject {
-    var currentAddress: Address
-    var nextAddress: Address
-    var nextTime: Date?
+    @Published var currentAddress: Address
+    @Published var nextAddress: Address
+    @Published var nextTime: Date?
 
-    var transitTime: String = "--"
-    var transportDistance: String = "--"
-    var destinationDistance: String = "--"
-    var destinationTime: String = "--"
+    @Published var transitTime: String = "--"
+    @Published var transportDistance: String = "--"
+    @Published var destinationDistance: String = "--"
+    @Published var destinationTime: String = "--"
 
     init(currentAddress: Address, nextAddress: Address, nextTime: Date? = nil) {
         self.currentAddress = currentAddress
