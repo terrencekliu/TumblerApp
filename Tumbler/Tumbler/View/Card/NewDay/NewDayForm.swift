@@ -48,7 +48,7 @@ class NewDayForm {
     }
 
     func validateOrder() throws {
-        if !list.isSorted(by: { $0.startDate < $1.startDate }) {
+        if !list.isSorted(by: { $0.startDate < $1.startDate || !$0.isEvent || !$1.isEvent }) {
             throw Error.nonChronologicalEvents
         }
     }
