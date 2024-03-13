@@ -60,26 +60,24 @@ struct ActivityCardView: View {
                         .padding(.top, 4)
                         .padding(.bottom, 2)
                         .accessibilityIdentifier("name-text")
-                    // TODO: Make this a link to safari
-                    Text(activity.address.address)
-                        .font(.body)
-                        .foregroundStyle(.blue)
-                        .fontWeight(.regular)
-                        .accessibilityIdentifier("address-text")
-
+                    let link = activity.address.mapLink(activity.defaultTransportation)
+                    Link(activity.address.address, destination: URL(string: link)!)
                     HStack {
-                        Button(action: {}) {
-                            VStack {
-                                Image(systemName: "car.fill")
-                                    .font(.title2)
-                                    .foregroundStyle(.white)
-                                Text("8 min")
-                                    .font(.footnote)
-                                    .fontWeight(.medium)
-                                    .foregroundStyle(.white)
+                        Link(
+                            destination: URL(string: link)!, 
+                            label: {
+                                VStack {
+                                    Image(systemName: "car.fill")
+                                        .font(.title2)
+                                        .foregroundStyle(.white)
+                                    Text("-- min")
+                                        .font(.footnote)
+                                        .fontWeight(.medium)
+                                        .foregroundStyle(.white)
+                                }
+                                .frame(width: 45, height: 40)
                             }
-                            .frame(width: 45, height: 40)
-                        }
+                        )
                         .buttonStyle(.borderedProminent)
                         .tint(.blue)
                         .accessibilityIdentifier("navigate-button")
