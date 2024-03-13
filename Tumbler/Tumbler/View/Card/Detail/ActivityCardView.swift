@@ -11,14 +11,14 @@ import PDFKit
 struct ActivityCardView: View {
     @ObservedObject var activity: Activity
 
-    @Environment (\.dismiss) var dismiss
+    @Environment(\.dismiss) var dismiss
     @State private var selected = 1
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 ZStack(alignment: .topTrailing) {
-                    let image = activity.convertDataToImage()
+                    let image = activity.thumbnail?.toUImage()
                     if image == nil {
                         Image("rectangleCafe")
                             .resizable()
@@ -142,7 +142,8 @@ struct ActivityCardView: View {
                                 .accessibilityIdentifier("notes-text")
                         default:
                         if activity.ticketReserve != nil {
-                            //PDFKitView(pdfData: activity.convertDataToPDF()!)
+                            PDFKitView(pdfData: activity.ticketReserve!.toPDFDocument()!)
+                                .scaledToFit()
                         }
                     }
                 }

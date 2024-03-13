@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import PDFKit
 
 extension Date {
     func endOfDay() -> Date {
@@ -85,4 +86,14 @@ extension Collection where Element: Comparable {
     }
     return true // all elements are in order
   }
+}
+
+extension Data {
+    func toPDFDocument() -> PDFDocument? {
+        return PDFDocument(data: self)
+    }
+    
+    func toUImage() -> UIImage? {
+        return UIImage(data: self)
+    }
 }
