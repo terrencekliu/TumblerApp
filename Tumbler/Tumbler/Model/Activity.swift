@@ -83,4 +83,8 @@ class Activity: Identifiable, ObservableObject {
         self.alert = alert
         self.notes = notes
     }
+
+    func convertDataToImage() -> UIImage? {
+        return self.thumbnail != nil ? UIImage(data: self.thumbnail!) : nil
+    }
 }

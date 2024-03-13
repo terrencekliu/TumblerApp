@@ -76,13 +76,24 @@ struct ActivityListView: View {
                         Label(
                             title: { Text(activity.name).foregroundStyle(.black) },
                             icon: {
-                                Image("rectangleCafe")
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 40, height: 35)
-                                    .clipShape(RoundedRectangle(cornerRadius: 5))
-                                    .brightness(-0.2)
-                                    .accessibilityIdentifier("preview-image")
+                                let image = activity.convertDataToImage()
+                                if image == nil {
+                                    Image("rectangleCafe")
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 40, height: 35)
+                                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                                        .brightness(-0.2)
+                                        .accessibilityIdentifier("preview-image")
+                                } else {
+                                    Image(uiImage: image!)
+                                        .resizable()
+                                        .scaledToFill()
+                                        .frame(width: 40, height: 35)
+                                        .clipShape(RoundedRectangle(cornerRadius: 5))
+                                        .brightness(-0.2)
+                                        .accessibilityIdentifier("preview-image")
+                                }
                             }
                         )
                     }
@@ -102,5 +113,9 @@ struct ActivityListView: View {
 
 #Preview {
     let mockData = ViewModel(TripDataSource.test)
-    return ActivityListView(viewModel: NewDayViewModel(trip: mockData.trips.first!, day: nil), showSheet: .constant(true), addIndex: .constant(0), displayMap: .constant(true))
+    return ActivityListView(
+        viewModel: NewDayViewModel(trip: mockData.trips.first!, day: nil),
+        showSheet: .constant(true), addIndex: .constant(0),
+        displayMap: .constant(true)
+    )
 }

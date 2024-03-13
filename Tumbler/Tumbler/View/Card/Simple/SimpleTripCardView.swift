@@ -12,13 +12,26 @@ struct SimpleTripCardView: View {
 
     var body: some View {
         ZStack(alignment: .topLeading) {
-            Image("rectangleCafe")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 350, height: 199)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .brightness(-0.2)
-                .accessibilityIdentifier("preview-image")
+            let image: UIImage? = trip.activities.first?.convertDataToImage()
+            if image != nil {
+                Image(uiImage: image!)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: .infinity, height: 199)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .brightness(-0.2)
+                    .accessibilityIdentifier("preview-image")
+                    .padding(.horizontal)
+            } else {
+                Image("rectangleCafe")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: .infinity, height: 199)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .brightness(-0.2)
+                    .accessibilityIdentifier("preview-image")
+                    .padding(.horizontal)
+            }
             VStack(alignment: .leading) {
                 Text(trip.name)
                     .font(.title)
@@ -32,7 +45,7 @@ struct SimpleTripCardView: View {
                     .foregroundColor(Color.white)
                     .accessibilityIdentifier("date-range-text")
             }
-            .frame(maxWidth: 320, alignment: .leading)
+            .padding(.leading, 20)
             .padding()
         }
     }

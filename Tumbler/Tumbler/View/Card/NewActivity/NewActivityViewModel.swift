@@ -8,6 +8,8 @@
 import Foundation
 import SwiftData
 import CoreLocation
+import PhotosUI
+import _PhotosUI_SwiftUI
 
 extension NewActivityViewModel {
     enum Error: LocalizedError {
@@ -69,6 +71,14 @@ class NewActivityViewModel: ObservableObject {
         )
         trip.activities.append(newActivity)
         updateSource(activity: newActivity)
+    }
+
+    func convertItemToData(_ selectedPhotoItem: PhotosPickerItem?) {
+        Task {
+            if let imageData = try? await selectedPhotoItem?.loadTransferable(type: Data.self) {
+                self.form.thumbnail = imageData
+            }
+        }
     }
 
     private func updateSource(activity: Activity) {

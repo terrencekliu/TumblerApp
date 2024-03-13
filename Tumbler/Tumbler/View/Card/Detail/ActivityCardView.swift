@@ -11,19 +11,30 @@ struct ActivityCardView: View {
     @ObservedObject var activity: Activity
 
     @Environment (\.dismiss) var dismiss
-    @State var selected = 1
+    @State private var selected = 1
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
                 ZStack(alignment: .topTrailing) {
-                    Image("rectangleCafe")
-                        .resizable()
-                        .scaledToFill()
-                        .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
-                        .frame(width: 393, height: 143)
-                        .clipped()
-                        .accessibilityIdentifier("preview-image")
+                    let image = activity.convertDataToImage()
+                    if image == nil {
+                        Image("rectangleCafe")
+                            .resizable()
+                            .scaledToFill()
+                            .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                            .frame(width: .infinity, height: 143)
+                            .clipped()
+                            .accessibilityIdentifier("preview-image")
+                    } else {
+                        Image(uiImage: image!)
+                            .resizable()
+                            .scaledToFill()
+                            .aspectRatio(contentMode: /*@START_MENU_TOKEN@*/.fill/*@END_MENU_TOKEN@*/)
+                            .frame(width: .infinity, height: 143)
+                            .clipped()
+                            .accessibilityIdentifier("preview-image")
+                    }
                     Button(action: {
                         dismiss()
                     }, label: {

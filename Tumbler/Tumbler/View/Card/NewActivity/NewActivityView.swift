@@ -111,9 +111,12 @@ struct NewActivityView: View {
             HStack {
                 Text("Thumbnail")
                 Spacer()
-                PhotosPicker("Choose Photo", selection: $selectedPhotoItem, matching: .images)
+                PhotosPicker(
+                    selectedPhotoItem == nil ? "Choose Photo": "Edit Photo",
+                    selection: $selectedPhotoItem, matching: .images
+                )
                     .onChange(of: selectedPhotoItem, initial: false) {
-                        convertItemToImage()
+                        viewModel.convertItemToData(selectedPhotoItem)
                     }
             }
             HStack {
@@ -147,14 +150,6 @@ struct NewActivityView: View {
                 viewModel.form.quickInfo.append(TupleModel())
             })
             .foregroundColor(/*@START_MENU_TOKEN@*/.green/*@END_MENU_TOKEN@*/)
-        }
-    }
-
-    private func convertItemToImage() {
-        Task {
-            if let imageData = try? await selectedPhotoItem?.loadTransferable(type: Data.self) {
-                viewModel.form.thumbnail = imageData
-            }
         }
     }
 }

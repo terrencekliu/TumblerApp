@@ -71,7 +71,10 @@ struct TripView: View {
                             Button {
                                 selectedActivitySheet = activity
                             } label: {
-                                SimpleActivityCardView(activityName: activity.name.capitalized)
+                                SimpleActivityCardView(
+                                    activityName: activity.name.capitalized,
+                                    thumbnail: activity.convertDataToImage()
+                                )
                             }
                         }
                     }

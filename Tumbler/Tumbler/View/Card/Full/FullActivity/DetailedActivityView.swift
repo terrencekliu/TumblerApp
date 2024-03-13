@@ -79,13 +79,25 @@ struct ActivityRow: View {
         } label: {
             Label(
                 title: { Text(activity.name).foregroundStyle(.black) },
-                icon: { Image("rectangleCafe")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 40, height: 35)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .brightness(-0.2)
-                        .accessibilityIdentifier("preview-image")
+                icon: { 
+                    let image = activity.convertDataToImage()
+                    if image == nil {
+                        Image("rectangleCafe")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 40, height: 35)
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                            .brightness(-0.2)
+                            .accessibilityIdentifier("preview-image")
+                    } else {
+                        Image(uiImage: image!)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 40, height: 35)
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                            .brightness(-0.2)
+                            .accessibilityIdentifier("preview-image")
+                    }
                 }
             )
         }

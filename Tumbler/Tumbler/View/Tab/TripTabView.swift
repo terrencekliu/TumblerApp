@@ -16,11 +16,24 @@ struct TripTabView: View {
 
     var body: some View {
         NavigationStack(path: $navManager.path) {
-            ScrollView {
-                ForEach(viewModel.trips) { trip in
-                    NavigationLink(value: TripDestination.trip(trip: trip), label: { SimpleTripCardView(trip: trip) })
+            List {
+                let trips = viewModel.trips
+                ForEach(trips.indices, id: \.self) { index in
+                    NavigationLink(
+                        value: TripDestination.trip(trip: trips[index]),
+                        label: { SimpleTripCardView(trip: trips[index]) }
+                    )
+                    .swipeActions(edge: .trailing) {
+                        Button("Delete", role: .destructive) {
+                            viewModel.removeTrip(trips[index])
+                            viewModel.trips.remove(at: index)
+                        }
+                    }
                 }
             }
+            .scrollContentBackground(.hidden)
+            .listRowSpacing(1)
+            .listRowSeparator(.hidden)
             .toolbar {
                 Button {
                     presentAlert = true

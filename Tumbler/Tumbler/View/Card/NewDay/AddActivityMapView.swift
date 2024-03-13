@@ -87,13 +87,24 @@ struct ActivityPopup: View {
                     .fill(.white)
                     .frame(width: 349, height: 80)
                 HStack {
-                    Image("rectangleCafe")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 65, height: 65)
-                        .clipShape(RoundedRectangle(cornerRadius: 10))
-                        .brightness(-0.2)
-                        .accessibilityIdentifier("preview-image")
+                    let image: UIImage? = selectedPin.convertDataToImage()
+                    if image == nil {
+                        Image("rectangleCafe")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 65, height: 65)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .brightness(-0.2)
+                            .accessibilityIdentifier("preview-image")
+                    } else {
+                        Image(uiImage: image!)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 65, height: 65)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .brightness(-0.2)
+                            .accessibilityIdentifier("preview-image")
+                    }
                     VStack(alignment: .leading) {
                         Label {
                             Text(selectedPin.name)
@@ -142,5 +153,9 @@ struct ActivityPopup: View {
     let mockData = TripViewModel(dataSource: TripDataSource.test)
     let testVM = NewDayViewModel(trip: mockData.trips.first!, day: nil)
 
-    return AddActivityMapView(viewModel: testVM, showSheet: .constant(true), addIndex: .constant(0), displayMap: .constant(true))
+    return AddActivityMapView(
+        viewModel: testVM, showSheet: .constant(true),
+        addIndex: .constant(0),
+        displayMap: .constant(true)
+    )
 }

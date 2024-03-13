@@ -9,17 +9,28 @@ import SwiftUI
 
 struct SimpleActivityCardView: View {
     @State var activityName: String
+    var thumbnail: UIImage?
 
     var body: some View {
         ZStack(alignment: .topLeading) {
-
-            Image("rectangleCafe")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 200, height: 150)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .brightness(-0.2)
-                .accessibilityIdentifier("preview-image")
+            
+            if thumbnail == nil {
+                Image("rectangleCafe")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 200, height: 150)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .brightness(-0.2)
+                    .accessibilityIdentifier("preview-image")
+            } else {
+                Image(uiImage: thumbnail!)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 200, height: 150)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .brightness(-0.2)
+                    .accessibilityIdentifier("preview-image")
+            }
             VStack(alignment: .leading) {
                 Text(activityName)
                     .font(.title3)

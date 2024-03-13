@@ -79,9 +79,14 @@ struct FullActivityCardView: View {
                         .accessibilityIdentifier("alert-test")
                 }
                 Spacer()
-                // TODO: Replace Default Image
-                Image("cafe")
-                    .accessibilityIdentifier("preview-image")
+                let image = activity.convertDataToImage()
+                if image == nil {
+                    Image("cafe")
+                        .accessibilityIdentifier("preview-image")
+                } else {
+                    Image(uiImage: image!)
+                        .accessibilityIdentifier("preview-image")
+                }
             }
         }
         .padding()

@@ -25,6 +25,10 @@ class ViewModel: ObservableObject {
         trips = dataSource.fetchTrips()
     }
 
+    func removeTrip(_ trip: Trip) {
+        dataSource.removeTrip(trip)
+    }
+
     func mostCurrentTripOccurance() -> (Int, Trip)? {
         trips = dataSource.fetchTrips()
 
