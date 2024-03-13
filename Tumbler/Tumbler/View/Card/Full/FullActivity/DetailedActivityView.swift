@@ -75,11 +75,11 @@ struct ActivityRow: View {
 
     var body: some View {
         NavigationLink {
-
+            ActivityCardView(activity: activity)
         } label: {
             Label(
                 title: { Text(activity.name).foregroundStyle(.black) },
-                icon: { 
+                icon: {
                     let image = activity.convertDataToImage()
                     if image == nil {
                         Image("rectangleCafe")
