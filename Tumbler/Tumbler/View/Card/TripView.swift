@@ -73,7 +73,7 @@ struct TripView: View {
                             } label: {
                                 SimpleActivityCardView(
                                     activityName: activity.name.capitalized,
-                                    thumbnail: activity.convertDataToImage()
+                                    thumbnail: activity.thumbnail?.toUImage()
                                 )
                             }
                         }

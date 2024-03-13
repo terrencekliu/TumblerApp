@@ -87,7 +87,7 @@ struct ActivityPopup: View {
                     .fill(.white)
                     .frame(width: 349, height: 80)
                 HStack {
-                    let image: UIImage? = selectedPin.convertDataToImage()
+                    let image: UIImage? = selectedPin.thumbnail?.toUImage()
                     if image == nil {
                         Image("rectangleCafe")
                             .resizable()

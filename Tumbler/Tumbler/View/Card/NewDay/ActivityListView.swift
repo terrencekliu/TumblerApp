@@ -76,7 +76,7 @@ struct ActivityListView: View {
                         Label(
                             title: { Text(activity.name).foregroundStyle(.black) },
                             icon: {
-                                let image = activity.convertDataToImage()
+                                let image = activity.thumbnail?.toUImage()
                                 if image == nil {
                                     Image("rectangleCafe")
                                         .resizable()

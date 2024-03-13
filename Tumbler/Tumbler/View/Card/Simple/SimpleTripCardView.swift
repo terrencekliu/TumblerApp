@@ -12,7 +12,7 @@ struct SimpleTripCardView: View {
 
     var body: some View {
         ZStack(alignment: .topLeading) {
-            let image: UIImage? = trip.activities.first?.convertDataToImage()
+            let image: UIImage? = trip.activities.first?.thumbnail?.toUImage()
             if image != nil {
                 Image(uiImage: image!)
                     .resizable()
