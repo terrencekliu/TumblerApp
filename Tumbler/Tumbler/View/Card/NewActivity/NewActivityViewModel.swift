@@ -10,6 +10,7 @@ import SwiftData
 import CoreLocation
 import PhotosUI
 import _PhotosUI_SwiftUI
+import PDFKit
 
 extension NewActivityViewModel {
     enum Error: LocalizedError {
@@ -78,6 +79,16 @@ class NewActivityViewModel: ObservableObject {
             if let imageData = try? await selectedPhotoItem?.loadTransferable(type: Data.self) {
                 self.form.thumbnail = imageData
             }
+        }
+    }
+
+    func handlePickedPDF(url: URL) {
+        let pdfController: PDFDocument? = PDFDocument(url: url)
+        if pdfController != nil {
+            self.form.ticketReserve = pdfController!.dataRepresentation()
+        } else {
+          // TODO: Throw error
+            print("URL is invalid")
         }
     }
 

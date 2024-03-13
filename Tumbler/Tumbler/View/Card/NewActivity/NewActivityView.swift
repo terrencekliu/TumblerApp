@@ -17,6 +17,7 @@ struct NewActivityView: View {
 
     @State private var error: Error?
     @State private var selectedPhotoItem: PhotosPickerItem?
+    @State private var showFileImporter: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -122,7 +123,26 @@ struct NewActivityView: View {
             HStack {
                 Text("Tickets/Reservations")
                 Spacer()
-                Button("Upload File") {}
+                Button(viewModel.form.ticketReserve == nil ? "Upload File" : "Edit File") {
+                    showFileImporter.toggle()
+                }
+                .fileImporter(
+                    isPresented: $showFileImporter,
+                    allowedContentTypes: [.pdf],
+                    allowsMultipleSelection: false
+                ) { result in
+                    switch result {
+                    case .success(let urls):
+                        urls.forEach { url in
+                            let gotAccess = url.startAccessingSecurityScopedResource()
+                            if !gotAccess { return }
+                            viewModel.handlePickedPDF(url: url)
+                            url.stopAccessingSecurityScopedResource()
+                        }
+                    case .failure(let error):
+                        print("error chossing pdf")
+                    }
+                }
             }
             HStack {
                 Text("General Files")

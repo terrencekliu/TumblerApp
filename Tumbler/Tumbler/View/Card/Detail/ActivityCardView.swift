@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PDFKit
 
 struct ActivityCardView: View {
     @ObservedObject var activity: Activity
@@ -140,8 +141,9 @@ struct ActivityCardView: View {
                                 .font(.body)
                                 .accessibilityIdentifier("notes-text")
                         default:
-                            Text(activity.name)
-                                .accessibilityIdentifier("files")
+                        if activity.ticketReserve != nil {
+                            //PDFKitView(pdfData: activity.convertDataToPDF()!)
+                        }
                     }
                 }
                 .padding(.horizontal, 20.0)
@@ -149,6 +151,21 @@ struct ActivityCardView: View {
                 Spacer()
             }
         }
+    }
+}
+
+struct PDFKitView: UIViewRepresentable {
+    let pdfData: PDFDocument
+
+    func makeUIView(context: Context) -> PDFView {
+        let pdfView = PDFView()
+        pdfView.document = self.pdfData
+        pdfView.autoScales = true
+        return pdfView
+    }
+
+    func updateUIView(_ pdfView: PDFView, context: Context) {
+        // Update pdf view if needed
     }
 }
 

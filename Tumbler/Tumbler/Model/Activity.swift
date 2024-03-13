@@ -8,6 +8,7 @@
 import Foundation
 import SwiftData
 import MapKit
+import PDFKit
 
 @Model
 class Activity: Identifiable, ObservableObject {
@@ -86,5 +87,13 @@ class Activity: Identifiable, ObservableObject {
 
     func convertDataToImage() -> UIImage? {
         return self.thumbnail != nil ? UIImage(data: self.thumbnail!) : nil
+    }
+
+    func convertDataToPDF() -> PDFDocument? {
+        if self.ticketReserve != nil {
+            let pdfController: PDFDocument? = PDFDocument(data: self.ticketReserve!)
+            return pdfController
+        }
+        return nil
     }
 }
