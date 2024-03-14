@@ -22,21 +22,12 @@ struct NewDayView: View {
                         .textContentType(.givenName)
                 }
                 DatePicker("Start", selection: $viewModel.form.startDate, displayedComponents: [.date, .hourAndMinute])
-                // TODO: Limit user start and end time
                 DatePicker(
                     "End",
                     selection: $viewModel.form.endDate,
                     in: viewModel.form.startDate ... viewModel.form.startDate.endOfDay(),
                     displayedComponents: [.hourAndMinute]
                 )
-            }
-            Section {
-                HStack {
-                    Text("Thumbnail")
-                    Spacer()
-                    Button("Upload File") {}
-                        .foregroundColor(.blue)
-                }
             }
             Button {
                 @Bindable var navManager = navManager
