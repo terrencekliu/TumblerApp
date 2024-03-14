@@ -43,17 +43,7 @@ struct FullActivityCardView: View {
                     .font(.footnote)
                 }
                 Spacer()
-                // TODO: Make Tickets Button Actionable
-                Button(action: {}) {
-                    VStack {
-                        Image(systemName: "ticket")
-                            .font(.title2)
-                        Text("Tickets")
-                            .font(.footnote)
-                    }
-                }
-                .buttonStyle(.bordered)
-                .accessibilityIdentifier("ticket-button")
+                TicketButton(activity: activity)
             }
             HStack(alignment: .top) {
                 VStack(alignment: .leading) {

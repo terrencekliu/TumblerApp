@@ -9,6 +9,10 @@ import SwiftUI
 import UIKit
 import PhotosUI
 
+enum FileType: String {
+    case ticket, general
+}
+
 struct NewActivityView: View {
     @ObservedObject var viewModel = NewActivityViewModel()
     @ObservedObject var trip: Trip
@@ -123,31 +127,42 @@ struct NewActivityView: View {
             HStack {
                 Text("Tickets/Reservations")
                 Spacer()
-                Button(viewModel.form.ticketReserve == nil ? "Upload File" : "Edit File") {
-                    showFileImporter.toggle()
-                }
-                .fileImporter(
-                    isPresented: $showFileImporter,
-                    allowedContentTypes: [.pdf],
-                    allowsMultipleSelection: false
-                ) { result in
-                    switch result {
-                    case .success(let urls):
-                        urls.forEach { url in
-                            let gotAccess = url.startAccessingSecurityScopedResource()
-                            if !gotAccess { return }
-                            viewModel.handlePickedPDF(url: url)
-                            url.stopAccessingSecurityScopedResource()
-                        }
-                    case .failure(let error):
-                        print("error chossing pdf")
-                    }
-                }
+                UploadFileButton(fileType: FileType.ticket, viewModel: viewModel)
             }
             HStack {
                 Text("General Files")
                 Spacer()
-                Button("Upload File") {}
+                UploadFileButton(fileType: FileType.general, viewModel: viewModel)
+            }
+        }
+    }
+
+    struct UploadFileButton: View {
+        @State private var showFileImporter = false
+        var fileType: FileType
+        var viewModel: NewActivityViewModel
+
+        var body: some View {
+            Button(viewModel.isFileNil(fileType) ? "Upload File" : "Edit File") {
+                showFileImporter.toggle()
+            }
+            .fileImporter(
+                isPresented: $showFileImporter,
+                allowedContentTypes: [.pdf],
+                allowsMultipleSelection: false
+            ) { result in
+                switch result {
+                case .success(let urls):
+                    urls.forEach { url in
+                        let gotAccess = url.startAccessingSecurityScopedResource()
+                        if !gotAccess { return } // TODO: Error case for no access to directory
+                        viewModel.handlePickedPDF(url: url, fileType: fileType)
+                        url.stopAccessingSecurityScopedResource()
+                    }
+                case .failure(let error):
+                    print("error chossing pdf")
+                    print(error.localizedDescription)
+                }
             }
         }
     }

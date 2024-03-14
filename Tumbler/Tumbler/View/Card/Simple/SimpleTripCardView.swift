@@ -17,7 +17,7 @@ struct SimpleTripCardView: View {
                 Image(uiImage: image!)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: .infinity, height: 199)
+                    .frame(width: UIScreen.main.bounds.width, height: 199)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .brightness(-0.2)
                     .accessibilityIdentifier("preview-image")
@@ -26,11 +26,10 @@ struct SimpleTripCardView: View {
                 Image("rectangleCafe")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: .infinity, height: 199)
+                    .frame(width: 350, height: 199)
                     .clipShape(RoundedRectangle(cornerRadius: 10))
                     .brightness(-0.2)
                     .accessibilityIdentifier("preview-image")
-                    .padding(.horizontal)
             }
             VStack(alignment: .leading) {
                 Text(trip.name)
@@ -45,7 +44,6 @@ struct SimpleTripCardView: View {
                     .foregroundColor(Color.white)
                     .accessibilityIdentifier("date-range-text")
             }
-            .padding(.leading, 20)
             .padding()
         }
     }

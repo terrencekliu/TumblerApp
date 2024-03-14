@@ -82,14 +82,28 @@ class NewActivityViewModel: ObservableObject {
         }
     }
 
-    func handlePickedPDF(url: URL) {
-        let pdfController: PDFDocument? = PDFDocument(url: url)
-        if pdfController != nil {
-            self.form.ticketReserve = pdfController!.dataRepresentation()
+    func handlePickedPDF(url: URL, fileType: FileType) {
+        if let pdfController: PDFDocument = PDFDocument(url: url) {
+            switch fileType {
+            case FileType.general:
+                self.form.files = pdfController.dataRepresentation()
+            case FileType.ticket:
+                self.form.ticketReserve = pdfController.dataRepresentation()
+            }
         } else {
-          // TODO: Throw error
+            // TODO: Throw error
             print("URL is invalid")
         }
+    }
+
+    func isFileNil(_ fileType: FileType) -> Bool {
+        switch fileType {
+        case FileType.general:
+            return self.form.files == nil
+        case FileType.ticket:
+            return self.form.ticketReserve == nil
+        }
+
     }
 
     private func updateSource(activity: Activity) {

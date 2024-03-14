@@ -82,17 +82,7 @@ struct ActivityCardView: View {
                         .buttonStyle(.borderedProminent)
                         .tint(.blue)
                         .accessibilityIdentifier("navigate-button")
-                        Button(action: {}) {
-                            VStack {
-                                Image(systemName: "ticket")
-                                    .font(.title2)
-                                Text("Tickets")
-                                    .font(.footnote)
-                                    .fontWeight(.medium)
-                            }  .frame(width: 45, height: 40)
-                        }
-                        .buttonStyle(.bordered)
-                        .accessibilityIdentifier("ticket-button")
+                        TicketButton(activity: activity)
                     }
                     .padding(.bottom, 4.0)
                     Divider()
@@ -167,6 +157,56 @@ struct PDFKitView: UIViewRepresentable {
 
     func updateUIView(_ pdfView: PDFView, context: Context) {
         // Update pdf view if needed
+    }
+}
+
+struct TicketButton: View {
+    @State private var isPresenting = false
+    @ObservedObject var activity: Activity
+
+    var body: some View {
+        Button(action: {
+            isPresenting.toggle()
+        }) {
+            VStack {
+                Image(systemName: "ticket")
+                    .font(.title2)
+                Text("Tickets")
+                    .font(.footnote)
+                    .fontWeight(.medium)
+            }  .frame(width: 45, height: 40)
+        }
+        .fullScreenCover(isPresented: $isPresenting) {
+            ZStack {
+                if activity.ticketReserve != nil {
+                    PDFKitView(pdfData: activity.ticketReserve!.toPDFDocument()!)
+                } else {
+                    Text("No tickets PDF uploaded")
+                }
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            isPresenting.toggle()
+                        }, label: {
+                            Image(systemName: "x.circle.fill")
+                                .symbolRenderingMode(.hierarchical)
+                                .foregroundStyle(.black)
+                                .opacity(0.5)
+                                .font(.title)
+                        })
+
+                    }
+                    .padding(.trailing, 30)
+                    .padding(.top, 20)
+                    Spacer()
+                }
+                .statusBarHidden(true)
+                .ignoresSafeArea(.all)
+            }
+        }
+        .buttonStyle(.bordered)
+        .accessibilityIdentifier("ticket-button")
     }
 }
 

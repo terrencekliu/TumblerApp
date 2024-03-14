@@ -92,7 +92,7 @@ extension Data {
     func toPDFDocument() -> PDFDocument? {
         return PDFDocument(data: self)
     }
-    
+
     func toUImage() -> UIImage? {
         return UIImage(data: self)
     }
